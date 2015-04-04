@@ -119,14 +119,6 @@
 			path = Class/App;
 			sourceTree = "<group>";
 		};
-		1CE1DF1F1ACFC75F0052A333 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helper;
-			path = Class/Helper;
-			sourceTree = "<group>";
-		};
 		1CE1DF201ACFC75F0052A333 /* PlugIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,20 +209,28 @@
 			path = Widget;
 			sourceTree = "<group>";
 		};
-		1CE1DF471ACFC75F0052A333 /* Utils */ = {
+		1CE1DF5C1ACFD82C0052A333 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				1CE1DF481ACFC75F0052A333 /* third-party */,
+				1CE1DF5D1ACFD82C0052A333 /* third-party */,
 			);
 			name = Utils;
 			path = Class/Utils;
 			sourceTree = "<group>";
 		};
-		1CE1DF481ACFC75F0052A333 /* third-party */ = {
+		1CE1DF5D1ACFD82C0052A333 /* third-party */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = "third-party";
+			sourceTree = "<group>";
+		};
+		1CE1DF5E1ACFD8350052A333 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helper;
+			path = Class/Helper;
 			sourceTree = "<group>";
 		};
 		231BE4421ACFC60000B65A58 = {
@@ -254,11 +254,11 @@
 		231BE44D1ACFC60000B65A58 /* MFSDKBase */ = {
 			isa = PBXGroup;
 			children = (
+				1CE1DF5E1ACFD8350052A333 /* Helper */,
+				1CE1DF5C1ACFD82C0052A333 /* Utils */,
 				1CE1DF1E1ACFC75F0052A333 /* App */,
-				1CE1DF1F1ACFC75F0052A333 /* Helper */,
 				1CE1DF201ACFC75F0052A333 /* PlugIn */,
 				1CE1DF331ACFC75F0052A333 /* UI */,
-				1CE1DF471ACFC75F0052A333 /* Utils */,
 				231BE4521ACFC60000B65A58 /* AppDelegate.h */,
 				231BE4531ACFC60000B65A58 /* AppDelegate.m */,
 				231BE4551ACFC60000B65A58 /* ViewController.h */,
