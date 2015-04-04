@@ -114,14 +114,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1CE1DF1E1ACFC75F0052A333 /* App */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = App;
-			path = Class/App;
-			sourceTree = "<group>";
-		};
 		1CE1DF201ACFC75F0052A333 /* PlugIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,30 +204,6 @@
 			path = Widget;
 			sourceTree = "<group>";
 		};
-		1CE1DF5C1ACFD82C0052A333 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				1CE1DF5D1ACFD82C0052A333 /* third-party */,
-			);
-			name = Utils;
-			path = Class/Utils;
-			sourceTree = "<group>";
-		};
-		1CE1DF5D1ACFD82C0052A333 /* third-party */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "third-party";
-			sourceTree = "<group>";
-		};
-		1CE1DF5E1ACFD8350052A333 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helper;
-			path = Class/Helper;
-			sourceTree = "<group>";
-		};
 		231BE4421ACFC60000B65A58 = {
 			isa = PBXGroup;
 			children = (
@@ -258,9 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				231BE4AC1AD003EB00B65A58 /* Frameworks */,
-				1CE1DF5E1ACFD8350052A333 /* Helper */,
-				1CE1DF5C1ACFD82C0052A333 /* Utils */,
-				1CE1DF1E1ACFC75F0052A333 /* App */,
+				231BE4C31AD0335F00B65A58 /* Utils */,
+				231BE4C11AD0335400B65A58 /* App */,
+				231BE4C21AD0335400B65A58 /* Helper */,
 				1CE1DF201ACFC75F0052A333 /* PlugIn */,
 				1CE1DF331ACFC75F0052A333 /* UI */,
 				231BE4521ACFC60000B65A58 /* AppDelegate.h */,
@@ -307,6 +275,38 @@
 				231BE4AD1AD003EB00B65A58 /* wax.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		231BE4C11AD0335400B65A58 /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = App;
+			path = Class/App;
+			sourceTree = "<group>";
+		};
+		231BE4C21AD0335400B65A58 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helper;
+			path = Class/Helper;
+			sourceTree = "<group>";
+		};
+		231BE4C31AD0335F00B65A58 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				231BE4C41AD0335F00B65A58 /* Third-party */,
+			);
+			name = Utils;
+			path = Class/Utils;
+			sourceTree = "<group>";
+		};
+		231BE4C41AD0335F00B65A58 /* Third-party */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Third-party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
