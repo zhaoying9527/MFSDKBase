@@ -32,6 +32,12 @@
 		231BE45F1ACFC60000B65A58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BE45D1ACFC60000B65A58 /* LaunchScreen.xib */; };
 		231BE46B1ACFC60000B65A58 /* MFSDKBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */; };
 		231BE4AE1AD003EB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4AD1AD003EB00B65A58 /* wax.framework */; };
+		231BE4D21AD0374D00B65A58 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4C81AD0374D00B65A58 /* ESCssParser.m */; };
+		231BE4D31AD0374D00B65A58 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4C91AD0374D00B65A58 /* ESCssTokenizer.m */; };
+		231BE4D41AD0374D00B65A58 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4CB1AD0374D00B65A58 /* ESCssTokens.m */; };
+		231BE4D51AD0374D00B65A58 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4CF1AD0374D00B65A58 /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		231BE4D61AD0374D00B65A58 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4D11AD0374D00B65A58 /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		231BE4D81AD0377100B65A58 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4D71AD0377100B65A58 /* libxml2.2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +99,16 @@
 		231BE4691ACFC60000B65A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFSDKBaseTests.m; sourceTree = "<group>"; };
 		231BE4AD1AD003EB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
+		231BE4C71AD0374D00B65A58 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
+		231BE4C81AD0374D00B65A58 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
+		231BE4C91AD0374D00B65A58 /* ESCssTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokenizer.m; sourceTree = "<group>"; };
+		231BE4CA1AD0374D00B65A58 /* ESCssTokens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssTokens.h; sourceTree = "<group>"; };
+		231BE4CB1AD0374D00B65A58 /* ESCssTokens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokens.m; sourceTree = "<group>"; };
+		231BE4CE1AD0374D00B65A58 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		231BE4CF1AD0374D00B65A58 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		231BE4D01AD0374D00B65A58 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		231BE4D11AD0374D00B65A58 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		231BE4D71AD0377100B65A58 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231BE4D81AD0377100B65A58 /* libxml2.2.dylib in Frameworks */,
 				231BE4AE1AD003EB00B65A58 /* wax.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				231BE4AD1AD003EB00B65A58 /* wax.framework */,
+				231BE4D71AD0377100B65A58 /* libxml2.2.dylib */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -305,8 +323,49 @@
 		231BE4C41AD0335F00B65A58 /* Third-party */ = {
 			isa = PBXGroup;
 			children = (
+				231BE4C51AD0374D00B65A58 /* ESCssParser */,
+				231BE4CD1AD0374D00B65A58 /* HTMLParser */,
 			);
 			path = "Third-party";
+			sourceTree = "<group>";
+		};
+		231BE4C51AD0374D00B65A58 /* ESCssParser */ = {
+			isa = PBXGroup;
+			children = (
+				231BE4C61AD0374D00B65A58 /* Parser */,
+				231BE4CC1AD0374D00B65A58 /* Syntax */,
+			);
+			path = ESCssParser;
+			sourceTree = "<group>";
+		};
+		231BE4C61AD0374D00B65A58 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				231BE4C71AD0374D00B65A58 /* ESCssParser.h */,
+				231BE4C81AD0374D00B65A58 /* ESCssParser.m */,
+				231BE4C91AD0374D00B65A58 /* ESCssTokenizer.m */,
+				231BE4CA1AD0374D00B65A58 /* ESCssTokens.h */,
+				231BE4CB1AD0374D00B65A58 /* ESCssTokens.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		231BE4CC1AD0374D00B65A58 /* Syntax */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Syntax;
+			sourceTree = "<group>";
+		};
+		231BE4CD1AD0374D00B65A58 /* HTMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				231BE4CE1AD0374D00B65A58 /* HTMLNode.h */,
+				231BE4CF1AD0374D00B65A58 /* HTMLNode.m */,
+				231BE4D01AD0374D00B65A58 /* HTMLParser.h */,
+				231BE4D11AD0374D00B65A58 /* HTMLParser.m */,
+			);
+			path = HTMLParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,10 +470,14 @@
 			files = (
 				1CE1DF581ACFC75F0052A333 /* MFVoiceLabel.m in Sources */,
 				1CE1DF4E1ACFC75F0052A333 /* MFPlugIn.m in Sources */,
+				231BE4D21AD0374D00B65A58 /* ESCssParser.m in Sources */,
+				231BE4D41AD0374D00B65A58 /* ESCssTokens.m in Sources */,
+				231BE4D61AD0374D00B65A58 /* HTMLParser.m in Sources */,
 				231BE4571ACFC60000B65A58 /* ViewController.m in Sources */,
 				1CE1DF5B1ACFC7AA0052A333 /* MFObject.m in Sources */,
 				1CE1DF491ACFC75F0052A333 /* MFCssParser.m in Sources */,
 				1CE1DF541ACFC75F0052A333 /* MFImageView.m in Sources */,
+				231BE4D51AD0374D00B65A58 /* HTMLNode.m in Sources */,
 				231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */,
 				1CE1DF531ACFC75F0052A333 /* MFEmojiView.m in Sources */,
 				1CE1DF4B1ACFC75F0052A333 /* MFParser.m in Sources */,
@@ -425,6 +488,7 @@
 				1CE1DF571ACFC75F0052A333 /* MFView.m in Sources */,
 				1CE1DF501ACFC75F0052A333 /* MFUIFactory.m in Sources */,
 				1CE1DF521ACFC75F0052A333 /* MFButton.m in Sources */,
+				231BE4D31AD0374D00B65A58 /* ESCssTokenizer.m in Sources */,
 				1CE1DF4A1ACFC75F0052A333 /* MFHtmlParser.m in Sources */,
 				1CE1DF511ACFC75F0052A333 /* MFAudioLabel.m in Sources */,
 				1CE1DF4C1ACFC75F0052A333 /* MFLuaScript.m in Sources */,
@@ -557,6 +621,11 @@
 					/Users/lichunrong/Work/MFSDKBase/MFSDKBase,
 					"$(PROJECT_DIR)/MFSDKBase/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = MFSDKBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -571,6 +640,11 @@
 					"$(inherited)",
 					/Users/lichunrong/Work/MFSDKBase/MFSDKBase,
 					"$(PROJECT_DIR)/MFSDKBase/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = MFSDKBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
