@@ -31,6 +31,7 @@
 		231BE45C1ACFC60000B65A58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231BE45B1ACFC60000B65A58 /* Images.xcassets */; };
 		231BE45F1ACFC60000B65A58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BE45D1ACFC60000B65A58 /* LaunchScreen.xib */; };
 		231BE46B1ACFC60000B65A58 /* MFSDKBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */; };
+		231BE4AE1AD003EB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4AD1AD003EB00B65A58 /* wax.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		231BE4641ACFC60000B65A58 /* MFSDKBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MFSDKBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		231BE4691ACFC60000B65A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFSDKBaseTests.m; sourceTree = "<group>"; };
+		231BE4AD1AD003EB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231BE4AE1AD003EB00B65A58 /* wax.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +257,7 @@
 		231BE44D1ACFC60000B65A58 /* MFSDKBase */ = {
 			isa = PBXGroup;
 			children = (
+				231BE4AC1AD003EB00B65A58 /* Frameworks */,
 				1CE1DF5E1ACFD8350052A333 /* Helper */,
 				1CE1DF5C1ACFD82C0052A333 /* Utils */,
 				1CE1DF1E1ACFC75F0052A333 /* App */,
@@ -295,6 +299,14 @@
 				231BE4691ACFC60000B65A58 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		231BE4AC1AD003EB00B65A58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				231BE4AD1AD003EB00B65A58 /* wax.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,6 +552,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/lichunrong/Work/MFSDKBase/MFSDKBase,
+					"$(PROJECT_DIR)/MFSDKBase/Frameworks",
+				);
 				INFOPLIST_FILE = MFSDKBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -550,6 +567,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/lichunrong/Work/MFSDKBase/MFSDKBase,
+					"$(PROJECT_DIR)/MFSDKBase/Frameworks",
+				);
 				INFOPLIST_FILE = MFSDKBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
