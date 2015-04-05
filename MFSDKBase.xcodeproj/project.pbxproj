@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1CC8EEBC1AD13AFC008C0286 /* MFActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EE801AD13AFC008C0286 /* MFActionManager.m */; };
-		1CC8EEBD1AD13AFC008C0286 /* MFCorePlugInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EE861AD13AFC008C0286 /* MFCorePlugInService.m */; };
 		1CC8EEBE1AD13AFC008C0286 /* MFPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EE881AD13AFC008C0286 /* MFPlugIn.m */; };
 		1CC8EEBF1AD13AFC008C0286 /* MFCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EE8B1AD13AFC008C0286 /* MFCssParser.m */; };
 		1CC8EEC01AD13AFC008C0286 /* MFHtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EE8D1AD13AFC008C0286 /* MFHtmlParser.m */; };
@@ -30,6 +29,7 @@
 		1CC8EED11AD13AFC008C0286 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EEB61AD13AFC008C0286 /* ESCssTokens.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1CC8EED21AD13AFC008C0286 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EEB91AD13AFC008C0286 /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1CC8EED31AD13AFC008C0286 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EEBB1AD13AFC008C0286 /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1CC8EED71AD13CDA008C0286 /* MFCorePlugInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EED61AD13CDA008C0286 /* MFCorePlugInService.m */; };
 		231BE4511ACFC60000B65A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4501ACFC60000B65A58 /* main.m */; };
 		231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4531ACFC60000B65A58 /* AppDelegate.m */; };
 		231BE4571ACFC60000B65A58 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4561ACFC60000B65A58 /* ViewController.m */; };
@@ -54,8 +54,6 @@
 /* Begin PBXFileReference section */
 		1CC8EE7F1AD13AFC008C0286 /* MFActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFActionManager.h; sourceTree = "<group>"; };
 		1CC8EE801AD13AFC008C0286 /* MFActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFActionManager.m; sourceTree = "<group>"; };
-		1CC8EE851AD13AFC008C0286 /* MFCorePlugInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCorePlugInService.h; sourceTree = "<group>"; };
-		1CC8EE861AD13AFC008C0286 /* MFCorePlugInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCorePlugInService.m; sourceTree = "<group>"; };
 		1CC8EE871AD13AFC008C0286 /* MFPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPlugIn.h; sourceTree = "<group>"; };
 		1CC8EE881AD13AFC008C0286 /* MFPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPlugIn.m; sourceTree = "<group>"; };
 		1CC8EE8A1AD13AFC008C0286 /* MFCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCssParser.h; sourceTree = "<group>"; };
@@ -68,8 +66,8 @@
 		1CC8EE941AD13AFC008C0286 /* MFLuaScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLuaScript.m; sourceTree = "<group>"; };
 		1CC8EE951AD13AFC008C0286 /* MFScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFScript.h; sourceTree = "<group>"; };
 		1CC8EE961AD13AFC008C0286 /* MFScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFScript.m; sourceTree = "<group>"; };
-		1CC8EE981AD13AFC008C0286 /* MFCorePlugInFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCorePlugInFactory.h; sourceTree = "<group>"; };
-		1CC8EE991AD13AFC008C0286 /* MFCorePlugInFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCorePlugInFactory.m; sourceTree = "<group>"; };
+		1CC8EE981AD13AFC008C0286 /* MFCorePlugInFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCorePlugInFactory.h; path = ../MFCorePlugInFactory.h; sourceTree = "<group>"; };
+		1CC8EE991AD13AFC008C0286 /* MFCorePlugInFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCorePlugInFactory.m; path = ../MFCorePlugInFactory.m; sourceTree = "<group>"; };
 		1CC8EE9B1AD13AFC008C0286 /* MFUIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFUIFactory.h; sourceTree = "<group>"; };
 		1CC8EE9C1AD13AFC008C0286 /* MFUIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFUIFactory.m; sourceTree = "<group>"; };
 		1CC8EE9E1AD13AFC008C0286 /* MFAudioLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAudioLabel.h; sourceTree = "<group>"; };
@@ -98,6 +96,8 @@
 		1CC8EEBA1AD13AFC008C0286 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		1CC8EEBB1AD13AFC008C0286 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		1CC8EED41AD13B5C008C0286 /* MFSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFSDK.h; path = MFSDKBase/MFSDK.h; sourceTree = SOURCE_ROOT; };
+		1CC8EED51AD13CDA008C0286 /* MFCorePlugInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCorePlugInService.h; path = MFSDKBase/Class/PlugIn/MFCorePlugInService.h; sourceTree = SOURCE_ROOT; };
+		1CC8EED61AD13CDA008C0286 /* MFCorePlugInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCorePlugInService.m; path = MFSDKBase/Class/PlugIn/MFCorePlugInService.m; sourceTree = SOURCE_ROOT; };
 		231BE44B1ACFC60000B65A58 /* MFSDKBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFSDKBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		231BE44F1ACFC60000B65A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		231BE4501ACFC60000B65A58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -166,8 +166,6 @@
 			children = (
 				1CC8EE831AD13AFC008C0286 /* Core */,
 				1CC8EE971AD13AFC008C0286 /* Extensions */,
-				1CC8EE981AD13AFC008C0286 /* MFCorePlugInFactory.h */,
-				1CC8EE991AD13AFC008C0286 /* MFCorePlugInFactory.m */,
 			);
 			name = PlugIn;
 			path = MFSDKBase/Class/PlugIn;
@@ -176,9 +174,13 @@
 		1CC8EE831AD13AFC008C0286 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				1CC8EE841AD13AFC008C0286 /* Event */,
 				1CC8EE871AD13AFC008C0286 /* MFPlugIn.h */,
 				1CC8EE881AD13AFC008C0286 /* MFPlugIn.m */,
+				1CC8EED51AD13CDA008C0286 /* MFCorePlugInService.h */,
+				1CC8EED61AD13CDA008C0286 /* MFCorePlugInService.m */,
+				1CC8EE981AD13AFC008C0286 /* MFCorePlugInFactory.h */,
+				1CC8EE991AD13AFC008C0286 /* MFCorePlugInFactory.m */,
+				1CC8EE841AD13AFC008C0286 /* Event */,
 				1CC8EE891AD13AFC008C0286 /* Parser */,
 				1CC8EE921AD13AFC008C0286 /* Script */,
 			);
@@ -188,8 +190,6 @@
 		1CC8EE841AD13AFC008C0286 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				1CC8EE851AD13AFC008C0286 /* MFCorePlugInService.h */,
-				1CC8EE861AD13AFC008C0286 /* MFCorePlugInService.m */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -498,13 +498,13 @@
 				1CC8EECB1AD13AFC008C0286 /* MFLabel.m in Sources */,
 				1CC8EECF1AD13AFC008C0286 /* ESCssParser.m in Sources */,
 				1CC8EED31AD13AFC008C0286 /* HTMLParser.m in Sources */,
+				1CC8EED71AD13CDA008C0286 /* MFCorePlugInService.m in Sources */,
 				1CC8EEC51AD13AFC008C0286 /* MFCorePlugInFactory.m in Sources */,
 				1CC8EEC11AD13AFC008C0286 /* MFParser.m in Sources */,
 				1CC8EEBE1AD13AFC008C0286 /* MFPlugIn.m in Sources */,
 				1CC8EED01AD13AFC008C0286 /* ESCssTokenizer.m in Sources */,
 				1CC8EECE1AD13AFC008C0286 /* MFVoiceLabel.m in Sources */,
 				1CC8EEBF1AD13AFC008C0286 /* MFCssParser.m in Sources */,
-				1CC8EEBD1AD13AFC008C0286 /* MFCorePlugInService.m in Sources */,
 				1CC8EEC61AD13AFC008C0286 /* MFUIFactory.m in Sources */,
 				1CC8EEC91AD13AFC008C0286 /* MFEmojiView.m in Sources */,
 				1CC8EECA1AD13AFC008C0286 /* MFImageView.m in Sources */,
