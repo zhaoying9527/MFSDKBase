@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "MFPlugIn.h"
-@interface MFScript : NSObject
+@interface MFScript : MFPlugIn
 
 @end

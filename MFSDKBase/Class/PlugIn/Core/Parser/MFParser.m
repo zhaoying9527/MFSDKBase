@@ -7,7 +7,14 @@
 //
 
 #import "MFParser.h"
-
 @implementation MFParser
+- (BOOL)loadText:(NSString*)text
+{
+    return NO;
+}
 
+- (NSDictionary*)parse
+{
+    return nil;
+}
 @end

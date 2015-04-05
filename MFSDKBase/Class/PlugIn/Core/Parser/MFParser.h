@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@interface MFParser : NSObject
-
+#import "MFPlugIn.h"
+@interface MFParser : MFPlugIn
+- (BOOL)loadText:(NSString*)text;
+- (NSDictionary*)parse;
 @end

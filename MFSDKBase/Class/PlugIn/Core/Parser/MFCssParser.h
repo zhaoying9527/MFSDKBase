@@ -9,5 +9,4 @@
 #import <Foundation/Foundation.h>
 #import "MFParser.h"
 @interface MFCssParser : MFParser
-
 @end

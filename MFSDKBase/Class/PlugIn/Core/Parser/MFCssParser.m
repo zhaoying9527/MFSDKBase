@@ -7,7 +7,26 @@
 //
 
 #import "MFCssParser.h"
+#import "ESCssParser.h"
+@interface MFCssParser()
+@property (nonatomic,strong) ESCssParser *parser;
+@property (nonatomic,strong) NSString *cssText;
+@end
+
 
 @implementation MFCssParser
+- (BOOL)loadText:(NSString*)text
+{
+    if (nil != text) {
+        self.cssText = text;
+        return YES;
+    }
+    return NO;
+}
+
+- (NSDictionary*)parse
+{
+    return [self.parser parseText:self.cssText];
+}
 
 @end
