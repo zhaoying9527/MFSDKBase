@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top</key>
+	<string>top</string>
+	<key>left</key>
+	<string>left</string>
+	<key>width</key>
+	<string>width</string>
+	<key>height</key>
+	<string>height</string>
+	<key>border-radius</key>
+	<string>cornerRadius</string>
+	<key>text-align</key>
+	<string>textAlignment</string>
+	<key>font</key>
+	<string>font</string>
+	<key>background-color</key>
+	<string>backgroundColor</string>
+	<key>border-width</key>
+	<string>borderWidth</string>
+	<key>border-color</key>
+	<string>borderColor</string>
+	<key>color</key>
+	<string>textColor</string>
+	<key>highlightedTextColor</key>
+	<string>highlightedTextColor</string>
+	<key>image</key>
+	<string>image</string>
+	<key>backgroundImage</key>
+	<string>backgroundImage</string>
+	<key>align</key>
+	<string>align</string>
+	<key>visibility</key>
+	<string>hiddel</string>
+	<key>numberOfLines</key>
+	<string>numberOfLines</string>
+	<key>layout</key>
+	<string>layout</string>
+	<key>format</key>
+	<string>format</string>
+	<key>side</key>
+	<string>side</string>
+	<key>touchEnabled</key>
+	<string>touchEnabled</string>
+</dict>
+</plist>

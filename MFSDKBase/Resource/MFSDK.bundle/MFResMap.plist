@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AA.left</key>
+	<string>HiChat.bundle/AA.left.png</string>
+	<key>AA.right</key>
+	<string>HiChat.bundle/AA.right.png</string>
+	<key>blueAdvBG</key>
+	<string>HiChat.bundle/Dialog_blue_white.png</string>
+	<key>blueBG</key>
+	<string>HiChat.bundle/Dialog_blue.png</string>
+	<key>COLLET.left</key>
+	<string>HiChat.bundle/COLLET.left.png</string>
+	<key>COLLET.right</key>
+	<string>HiChat.bundle/COLLET.right.png</string>
+	<key>FAMILYPAY.left</key>
+	<string>HiChat.bundle/FAMILYPAY.left.png</string>
+	<key>FAMILYPAY.right</key>
+	<string>HiChat.bundle/FAMILYPAY.right.png</string>
+	<key>GIFTSHARE.left</key>
+	<string>HiChat.bundle/GIFTSHARE.left.png</string>
+	<key>GIFTSHARE.right</key>
+	<string>HiChat.bundle/GIFTSHARE.right.png</string>
+	<key>PEEAPAY.left</key>
+	<string>HiChat.bundle/PEEAPAY.left.png</string>
+	<key>PEEAPAY.right</key>
+	<string>HiChat.bundle/PEEAPAY.right.png</string>
+	<key>shareBG</key>
+	<string>HiChat.bundle/Dialog_blue2.png</string>
+	<key>TRANSFER.left</key>
+	<string>HiChat.bundle/TRANSFER.left.png</string>
+	<key>TRANSFER.right</key>
+	<string>HiChat.bundle/TRANSFER.right.png</string>
+	<key>whiteAdvBG</key>
+	<string>HiChat.bundle/Dialog_white2.png</string>
+	<key>whiteBG</key>
+	<string>HiChat.bundle/Dialog_white.png</string>
+	<key>grayBG</key>
+	<string>HiChat.bundle/APTimeBackground.png</string>
+	<key>GIFT_INSURE.left</key>
+	<string>HiChat.bundle/INSURE.left.png</string>
+	<key>GIFT_INSURE.right</key>
+	<string>HiChat.bundle/INSURE.right.png</string>
+	<key>GIFT_MOVIE.left</key>
+	<string>HiChat.bundle/MOVIE.left.png</string>
+	<key>GIFT_MOVIE.right</key>
+	<string>HiChat.bundle/MOVIE.right.png</string>
+	<key>GIFT_RECHARGE.left</key>
+	<string>HiChat.bundle/RECHARGE.left.png</string>
+	<key>GIFT_RECHARGE.right</key>
+	<string>HiChat.bundle/RECHARGE.right.png</string>
+</dict>
+</plist>

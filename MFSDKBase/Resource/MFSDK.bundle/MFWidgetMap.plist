@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>div</key>
+	<string>MFView</string>
+	<key>button</key>
+	<string>MFButton</string>
+	<key>emoji</key>
+	<string>MFEmojiView</string>
+	<key>img</key>
+	<string>MFImageView</string>
+	<key>label</key>
+	<string>MFLabel</string>
+	<key>richlabel</key>
+	<string>MFRichLabel</string>
+	<key>slidelabel</key>
+	<string>MFSlideLabel</string>
+	<key>audio</key>
+	<string>MFVoiceWidget</string>
+</dict>
+</plist>
