@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 alipay. All rights reserved.
 //
 
-#import "MFActionManager.h"
+#import "MFDispatchCenter.h"
 #import "MFCorePlugInService.h"
 #import "MFBridge.h"
 
@@ -15,6 +15,7 @@
 @end
 
 @implementation MFActionManager
+SYNTHESIZE_SINGLETON_FOR_CLASS(MFActionManager)
 -(instancetype)init
 {
     if (self = [super init]) {

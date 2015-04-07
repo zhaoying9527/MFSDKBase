@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
+@class HTMLNode;
 @interface MFUIFactory : NSObject
+
++ (id)createUiWithPage:(HTMLNode*)node style:(NSDictionary*)cssDict;
++ (BOOL)addActionForWidget:(UIView*)widget withPage:(HTMLNode*)node;
 
 @end
