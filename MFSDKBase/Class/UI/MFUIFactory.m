@@ -15,8 +15,7 @@
 #import "MFEmojiView.h"
 #import "UIView+UUID.h"
 #import "MFLayoutCenter.h"
-#import "UIView+Actions.h"
-
+#import "UIView+Events.h"
 @implementation MFUIFactory
 + (id)createUiWithPage:(HTMLNode*)node style:(NSDictionary*)cssDict
 {
@@ -70,7 +69,7 @@
     
     NSString *actionName = components[0];
     NSString *actionFunction = components[1];
-    [widget setAction:actionName function:actionFunction];
+    [widget attachEvent:actionName handlerName:actionFunction];
     
     return hasAction;
 }

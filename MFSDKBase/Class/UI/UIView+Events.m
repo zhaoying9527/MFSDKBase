@@ -9,7 +9,7 @@
 #import "UIView+Events.h"
 #import <objc/runtime.h>
 #import "MFDispatchCenter.h"
-#import "MFSDK.h"
+
 @implementation UIView (Event)
 - (void)attachEvent:(NSString*)eventName handlerName:(NSString*)handlerName
 {

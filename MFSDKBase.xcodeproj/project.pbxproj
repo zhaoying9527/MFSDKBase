@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C36E1471AD432F7002E011E /* UIView+Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C36E1461AD432F7002E011E /* UIView+Events.m */; };
 		1CC8EEBE1AD13AFC008C0286 /* MFPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EE881AD13AFC008C0286 /* MFPlugIn.m */; };
 		1CC8EEBF1AD13AFC008C0286 /* MFCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EE8B1AD13AFC008C0286 /* MFCssParser.m */; };
 		1CC8EEC01AD13AFC008C0286 /* MFHtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC8EE8D1AD13AFC008C0286 /* MFHtmlParser.m */; };
@@ -39,7 +40,6 @@
 		231BE4D81AD0377100B65A58 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4D71AD0377100B65A58 /* libxml2.2.dylib */; };
 		231BE4E81AD142AB00B65A58 /* MFBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4E71AD142AB00B65A58 /* MFBridge.m */; };
 		231BE4ED1AD39AEB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4EC1AD39AEB00B65A58 /* wax.framework */; };
-		23F384CC1AD4260B002A8F32 /* UIView+Actions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384C51AD4260B002A8F32 /* UIView+Actions.m */; };
 		23F384CD1AD4260B002A8F32 /* MFDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384C81AD4260B002A8F32 /* MFDataBinding.m */; };
 		23F384ED1AD4261B002A8F32 /* MFChatLayoutCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384E11AD4261B002A8F32 /* MFChatLayoutCenter.m */; };
 		23F384EE1AD4261B002A8F32 /* MFLayoutCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384E31AD4261B002A8F32 /* MFLayoutCenter.m */; };
@@ -80,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C36E1451AD432F7002E011E /* UIView+Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Events.h"; sourceTree = "<group>"; };
+		1C36E1461AD432F7002E011E /* UIView+Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Events.m"; sourceTree = "<group>"; };
 		1CC8EE871AD13AFC008C0286 /* MFPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPlugIn.h; sourceTree = "<group>"; };
 		1CC8EE881AD13AFC008C0286 /* MFPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPlugIn.m; sourceTree = "<group>"; };
 		1CC8EE8A1AD13AFC008C0286 /* MFCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCssParser.h; sourceTree = "<group>"; };
@@ -141,8 +143,6 @@
 		231BE4E61AD142AB00B65A58 /* MFBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBridge.h; sourceTree = "<group>"; };
 		231BE4E71AD142AB00B65A58 /* MFBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBridge.m; sourceTree = "<group>"; };
 		231BE4EC1AD39AEB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
-		23F384C41AD4260B002A8F32 /* UIView+Actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Actions.h"; sourceTree = "<group>"; };
-		23F384C51AD4260B002A8F32 /* UIView+Actions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Actions.m"; sourceTree = "<group>"; };
 		23F384C71AD4260B002A8F32 /* MFDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDataBinding.h; sourceTree = "<group>"; };
 		23F384C81AD4260B002A8F32 /* MFDataBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDataBinding.m; sourceTree = "<group>"; };
 		23F384E01AD4261B002A8F32 /* MFChatLayoutCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFChatLayoutCenter.h; sourceTree = "<group>"; };
@@ -355,6 +355,8 @@
 		1CC8EEAE1AD13AFC008C0286 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1C36E1451AD432F7002E011E /* UIView+Events.h */,
+				1C36E1461AD432F7002E011E /* UIView+Events.m */,
 				1CC8EEAF1AD13AFC008C0286 /* third-party */,
 			);
 			name = Utils;
@@ -486,8 +488,6 @@
 		23F384BD1AD4260B002A8F32 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				23F384C41AD4260B002A8F32 /* UIView+Actions.h */,
-				23F384C51AD4260B002A8F32 /* UIView+Actions.m */,
 			);
 			name = Actions;
 			path = MFSDKBase/Class/Actions;
@@ -675,7 +675,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F384CC1AD4260B002A8F32 /* UIView+Actions.m in Sources */,
 				23F384ED1AD4261B002A8F32 /* MFChatLayoutCenter.m in Sources */,
 				231BE4E81AD142AB00B65A58 /* MFBridge.m in Sources */,
 				1CC8EED11AD13AFC008C0286 /* ESCssTokens.m in Sources */,
@@ -690,6 +689,7 @@
 				1CC8EECC1AD13AFC008C0286 /* MFRichLabel.m in Sources */,
 				231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */,
 				23F3850D1AD4263D002A8F32 /* UIView+UUID.m in Sources */,
+				1C36E1471AD432F7002E011E /* UIView+Events.m in Sources */,
 				1CC8EEC31AD13AFC008C0286 /* MFLuaScript.m in Sources */,
 				23F385071AD4263D002A8F32 /* MFHelper.m in Sources */,
 				1CC8EED21AD13AFC008C0286 /* HTMLNode.m in Sources */,
@@ -838,6 +838,7 @@
 		231BE46F1ACFC60000B65A58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -858,6 +859,7 @@
 		231BE4701ACFC60000B65A58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

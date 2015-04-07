@@ -1,5 +1,5 @@
 //
-//  MFActionManager.h
+//  MFDispatchCenter.h
 //  MFSDKBase
 //
 //  Created by 赵嬴 on 15/4/5.
@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "MFDefine.h"
 
-@interface MFActionManager : NSObject
-SYNTHESIZE_SINGLETON_FOR_HEADER(MFActionManager)
+@interface MFDispatchCenter : NSObject
+SYNTHESIZE_SINGLETON_FOR_HEADER(MFDispatchCenter)
 - (void)executeAction:(NSDictionary*)actionNode;
 - (void)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType;
 @end

@@ -1,5 +1,5 @@
 //
-//  MFActionManager.m
+//  MFDispatchCenter.m
 //  MFSDKBase
 //
 //  Created by 赵嬴 on 15/4/5.
@@ -10,12 +10,12 @@
 #import "MFCorePlugInService.h"
 #import "MFBridge.h"
 
-@interface MFActionManager ()
+@interface MFDispatchCenter ()
 @property (nonatomic, strong) MFBridge *bridge;
 @end
 
-@implementation MFActionManager
-SYNTHESIZE_SINGLETON_FOR_CLASS(MFActionManager)
+@implementation MFDispatchCenter
+SYNTHESIZE_SINGLETON_FOR_CLASS(MFDispatchCenter)
 -(instancetype)init
 {
     if (self = [super init]) {
