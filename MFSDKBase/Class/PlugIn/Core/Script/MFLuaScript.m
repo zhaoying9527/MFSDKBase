@@ -14,6 +14,8 @@
 #import <wax/wax_filesystem.h>
 #import "MFCorePlugInService.h"
 
+#define luaL_dostring(L, s) \
+(luaL_loadstring(L, s) || lua_pcall(L, 0, LUA_MULTRET, 0))
 LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s);
 
 @interface MFLuaScript ()
@@ -47,7 +49,7 @@ LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s);
     NSString *contents = [scriptNode objectForKey:kMFScriptFileContentKey];
 
     if (!self.scriptFiles[fileName]) {
-        luaL_loadstring(_curState, [contents UTF8String]);
+        luaL_dostring(_curState, [contents UTF8String]);
     }
 
     lua_getglobal(_curState, [method UTF8String]);
