@@ -37,8 +37,9 @@
 		231BE45C1ACFC60000B65A58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231BE45B1ACFC60000B65A58 /* Images.xcassets */; };
 		231BE45F1ACFC60000B65A58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BE45D1ACFC60000B65A58 /* LaunchScreen.xib */; };
 		231BE46B1ACFC60000B65A58 /* MFSDKBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */; };
-		231BE4AE1AD003EB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4AD1AD003EB00B65A58 /* wax.framework */; };
 		231BE4D81AD0377100B65A58 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4D71AD0377100B65A58 /* libxml2.2.dylib */; };
+		231BE4E81AD142AB00B65A58 /* MFBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4E71AD142AB00B65A58 /* MFBridge.m */; };
+		231BE4ED1AD39AEB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4EC1AD39AEB00B65A58 /* wax.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,8 +112,10 @@
 		231BE4641ACFC60000B65A58 /* MFSDKBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MFSDKBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		231BE4691ACFC60000B65A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFSDKBaseTests.m; sourceTree = "<group>"; };
-		231BE4AD1AD003EB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
 		231BE4D71AD0377100B65A58 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		231BE4E61AD142AB00B65A58 /* MFBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBridge.h; sourceTree = "<group>"; };
+		231BE4E71AD142AB00B65A58 /* MFBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBridge.m; sourceTree = "<group>"; };
+		231BE4EC1AD39AEB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231BE4ED1AD39AEB00B65A58 /* wax.framework in Frameworks */,
 				231BE4D81AD0377100B65A58 /* libxml2.2.dylib in Frameworks */,
-				231BE4AE1AD003EB00B65A58 /* wax.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +149,8 @@
 		1CC8EE7E1AD13AFC008C0286 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				231BE4E61AD142AB00B65A58 /* MFBridge.h */,
+				231BE4E71AD142AB00B65A58 /* MFBridge.m */,
 				1CC8EE7F1AD13AFC008C0286 /* MFActionManager.h */,
 				1CC8EE801AD13AFC008C0286 /* MFActionManager.m */,
 			);
@@ -378,7 +383,7 @@
 				1CC8EE821AD13AFC008C0286 /* PlugIn */,
 				1CC8EE9A1AD13AFC008C0286 /* UI */,
 				1CC8EEAE1AD13AFC008C0286 /* Utils */,
-				231BE4AD1AD003EB00B65A58 /* wax.framework */,
+				231BE4EC1AD39AEB00B65A58 /* wax.framework */,
 				231BE4D71AD0377100B65A58 /* libxml2.2.dylib */,
 			);
 			path = Frameworks;
@@ -485,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC8EEBC1AD13AFC008C0286 /* MFActionManager.m in Sources */,
+				231BE4E81AD142AB00B65A58 /* MFBridge.m in Sources */,
 				1CC8EED11AD13AFC008C0286 /* ESCssTokens.m in Sources */,
 				1CC8EEC71AD13AFC008C0286 /* MFAudioLabel.m in Sources */,
 				1CC8EECD1AD13AFC008C0286 /* MFView.m in Sources */,

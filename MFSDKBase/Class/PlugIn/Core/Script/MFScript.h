@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "MFPlugIn.h"
+
+extern const NSString *kMFMethodKey;
+extern const NSString *kMFParamsKey;
+extern const NSString *kMFScriptFileNameKey;
+extern const NSString *kMFScriptFileContentKey;
+
 @interface MFScript : MFPlugIn
 
 @end

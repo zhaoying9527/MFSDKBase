@@ -8,6 +8,11 @@
 
 #import "MFScript.h"
 
+const NSString *kMFMethodKey = @"MFMethod";
+const NSString *kMFParamsKey = @"MFParams";
+const NSString *kMFScriptFileNameKey = @"MFScriptFileName";
+const NSString *kMFScriptFileContentKey = @"MFScriptFileContent";
+
 @implementation MFScript
 
 @end
