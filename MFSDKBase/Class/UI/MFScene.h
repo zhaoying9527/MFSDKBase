@@ -11,6 +11,12 @@
 /*
  *  虚拟场景
  */
+
+@class MFDOM;
+
 @interface MFScene : NSObject
+@property (nonatomic, strong) MFDOM *dom;
+
+- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
 
 @end

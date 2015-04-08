@@ -7,20 +7,35 @@
 //
 
 #import "MFDOM.h"
+#import "HTMLNode.h"
+#import "MFDefine.h"
 @interface MFDOM()
 
 
 @end
 
 @implementation MFDOM
-- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding
+- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
 {
     if (self = [super init]) {
-//        self.dataNodes = dataBinding;
-//        self.htmlNodes = html;
-//        self.cssNodes = css;
+        NSString *ID = [(HTMLNode*)html getAttributeNamed:KEYWORD_ID];
+        self.htmlNodes = html;
+        self.cssNodes = css;
+        self.bindingField = dataBinding;
+        self.eventNodes = events[ID];
     }
     return self;
+}
+
+- (void)addSubDom:(MFDOM *)subDom
+{
+    if (nil == self.subDoms) {
+        self.subDoms = [NSMutableArray array];
+    }
+
+    if (nil != subDom) {
+        [self.subDoms addObject:subDom];
+    }
 }
 
 //双向数据交换

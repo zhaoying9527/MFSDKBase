@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "MFSDK.h"
 #import "MFDOM.h"
+#import "MFScene.h"
 @interface MFSceneCenter : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneCenter)
-@property (nonatomic,strong)MFDOM *dom;
+//@property (nonatomic,strong)MFDOM *dom;
+@property (nonatomic,strong)MFScene *scene;
 - (void)initSceneWithName:(NSString*)sceneName;
 @end

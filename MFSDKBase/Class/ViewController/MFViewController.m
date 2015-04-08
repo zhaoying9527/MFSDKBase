@@ -8,6 +8,7 @@
 #import "MFHelper.h"
 #import "MFLayoutCenter.h"
 #import "MFDOM.h"
+#import "MFScene.h"
 
 
 
@@ -19,7 +20,7 @@
 @property (nonatomic,strong) NSMutableDictionary *indexPathDictionary;
 
 @property (nonatomic, copy) NSString *scriptName;
-@property (nonatomic, strong) MFDOM *dom;
+@property (nonatomic, strong) MFScene *scene;
 //@property (nonatomic, strong) HTMLParser *html;
 //@property (nonatomic, strong) NSDictionary *css;
 //@property (nonatomic, strong) NSDictionary *dataBindings;
@@ -46,7 +47,7 @@
     if (self) {
         //场景初始化
         [[MFSceneCenter sharedMFSceneCenter] initSceneWithName:scriptName];
-        self.dom = [MFSceneCenter sharedMFSceneCenter].dom;
+        self.scene = [MFSceneCenter sharedMFSceneCenter].scene;
         self.scriptName = scriptName;
     }
     return self;
@@ -94,8 +95,7 @@
         [self.view addSubview:self.tableView];
     }
 
-    HTMLNode *titleNode = [((HTMLParser *)self.dom.htmlNodes).head  firstChild];
-    self.title = [titleNode contents];
+    self.title = @"Master";
 }
 
 #pragma mark - UITableViewDelegate
@@ -112,9 +112,9 @@
 {
     NSDictionary *dataDict = self.dataArray[indexPath.section];
     NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-    NSDictionary *layoutDict = self.dom.cssNodes;
-    NSDictionary *dataBinding = self.dom.bindingField;
-    NSArray *matchNodes = [((HTMLParser *)self.dom.htmlNodes).body findChildrenWithAttribute:@"id" matchingName:templateId allowPartial:NO];
+    NSDictionary *layoutDict = self.scene.dom.cssNodes;
+    NSDictionary *dataBinding = self.scene.dom.bindingField;
+    NSArray *matchNodes = [(HTMLNode *)self.scene.dom.htmlNodes findChildrenWithAttribute:KEYWORD_ID matchingName:templateId allowPartial:NO];
     HTMLNode *pageNode = [matchNodes firstObject];
 
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
@@ -153,10 +153,10 @@
         cell.userInteractionEnabled = YES;
     }
     
-    NSArray *matchNodes = [((HTMLParser *)self.dom.htmlNodes).body findChildrenWithAttribute:@"id" matchingName:tempateId allowPartial:NO];
+    NSArray *matchNodes = [(HTMLNode *)self.scene.dom.htmlNodes findChildrenWithAttribute:KEYWORD_ID matchingName:tempateId allowPartial:NO];
     HTMLNode *pageNode = [matchNodes firstObject];
-    NSDictionary *layoutDict = self.dom.cssNodes;
-    NSDictionary *dataBinding = self.dom.dataNodes;
+    NSDictionary *layoutDict = self.scene.dom.cssNodes;
+    NSDictionary *dataBinding = self.scene.dom.bindingField;
 
     NSDictionary * sumLayoutInfoItems = [self.indexPathDictionary objectForKey:indexKey];
     NSDictionary * widgetSizeDict = [sumLayoutInfoItems objectForKey:KEY_WIDGET_SIZE];
@@ -187,9 +187,9 @@
         NSDictionary *dataDict = [dataArray objectAtIndex:accessIndex];
         NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
         NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)accessIndex];
-        NSDictionary *layoutDict = self.dom.cssNodes;
-        NSDictionary *dataBinding = self.dom.dataNodes;
-        NSArray *matchNodes = [((HTMLParser *)self.dom.htmlNodes).body findChildrenWithAttribute:@"id" matchingName:templateId allowPartial:NO];
+        NSDictionary *layoutDict = self.scene.dom.cssNodes;
+        NSDictionary *dataBinding = self.scene.dom.bindingField;
+        NSArray *matchNodes = [(HTMLNode *)self.scene.dom.htmlNodes findChildrenWithAttribute:KEYWORD_ID matchingName:templateId allowPartial:NO];
         HTMLNode *pageNode = [matchNodes firstObject];
         NSMutableDictionary *widgetDict = [NSMutableDictionary dictionary];
         NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] getLayoutInfoForPage:pageNode templateId:templateId styleDict:layoutDict dataDict:dataDict dataBinding:dataBinding parentViewFrame:CGRectMake(0, 0, [MFHelper screenXY].width, 0) retWidgetInfo:widgetDict];

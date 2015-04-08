@@ -131,7 +131,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 {
     NSInteger subHeight = 0;
     NSString *type = [[pageNode tagName] lowercaseString];
-    NSString *pageNodeUuid = [pageNode getAttributeNamed:@"id"];
+    NSString *pageNodeUuid = [pageNode getAttributeNamed:KEYWORD_ID];
     NSDictionary *styleItem = [styleDict objectForKey:pageNodeUuid];
     NSDictionary *dataItem = dataDict;
 //    NSDictionary *dataItem = [dataDict objectForKey:pageNodeUuid];
@@ -173,7 +173,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     __block NSMutableDictionary *childWidgetInfo = [NSMutableDictionary dictionary];
     [[pageNode children] enumerateObjectsUsingBlock:^(HTMLNode *chindViewNode, NSUInteger idx, BOOL *stop) {
         if ([[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:chindViewNode.tagName]) {
-            uuid = [chindViewNode getAttributeNamed:@"id"];
+            uuid = [chindViewNode getAttributeNamed:KEYWORD_ID];
             childFrame = [self sizeofPage:chindViewNode templateId:templateId styleDict:styleDict dataDict:dataDict dataBinding:dataBindingDict
                            parentViewFrame:pageFrame retWidgetInfo:widgetInfo];
 

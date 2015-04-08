@@ -56,7 +56,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     }
 
     UIView *widget = [self allocObject:node.tagName];
-    NSString *uuid = [node getAttributeNamed:@"id"];
+    NSString *uuid = [node getAttributeNamed:KEYWORD_ID];
     [widget setUUID:uuid];
     if([self bindObject:widget]) {
         [self batchExecution:cssDict];
@@ -135,7 +135,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         return;
     }
 
-    NSString *uuid = [pageNode getAttributeNamed:@"id"];
+    NSString *uuid = [pageNode getAttributeNamed:KEYWORD_ID];
     NSDictionary *styleDict = [styleParams objectForKey:uuid];
     NSDictionary *dataBindingDict = [dataBindingParams objectForKey:uuid];
 

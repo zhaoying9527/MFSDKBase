@@ -57,7 +57,7 @@
         return;
     }
 
-    NSString *uuid = [pageNode getAttributeNamed:@"id"];
+    NSString *uuid = [pageNode getAttributeNamed:KEYWORD_ID];
     NSDictionary *styleDict = [styleParams objectForKey:uuid];
     NSDictionary *dataBindingDict = [dataBindingParams objectForKey:uuid];
 
