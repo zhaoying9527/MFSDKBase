@@ -5,7 +5,6 @@
 #import "MFDefine.h"
 #import "MFChatLayoutCenter.h"
 
-static CGFloat DegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180; }
 @implementation MFHelper
 
 + (float) getOsVersion {
@@ -18,30 +17,21 @@ static CGFloat DegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180; 
     return [[UIScreen mainScreen] bounds].size;
 }
 
-+ (CGPoint)midPointBetweenFirstPoint:(CGPoint)a SecondPoint:(CGPoint)b
-{
-    CGFloat x = (a.x + b.x) / 2.0;
-    CGFloat y = (a.y + b.y) / 2.0;
-    return CGPointMake(x, y);
-}
-
 + (UIColor *)colorWithOctString:(NSString *)stringToConvert
 {
     NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
     NSArray * components = [cString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(,)"]];
-    // String should be 3 components
     if ([components count] < 3) return [UIColor clearColor];
 
     NSString *rString = components[0];
     NSString *gString = components[1];
     NSString *bString = components[2];
-    
+
     return [UIColor colorWithRed:((float) [rString integerValue] / 255.0f)
                            green:((float) [gString integerValue] / 255.0f)
                             blue:((float) [bString integerValue] / 255.0f)
                            alpha:1.0f];
 }
-
 
 + (UIColor *)colorWithString:(NSString *)stringToConvert
 {
@@ -52,42 +42,56 @@ static CGFloat DegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180; 
     }
 
     UIColor *color = [UIColor clearColor];
-
-    if ([cString isEqualToString:@"gray"]) {
-        color = [UIColor grayColor];
+    NSDictionary *colorMap = @{@"gray":[UIColor grayColor],
+                               @"darkgray":[UIColor darkGrayColor],
+                               @"lightgray":[UIColor lightGrayColor],
+                               @"black":[UIColor blackColor],
+                               @"white":[UIColor whiteColor],
+                               @"red":[UIColor redColor],
+                               @"blue":[UIColor blueColor],
+                               @"green":[UIColor greenColor],
+                               @"yellow":[UIColor yellowColor],
+                               @"brown":[UIColor brownColor],
+                               @"orange":[UIColor orangeColor]};
+    if (colorMap[cString]) {
+        color = colorMap[cString];
     }
-    else if ([cString isEqualToString:@"darkgray"]) {
-        color = [UIColor darkGrayColor];
-    }
-    else if ([cString isEqualToString:@"lightgray"]) {
-        color = [UIColor lightGrayColor];
-    }
-    else if ([cString isEqualToString:@"black"]) {
-        color = [UIColor blackColor];
-    }
-    else if ([cString isEqualToString:@"white"]) {
-        color = [UIColor whiteColor];
-    }
-    else if ([cString isEqualToString:@"red"]) {
-        color = [UIColor redColor];
-    }
-    else if ([cString isEqualToString:@"blue"]) {
-        color = [UIColor blueColor];
-    }
-    else if ([cString isEqualToString:@"green"]) {
-        color = [UIColor greenColor];
-    }
-    else if ([cString isEqualToString:@"yellow"]) {
-        color = [UIColor yellowColor];
-    }
-    else if ([cString isEqualToString:@"brown"]) {
-        color = [UIColor brownColor];
-    }
-    else if ([cString isEqualToString:@"orange"]) {
-        color = [UIColor orangeColor];
-    }
-    
     return color;
+}
+
++ (UIColor *)colorWithHexString:(NSString *)stringToConvert
+{
+    NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([cString length] < 6) return [UIColor clearColor];
+    
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
+    if ([cString hasPrefix:@"#"]) cString = [cString substringFromIndex:1];
+    if ([cString length] != 6) return [UIColor clearColor];
+    // Separate into r, g, b substrings
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f)
+                           green:((float) g / 255.0f)
+                            blue:((float) b / 255.0f)
+                           alpha:1.0f];
 }
 
 + (UIImage*)stretchableBannerCellImage:(UIImage*)image
@@ -140,42 +144,6 @@ static CGFloat DegreesToRadians(CGFloat degrees) { return degrees * M_PI / 180; 
                                                                                 size.height*100)
                                 lineBreakMode:NSLineBreakByWordWrapping];
     return avaliableSize;
-}
-
-
-+ (UIColor *)colorWithHexString:(NSString *)stringToConvert
-{
-    NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    
-    // String should be 6 or 8 characters
-    if ([cString length] < 6) return [UIColor clearColor];
-    
-    // strip 0X if it appears
-    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
-    if ([cString hasPrefix:@"#"]) cString = [cString substringFromIndex:1];
-    if ([cString length] != 6) return [UIColor clearColor];
-    // Separate into r, g, b substrings
-    NSRange range;
-    range.location = 0;
-    range.length = 2;
-    NSString *rString = [cString substringWithRange:range];
-    
-    range.location = 2;
-    NSString *gString = [cString substringWithRange:range];
-    
-    range.location = 4;
-    NSString *bString = [cString substringWithRange:range];
-    
-    // Scan values
-    unsigned int r, g, b;
-    [[NSScanner scannerWithString:rString] scanHexInt:&r];
-    [[NSScanner scannerWithString:gString] scanHexInt:&g];
-    [[NSScanner scannerWithString:bString] scanHexInt:&b];
-    
-    return [UIColor colorWithRed:((float) r / 255.0f)
-                           green:((float) g / 255.0f)
-                            blue:((float) b / 255.0f)
-                           alpha:1.0f];
 }
 
 + (NSString *)getPowerSearchPath

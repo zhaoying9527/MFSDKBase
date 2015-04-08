@@ -5,21 +5,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-#import "MFChatDefine.h"
+#import "MFDefine.h"
 
 @interface MFHelper : NSObject
 
-+ (CGPoint)midPointBetweenFirstPoint:(CGPoint)a SecondPoint:(CGPoint)b;
++ (float)getOsVersion;
++ (CGSize)screenXY;
 + (UIColor*)colorWithOctString:(NSString *)stringToConvert;
 + (UIColor*)colorWithString:(NSString *)stringToConvert;
++ (UIColor*)colorWithHexString:(NSString *)stringToConvert;
 + (UIImage*)stretchableBannerCellImage:(UIImage*)image;
 + (UIImage*)stretchableCellImage:(UIImage*)image;
 + (UIImage*)resizeableLeftBgImage:(UIImage *)image;
 + (UIImage*)resizeableRightBgImage:(UIImage *)image;
 + (CGSize)sizeWithFont:(NSString*)text font:(UIFont*)font size:(CGSize)size;
-+ (CGSize)screenXY;
-+ (UIColor*)colorWithHexString:(NSString *)stringToConvert;
 + (NSString*)getPowerSearchPath;
 + (NSString*)getResourcePath;
 + (BOOL)deleteExistFile:(NSString *)strFileName;
@@ -28,7 +27,7 @@
 + (BOOL)isDirectory:(NSString *)strDirectory;
 + (BOOL)isExistDirectory:(NSString *)strDirectory;
 + (BOOL)isExistFile:(NSString *)strFileName;
-+ (float)getOsVersion;
+
 + (UIImage*)scaleToSize:(UIImage*)image size:(CGSize)size;
 + (CGRect)imageFitRect:(CGRect)aInRect aImageSize:(CGSize)aImageSize;
 + (NSString*)getBundleName;
@@ -45,12 +44,13 @@
 + (MFLayoutType)formatLayoutWithString:(NSString*)layout;
 + (NSString*)formatDate:(NSDate*)date;
 + (NSString*)formateTimeInterval:(NSTimeInterval)timecontent;
-+ (BOOL)isCompositeTemplate:(NSString*)templateId;
-+ (BOOL)isURLString:(NSString*)urlString;
 + (CGRect)fitRect:(CGRect)rect;
 + (CGRect)formatFitRectWithString:(NSString*)rectString;
 + (CGRect)formatAbsoluteRectWithString:(NSString*)amlString;
 + (BOOL)sameRect:(CGRect)rect withRect:(CGRect)withRect;
++ (BOOL)isCompositeTemplate:(NSString*)templateId;
++ (BOOL)isURLString:(NSString*)urlString;
+
 + (NSInteger)sectionHeight;
 + (NSInteger)cellFooterHeight;
 + (NSInteger)cellHeaderHeight;

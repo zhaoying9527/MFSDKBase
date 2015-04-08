@@ -4,6 +4,7 @@
 
 #import "MFScriptHelper.h"
 #import "MFHelper.h"
+#import "MFDefine.h"
 @implementation MFScriptHelper
 + (CGSize)sizeOfLabelWithDataSource:(NSDictionary*)layoutInfo dataSource:(NSString*)dataSource parentFrame:(CGRect)parentFrame
 {
