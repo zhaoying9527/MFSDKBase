@@ -39,13 +39,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, self.sceneName];
     NSString *dataBindingPath = [NSString stringWithFormat:@"%@/%@.dataBinding", bundlePath, self.sceneName];
     
-    HTMLNode *result_h5 = nil;
+    HTMLParser *result_h5 = nil;
     id result_css = nil;
     id result_databinding = nil;
     
+    
+    NSError *error;
     result_h5 = [self parse:MFSDK_PLUGIN_HTML withPath:htmlPath error:nil];
-    result_css = [self parse:MFSDK_PLUGIN_CSS withPath:cssPath error:nil];
-    result_databinding = [self parse:MFSDK_PLUGIN_CSS withPath:dataBindingPath error:nil];
+    result_css = [self parse:MFSDK_PLUGIN_CSS withPath:cssPath error:&error];
+    result_databinding = [self parse:MFSDK_PLUGIN_CSS withPath:dataBindingPath error:&error];
     
     //parse
     //dom list

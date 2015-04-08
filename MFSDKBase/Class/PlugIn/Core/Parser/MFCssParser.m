@@ -10,7 +10,7 @@
 #import "ESCssParser.h"
 @interface MFCssParser()
 @property (nonatomic,strong) ESCssParser *parser;
-@property (nonatomic,strong) NSString *cssText;
+@property (nonatomic,copy) NSString *cssText;
 @end
 
 
@@ -19,6 +19,7 @@
 {
     if (nil != text) {
         self.cssText = text;
+        self.parser = [[ESCssParser alloc] init];
         return YES;
     }
     return NO;

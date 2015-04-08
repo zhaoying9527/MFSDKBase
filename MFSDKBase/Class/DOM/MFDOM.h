@@ -13,6 +13,15 @@
 */
 
 @interface MFDOM : NSObject
+//页面结构节点
+@property (nonatomic,strong)id htmlNodes;
+//布局信息节点
+@property (nonatomic,strong)NSDictionary *cssNodes;
+//绑定事件节点
+@property (nonatomic,strong)NSDictionary *eventNodes;
+//绑定字段节点
+@property (nonatomic,strong)NSDictionary *dataNodes;
+
 //绑定对象
 @property (nonatomic,strong)id objReference;
 //绑定类别

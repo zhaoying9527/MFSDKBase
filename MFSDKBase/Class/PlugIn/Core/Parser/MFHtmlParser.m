@@ -10,7 +10,7 @@
 
 @interface MFHtmlParser()
 @property (nonatomic,strong)HTMLParser *parser;
-@property (nonatomic,strong)NSString *htmlText;
+@property (nonatomic,copy)NSString *htmlText;
 @end
 @implementation MFHtmlParser
 - (BOOL)loadText:(NSString*)text
@@ -27,7 +27,7 @@
 
 - (id)parse
 {
-    return [self html];
+    return _parser;
 }
 
 - (HTMLNode*)doc
