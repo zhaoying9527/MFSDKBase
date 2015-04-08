@@ -12,6 +12,7 @@
 		1CE2F37D1AD4D6BF00E27AA8 /* MFLayoutNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F37C1AD4D6BF00E27AA8 /* MFLayoutNode.m */; };
 		1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */; };
 		1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */; };
+		1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */; };
 		231BE4511ACFC60000B65A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4501ACFC60000B65A58 /* main.m */; };
 		231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4531ACFC60000B65A58 /* AppDelegate.m */; };
 		231BE4571ACFC60000B65A58 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4561ACFC60000B65A58 /* ViewController.m */; };
@@ -50,7 +51,7 @@
 		23F385B11AD4C247002A8F32 /* MFScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385731AD4C247002A8F32 /* MFScript.m */; };
 		23F385B21AD4C247002A8F32 /* MFCorePlugInFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385751AD4C247002A8F32 /* MFCorePlugInFactory.m */; };
 		23F385B31AD4C247002A8F32 /* MFCorePlugInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385771AD4C247002A8F32 /* MFCorePlugInService.m */; };
-		23F385B41AD4C247002A8F32 /* MFUIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3857A1AD4C247002A8F32 /* MFUIFactory.m */; };
+		23F385B41AD4C247002A8F32 /* MFSceneFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3857A1AD4C247002A8F32 /* MFSceneFactory.m */; };
 		23F385B51AD4C247002A8F32 /* UIView+Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3857C1AD4C247002A8F32 /* UIView+Events.m */; };
 		23F385B61AD4C247002A8F32 /* MFAudioLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3857F1AD4C247002A8F32 /* MFAudioLabel.m */; };
 		23F385B71AD4C247002A8F32 /* MFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385811AD4C247002A8F32 /* MFButton.m */; };
@@ -92,6 +93,8 @@
 		1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSceneCenter.m; sourceTree = "<group>"; };
 		1CE2F3821AD4D8C900E27AA8 /* MFSDKLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSDKLauncher.h; sourceTree = "<group>"; };
 		1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSDKLauncher.m; sourceTree = "<group>"; };
+		1CE2F3851AD4E3D600E27AA8 /* MFDOM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDOM.h; sourceTree = "<group>"; };
+		1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDOM.m; sourceTree = "<group>"; };
 		231BE44B1ACFC60000B65A58 /* MFSDKBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFSDKBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		231BE44F1ACFC60000B65A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		231BE4501ACFC60000B65A58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -154,8 +157,8 @@
 		23F385751AD4C247002A8F32 /* MFCorePlugInFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCorePlugInFactory.m; sourceTree = "<group>"; };
 		23F385761AD4C247002A8F32 /* MFCorePlugInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCorePlugInService.h; sourceTree = "<group>"; };
 		23F385771AD4C247002A8F32 /* MFCorePlugInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCorePlugInService.m; sourceTree = "<group>"; };
-		23F385791AD4C247002A8F32 /* MFUIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFUIFactory.h; sourceTree = "<group>"; };
-		23F3857A1AD4C247002A8F32 /* MFUIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFUIFactory.m; sourceTree = "<group>"; };
+		23F385791AD4C247002A8F32 /* MFSceneFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSceneFactory.h; sourceTree = "<group>"; };
+		23F3857A1AD4C247002A8F32 /* MFSceneFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSceneFactory.m; sourceTree = "<group>"; };
 		23F3857B1AD4C247002A8F32 /* UIView+Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Events.h"; sourceTree = "<group>"; };
 		23F3857C1AD4C247002A8F32 /* UIView+Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Events.m"; sourceTree = "<group>"; };
 		23F3857E1AD4C247002A8F32 /* MFAudioLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFAudioLabel.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				1CE2F3791AD4D6A700E27AA8 /* MFDataNode.m */,
 				1CE2F37B1AD4D6BF00E27AA8 /* MFLayoutNode.h */,
 				1CE2F37C1AD4D6BF00E27AA8 /* MFLayoutNode.m */,
+				1CE2F3851AD4E3D600E27AA8 /* MFDOM.h */,
+				1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */,
 			);
 			name = DOM;
 			path = Class/DOM;
@@ -455,8 +460,8 @@
 			children = (
 				1CE2F37E1AD4D89000E27AA8 /* MFSceneCenter.h */,
 				1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */,
-				23F385791AD4C247002A8F32 /* MFUIFactory.h */,
-				23F3857A1AD4C247002A8F32 /* MFUIFactory.m */,
+				23F385791AD4C247002A8F32 /* MFSceneFactory.h */,
+				23F3857A1AD4C247002A8F32 /* MFSceneFactory.m */,
 				23F3857B1AD4C247002A8F32 /* UIView+Events.h */,
 				23F3857C1AD4C247002A8F32 /* UIView+Events.m */,
 				23F3857D1AD4C247002A8F32 /* Widget */,
@@ -692,6 +697,7 @@
 				23F385AE1AD4C247002A8F32 /* MFHtmlParser.m in Sources */,
 				231BE4511ACFC60000B65A58 /* main.m in Sources */,
 				23F385BB1AD4C247002A8F32 /* MFLabel.m in Sources */,
+				1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */,
 				23F385C41AD4C247002A8F32 /* UIView+Events.m in Sources */,
 				23F385BF1AD4C247002A8F32 /* ESCssParser.m in Sources */,
 				23F385C51AD4C247002A8F32 /* MFViewController.m in Sources */,
@@ -701,7 +707,7 @@
 				23F385B51AD4C247002A8F32 /* UIView+Events.m in Sources */,
 				23F385AD1AD4C247002A8F32 /* MFCssParser.m in Sources */,
 				1CE2F37A1AD4D6A700E27AA8 /* MFDataNode.m in Sources */,
-				23F385B41AD4C247002A8F32 /* MFUIFactory.m in Sources */,
+				23F385B41AD4C247002A8F32 /* MFSceneFactory.m in Sources */,
 				23F385A81AD4C247002A8F32 /* MFStrategyCenter.m in Sources */,
 				23F385C11AD4C247002A8F32 /* ESCssTokens.m in Sources */,
 				23F385A41AD4C247002A8F32 /* MFBridge.m in Sources */,

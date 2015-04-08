@@ -6,7 +6,7 @@
 #import "HTMLNode.h"
 #import "MFHelper.h"
 #import "MFLayoutCenter.h"
-#import "MFUIFactory.h"
+#import "MFSceneFactory.h"
 #import "MFDataBinding.h"
 #import "UIView+UUID.h"
 
@@ -61,11 +61,11 @@
     NSDictionary *styleDict = [styleParams objectForKey:uuid];
     NSDictionary *dataBindingDict = [dataBindingParams objectForKey:uuid];
 
-    UIView * rootWidget = [[MFUIFactory sharedMFUIFactory] createUiWithPage:pageNode style:styleDict];
+    UIView * rootWidget = [[MFSceneFactory sharedMFSceneFactory] createUiWithPage:pageNode style:styleDict];
     NSString *frameString = [MFHelper getFrameStringWithStyle:styleDict];
     CGRect frame = [MFHelper formatRectWithString:frameString parentFrame:parentView.frame];
     rootWidget.frame = frame;
-    [[MFUIFactory sharedMFUIFactory] addActionForWidget:rootWidget withPage:pageNode];
+    [[MFSceneFactory sharedMFSceneFactory] addActionForWidget:rootWidget withPage:pageNode];
 
     if (nil != rootWidget) {
         [parentView addSubview:rootWidget];
@@ -79,7 +79,7 @@
 
     
     for (HTMLNode *chindViewNode in [pageNode children]) {
-        if (![[MFUIFactory sharedMFUIFactory] supportHtmlTag:chindViewNode.tagName]) {
+        if (![[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:chindViewNode.tagName]) {
             continue;
         }
         

@@ -3,7 +3,7 @@
 
 #import "HTMLNode.h"
 #import "MFLayoutCenter.h"
-#import "MFUIFactory.h"
+#import "MFSceneFactory.h"
 #import "MFHelper.h"
 
 @implementation MFLayoutCenter
@@ -172,7 +172,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     __block CGRect childFrame;
     __block NSMutableDictionary *childWidgetInfo = [NSMutableDictionary dictionary];
     [[pageNode children] enumerateObjectsUsingBlock:^(HTMLNode *chindViewNode, NSUInteger idx, BOOL *stop) {
-        if ([[MFUIFactory sharedMFUIFactory] supportHtmlTag:chindViewNode.tagName]) {
+        if ([[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:chindViewNode.tagName]) {
             uuid = [chindViewNode getAttributeNamed:@"id"];
             childFrame = [self sizeofPage:chindViewNode templateId:templateId styleDict:styleDict dataDict:dataDict dataBinding:dataBindingDict
                            parentViewFrame:pageFrame retWidgetInfo:widgetInfo];

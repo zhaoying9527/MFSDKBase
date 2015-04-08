@@ -1,12 +1,12 @@
 //
-//  MFUIFactory.m
+//  MFSceneFactory.m
 //  mQuickSDK
 //
 //  Created by 赵嬴 on 15/4/4.
 //  Copyright (c) 2015年 赵嬴. All rights reserved.
 //
 
-#import "MFUIFactory.h"
+#import "MFSceneFactory.h"
 #import "HTMLNode.h"
 #import "MFHelper.h"
 #import "MFLabel.h"
@@ -17,7 +17,7 @@
 #import "UIView+Events.h"
 #import "MFStrategyCenter.h"
 
-@interface MFUIFactory()
+@interface MFSceneFactory()
 @property (nonatomic,weak)id object;
 @property (nonatomic,strong)NSDictionary *classMapDict;
 @property (nonatomic,strong)NSDictionary *propertyMapDict;
@@ -27,8 +27,8 @@
 - (id)allocObjC:(NSString*)className;
 @end
 
-@implementation MFUIFactory
-SYNTHESIZE_SINGLETON_FOR_CLASS(MFUIFactory)
+@implementation MFSceneFactory
+SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
 - (void)removeAll
 {
     self.classMapDict = nil;

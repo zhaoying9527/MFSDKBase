@@ -1,5 +1,5 @@
 //
-//  MFUIFactory.h
+//  MFSceneFactory.h
 //  mQuickSDK
 //
 //  Created by 赵嬴 on 15/4/4.
@@ -12,8 +12,8 @@
 
 @class HTMLNode;
 
-@interface MFUIFactory : NSObject
-SYNTHESIZE_SINGLETON_FOR_HEADER(MFUIFactory)
+@interface MFSceneFactory : NSObject
+SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneFactory)
 
 - (id)createUiWithPage:(HTMLNode*)node style:(NSDictionary*)cssDict;
 - (BOOL)addActionForWidget:(UIView*)widget withPage:(HTMLNode*)node;
