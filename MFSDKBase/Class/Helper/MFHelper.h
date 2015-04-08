@@ -11,14 +11,20 @@
 
 + (float)getOsVersion;
 + (CGSize)screenXY;
+
 + (UIColor*)colorWithOctString:(NSString *)stringToConvert;
 + (UIColor*)colorWithString:(NSString *)stringToConvert;
 + (UIColor*)colorWithHexString:(NSString *)stringToConvert;
+
 + (UIImage*)stretchableBannerCellImage:(UIImage*)image;
 + (UIImage*)stretchableCellImage:(UIImage*)image;
 + (UIImage*)resizeableLeftBgImage:(UIImage *)image;
 + (UIImage*)resizeableRightBgImage:(UIImage *)image;
++ (UIImage*)scaleToSize:(UIImage*)image size:(CGSize)size;
++ (CGRect)imageFitRect:(CGRect)aInRect aImageSize:(CGSize)aImageSize;
 + (CGSize)sizeWithFont:(NSString*)text font:(UIFont*)font size:(CGSize)size;
+
++ (NSString*)getBundleName;
 + (NSString*)getPowerSearchPath;
 + (NSString*)getResourcePath;
 + (BOOL)deleteExistFile:(NSString *)strFileName;
@@ -28,9 +34,6 @@
 + (BOOL)isExistDirectory:(NSString *)strDirectory;
 + (BOOL)isExistFile:(NSString *)strFileName;
 
-+ (UIImage*)scaleToSize:(UIImage*)image size:(CGSize)size;
-+ (CGRect)imageFitRect:(CGRect)aInRect aImageSize:(CGSize)aImageSize;
-+ (NSString*)getBundleName;
 + (NSString*)getFrameStringWithStyle:(NSDictionary*)styleDict;
 + (CGRect)formatRectWithString:(NSString*)rectString;
 + (CGRect)formatRectWithString:(NSString*)rectString parentFrame:(CGRect)frame;
@@ -42,12 +45,17 @@
 + (NSNumber*)formatVisibilityWithString:(NSString*)visibility;
 + (UIFont*)formatFontWithString:(NSString*)font;
 + (MFLayoutType)formatLayoutWithString:(NSString*)layout;
+
 + (NSString*)formatDate:(NSDate*)date;
 + (NSString*)formateTimeInterval:(NSTimeInterval)timecontent;
++ (int)dayAfterNumFromeDate:(NSDate *)fromeDate  toDate:(NSDate *)toDate;
++ (int)yearAfterNumFromeDate:(NSDate *)fromeDate  toDate:(NSDate *)toDate;
+
 + (CGRect)fitRect:(CGRect)rect;
 + (CGRect)formatFitRectWithString:(NSString*)rectString;
 + (CGRect)formatAbsoluteRectWithString:(NSString*)amlString;
 + (BOOL)sameRect:(CGRect)rect withRect:(CGRect)withRect;
+
 + (BOOL)isCompositeTemplate:(NSString*)templateId;
 + (BOOL)isURLString:(NSString*)urlString;
 
@@ -57,6 +65,5 @@
 + (BOOL)sizeZero:(CGSize)size;
 + (NSString*)sectionHeaderKey:(NSString*)sourceKey;
 + (NSString*)sectionFooterKey:(NSString*)sourceKey;
-+ (int)dayAfterNumFromeDate:(NSDate *)fromeDate  toDate:(NSDate *)toDate;
-+ (int)yearAfterNumFromeDate:(NSDate *)fromeDate  toDate:(NSDate *)toDate;
+
 @end

@@ -137,6 +137,33 @@
     return retImage;
 }
 
+//计算图片尺寸的自动缩放
++(CGRect) rectSizeWithImage:(CGRect)aInRect aImageSize:(CGSize)aImageSize
+{
+    CGRect newRect;
+    double dWidth = aInRect.size.width;
+    double dHeight = aInRect.size.height;
+    double dAspectRatio = dWidth/dHeight;
+    
+    double dImageWidth = aImageSize.width;
+    double dImageHeight = aImageSize.height;
+    double dImageAspectRatio = dImageWidth/dImageHeight;
+    
+    if (dImageAspectRatio >= dAspectRatio){
+        
+        int nNewHeight = (int)(dWidth/dImageWidth*dImageHeight);
+        int nCenteringFactor = (aInRect.size.height - nNewHeight) / 2;
+        newRect = CGRectMake(0, nCenteringFactor, (int)dWidth, nNewHeight);
+        
+    }else if (dImageAspectRatio < dAspectRatio){
+        
+        int nNewWidth = (int)(dHeight/dImageHeight*dImageWidth);
+        int nCenteringFactor = (aInRect.size.width - nNewWidth) / 2;
+        newRect = CGRectMake(nCenteringFactor, 0, nNewWidth,(int)(dHeight));
+        
+    }
+    return newRect;
+}
 
 + (CGSize)sizeWithFont:(NSString*)text font:(UIFont*)font size:(CGSize)size
 {
@@ -221,34 +248,6 @@
     }else{
         return YES;
     }
-}
-
-//计算图片尺寸的自动缩放
-+(CGRect) rectSizeWithImage:(CGRect)aInRect aImageSize:(CGSize)aImageSize
-{
-    CGRect newRect;
-    double dWidth = aInRect.size.width;
-    double dHeight = aInRect.size.height;
-    double dAspectRatio = dWidth/dHeight;
-    
-    double dImageWidth = aImageSize.width;
-    double dImageHeight = aImageSize.height;
-    double dImageAspectRatio = dImageWidth/dImageHeight;
-    
-    if (dImageAspectRatio >= dAspectRatio){
-        
-        int nNewHeight = (int)(dWidth/dImageWidth*dImageHeight);
-        int nCenteringFactor = (aInRect.size.height - nNewHeight) / 2;
-        newRect = CGRectMake(0, nCenteringFactor, (int)dWidth, nNewHeight);
-        
-    }else if (dImageAspectRatio < dAspectRatio){
-        
-        int nNewWidth = (int)(dHeight/dImageHeight*dImageWidth);
-        int nCenteringFactor = (aInRect.size.width - nNewWidth) / 2;
-        newRect = CGRectMake(nCenteringFactor, 0, nNewWidth,(int)(dHeight));
-        
-    }
-    return newRect;
 }
 
 + (NSString*)formateTimeInterval:(NSTimeInterval)timecontent
@@ -340,7 +339,6 @@
     }
     return retTextAlignment;
 }
-
 
 + (NSTextAlignment)formatTextAlignmentWithString:(NSString*)textAlignmentString
 {
