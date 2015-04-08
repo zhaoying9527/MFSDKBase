@@ -8,6 +8,7 @@
 
 #import "UIView+Events.h"
 #import <objc/runtime.h>
+#import "MFSDK.h"
 #import "MFDispatchCenter.h"
 
 @implementation UIView (Event)

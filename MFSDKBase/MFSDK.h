@@ -26,11 +26,10 @@ typedef enum {
     MFSDK_PLUGIN_LUA = 0,
     MFSDK_PLUGIN_HTML,
     MFSDK_PLUGIN_CSS,
-}MFPlugInType ;
-
+}MFPlugInType;
 
 typedef enum {
     MFSDK_SCRIPT_LUA = 0,
     MFSDK_SCRIPT_JS,
-};
+}MFSDKScriptType;
 #endif
