@@ -153,6 +153,7 @@
     HTMLNode *pageNode = [matchNodes firstObject];
     NSDictionary *layoutDict = self.scene.dom.cssNodes;
     NSDictionary *dataBinding = self.scene.dom.bindingField;
+    NSDictionary *events = self.scene.dom.eventNodes;
 
     NSDictionary * sumLayoutInfoItems = [self.indexPathDictionary objectForKey:indexKey];
     NSDictionary * widgetSizeDict = [sumLayoutInfoItems objectForKey:KEY_WIDGET_SIZE];
@@ -162,7 +163,7 @@
     [cell setFrame:CGRectMake(0, 0, screenXY.width , cellHeight)];
     [cell setPageHeight:cellHeight];
     [cell setPageWidth:cellWidth];
-    [cell createPage:tempateId pageNode:pageNode styleParams:layoutDict dataBinding:dataBinding parentView:cell.contentView];
+    [cell createPage:tempateId pageNode:pageNode styleParams:layoutDict dataBinding:dataBinding events:events parentView:cell.contentView];
     [cell setAutoLayoutSizeInfo:widgetSizeDict];
     [cell bindingAndLayoutPageData:dataDict parentView:cell.contentView];
 

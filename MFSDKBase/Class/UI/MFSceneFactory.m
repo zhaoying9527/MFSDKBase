@@ -159,7 +159,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
            dataBindingParams:(NSDictionary *)dataBindingParams
                retWidgetInfo:(NSMutableDictionary *)widgetInfo
 {
-    if (!(pageNode && parentView && styleParams && dataBindingParams)) {
+    if (!(pageNode && parentView && styleParams)) {
         return;
     }
 

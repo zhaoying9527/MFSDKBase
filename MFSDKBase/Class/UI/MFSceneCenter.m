@@ -20,7 +20,6 @@
 
 @property (nonatomic, strong)MFCorePlugInService *pluginService;
 @property (nonatomic, copy) NSString *sceneName;
-//- (MFDOM*)loadDOM;
 - (MFScene*)loadScene;
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error;
 @end
@@ -59,7 +58,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     id result_databinding = nil;
     id result_events = nil;
     
-    
     NSError *error;
     result_h5 = [self parse:MFSDK_PLUGIN_HTML withPath:htmlPath error:&error];
     result_css = [self parse:MFSDK_PLUGIN_CSS withPath:cssPath error:&error];
@@ -72,7 +70,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     
     //加载场景
     return [[MFScene alloc] initWithDomNodes:result_h5.body withCss:result_css withDataBinding:result_databinding withEvents:result_events];
-    
 }
 
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error

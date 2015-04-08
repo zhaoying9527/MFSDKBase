@@ -21,6 +21,7 @@
 #define KEY_WIDGET_NODE                         @"widgetNode"
 #define KEY_WIDGET_STYLE                        @"widgetStyle"
 #define KEY_WIDGET_DATA_BINDING                 @"widgetDataBinding"
+#define KEY_WIDGET_EVENTS                       @"widgetEvents"
 #define KEY_WIDGET_INFO                         @"widgetInfo"
 
 #define KEY_WIDGET_ALIGNMENTTYPE                @"alignmentType"

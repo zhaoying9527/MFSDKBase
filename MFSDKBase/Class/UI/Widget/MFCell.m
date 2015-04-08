@@ -21,7 +21,8 @@
     [self createWidgetWithPage:self.viewSoureNode
                     parentView:self.parentView
                    styleParams:self.styleParams
-             dataBindingParams:self.dataBinding];
+             dataBindingParams:self.dataBinding
+                        events:self.events];
 }
 
 - (void)releaseUI
@@ -35,6 +36,7 @@
           pageNode:(HTMLNode*)pageNode
        styleParams:(NSDictionary*)styleParams
        dataBinding:(NSDictionary*)dataBinding
+            events:(NSDictionary*)events
         parentView:(UIView*)parentView
 {
     if (![pageID isEqualToString:self.pageID]) {
@@ -42,6 +44,7 @@
         self.styleParams = styleParams;
         self.viewSoureNode = pageNode;
         self.dataBinding = dataBinding;
+        self.events = events;
         self.parentView = parentView;
         [self releaseUI];
         [self setupUI];
@@ -52,14 +55,15 @@
                   parentView:(UIView*)parentView
                  styleParams:(NSDictionary *)styleParams
            dataBindingParams:(NSDictionary *)dataBindingParams
+                      events:(NSDictionary*)events
 {
-    if (!(pageNode && parentView && styleParams && dataBindingParams)) {
+    if (!(pageNode && parentView && styleParams)) {
         return;
     }
 
-    NSString *uuid = [pageNode getAttributeNamed:KEYWORD_ID];
-    NSDictionary *styleDict = [styleParams objectForKey:uuid];
-    NSDictionary *dataBindingDict = [dataBindingParams objectForKey:uuid];
+    NSString *ID = [pageNode getAttributeNamed:KEYWORD_ID];
+    NSDictionary *styleDict = [styleParams objectForKey:ID];
+    NSDictionary *dataBindingDict = [dataBindingParams objectForKey:ID];
 
     UIView * rootWidget = [[MFSceneFactory sharedMFSceneFactory] createUiWithPage:pageNode style:styleDict];
     NSString *frameString = [MFHelper getFrameStringWithStyle:styleDict];
@@ -71,13 +75,13 @@
         [parentView addSubview:rootWidget];
 
         [self registerWidget:rootWidget
-                    widgetId:uuid
+                    widgetId:ID
                   widgetNode:pageNode
                  widgetStyle:styleDict
-           widgetDataBinding:dataBindingDict];
+           widgetDataBinding:dataBindingDict
+                      events:events];
     }
 
-    
     for (HTMLNode *chindViewNode in [pageNode children]) {
         if (![[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:chindViewNode.tagName]) {
             continue;
@@ -86,7 +90,8 @@
         [self createWidgetWithPage:chindViewNode
                         parentView:rootWidget
                        styleParams:styleParams
-                 dataBindingParams:dataBindingParams];
+                 dataBindingParams:dataBindingParams
+                            events:events];
     }
 }
 
@@ -95,6 +100,7 @@
             widgetNode:(HTMLNode*)widgetNode
            widgetStyle:(NSDictionary*)widgetStyle
      widgetDataBinding:(NSDictionary*)widgetDataBinding
+                events:(NSDictionary*)events
 {
     if (nil == self.activeWidgetDict) {
         self.activeWidgetDict = [[NSMutableDictionary alloc] init];
@@ -105,6 +111,7 @@
     [info setValue:widgetNode forKey:KEY_WIDGET_NODE];
     [info setValue:widgetStyle forKey:KEY_WIDGET_STYLE];
     [info setValue:widgetDataBinding forKey:KEY_WIDGET_DATA_BINDING];
+    [info setValue:events forKey:KEY_WIDGET_EVENTS];
     [self.activeWidgetDict setObject:info forKey:widgetId];
 }
 
@@ -126,18 +133,18 @@
     }
 
     self.dataDict = dataSource;
-    NSString *uuid = [parentView UUID];
-    NSDictionary *widgetInfoDict = [self findWidgetWithId:uuid];
+    NSString *ID = [parentView UUID];
+    NSDictionary *widgetInfoDict = [self findWidgetWithId:ID];
     NSDictionary *dataBindingDict =[widgetInfoDict objectForKey:KEY_WIDGET_DATA_BINDING];
     UIView* widgetObject = [widgetInfoDict objectForKey:KEY_WIDGET];
     [MFDataBinding bindingWidget:widgetObject withDataSource:dataSource dataBinding:dataBindingDict];
 
     for (UIView *childView in parentView.subviews) {
-        uuid = [childView UUID];
-        widgetInfoDict = [self findWidgetWithId:uuid];
+        ID = [childView UUID];
+        widgetInfoDict = [self findWidgetWithId:ID];
         dataBindingDict = self.dataBinding;
         UIView* widgetObject = [widgetInfoDict objectForKey:KEY_WIDGET];
-        widgetObject.frame = [[self.autoLayoutSizeInfo objectForKey:uuid] CGRectValue];
+        widgetObject.frame = [[self.autoLayoutSizeInfo objectForKey:ID] CGRectValue];
         [self bindingAndLayoutPageData:dataSource parentView:childView];
     }
 }

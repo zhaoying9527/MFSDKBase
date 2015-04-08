@@ -12,6 +12,7 @@
 @property (nonatomic, strong)NSDictionary *styleParams;
 @property (nonatomic, strong)NSDictionary *dataBinding;
 @property (nonatomic, strong)NSDictionary *dataDict;
+@property (nonatomic, strong)NSDictionary *events;
 @property (nonatomic, strong)UIView *parentView;
 
 @property (nonatomic, strong)NSMutableDictionary *activeWidgetDict;
@@ -31,6 +32,7 @@
           pageNode:(HTMLNode*)pageNode
        styleParams:(NSDictionary*)styleParams
        dataBinding:(NSDictionary*)dataBinding
+            events:(NSDictionary*)events
         parentView:(UIView*)parentView;
 - (id)findWidgetWithId:(NSString*)widgetId;
 - (void)bindingAndLayoutPageData:(NSDictionary*)dataSource parentView:(UIView*)parentView;
