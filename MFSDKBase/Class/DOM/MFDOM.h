@@ -19,5 +19,8 @@
 @property (nonatomic,strong)NSString *typeString;
 //扩展信息节点
 @property (nonatomic,strong)NSDictionary *params;
+//创建接口
 - (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding;
+//双向数据交换
+- (void)updateDate:(BOOL)flag;
 @end

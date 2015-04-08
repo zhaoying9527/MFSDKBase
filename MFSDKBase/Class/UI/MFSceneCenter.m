@@ -47,6 +47,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     result_css = [self parse:MFSDK_PLUGIN_CSS withPath:cssPath error:nil];
     result_databinding = [self parse:MFSDK_PLUGIN_CSS withPath:dataBindingPath error:nil];
     
+    //parse
+    //dom list
     return [[MFDOM alloc] initWithDomNodes:result_h5 withCss:result_css withDataBinding:result_databinding];
     //    MFLuaScript *luaScript = (MFLuaScript *)[self.pluginService findPlugInWithType:MFSDK_PLUGIN_LUA];
     //    [luaScript loadText:[NSString stringWithContentsOfFile:luaPath encoding:NSUTF8StringEncoding error:&error]];

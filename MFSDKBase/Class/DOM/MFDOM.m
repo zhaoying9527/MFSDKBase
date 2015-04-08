@@ -29,4 +29,11 @@
     }
     return self;
 }
+
+//双向数据交换
+- (void)updateDate:(BOOL)flag
+{
+    
+}
+
 @end
