@@ -17,6 +17,8 @@
 - (id)init
 {
     self.pluginDict = [[NSMutableDictionary alloc] init];
+    [self registerCorePlugIn];
+    
     return self;
 }
 
