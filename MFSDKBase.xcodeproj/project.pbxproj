@@ -41,7 +41,6 @@
 		231BE4E81AD142AB00B65A58 /* MFBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4E71AD142AB00B65A58 /* MFBridge.m */; };
 		231BE4ED1AD39AEB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4EC1AD39AEB00B65A58 /* wax.framework */; };
 		23F384CD1AD4260B002A8F32 /* MFDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384C81AD4260B002A8F32 /* MFDataBinding.m */; };
-		23F384ED1AD4261B002A8F32 /* MFChatLayoutCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384E11AD4261B002A8F32 /* MFChatLayoutCenter.m */; };
 		23F384EE1AD4261B002A8F32 /* MFLayoutCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384E31AD4261B002A8F32 /* MFLayoutCenter.m */; };
 		23F384F51AD42630002A8F32 /* MFChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384F21AD42630002A8F32 /* MFChatViewController.m */; };
 		23F384F61AD42630002A8F32 /* MFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384F41AD42630002A8F32 /* MFViewController.m */; };
@@ -143,8 +142,6 @@
 		231BE4EC1AD39AEB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
 		23F384C71AD4260B002A8F32 /* MFDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDataBinding.h; sourceTree = "<group>"; };
 		23F384C81AD4260B002A8F32 /* MFDataBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDataBinding.m; sourceTree = "<group>"; };
-		23F384E01AD4261B002A8F32 /* MFChatLayoutCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFChatLayoutCenter.h; sourceTree = "<group>"; };
-		23F384E11AD4261B002A8F32 /* MFChatLayoutCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFChatLayoutCenter.m; sourceTree = "<group>"; };
 		23F384E21AD4261B002A8F32 /* MFLayoutCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLayoutCenter.h; sourceTree = "<group>"; };
 		23F384E31AD4261B002A8F32 /* MFLayoutCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLayoutCenter.m; sourceTree = "<group>"; };
 		23F384F11AD42630002A8F32 /* MFChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFChatViewController.h; sourceTree = "<group>"; };
@@ -494,8 +491,6 @@
 		23F384DF1AD4261B002A8F32 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				23F384E01AD4261B002A8F32 /* MFChatLayoutCenter.h */,
-				23F384E11AD4261B002A8F32 /* MFChatLayoutCenter.m */,
 				23F384E21AD4261B002A8F32 /* MFLayoutCenter.h */,
 				23F384E31AD4261B002A8F32 /* MFLayoutCenter.m */,
 			);
@@ -663,7 +658,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F384ED1AD4261B002A8F32 /* MFChatLayoutCenter.m in Sources */,
 				231BE4E81AD142AB00B65A58 /* MFBridge.m in Sources */,
 				1CC8EED11AD13AFC008C0286 /* ESCssTokens.m in Sources */,
 				23F384EE1AD4261B002A8F32 /* MFLayoutCenter.m in Sources */,

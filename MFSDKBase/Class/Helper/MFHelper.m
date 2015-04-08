@@ -3,7 +3,7 @@
 
 #import "MFHelper.h"
 #import "MFDefine.h"
-#import "MFChatLayoutCenter.h"
+#import "MFLayoutCenter.h"
 
 @implementation MFHelper
 
@@ -273,7 +273,7 @@
 + (CGRect)formatAbsoluteRectWithString:(NSString*)amlString
 {
     CGRect retRect = [MFHelper formatRectWithString:amlString];
-    retRect = [[MFChatLayoutCenter sharedMFChatLayoutCenter] absoluteRect:retRect];
+    retRect = [[MFLayoutCenter sharedMFLayoutCenter] absoluteRect:retRect];
     return retRect;
 }
 
@@ -577,7 +577,7 @@
 
 + (CGRect)fitRect:(CGRect)rect
 {
-    CGRect retRect = [[MFChatLayoutCenter sharedMFChatLayoutCenter] stretchRect:rect];
+    CGRect retRect = [[MFLayoutCenter sharedMFLayoutCenter] stretchRect:rect];
     return retRect;
 }
 
