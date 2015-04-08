@@ -58,6 +58,9 @@
 
 + (BOOL)isCompositeTemplate:(NSString*)templateId;
 + (BOOL)isURLString:(NSString*)urlString;
++ (BOOL)isKindOfLabel:(NSString*)labelString;
++ (BOOL)isKindOfImage:(NSString*)imageString;
++ (BOOL)supportMultiLine:(NSString*)string;
 
 + (NSInteger)sectionHeight;
 + (NSInteger)cellFooterHeight;

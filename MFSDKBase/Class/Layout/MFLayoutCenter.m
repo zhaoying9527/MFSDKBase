@@ -3,7 +3,6 @@
 
 #import "HTMLNode.h"
 #import "MFLayoutCenter.h"
-#import "MFScriptHelper.h"
 #import "MFAMLScript.h"
 #import "MFHelper.h"
 
@@ -149,18 +148,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGRect pageFrame = [MFHelper formatRectWithString:pageFrameStr parentFrame:parentViewFrame];
     CGSize realSize = CGSizeZero;
 
-    if ([MFScriptHelper isKindOfLabel:type]) {
+    if ([MFHelper isKindOfLabel:type]) {
         NSString *amlMultiLineStr = [styleItem objectForKey:KEYWORD_NUMBEROFLINES];
-        if ([MFScriptHelper supportMultiLine:amlMultiLineStr]) {
+        if ([MFHelper supportMultiLine:amlMultiLineStr]) {
             //TODO NSDictionary *data = [dataDict objectForKey:KEYWORD_DS_DATA];
             NSString *dataKey = [[dataBindingDict objectForKey:pageNodeUuid] objectForKey:KEYWORD_DATASOURCEKEY];
             NSString *dataSource = [dataItem objectForKey:dataKey];
             //emoji格式化
             //TODO dataSource = [dataSource ubb2unified];
             dataSource = dataSource;
-            realSize = [MFScriptHelper sizeOfLabelWithDataSource:styleItem dataSource:dataSource parentFrame:parentViewFrame];
+            realSize = [self sizeOfLabelWithDataSource:styleItem dataSource:dataSource parentFrame:parentViewFrame];
         }
-    }else if ([MFScriptHelper isKindOfImage:type]) {
+    }else if ([MFHelper isKindOfImage:type]) {
         realSize = [self imageSizeWithDataInfo:dataDict dataItems:dataItem];
     }
     
@@ -300,6 +299,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGRect rect = CGRectMake(0, 0, IMAGEWIDTH, IMAGEHEIGHT);
     CGRect retRect = [MFHelper imageFitRect:rect aImageSize:imageSize];
     return retRect.size;
+}
+
+- (CGSize)sizeOfLabelWithDataSource:(NSDictionary*)layoutInfo dataSource:(NSString*)dataSource parentFrame:(CGRect)parentFrame
+{
+    NSString *fontString = [layoutInfo objectForKey:@"font"];
+    UIFont *font = [MFHelper formatFontWithString:fontString];
+    
+    NSString *layoutKey = [layoutInfo objectForKey:@"layout"];
+    NSInteger layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
+    
+    CGRect frame;
+    NSString *frameString = [MFHelper getFrameStringWithStyle:layoutInfo];
+    if (MFLayoutTypeNone == layoutType) {
+        frame = [MFHelper formatRectWithString:frameString parentFrame:parentFrame];
+    }else if (MFLayoutTypeAbsolute == layoutType) {
+        frame = [MFHelper formatAbsoluteRectWithString:frameString];
+    }else if (MFLayoutTypeStretch == layoutType) {
+        frame = [MFHelper formatFitRectWithString:frameString];
+    }
+    
+    return [MFHelper sizeWithFont:dataSource font:font size:frame.size];
 }
 
 @end

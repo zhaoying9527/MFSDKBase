@@ -48,7 +48,6 @@
 		23F385071AD4263D002A8F32 /* MFHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384FA1AD4263D002A8F32 /* MFHelper.m */; };
 		23F385081AD4263D002A8F32 /* MFResourceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384FC1AD4263D002A8F32 /* MFResourceCenter.m */; };
 		23F385091AD4263D002A8F32 /* MFAMLScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F384FE1AD4263D002A8F32 /* MFAMLScript.m */; };
-		23F3850A1AD4263D002A8F32 /* MFScriptHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385001AD4263D002A8F32 /* MFScriptHelper.m */; };
 		23F3850B1AD4263D002A8F32 /* MFStrategyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385021AD4263D002A8F32 /* MFStrategyCenter.m */; };
 		23F3850C1AD4263D002A8F32 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385041AD4263D002A8F32 /* UIView+Sizes.m */; };
 		23F3850D1AD4263D002A8F32 /* UIView+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385061AD4263D002A8F32 /* UIView+UUID.m */; };
@@ -160,8 +159,6 @@
 		23F384FC1AD4263D002A8F32 /* MFResourceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFResourceCenter.m; path = MFSDKBase/Class/Helper/MFResourceCenter.m; sourceTree = SOURCE_ROOT; };
 		23F384FD1AD4263D002A8F32 /* MFAMLScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAMLScript.h; path = MFSDKBase/Class/Helper/MFAMLScript.h; sourceTree = SOURCE_ROOT; };
 		23F384FE1AD4263D002A8F32 /* MFAMLScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAMLScript.m; path = MFSDKBase/Class/Helper/MFAMLScript.m; sourceTree = SOURCE_ROOT; };
-		23F384FF1AD4263D002A8F32 /* MFScriptHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFScriptHelper.h; path = MFSDKBase/Class/Helper/MFScriptHelper.h; sourceTree = SOURCE_ROOT; };
-		23F385001AD4263D002A8F32 /* MFScriptHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFScriptHelper.m; path = MFSDKBase/Class/Helper/MFScriptHelper.m; sourceTree = SOURCE_ROOT; };
 		23F385011AD4263D002A8F32 /* MFStrategyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFStrategyCenter.h; path = MFSDKBase/Class/Helper/MFStrategyCenter.h; sourceTree = SOURCE_ROOT; };
 		23F385021AD4263D002A8F32 /* MFStrategyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFStrategyCenter.m; path = MFSDKBase/Class/Helper/MFStrategyCenter.m; sourceTree = SOURCE_ROOT; };
 		23F385031AD4263D002A8F32 /* UIView+Sizes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Sizes.h"; path = "MFSDKBase/Class/Helper/UIView+Sizes.h"; sourceTree = SOURCE_ROOT; };
@@ -237,8 +234,6 @@
 				23F384FC1AD4263D002A8F32 /* MFResourceCenter.m */,
 				23F384FD1AD4263D002A8F32 /* MFAMLScript.h */,
 				23F384FE1AD4263D002A8F32 /* MFAMLScript.m */,
-				23F384FF1AD4263D002A8F32 /* MFScriptHelper.h */,
-				23F385001AD4263D002A8F32 /* MFScriptHelper.m */,
 				23F385011AD4263D002A8F32 /* MFStrategyCenter.h */,
 				23F385021AD4263D002A8F32 /* MFStrategyCenter.m */,
 				23F385031AD4263D002A8F32 /* UIView+Sizes.h */,
@@ -699,7 +694,6 @@
 				23F385081AD4263D002A8F32 /* MFResourceCenter.m in Sources */,
 				1CC8EED71AD13CDA008C0286 /* MFCorePlugInService.m in Sources */,
 				23F385131AD42934002A8F32 /* MFDispatchCenter.m in Sources */,
-				23F3850A1AD4263D002A8F32 /* MFScriptHelper.m in Sources */,
 				1CC8EEC51AD13AFC008C0286 /* MFCorePlugInFactory.m in Sources */,
 				1CC8EEC11AD13AFC008C0286 /* MFParser.m in Sources */,
 				1CC8EEBE1AD13AFC008C0286 /* MFPlugIn.m in Sources */,

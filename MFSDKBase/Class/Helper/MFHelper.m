@@ -575,6 +575,12 @@
     return NO;
 }
 
++ (CGRect)fitRect:(CGRect)rect
+{
+    CGRect retRect = [[MFChatLayoutCenter sharedMFChatLayoutCenter] stretchRect:rect];
+    return retRect;
+}
+
 + (BOOL)isURLString:(NSString*)urlString
 {
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
@@ -583,11 +589,34 @@
     return NO;
 }
 
-
-+ (CGRect)fitRect:(CGRect)rect
++ (BOOL)supportMultiLine:(NSString*)string
 {
-    CGRect retRect = [[MFChatLayoutCenter sharedMFChatLayoutCenter] stretchRect:rect];
-    return retRect;
+    NSInteger numberOfLines = [string integerValue];
+    if (numberOfLines==0) {
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)isKindOfLabel:(NSString*)labelString
+{
+    BOOL retCode = NO;
+    NSString *lowLabelString = [labelString lowercaseString];
+    if ([lowLabelString isEqualToString:@"label"]
+        || [lowLabelString isEqualToString:@"richlabel"]) {
+        retCode = YES;
+    }
+    return retCode;
+}
+
++ (BOOL)isKindOfImage:(NSString*)imageString
+{
+    BOOL retCode = NO;
+    NSString *lowImageString = [imageString lowercaseString];
+    if ([lowImageString isEqualToString:@"img"] || [lowImageString isEqualToString:@"emoji"]) {
+        retCode = YES;
+    }
+    return retCode;
 }
 
 + (NSInteger)sectionHeight

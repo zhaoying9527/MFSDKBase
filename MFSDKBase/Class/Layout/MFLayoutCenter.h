@@ -24,4 +24,6 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFLayoutCenter)
 - (CGRect)stretchRect:(CGRect)rect;
 - (NSInteger)round:(CGFloat)floatVal;
 - (void)removeAll;
+
+- (CGSize)sizeOfLabelWithDataSource:(NSDictionary*)layoutInfo dataSource:(NSString*)dataSource parentFrame:(CGRect)parentFrame;
 @end
