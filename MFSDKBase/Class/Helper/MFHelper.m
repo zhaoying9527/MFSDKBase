@@ -167,8 +167,7 @@
 
 + (CGSize)sizeWithFont:(NSString*)text font:(UIFont*)font size:(CGSize)size
 {
-    CGSize avaliableSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(size.width,
-                                                                                size.height*100)
+    CGSize avaliableSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(size.width, size.height*100)
                                 lineBreakMode:NSLineBreakByWordWrapping];
     return avaliableSize;
 }

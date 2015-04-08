@@ -28,7 +28,6 @@
 		23F385431AD42D28002A8F32 /* Master.html in Resources */ = {isa = PBXBuildFile; fileRef = 23F385371AD42D28002A8F32 /* Master.html */; };
 		23F385441AD42D28002A8F32 /* Master.lua in Resources */ = {isa = PBXBuildFile; fileRef = 23F385381AD42D28002A8F32 /* Master.lua */; };
 		23F385451AD42D28002A8F32 /* Master.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F385391AD42D28002A8F32 /* Master.plist */; };
-		23F385461AD42D28002A8F32 /* Master副本.css in Resources */ = {isa = PBXBuildFile; fileRef = 23F3853A1AD42D28002A8F32 /* Master副本.css */; };
 		23F385A31AD4C247002A8F32 /* MFDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3854F1AD4C247002A8F32 /* MFDataBinding.m */; };
 		23F385A41AD4C247002A8F32 /* MFBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385521AD4C247002A8F32 /* MFBridge.m */; };
 		23F385A51AD4C247002A8F32 /* MFDispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385541AD4C247002A8F32 /* MFDispatchCenter.m */; };
@@ -105,7 +104,6 @@
 		23F385371AD42D28002A8F32 /* Master.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Master.html; path = MFSDKBase/scripts/Master.html; sourceTree = SOURCE_ROOT; };
 		23F385381AD42D28002A8F32 /* Master.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Master.lua; path = MFSDKBase/scripts/Master.lua; sourceTree = SOURCE_ROOT; };
 		23F385391AD42D28002A8F32 /* Master.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Master.plist; path = MFSDKBase/scripts/Master.plist; sourceTree = SOURCE_ROOT; };
-		23F3853A1AD42D28002A8F32 /* Master副本.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = "Master副本.css"; path = "MFSDKBase/scripts/Master副本.css"; sourceTree = SOURCE_ROOT; };
 		23F3854E1AD4C247002A8F32 /* MFDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDataBinding.h; sourceTree = "<group>"; };
 		23F3854F1AD4C247002A8F32 /* MFDataBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDataBinding.m; sourceTree = "<group>"; };
 		23F385511AD4C247002A8F32 /* MFBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBridge.h; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 				23F385371AD42D28002A8F32 /* Master.html */,
 				23F385381AD42D28002A8F32 /* Master.lua */,
 				23F385391AD42D28002A8F32 /* Master.plist */,
-				23F3853A1AD42D28002A8F32 /* Master副本.css */,
 			);
 			path = scripts;
 			sourceTree = "<group>";
@@ -601,7 +598,6 @@
 				231BE45F1ACFC60000B65A58 /* LaunchScreen.xib in Resources */,
 				23F385401AD42D28002A8F32 /* Detail.plist in Resources */,
 				23F385411AD42D28002A8F32 /* Master.css in Resources */,
-				23F385461AD42D28002A8F32 /* Master副本.css in Resources */,
 				23F385421AD42D28002A8F32 /* Master.dataBinding in Resources */,
 				23F385451AD42D28002A8F32 /* Master.plist in Resources */,
 				23F3853D1AD42D28002A8F32 /* Detail.dataBinding in Resources */,
