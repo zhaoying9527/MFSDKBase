@@ -17,7 +17,7 @@
 #import "MFLayoutCenter.h"
 #import "MFStrategyCenter.h"
 #import "MFDataBinding.h"
-
+#import "MFDOM.h"
 @interface MFSceneFactory()
 @property (nonatomic,weak)id object;
 @property (nonatomic,copy)NSString *pageID;
@@ -48,6 +48,34 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     }
     return self;
 }
+
+- (id)createUiWithDOM:(MFDOM*)domObj
+{
+    id widget = nil;
+  
+    if ([self supportHtmlTag:domObj.clsType]) {
+        widget = [self allocObject:domObj.clsType];
+        NSString *uuid = [domObj.htmlNodes getAttributeNamed:KEYWORD_ID];
+        [widget setUUID:uuid];
+        if([self bindObject:widget]) {
+            [self batchExecution:domObj.cssNodes];
+        }
+        
+        if ([widget respondsToSelector:@selector(setOpaque:)]) {
+            [widget setOpaque:YES];
+        }
+        if ([widget respondsToSelector:@selector(setAlpha:)]) {
+            [widget setAlpha:1.0];
+        }
+
+    }
+    
+    return widget;
+}
+
+
+
+
 
 - (id)createUiWithPage:(HTMLNode*)node style:(NSDictionary*)cssDict
 {

@@ -21,10 +21,6 @@
 
 @property (nonatomic, copy) NSString *scriptName;
 @property (nonatomic, strong) MFScene *scene;
-//@property (nonatomic, strong) HTMLParser *html;
-//@property (nonatomic, strong) NSDictionary *css;
-//@property (nonatomic, strong) NSDictionary *dataBindings;
-//@property (nonatomic, strong) NSDictionary *actions;
 
 @end
 
@@ -46,8 +42,7 @@
     self = [super init];
     if (self) {
         //场景初始化
-        [[MFSceneCenter sharedMFSceneCenter] initSceneWithName:scriptName];
-        self.scene = [MFSceneCenter sharedMFSceneCenter].scene;
+        self.scene = [[MFSceneCenter sharedMFSceneCenter] addSceneWithName:scriptName];
         self.scriptName = scriptName;
     }
     return self;
@@ -116,6 +111,7 @@
     NSDictionary *dataBinding = self.scene.dom.bindingField;
     NSArray *matchNodes = [(HTMLNode *)self.scene.dom.htmlNodes findChildrenWithAttribute:KEYWORD_ID matchingName:templateId allowPartial:NO];
     HTMLNode *pageNode = [matchNodes firstObject];
+    //MFDOM *matchDom = [self.scene.dom findSubDomWithID:templateId];
 
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
     NSInteger retHeight = [[[self.indexPathDictionary objectForKey:indexKey] objectForKey:KEY_WIDGET_HEIGHT] intValue];

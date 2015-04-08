@@ -20,20 +20,23 @@
 @property (nonatomic,strong)NSDictionary *eventNodes;
 //绑定字段节点
 @property (nonatomic,strong)NSDictionary *bindingField;
-
 //绑定对象
 @property (nonatomic,strong)id objReference;
 //绑定类别
-@property (nonatomic,strong)NSString *typeString;
+@property (nonatomic,strong)NSString *clsType;
 //扩展信息节点
 @property (nonatomic,strong)NSDictionary *params;
 //子对象
 @property (nonatomic, strong) NSMutableArray *subDoms;
 
 //创建接口
-- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
+- (id)initWithDomNode:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
 - (void)addSubDom:(MFDOM *)subDom;
 
 //双向数据交换
 - (void)updateDate:(BOOL)flag;
+
+//查询接口
+- (MFDOM*)findSubDomWithID:(NSString*)ID;
+
 @end

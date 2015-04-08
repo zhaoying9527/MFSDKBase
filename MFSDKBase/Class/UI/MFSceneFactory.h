@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "MFSDK.h"
-
+#import "MFScene.h"
 @class HTMLNode;
 
 @interface MFSceneFactory : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneFactory)
+- (id)createUiWithDOM:(MFDOM*)domObj;
 
 - (id)createUiWithPage:(HTMLNode*)node style:(NSDictionary*)cssDict;
 - (BOOL)addActionForWidget:(UIView*)widget withPage:(HTMLNode*)node;

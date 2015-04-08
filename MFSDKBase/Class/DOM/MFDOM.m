@@ -15,14 +15,13 @@
 @end
 
 @implementation MFDOM
-- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
+- (id)initWithDomNode:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
 {
     if (self = [super init]) {
-        NSString *ID = [(HTMLNode*)html getAttributeNamed:KEYWORD_ID];
         self.htmlNodes = html;
         self.cssNodes = css;
         self.bindingField = dataBinding;
-        self.eventNodes = events[ID];
+        self.eventNodes = events;
     }
     return self;
 }
@@ -42,6 +41,22 @@
 - (void)updateDate:(BOOL)flag
 {
     
+}
+
+- (MFDOM*)findSubDomWithID:(NSString*)ID
+{
+    if ([[self.htmlNodes getAttributeNamed:KEYWORD_ID] isEqualToString:ID]) {
+        return self;
+    }
+    
+    MFDOM *matchDom = nil;
+    for (MFDOM *subDom in self.subDoms) {
+        matchDom = [self findSubDomWithID:ID];
+        if (matchDom) {
+            return matchDom;
+        }
+    }
+    return matchDom;
 }
 
 @end

@@ -12,7 +12,7 @@
 #import "MFScene.h"
 @interface MFSceneCenter : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneCenter)
-//@property (nonatomic,strong)MFDOM *dom;
-@property (nonatomic,strong)MFScene *scene;
-- (void)initSceneWithName:(NSString*)sceneName;
+@property (nonatomic,strong)NSMutableDictionary *scenes;
+- (MFScene*)addSceneWithName:(NSString*)sceneName;
+- (MFScene*)sceneWithName:(NSString*)sceneName;
 @end

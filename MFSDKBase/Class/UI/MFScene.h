@@ -15,8 +15,8 @@
 @class MFDOM;
 
 @interface MFScene : NSObject
-@property (nonatomic, strong) MFDOM *dom;
-
+@property (nonatomic,strong)NSString *sceneName;
+@property (nonatomic,strong)MFDOM *dom;
 - (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
 
 @end

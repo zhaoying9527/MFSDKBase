@@ -102,6 +102,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     return CGSizeMake(size.width, size.height);
 }
 
+
+
+- (NSDictionary*)LayoutInfoForDom:(MFDOM*)dom
+{
+    
+    
+    return nil;
+}
+
+
 - (NSDictionary*)getLayoutInfoForPage:(HTMLNode*)pageNode
                            templateId:(NSString *)templateId
                             styleDict:(NSDictionary*)styleDict
