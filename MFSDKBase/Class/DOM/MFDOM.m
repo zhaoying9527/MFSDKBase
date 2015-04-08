@@ -8,15 +8,17 @@
 
 #import "MFDOM.h"
 @interface MFDOM()
+
+
 @end
 
 @implementation MFDOM
 - (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding
 {
     if (self = [super init]) {
-        self.dataNodes = dataBinding;
-        self.htmlNodes = html;
-        self.cssNodes = css;
+//        self.dataNodes = dataBinding;
+//        self.htmlNodes = html;
+//        self.cssNodes = css;
     }
     return self;
 }

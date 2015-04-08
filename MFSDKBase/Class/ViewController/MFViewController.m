@@ -113,7 +113,7 @@
     NSDictionary *dataDict = self.dataArray[indexPath.section];
     NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
     NSDictionary *layoutDict = self.dom.cssNodes;
-    NSDictionary *dataBinding = self.dom.dataNodes;
+    NSDictionary *dataBinding = self.dom.bindingField;
     NSArray *matchNodes = [((HTMLParser *)self.dom.htmlNodes).body findChildrenWithAttribute:@"id" matchingName:templateId allowPartial:NO];
     HTMLNode *pageNode = [matchNodes firstObject];
 

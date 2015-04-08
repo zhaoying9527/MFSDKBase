@@ -13,6 +13,7 @@
 		1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */; };
 		1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */; };
 		1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */; };
+		1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3891AD518CD00E27AA8 /* MFScene.m */; };
 		231BE4511ACFC60000B65A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4501ACFC60000B65A58 /* main.m */; };
 		231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4531ACFC60000B65A58 /* AppDelegate.m */; };
 		231BE4571ACFC60000B65A58 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4561ACFC60000B65A58 /* ViewController.m */; };
@@ -95,6 +96,8 @@
 		1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSDKLauncher.m; sourceTree = "<group>"; };
 		1CE2F3851AD4E3D600E27AA8 /* MFDOM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDOM.h; sourceTree = "<group>"; };
 		1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDOM.m; sourceTree = "<group>"; };
+		1CE2F3881AD518CD00E27AA8 /* MFScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFScene.h; sourceTree = "<group>"; };
+		1CE2F3891AD518CD00E27AA8 /* MFScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFScene.m; sourceTree = "<group>"; };
 		231BE44B1ACFC60000B65A58 /* MFSDKBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFSDKBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		231BE44F1ACFC60000B65A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		231BE4501ACFC60000B65A58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -458,6 +461,8 @@
 		23F385781AD4C247002A8F32 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1CE2F3881AD518CD00E27AA8 /* MFScene.h */,
+				1CE2F3891AD518CD00E27AA8 /* MFScene.m */,
 				1CE2F37E1AD4D89000E27AA8 /* MFSceneCenter.h */,
 				1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */,
 				23F385791AD4C247002A8F32 /* MFSceneFactory.h */,
@@ -691,6 +696,7 @@
 				23F385B01AD4C247002A8F32 /* MFLuaScript.m in Sources */,
 				23F385AA1AD4C247002A8F32 /* UIView+UUID.m in Sources */,
 				23F385A31AD4C247002A8F32 /* MFDataBinding.m in Sources */,
+				1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */,
 				23F385B81AD4C247002A8F32 /* MFCell.m in Sources */,
 				1CE2F3771AD4D69500E27AA8 /* MFEventNode.m in Sources */,
 				23F385A51AD4C247002A8F32 /* MFDispatchCenter.m in Sources */,
