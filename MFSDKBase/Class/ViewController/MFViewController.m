@@ -9,6 +9,9 @@
 #import "MFLayoutCenter.h"
 
 
+
+#import "MFSceneCenter.h"
+
 @interface MFViewController() <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
@@ -39,17 +42,8 @@
 {
     self = [super init];
     if (self) {
-        NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-        NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, scriptName];
-        NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, scriptName];
-        NSString *dataBindingPath = [NSString stringWithFormat:@"%@/%@.dataBinding", bundlePath, scriptName];
-
-        NSError *error = nil;
-        self.scriptName = scriptName;
-        self.html = [[HTMLParser alloc] initWithString:[NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:&error] error:&error];
-        self.css = [[[ESCssParser alloc] init] parseText:[NSString stringWithContentsOfFile:cssPath encoding:NSUTF8StringEncoding error:&error]];
-        self.dataBindings = [[[ESCssParser alloc] init] parseText:[NSString stringWithContentsOfFile:dataBindingPath encoding:NSUTF8StringEncoding error:&error]];
-//        [[MFBridge sharedMFBridge] configWithScriptName:[NSString stringWithFormat:@"%@.lua", scriptName]];
+        //场景初始化
+        [[MFSceneCenter sharedMFSceneCenter] initSceneWithName:scriptName];
     }
     return self;
 }

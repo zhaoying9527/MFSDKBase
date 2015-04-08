@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MFViewController.h"
-
+#import "MFSDKLauncher.h"
 @interface AppDelegate ()
 
 @end
@@ -20,6 +20,8 @@
     CGRect frame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:frame];
     [self.window setBackgroundColor:[UIColor orangeColor]];
+    //初始化环境
+    [MFSDKLauncher initialize];
     
     UIViewController *viewController = [[MFViewController alloc] initWithScriptName:@"Master"];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
