@@ -11,6 +11,7 @@
 #import "HTMLParser.h"
 #import "MFHtmlParser.h"
 #import "MFCssParser.h"
+#import "MFLuaScript.h"
 
 @interface MFSceneCenter ()
 
@@ -33,21 +34,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, sceneName];
     NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, sceneName];
     NSString *dataBindingPath = [NSString stringWithFormat:@"%@/%@.dataBinding", bundlePath, sceneName];
-    
+    NSString *luaPath = [NSString stringWithFormat:@"%@/%@.lua", bundlePath, sceneName];
+
     NSError *error = nil;
     BOOL success = NO;
     MFHtmlParser *htmlParser = (MFHtmlParser *)[self.pluginService findPlugInWithType:MFSDK_PLUGIN_HTML];
     success = [htmlParser loadText:[NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:&error]];
     self.html = [htmlParser html];
-    
+
     MFCssParser *cssParser = (MFCssParser *)[self.pluginService findPlugInWithType:MFSDK_PLUGIN_CSS];
     success = [cssParser loadText:[NSString stringWithContentsOfFile:cssPath encoding:NSUTF8StringEncoding error:&error]];
     self.css = [cssParser parse];
-    
+
     [cssParser loadText:[NSString stringWithContentsOfFile:dataBindingPath encoding:NSUTF8StringEncoding error:&error]];
     self.dataBindings = [cssParser parse];
-    
-    //TODO[[MFBridge sharedMFBridge] configWithScriptName:[NSString stringWithFormat:@"%@.lua", scriptName]];*/
+
+    MFLuaScript *luaScript = (MFLuaScript *)[self.pluginService findPlugInWithType:MFSDK_PLUGIN_LUA];
+    [luaScript loadText:[NSString stringWithContentsOfFile:luaPath encoding:NSUTF8StringEncoding error:&error]];
 }
 
 @end

@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "MFScript.h"
 @interface MFLuaScript : MFScript
+- (BOOL)loadText:(NSString*)text;
 - (NSDictionary*)executeScript:(NSDictionary *)scriptNode;
 @end

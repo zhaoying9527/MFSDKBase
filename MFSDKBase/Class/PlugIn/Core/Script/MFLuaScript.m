@@ -20,6 +20,7 @@ LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s);
 
 @interface MFLuaScript ()
 @property(nonatomic, strong) NSMutableDictionary *scriptFiles;
+@property(nonatomic, copy) NSString *luaText;
 @property(nonatomic)lua_State* curState;
 @end
 
@@ -41,16 +42,22 @@ LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s);
     return self;
 }
 
+- (BOOL)loadText:(NSString*)text
+{
+    if (nil != text) {
+        self.luaText = text;
+        luaL_dostring(_curState, [text UTF8String]);
+        return YES;
+    }
+    return NO;
+}
+
 - (NSDictionary*)executeScript:(NSDictionary *)scriptNode
 {
     NSString *method = [scriptNode objectForKey:kMFMethodKey];
     NSDictionary *params = [scriptNode objectForKey:kMFParamsKey];
     NSString *fileName = [scriptNode objectForKey:kMFScriptFileNameKey];
     NSString *contents = [scriptNode objectForKey:kMFScriptFileContentKey];
-
-    if (!self.scriptFiles[fileName]) {
-        luaL_dostring(_curState, [contents UTF8String]);
-    }
 
     lua_getglobal(_curState, [method UTF8String]);
     wax_fromInstance(_curState, params);

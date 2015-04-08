@@ -8,17 +8,19 @@
 
 #import "MFSceneFactory.h"
 #import "HTMLNode.h"
+#import "UIView+UUID.h"
+#import "UIView+Events.h"
 #import "MFHelper.h"
 #import "MFLabel.h"
 #import "MFImageView.h"
 #import "MFEmojiView.h"
-#import "UIView+UUID.h"
 #import "MFLayoutCenter.h"
-#import "UIView+Events.h"
 #import "MFStrategyCenter.h"
+#import "MFDataBinding.h"
 
 @interface MFSceneFactory()
 @property (nonatomic,weak)id object;
+@property (nonatomic,copy)NSString *pageID;
 @property (nonatomic,strong)NSDictionary *classMapDict;
 @property (nonatomic,strong)NSDictionary *propertyMapDict;
 
@@ -52,21 +54,21 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     if (!node || ![self supportHtmlTag:node.tagName]) {
         return nil;
     }
-    
+
     UIView *widget = [self allocObject:node.tagName];
     NSString *uuid = [node getAttributeNamed:@"id"];
     [widget setUUID:uuid];
     if([self bindObject:widget]) {
         [self batchExecution:cssDict];
     }
-    
+
     if ([widget respondsToSelector:@selector(setOpaque:)]) {
         [widget setOpaque:YES];
     }
     if ([widget respondsToSelector:@selector(setAlpha:)]) {
         [widget setAlpha:1.0];
     }
-    
+
     return widget;
 }
 
@@ -75,7 +77,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     if (!node || ![self supportHtmlTag:node.tagName]) {
         return NO;
     }
-    
+
     NSArray *attributes = [node getAttributes];
     NSString *actionRegix = @"on.*=(.*)\\((.*)\\)";
     NSString *realAttribute = @"";
@@ -89,17 +91,125 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     if (!hasAction) {
         return NO;
     }
-    
+
     NSArray * components = [realAttribute componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
     if (components.count < 2) {
         return NO;
     }
-    
+
     NSString *actionName = components[0];
     NSString *actionFunction = components[1];
     [widget attachEvent:actionName handlerName:actionFunction];
-    
+
     return hasAction;
+}
+
+- (void)createPage:(NSString*)pageID
+          pageNode:(HTMLNode*)pageNode
+       styleParams:(NSDictionary*)styleParams
+       dataBinding:(NSDictionary*)dataBinding
+        parentView:(UIView*)parentView
+     retWidgetInfo:(NSMutableDictionary *)widgetInfo
+{
+    if (![pageID isEqualToString:self.pageID]) {
+        self.pageID = pageID;
+        [parentView.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+            [view removeFromSuperview];
+        }];
+
+        [self createWidgetWithPage:pageNode
+                        parentView:parentView
+                       styleParams:styleParams
+                 dataBindingParams:dataBinding
+                     retWidgetInfo:widgetInfo];
+    }
+}
+
+- (void)createWidgetWithPage:(HTMLNode *)pageNode
+                  parentView:(UIView*)parentView
+                 styleParams:(NSDictionary *)styleParams
+           dataBindingParams:(NSDictionary *)dataBindingParams
+               retWidgetInfo:(NSMutableDictionary *)widgetInfo
+{
+    if (!(pageNode && parentView && styleParams && dataBindingParams)) {
+        return;
+    }
+
+    NSString *uuid = [pageNode getAttributeNamed:@"id"];
+    NSDictionary *styleDict = [styleParams objectForKey:uuid];
+    NSDictionary *dataBindingDict = [dataBindingParams objectForKey:uuid];
+
+    UIView * rootWidget = [[MFSceneFactory sharedMFSceneFactory] createUiWithPage:pageNode style:styleDict];
+    NSString *frameString = [MFHelper getFrameStringWithStyle:styleDict];
+    CGRect frame = [MFHelper formatRectWithString:frameString parentFrame:parentView.frame];
+    rootWidget.frame = frame;
+    [[MFSceneFactory sharedMFSceneFactory] addActionForWidget:rootWidget withPage:pageNode];
+
+    if (nil != rootWidget) {
+        [parentView addSubview:rootWidget];
+
+        [self registerWidget:rootWidget
+                    widgetId:uuid
+                  widgetNode:pageNode
+                 widgetStyle:styleDict
+           widgetDataBinding:dataBindingDict
+               retWidgetDict:widgetInfo];
+    }
+
+    for (HTMLNode *chindViewNode in [pageNode children]) {
+        if (![[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:chindViewNode.tagName]) {
+            continue;
+        }
+
+        [self createWidgetWithPage:chindViewNode
+                        parentView:rootWidget
+                       styleParams:styleParams
+                 dataBindingParams:dataBindingParams
+                     retWidgetInfo:widgetInfo];
+    }
+}
+
+- (void)registerWidget:(UIView*)widget
+              widgetId:(NSString*)widgetId
+            widgetNode:(HTMLNode*)widgetNode
+           widgetStyle:(NSDictionary*)widgetStyle
+     widgetDataBinding:(NSDictionary*)widgetDataBinding
+         retWidgetDict:(NSMutableDictionary*)widgetInfo
+{
+    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    [info setValue:widget forKey:KEY_WIDGET];
+    [info setValue:widgetNode forKey:KEY_WIDGET_NODE];
+    [info setValue:widgetStyle forKey:KEY_WIDGET_STYLE];
+    [info setValue:widgetDataBinding forKey:KEY_WIDGET_DATA_BINDING];
+    [widgetInfo setObject:info forKey:widgetId];
+}
+
+- (void)bindingAndLayoutPageData:(NSDictionary*)dataSource
+                      parentView:(UIView*)parentView
+               widgetDataBinding:(NSDictionary*)dataBinding
+                      widgetDict:(NSMutableDictionary*)widgetInfo
+{
+    if (!(parentView && dataSource)) {
+        return;
+    }
+
+    NSString *uuid = [parentView UUID];
+    NSDictionary *widgetInfoDict = [widgetInfo objectForKey:uuid];
+    NSDictionary *dataBindingDict =[widgetInfoDict objectForKey:KEY_WIDGET_DATA_BINDING];
+    UIView* widgetObject = [widgetInfoDict objectForKey:KEY_WIDGET];
+    [MFDataBinding bindingWidget:widgetObject withDataSource:dataSource dataBinding:dataBindingDict];
+
+    for (UIView *childView in parentView.subviews) {
+        uuid = [childView UUID];
+        widgetInfoDict = [widgetInfo objectForKey:uuid];
+        dataBindingDict = dataBinding;
+        UIView* widgetObject = [widgetInfoDict objectForKey:KEY_WIDGET];
+        //TODO        widgetObject.frame = [[self.autoLayoutSizeInfo objectForKey:uuid] CGRectValue];
+        [self bindingAndLayoutPageData:dataSource
+                            parentView:childView
+                     widgetDataBinding:dataBinding
+                            widgetDict:widgetInfo];
+    }
 }
 
 - (id)allocObject:(NSString*)classKey
@@ -119,7 +229,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         self.object = object;
         ret = YES;
     }
-    
+
     return ret;
 }
 
@@ -218,7 +328,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     }else if ([propertyName isEqualToString:@"touchEnabled"]) {
         retObj = [MFHelper formatTouchEnableWithString:propertyValue];
     }
-    
+
     return retObj;
 }
 
