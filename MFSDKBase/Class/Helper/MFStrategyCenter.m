@@ -27,9 +27,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFStrategyCenter)
     return dict;
 }
 
-- (NSDictionary*)itemWithID:(NSString*)itemID subItemID:(NSString*)subItemID source:(NSDictionary*)source
-{
-    return [[source objectForKey:itemID] objectForKey:subItemID];
-}
+//- (NSDictionary*)itemWithID:(NSString*)itemID subItemID:(NSString*)subItemID source:(NSDictionary*)source
+//{
+//    return [[source objectForKey:itemID] objectForKey:subItemID];
+//}
 
 @end
