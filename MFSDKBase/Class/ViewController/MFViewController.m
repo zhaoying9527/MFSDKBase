@@ -121,17 +121,15 @@
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
     NSInteger retHeight = [[[self.indexPathDictionary objectForKey:indexKey] objectForKey:KEY_WIDGET_HEIGHT] intValue];
     if (retHeight <= 0) {
-//        NSDictionary * indexPathDict = [MFCell sizeofCell:templateId cellPage:pageNode cellStyle:layoutDict dataDict:dataDict dataBinding:dataBinding];
-        
         NSMutableDictionary *widgetDict = [NSMutableDictionary dictionary];
         NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] getLayoutInfoForPage:pageNode
                                                                                        templateId:templateId
                                                                                         styleDict:layoutDict
-                                                                                         dataDict:dataDict dataBinding:dataBinding
+                                                                                         dataDict:dataDict
+                                                                                      dataBinding:dataBinding
                                                                                   parentViewFrame:CGRectMake(0, 0, [MFHelper screenXY].width, 0)
                                                                                     retWidgetInfo:widgetDict];
         
-
 
         if (nil != indexKey) {
             [self.indexPathDictionary setObject:indexPathDict forKey:indexKey];
@@ -194,8 +192,6 @@
         NSDictionary *dataBinding = self.dataBindings;
         NSArray *matchNodes = [self.html.body findChildrenWithAttribute:@"id" matchingName:templateId allowPartial:NO];
         HTMLNode *pageNode = [matchNodes firstObject];
-//        NSDictionary * indexPathDict = [MFCell sizeofCell:templateId cellPage:pageNode cellStyle:layoutDict dataDict:dataDict dataBinding:dataBinding];
-        
         NSMutableDictionary *widgetDict = [NSMutableDictionary dictionary];
         NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] getLayoutInfoForPage:pageNode templateId:templateId styleDict:layoutDict dataDict:dataDict dataBinding:dataBinding parentViewFrame:CGRectMake(0, 0, [MFHelper screenXY].width, 0) retWidgetInfo:widgetDict];
 

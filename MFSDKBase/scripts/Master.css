@@ -6,10 +6,30 @@ cell1
     border-color:LightGray;
     border-width:1;
     touchEnabled:YES;
-    nestedDict:nestedCell{1:1; 2:2;};
 }
 
+cell1-label
+{
+    top:25px;
+    left:160px;
+    width:160;
+    height:55;
+    background-color:RGB(233,233,233);
+    color:Red;
+    text-align:left;
+    font:bold 17;
+    numberOfLines:0;
+}
 
+cell1-image
+{
+    top:10;
+    left:15;
+    width:40%;
+    height:60%;
+    background-color:RGB(156,216,200);
+    touchEnabled:YES;
+}
 
 cell2
 {

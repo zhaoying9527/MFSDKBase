@@ -102,16 +102,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     return CGSizeMake(size.width, size.height);
 }
 
-- (CGRect)autoLayoutWithStyleDict:(NSDictionary*)styleItem
-{
-    CGRect retRect = CGRectZero;
-    NSString *frameStr = [MFHelper getFrameStringWithStyle:styleItem];
-    retRect = [MFHelper formatRectWithString:frameStr];
-    
-    return retRect;
-}
-
-
 - (NSDictionary*)getLayoutInfoForPage:(HTMLNode*)pageNode
                            templateId:(NSString *)templateId
                             styleDict:(NSDictionary*)styleDict
@@ -143,7 +133,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *type = [[pageNode tagName] lowercaseString];
     NSString *pageNodeUuid = [pageNode getAttributeNamed:@"id"];
     NSDictionary *styleItem = [styleDict objectForKey:pageNodeUuid];
-    NSDictionary *dataItem = [dataDict objectForKey:pageNodeUuid];
+    NSDictionary *dataItem = dataDict;
+//    NSDictionary *dataItem = [dataDict objectForKey:pageNodeUuid];
     NSString *pageFrameStr = [MFHelper getFrameStringWithStyle:styleItem];
     CGRect pageFrame = [MFHelper formatRectWithString:pageFrameStr parentFrame:parentViewFrame];
     CGSize realSize = CGSizeZero;
@@ -193,7 +184,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
     CGSize fitSize = [self fitPageSize:childWidgetInfo maxSize:pageSize];
     [widgetInfo addEntriesFromDictionary:childWidgetInfo];
-//    CGSize fitSize = [self fitPageSize:widgetInfo maxSize:pageSize];
     if (!((fitSize.width == pageSize.width) && (fitSize.height == pageSize.height))) {
         pageFrame.size = fitSize;
     }
@@ -201,81 +191,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     
     return   pageFrame;
 }
-
-//- (NSDictionary*)sizeofPage:(HTMLNode*)pageNode
-//                 templateId:(NSString *)templateId
-//                  styleDict:(NSDictionary*)styleDict
-//                   dataDict:(NSDictionary*)dataDict
-//                dataBinding:(NSDictionary*)dataBindingDict
-//{
-//    NSMutableDictionary *sumRectDictionary = [[NSMutableDictionary alloc] init];
-//    NSInteger subHeight = 0;
-//
-//    NSString *pageNodeUuid = [pageNode getAttributeNamed:@"id"];
-//    NSDictionary *styleItem = [styleDict objectForKey:pageNodeUuid];
-//    NSDictionary *dataItem = [dataDict objectForKey:pageNodeUuid];
-//    NSString *pageFrameStr = [MFHelper getFrameStringWithStyle:styleItem];
-//    CGRect pageFrame = [MFHelper formatRectWithString:pageFrameStr];
-//    CGSize pageSize = pageFrame.size;
-//
-//    
-//    for (HTMLNode *chindViewNode in [pageNode children]) {
-//        if (![[MFScript sharedMFScript] supportHtmlTag:chindViewNode.tagName]) {
-//            continue;
-//        }
-//        
-//        CGRect widgetFrame = CGRectZero;
-//        CGSize realSize = CGSizeZero;
-//        NSString *uuid = [chindViewNode getAttributeNamed:@"id"];
-//        NSString *type = [[chindViewNode tagName] lowercaseString];
-//        styleItem = [styleDict objectForKey:uuid];
-//        dataItem = dataDict;
-//        NSString *frameStr = [MFHelper getFrameStringWithStyle:styleItem];
-//        widgetFrame = [MFHelper formatRectWithString:frameStr];
-//        
-//        widgetFrame.origin.y += subHeight;
-//        if ([MFScriptHelper isKindOfLabel:type]) {
-//            NSString *amlMultiLineStr = [styleItem objectForKey:KEYWORD_NUMBEROFLINES];
-//            if ([MFScriptHelper supportMultiLine:amlMultiLineStr]) {
-//                //TODO NSDictionary *data = [dataDict objectForKey:KEYWORD_DS_DATA];
-//                NSString *dataKey = [[dataBindingDict objectForKey:uuid] objectForKey:KEYWORD_DATASOURCEKEY];
-//                NSString *dataSource = [dataItem objectForKey:dataKey];
-//                //emoji格式化
-//                //TODO dataSource = [dataSource ubb2unified];
-//                dataSource = dataSource;
-//                realSize = [MFScriptHelper sizeOfLabelWithDataSource:styleItem dataSource:dataSource];
-//            }
-//        }else if ([MFScriptHelper isKindOfImage:type]) {
-//            realSize = [self imageSizeWithDataInfo:dataDict dataItems:dataItem];
-//        }
-//        
-//        if (realSize.width > 0 && realSize.height > 0) {
-//            if (realSize.height > widgetFrame.size.height) {
-//                subHeight = realSize.height - widgetFrame.size.height;
-//            }else {
-//                realSize = widgetFrame.size;
-//            }
-//        }else {
-//            realSize = widgetFrame.size;
-//        }
-//        
-//        widgetFrame.size.width = realSize.width;
-//        widgetFrame.size.height = realSize.height;
-//        [sumRectDictionary setObject:[NSValue valueWithCGRect:widgetFrame] forKey:uuid];
-//    }
-//    
-//    CGSize fitSize = [self fitPageSize:sumRectDictionary maxSize:pageSize];
-//    if (!((fitSize.width == pageSize.width) && (fitSize.height == pageSize.height))) {
-//        pageFrame.size = fitSize;
-//    }
-//    [sumRectDictionary setObject:[NSValue valueWithCGRect:pageFrame] forKey:pageNodeUuid];
-//    NSDictionary * retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                    [NSNumber numberWithInteger:fitSize.height],KEY_WIDGET_HEIGHT,
-//                                    [NSNumber numberWithInteger:fitSize.width],KEY_WIDGET_WIDTH,
-//                                    sumRectDictionary,KEY_WIDGET_SIZE,nil];
-//    
-//    return   retDictionary;
-//}
 
 - (CGSize)imageSizeWithDataInfo:(NSDictionary*)dataInfo dataItems:(NSDictionary*)dataItems
 {
