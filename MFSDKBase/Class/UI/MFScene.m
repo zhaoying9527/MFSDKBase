@@ -11,7 +11,7 @@
 #import "HTMLParser.h"
 #import "MFDOM.h"
 #import "MFSceneFactory.h"
-
+#import "NSObject+DOM.h"
 @implementation MFScene
 
 - (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
@@ -40,8 +40,10 @@
         if (nil != key) {
             childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
             NSLog(@"Dom tag: %@", childNode.tagName);
-            //创建控件
-            childDom.objReference = [[MFSceneFactory sharedMFSceneFactory] createUiWithDOM:childDom];
+            //双向绑定
+            [childDom setObjReference:[[MFSceneFactory sharedMFSceneFactory] createUiWithDOM:childDom]];
+            [childDom.objReference attachDOM:childDom];
+        
             [dom addSubDom:childDom];
         }
     }];
