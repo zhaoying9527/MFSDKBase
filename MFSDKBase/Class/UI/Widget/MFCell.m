@@ -8,7 +8,6 @@
 #import "MFLayoutCenter.h"
 #import "MFUIFactory.h"
 #import "MFDataBinding.h"
-#import "MFAMLScript.h"
 #import "UIView+UUID.h"
 
 @implementation MFCell
@@ -62,11 +61,11 @@
     NSDictionary *styleDict = [styleParams objectForKey:uuid];
     NSDictionary *dataBindingDict = [dataBindingParams objectForKey:uuid];
 
-    UIView * rootWidget = [MFUIFactory createUiWithPage:pageNode style:styleDict];
+    UIView * rootWidget = [[MFUIFactory sharedMFUIFactory] createUiWithPage:pageNode style:styleDict];
     NSString *frameString = [MFHelper getFrameStringWithStyle:styleDict];
     CGRect frame = [MFHelper formatRectWithString:frameString parentFrame:parentView.frame];
     rootWidget.frame = frame;
-    [MFUIFactory addActionForWidget:rootWidget withPage:pageNode];
+    [[MFUIFactory sharedMFUIFactory] addActionForWidget:rootWidget withPage:pageNode];
 
     if (nil != rootWidget) {
         [parentView addSubview:rootWidget];
@@ -80,7 +79,7 @@
 
     
     for (HTMLNode *chindViewNode in [pageNode children]) {
-        if (![[MFAMLScript sharedMFAMLScript] supportHtmlTag:chindViewNode.tagName]) {
+        if (![[MFUIFactory sharedMFUIFactory] supportHtmlTag:chindViewNode.tagName]) {
             continue;
         }
         
