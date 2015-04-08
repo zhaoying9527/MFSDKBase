@@ -10,5 +10,5 @@
 #import "MFPlugIn.h"
 @interface MFParser : MFPlugIn
 - (BOOL)loadText:(NSString*)text;
-- (NSDictionary*)parse;
+- (id)parse;
 @end

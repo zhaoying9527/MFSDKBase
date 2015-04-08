@@ -25,6 +25,11 @@
     return NO;
 }
 
+- (id)parse
+{
+    return [self html];
+}
+
 - (HTMLNode*)doc
 {
    return [self.parser doc];
@@ -45,8 +50,4 @@
     return [self.parser head];
 }
 
-- (NSDictionary*)parse
-{
-    return nil;
-}
 @end

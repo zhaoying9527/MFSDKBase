@@ -17,13 +17,7 @@
 @property (nonatomic,strong)id objReference;
 //绑定类别
 @property (nonatomic,strong)NSString *typeString;
-//绑定事件节点
-@property (nonatomic,strong)NSDictionary *eventNodes;
-//绑定字段节点
-@property (nonatomic,strong)NSDictionary *dataNodes;
-//布局信息节点
-@property (nonatomic,strong)NSDictionary *layoutNodes;
 //扩展信息节点
 @property (nonatomic,strong)NSDictionary *params;
-
+- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding;
 @end

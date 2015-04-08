@@ -434,12 +434,12 @@
 		23F385681AD4C247002A8F32 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				23F3856D1AD4C247002A8F32 /* MFParser.h */,
+				23F3856E1AD4C247002A8F32 /* MFParser.m */,
 				23F385691AD4C247002A8F32 /* MFCssParser.h */,
 				23F3856A1AD4C247002A8F32 /* MFCssParser.m */,
 				23F3856B1AD4C247002A8F32 /* MFHtmlParser.h */,
 				23F3856C1AD4C247002A8F32 /* MFHtmlParser.m */,
-				23F3856D1AD4C247002A8F32 /* MFParser.h */,
-				23F3856E1AD4C247002A8F32 /* MFParser.m */,
 			);
 			path = Parser;
 			sourceTree = "<group>";

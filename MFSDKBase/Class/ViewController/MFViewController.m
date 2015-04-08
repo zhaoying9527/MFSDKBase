@@ -53,11 +53,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     [self setupUI];
-    [self loadData];
+    [self prepareData:nil];
 }
 
 #pragma mark - Data
-- (void)loadData
+- (void)prepareData:(NSDictionary*)params
 {
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.scriptName];
@@ -72,6 +72,7 @@
             });
         }];
     });
+    
 }
 
 #pragma mark - UI
