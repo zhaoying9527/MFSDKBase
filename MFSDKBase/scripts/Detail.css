@@ -1,6 +1,6 @@
 cell1
 {
-    width:320;
+    width:100%;
     height:150;
     background-color:RGB(60,60,60);
     touchEnabled:YES;
@@ -29,7 +29,7 @@ cell1-image
 
 cell2
 {
-    width:320;
+    width:100%;
     height:150;
     background-color:RGB(60,60,60);
     touchEnabled:YES;
@@ -58,7 +58,7 @@ cell2-image
 
 cell3
 {
-    width:320;
+    width:100%;
     height:150;
     background-color:RGB(60,60,60);
     touchEnabled:YES;    

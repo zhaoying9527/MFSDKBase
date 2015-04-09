@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MFButton : UIButton
-
+@property (nonatomic, strong)UIImage *image;
+@property (nonatomic, strong)UIImage *backgroundImage;
 @end

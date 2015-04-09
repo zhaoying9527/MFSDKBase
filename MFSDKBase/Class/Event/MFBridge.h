@@ -8,6 +8,6 @@
 #import <Foundation/Foundation.h>
 
 @interface MFBridge : NSObject
-- (void)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType;
+- (id)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType;
 @end
 

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MFImageView.h"
 
-@interface MFEmojiView : UIView
-
+@interface MFEmojiView : MFImageView
+@property (nonatomic,strong)NSDictionary *emoji;
 @end

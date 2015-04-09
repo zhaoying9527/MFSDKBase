@@ -29,9 +29,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFDispatchCenter)
 
 }
 
-- (void)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType
+- (id)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType
 {
     //bridge
-    [self.bridge executeScript:scriptNode scriptType:scriptType];
+    return [self.bridge executeScript:scriptNode scriptType:scriptType];
 }
 @end

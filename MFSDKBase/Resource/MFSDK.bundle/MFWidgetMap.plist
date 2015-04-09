@@ -17,6 +17,6 @@
 	<key>slidelabel</key>
 	<string>MFSlideLabel</string>
 	<key>audio</key>
-	<string>MFVoiceWidget</string>
+	<string>MFAudioLabel</string>
 </dict>
 </plist>

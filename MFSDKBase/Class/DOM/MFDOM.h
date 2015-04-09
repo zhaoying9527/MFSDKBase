@@ -44,4 +44,6 @@
 //查询接口
 - (MFDOM*)findSubDomWithID:(NSString*)ID;
 - (BOOL)isBindingToWidget;
+//事件触发
+- (id)triggerEvent:(NSString*)event withParams:(NSDictionary*)params;
 @end

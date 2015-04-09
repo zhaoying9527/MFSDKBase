@@ -11,13 +11,16 @@
 #import "MFSDK.h"
 #import "MFScene.h"
 @class HTMLNode;
+@class MFImageView;
 
 @interface MFSceneFactory : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneFactory)
 
 - (id)createWidgetWithDOM:(MFDOM*)domObj;
 - (id)createUIWithDOM:(MFDOM*)domObj sizeInfo:(NSDictionary*)sizeInfo;
+
 - (BOOL)supportHtmlTag:(NSString *)htmlTag;
+- (MFImageView*)createImageView;
 - (void)removeAll;
 
 @end

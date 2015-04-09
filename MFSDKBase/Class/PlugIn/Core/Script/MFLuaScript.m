@@ -13,6 +13,7 @@
 #import <wax/wax_json.h>
 #import <wax/wax_filesystem.h>
 #import "MFCorePlugInService.h"
+#import "MFHelper.h"
 
 #define luaL_dostring(L, s) \
 (luaL_loadstring(L, s) || lua_pcall(L, 0, LUA_MULTRET, 0))
@@ -34,12 +35,56 @@ LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s);
 - (instancetype)init
 {
     if (self = [super init]) {
-        static NSMutableDictionary *scriptFiles;
-        if (!scriptFiles) scriptFiles = [NSMutableDictionary dictionary];
+        if (!self.scriptFiles) self.scriptFiles = [NSMutableDictionary dictionary];
         wax_start(nil, luaopen_wax_http, luaopen_wax_json, luaopen_wax_filesystem, nil);
         self.curState = wax_currentLuaState();
     }
     return self;
+}
+
+- (id)executeScript:(NSDictionary *)scriptNode
+{
+    NSString *method = [scriptNode objectForKey:kMFMethodKey];
+    NSDictionary *params = [scriptNode objectForKey:kMFParamsKey];
+    NSString *fileName = [scriptNode objectForKey:kMFScriptFileNameKey];
+    NSString *contents = [scriptNode objectForKey:kMFScriptFileContentKey];
+    
+    if (fileName && !self.scriptFiles[fileName]) {
+        [self loadFile:fileName];
+    }
+    if (contents && ![contents isEqualToString:self.luaText]) {
+        [self loadText:contents];
+    }
+
+    lua_getglobal(_curState, [method UTF8String]);
+    wax_fromInstance(_curState, params);
+
+    if (0 != wax_pcall(_curState, 1, 1)) {
+        const char *msg = lua_tostring(_curState, -1);
+        NSString* value = [NSString stringWithUTF8String:msg];
+        NSLog(@"%@", value);
+        lua_pop(_curState, 1);
+        return nil;
+    }
+
+    id retObj = nil;
+    if (!lua_isnil(_curState, -1)) {
+        id resultObj = *(__unsafe_unretained id*)wax_copyToObjc(_curState, "@", -1, nil);
+        retObj = resultObj;
+    }
+    lua_pop(_curState, 1);
+    return retObj;
+}
+
+- (BOOL)loadFile:(NSString*)file
+{
+    if (nil != file) {
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:file ofType:@"lua"];
+        NSString *content = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        self.scriptFiles[file] = file;
+        [self loadText:content];
+    }
+    return NO;
 }
 
 - (BOOL)loadText:(NSString*)text
@@ -50,35 +95,5 @@ LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s);
         return YES;
     }
     return NO;
-}
-
-- (NSDictionary*)executeScript:(NSDictionary *)scriptNode
-{
-    NSString *method = [scriptNode objectForKey:kMFMethodKey];
-    NSDictionary *params = [scriptNode objectForKey:kMFParamsKey];
-    NSString *fileName = [scriptNode objectForKey:kMFScriptFileNameKey];
-    NSString *contents = [scriptNode objectForKey:kMFScriptFileContentKey];
-
-    lua_getglobal(_curState, [method UTF8String]);
-    wax_fromInstance(_curState, params);
-
-    if (0 != wax_pcall(_curState, 1, 1)) {
-        const char *msg = lua_tostring(_curState, -1);
-        NSString* value = [NSString stringWithUTF8String:msg];
-        NSLog(@"%@", value);
-    }
-
-    const char * retStr =lua_tostring(_curState,-1);//返回的是lua返回的字符串
-    if (retStr) {
-        NSString * resultStr = [NSString stringWithUTF8String:retStr];
-        lua_pop(_curState, 1);
-        NSData* data = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *error = nil;
-        id result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        if (error != nil) return nil;
-        return result;
-    }
-    lua_pop(_curState, 1);
-    return nil;
 }
 @end

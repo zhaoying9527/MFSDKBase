@@ -9,7 +9,6 @@
 #import "MFSceneFactory.h"
 #import "HTMLNode.h"
 #import "UIView+UUID.h"
-#import "UIView+Events.h"
 #import "UIView+Sizes.h"
 #import "MFHelper.h"
 #import "MFLabel.h"
@@ -64,11 +63,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         }
         if ([widget respondsToSelector:@selector(setAlpha:)]) {
             [widget setAlpha:1.0];
-        }
-
-        //绑定事件
-        for(NSString *event in domObj.eventNodes.allKeys) {
-            [widget attachEvent:event handlerName:domObj.eventNodes[event]];
         }
         
         [widget setUUID:uuid];
@@ -213,9 +207,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     }else if ([propertyName isEqualToString:@"font"]) {
         retObj = [MFHelper formatFontWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"image"]) {
-        retObj = [UIImage imageNamed:propertyValue];
+        retObj = [MFHelper formatImageWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"backgroundImage"]) {
-        retObj = [UIImage imageNamed:propertyValue];
+        retObj = [MFHelper formatImageWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"align"]) {
         MFAlignmentType alignment = [MFHelper formatAlignmentWithString:propertyValue];
         retObj = [NSNumber numberWithInt:alignment];
@@ -242,6 +236,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         support = YES;
     }
     return support;
+}
+
+- (MFImageView*)createImageView
+{
+    MFImageView *retImageView = [[MFImageView alloc] initWithFrame:CGRectZero];
+    retImageView.opaque = YES;
+    retImageView.corner = NO;
+    return retImageView;
 }
 @end
 

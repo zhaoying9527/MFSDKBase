@@ -121,7 +121,6 @@
     }
 
     return retHeight;
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,7 +139,6 @@
         if (nil != sceneCanvas) {
             [cell.contentView addSubview:sceneCanvas];
         }
-    
     }
     //数据绑定
     [self.scene bind:cell.contentView withDataSource:self.scene.dataArray[indexPath.section]];

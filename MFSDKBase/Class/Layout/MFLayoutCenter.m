@@ -115,7 +115,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 - (CGRect)layoutInfoOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo
 {
     NSString *clsType = [dom.clsType lowercaseString];
-    NSString *domID = [dom.htmlNodes getAttributeNamed:KEYWORD_ID];
+    NSString *domID = dom.uuid;
     NSString *dataKey = dom.bindingField;
     NSDictionary *cssItem = dom.cssNodes;
     //dom.dataField = dataSource[dataKey];

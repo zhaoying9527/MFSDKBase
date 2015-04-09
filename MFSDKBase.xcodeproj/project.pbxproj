@@ -67,8 +67,6 @@
 		23F385BB1AD4C247002A8F32 /* MFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385891AD4C247002A8F32 /* MFLabel.m */; };
 		23F385BC1AD4C247002A8F32 /* MFRichLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3858B1AD4C247002A8F32 /* MFRichLabel.m */; };
 		23F385BD1AD4C247002A8F32 /* MFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3858D1AD4C247002A8F32 /* MFView.m */; };
-		23F385BE1AD4C247002A8F32 /* MFVoiceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3858F1AD4C247002A8F32 /* MFVoiceLabel.m */; };
-		23F385C41AD4C247002A8F32 /* UIView+Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3859F1AD4C247002A8F32 /* UIView+Events.m */; };
 		23F385C51AD4C247002A8F32 /* MFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385A21AD4C247002A8F32 /* MFViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -189,10 +187,6 @@
 		23F3858B1AD4C247002A8F32 /* MFRichLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFRichLabel.m; sourceTree = "<group>"; };
 		23F3858C1AD4C247002A8F32 /* MFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFView.h; sourceTree = "<group>"; };
 		23F3858D1AD4C247002A8F32 /* MFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFView.m; sourceTree = "<group>"; };
-		23F3858E1AD4C247002A8F32 /* MFVoiceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFVoiceLabel.h; sourceTree = "<group>"; };
-		23F3858F1AD4C247002A8F32 /* MFVoiceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFVoiceLabel.m; sourceTree = "<group>"; };
-		23F3859E1AD4C247002A8F32 /* UIView+Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Events.h"; sourceTree = "<group>"; };
-		23F3859F1AD4C247002A8F32 /* UIView+Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Events.m"; sourceTree = "<group>"; };
 		23F385A11AD4C247002A8F32 /* MFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFViewController.h; sourceTree = "<group>"; };
 		23F385A21AD4C247002A8F32 /* MFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -523,8 +517,6 @@
 				23F3858B1AD4C247002A8F32 /* MFRichLabel.m */,
 				23F3858C1AD4C247002A8F32 /* MFView.h */,
 				23F3858D1AD4C247002A8F32 /* MFView.m */,
-				23F3858E1AD4C247002A8F32 /* MFVoiceLabel.h */,
-				23F3858F1AD4C247002A8F32 /* MFVoiceLabel.m */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -533,8 +525,6 @@
 			isa = PBXGroup;
 			children = (
 				23E94F451AD634FC006B2946 /* Third-party */,
-				23F3859E1AD4C247002A8F32 /* UIView+Events.h */,
-				23F3859F1AD4C247002A8F32 /* UIView+Events.m */,
 				1CB259941AD572DF002BE0B1 /* NSObject+DOM.h */,
 				1CB259951AD572DF002BE0B1 /* NSObject+DOM.m */,
 			);
@@ -676,7 +666,6 @@
 				1CE2F37D1AD4D6BF00E27AA8 /* MFLayoutNode.m in Sources */,
 				23F385BC1AD4C247002A8F32 /* MFRichLabel.m in Sources */,
 				23F385BA1AD4C247002A8F32 /* MFImageView.m in Sources */,
-				23F385BE1AD4C247002A8F32 /* MFVoiceLabel.m in Sources */,
 				23F385B21AD4C247002A8F32 /* MFCorePlugInFactory.m in Sources */,
 				23F385AC1AD4C247002A8F32 /* MFPlugIn.m in Sources */,
 				23F385AF1AD4C247002A8F32 /* MFParser.m in Sources */,
@@ -697,7 +686,6 @@
 				231BE4511ACFC60000B65A58 /* main.m in Sources */,
 				23F385BB1AD4C247002A8F32 /* MFLabel.m in Sources */,
 				1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */,
-				23F385C41AD4C247002A8F32 /* UIView+Events.m in Sources */,
 				23F385C51AD4C247002A8F32 /* MFViewController.m in Sources */,
 				23F385B11AD4C247002A8F32 /* MFScript.m in Sources */,
 				23F385B61AD4C247002A8F32 /* MFAudioLabel.m in Sources */,

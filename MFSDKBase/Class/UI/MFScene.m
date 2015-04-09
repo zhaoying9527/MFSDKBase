@@ -22,11 +22,13 @@
 @property (nonatomic,strong)NSMutableDictionary *doms;
 @property (nonatomic,strong)NSMutableDictionary *layoutDict;
 @end
+
 @implementation MFScene
 
-- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
+- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withSceneName:(NSString *)sceneName
 {
     if (self = [super init]) {
+        self.sceneName = sceneName;
         self.doms = [NSMutableDictionary dictionary];
         for (HTMLNode *htmlNode in (NSArray*)html) {
             if ([[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:htmlNode.tagName]) {
@@ -60,8 +62,6 @@
 
     return dom;
 }
-
-
 
 - (MFDOM*)findDomWithID:(NSString*)ID
 {

@@ -10,15 +10,18 @@
 #import "MFCorePlugInService.h"
 
 @implementation MFBridge
-- (void)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType
+- (id)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType
 {
     //lua
-    if (scriptType == 1) {
+    if (MFSDK_SCRIPT_LUA == scriptType) {
         MFLuaScript *plugin = (MFLuaScript *)[[[MFCorePlugInService alloc] init] findPlugInWithType:MFSDK_PLUGIN_LUA];
-        NSDictionary *result = [plugin executeScript:scriptNode];
+        id result = [plugin executeScript:scriptNode];
         NSLog(@"Lua result:%@", result);
+        return result;
     }
+    return nil;
 
+    
     //js
 }
 @end

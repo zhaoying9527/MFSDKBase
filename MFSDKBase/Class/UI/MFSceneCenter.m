@@ -27,6 +27,14 @@
 @implementation MFSceneCenter
 SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        self.scenes = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
+
 - (MFScene*)addSceneWithName:(NSString*)sceneName
 {
     self.sceneName = sceneName;
@@ -41,6 +49,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
 - (MFScene*)sceneWithName:(NSString*)sceneName
 {
     return [self.scenes objectForKey:sceneName];
+}
+
+- (MFScene*)currentScene
+{
+    return [self.scenes objectForKey:self.sceneName];
 }
 
 - (MFScene*)loadScene
@@ -64,7 +77,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     result_events = [self parseEvent:result_h5];
     
     //加载场景
-    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyEntity] withCss:result_css withDataBinding:result_databinding withEvents:result_events];
+    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyEntity] withCss:result_css withDataBinding:result_databinding withEvents:result_events withSceneName:self.sceneName];
 }
 
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error

@@ -12,5 +12,5 @@
 @interface MFDispatchCenter : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFDispatchCenter)
 - (void)executeAction:(NSDictionary*)actionNode;
-- (void)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType;
+- (id)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType;
 @end

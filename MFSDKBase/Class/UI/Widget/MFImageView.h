@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface MFImageView : UIImageView
-
+@property (nonatomic, assign)BOOL corner;
+@property (nonatomic, assign)BOOL aspectFit;
+@property (nonatomic, assign)BOOL touchEnabled;
+@property (nonatomic, assign)BOOL side;
+@property (nonatomic, copy)NSString* style;
+@property (nonatomic, assign)NSInteger alignmentType;
+@property (nonatomic, assign)NSInteger align;
+@property (nonatomic, assign)CGFloat cornerRadius;
+@property (nonatomic, assign)CGFloat borderWidth;
+@property (nonatomic, strong)UIColor *borderColor;
 @end

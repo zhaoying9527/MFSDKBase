@@ -10,5 +10,5 @@
 #import "MFScript.h"
 @interface MFLuaScript : MFScript
 - (BOOL)loadText:(NSString*)text;
-- (NSDictionary*)executeScript:(NSDictionary *)scriptNode;
+- (id)executeScript:(NSDictionary *)scriptNode;
 @end

@@ -5,7 +5,7 @@
 #define MFSDK_MFDEFINE_h
 
 #define kNotificationDidChangeMediaState        @"kNotificationDidChangeMediaState"
-#define DEFAULTICON                             [PKResourceCenter imageNamed:@"headIcon.png"]
+#define DEFAULTICON                             [MFResourceCenter imageNamed:@"headIcon.png"]
 #define DEFAULTICONNAME                         @"headIcon.png"
 
 //模版id
@@ -62,6 +62,13 @@
 #define cellHeaderFontSize                      12
 #define cellFooterFontSize                      13
 
+#define kMFOnKeyLongPressEventKey               @"onKeyLongPress"
+#define kMFOnClickEventKey                      @"onclick"
+#define kMFOnSwipeEventKey                      @"onswipe"
+#define kMFOnLoadEventKey                       @"onload"
+#define kMFOnUnloadEventKey                     @"onunload"
+#define kMFOnPageShowEventKey                   @"onpageshow"
+#define kMFOnPageHideEventKey                   @"onpagehide"
 
 typedef enum {
     MFBGImageTypeWhite = 0,

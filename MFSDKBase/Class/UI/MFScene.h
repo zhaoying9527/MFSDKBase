@@ -18,7 +18,7 @@
 @property (nonatomic,strong)NSString *sceneName;
 @property (nonatomic,strong)NSMutableArray *dataArray;
 //
-- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
+- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withSceneName:(NSString *)sceneName;
 //
 - (MFDOM*)findDomWithID:(NSString*)ID;
 //

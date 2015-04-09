@@ -45,6 +45,7 @@
 + (NSNumber*)formatTouchEnableWithString:(NSString*)touchEnable;
 + (NSNumber*)formatVisibilityWithString:(NSString*)visibility;
 + (UIFont*)formatFontWithString:(NSString*)font;
++ (UIImage *)formatImageWithString:(NSString*)imageUrl;
 + (MFLayoutType)formatLayoutWithString:(NSString*)layout;
 
 + (NSString*)formatDate:(NSDate*)date;

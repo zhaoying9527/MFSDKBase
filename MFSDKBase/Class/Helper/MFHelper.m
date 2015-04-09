@@ -4,6 +4,7 @@
 #import "MFHelper.h"
 #import "MFDefine.h"
 #import "MFLayoutCenter.h"
+#import "MFResourceCenter.h"
 
 @implementation MFHelper
 
@@ -415,6 +416,12 @@
         retFont = fontWeight ? [UIFont boldSystemFontOfSize:fontSize] : [UIFont systemFontOfSize:fontSize];
     }
     return retFont;
+}
+
++ (UIImage *)formatImageWithString:(NSString*)imageUrl
+{
+    NSString *trimUrl = [imageUrl stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"url()"]];
+    return [MFResourceCenter imageNamed:trimUrl];
 }
 
 + (MFLayoutType)formatLayoutWithString:(NSString*)layout
