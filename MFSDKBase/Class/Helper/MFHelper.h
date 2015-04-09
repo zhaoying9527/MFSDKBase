@@ -36,7 +36,7 @@
 
 + (NSString*)getFrameStringWithStyle:(NSDictionary*)styleDict;
 + (CGRect)formatRectWithString:(NSString*)rectString;
-+ (CGRect)formatRectWithString:(NSString*)rectString parentFrame:(CGRect)frame;
++ (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)frame;
 
 + (MFAlignmentType)formatAlignmentWithString:(NSString*)alignmentString;
 + (NSTextAlignment)formatTextAlignmentWithString:(NSString*)textAlignmentString;
@@ -69,4 +69,5 @@
 + (NSString*)sectionHeaderKey:(NSString*)sourceKey;
 + (NSString*)sectionFooterKey:(NSString*)sourceKey;
 
++ (BOOL)isAdd:(UIView*)superView subView:(UIView*)subView;
 @end

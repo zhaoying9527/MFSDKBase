@@ -18,5 +18,5 @@
 @property (nonatomic,strong)NSString *sceneName;
 @property (nonatomic,strong)MFDOM *dom;
 - (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
-
+- (MFDOM*)findDomWithID:(NSString*)ID;
 @end

@@ -9,9 +9,10 @@
 #import "MFScene.h"
 #import "HTMLNode.h"
 #import "HTMLParser.h"
-#import "MFDOM.h"
 #import "MFSceneFactory.h"
 #import "NSObject+DOM.h"
+#import "MFDefine.h"
+#import "MFDOM.h"
 @implementation MFScene
 
 - (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
@@ -24,50 +25,40 @@
 
 - (MFDOM*)loadDom:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
 {
-    HTMLNode *htmlNode = (HTMLNode*)html;
-    if (!htmlNode) {
+    HTMLNode *htmlNode2 = (HTMLNode*)html;
+    if (!htmlNode2) {
         return nil;
     }
-    
-    __block NSString *key = [htmlNode getAttributeNamed:@"id"];
-    MFDOM *dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[key] withDataBinding:dataBinding[key]  withEvents:events[key]];
-    dom.clsType = htmlNode.tagName;
-    NSLog(@"Dom tag: %@", htmlNode.tagName);
+    MFDOM *dom = nil;
+    NSArray *htmlList = (NSArray*)html;
+    for (HTMLNode *htmlNode in htmlList) {
+        __block NSString *key = [htmlNode getAttributeNamed:KEYWORD_ID];
+        dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[key] withDataBinding:dataBinding[key] withEvents:events[key]];
+        dom.clsType = htmlNode.tagName;
+        dom.objReference = [[MFSceneFactory sharedMFSceneFactory] createWidgetWithDOM:dom];
 
-    [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
-        key = [childNode getAttributeNamed:@"id"];
-        MFDOM *childDom = nil;
-        if (nil != key) {
-            childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
-            NSLog(@"Dom tag: %@", childNode.tagName);
-            //双向绑定
-            [childDom setObjReference:[[MFSceneFactory sharedMFSceneFactory] createUiWithDOM:childDom]];
-            [childDom.objReference attachDOM:childDom];
+        [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
+            key = [childNode getAttributeNamed:KEYWORD_ID];
+            MFDOM *childDom = nil;
+            if (nil != key) {
+                childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
+                NSLog(@"Dom tag: %@", childNode.tagName);
+                //双向绑定
+                [childDom setObjReference:[[MFSceneFactory sharedMFSceneFactory] createWidgetWithDOM:childDom]];
+                [childDom.objReference attachDOM:childDom];
+                [dom addSubDom:childDom];
+            }
+        }];
         
-            [dom addSubDom:childDom];
-        }
-    }];
+    }
 
+    
+    
     return dom;
 }
 
+- (MFDOM*)findDomWithID:(NSString*)ID
+{
+    return [self.dom findSubDomWithID:ID];
+}
 @end
-
-//
-//@property (nonatomic,strong)NSString *htmlNodes;
-////布局信息节点
-//@property (nonatomic,strong)NSDictionary *cssNodes;
-////绑定事件节点
-//@property (nonatomic,strong)NSDictionary *eventNodes;
-////绑定字段节点
-//@property (nonatomic,strong)NSString *bindingField;
-//
-////绑定对象
-//@property (nonatomic,strong)id objReference;
-////绑定类别
-//@property (nonatomic,strong)NSString *typeString;
-////扩展信息节点
-//@property (nonatomic,strong)NSDictionary *params;
-//
-////子对象
-//@property (nonatomic, strong) NSMutableArray *subDoms;

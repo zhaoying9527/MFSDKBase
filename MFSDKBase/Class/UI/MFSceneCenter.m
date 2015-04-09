@@ -9,7 +9,7 @@
 #import "MFSceneCenter.h"
 #import "MFCorePlugInService.h"
 #import "MFSceneFactory.h"
-#import "HTMLParser.h"
+#import "MFHTMLParser.h"
 #import "MFHtmlParser.h"
 #import "MFCssParser.h"
 #import "MFLuaScript.h"
@@ -20,7 +20,6 @@
 
 @property (nonatomic, strong)MFCorePlugInService *pluginService;
 @property (nonatomic, copy) NSString *sceneName;
-//- (MFDOM*)loadDOM;
 - (MFScene*)loadScene;
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error;
 @end
@@ -52,13 +51,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, self.sceneName];
     NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, self.sceneName];
     NSString *dataBindingPath = [NSString stringWithFormat:@"%@/%@.dataBinding", bundlePath, self.sceneName];
-    NSString *luaPath = [NSString stringWithFormat:@"%@/%@.lua", bundlePath, self.sceneName];
     
-    HTMLParser *result_h5 = nil;
+    MFHtmlParser *result_h5 = nil;
     id result_css = nil;
     id result_databinding = nil;
     id result_events = nil;
-    
     
     NSError *error;
     result_h5 = [self parse:MFSDK_PLUGIN_HTML withPath:htmlPath error:&error];
@@ -67,12 +64,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     result_events = [self parseEvent:result_h5];
     
     /*
+    NSString *luaPath = [NSString stringWithFormat:@"%@/%@.lua", bundlePath, self.sceneName];     
     MFLuaScript *luaScript = (MFLuaScript *)[self.pluginService findPlugInWithType:MFSDK_PLUGIN_LUA];
     [luaScript loadText:[NSString stringWithContentsOfFile:luaPath encoding:NSUTF8StringEncoding error:&error]]; */
     
     //加载场景
-    return [[MFScene alloc] initWithDomNodes:result_h5.body withCss:result_css withDataBinding:result_databinding withEvents:result_events];
-    
+    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyList] withCss:result_css withDataBinding:result_databinding withEvents:result_events];
 }
 
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error

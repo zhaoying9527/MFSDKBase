@@ -15,6 +15,11 @@
 		1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */; };
 		1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */; };
 		1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3891AD518CD00E27AA8 /* MFScene.m */; };
+		1CE933191AD62FD6001BE962 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE933101AD62FD6001BE962 /* ESCssParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1CE9331A1AD62FD6001BE962 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE933111AD62FD6001BE962 /* ESCssTokenizer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1CE9331B1AD62FD6001BE962 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE933131AD62FD6001BE962 /* ESCssTokens.m */; };
+		1CE9331C1AD62FD6001BE962 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE933161AD62FD6001BE962 /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1CE9331D1AD62FD6001BE962 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE933181AD62FD6001BE962 /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		231BE4511ACFC60000B65A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4501ACFC60000B65A58 /* main.m */; };
 		231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4531ACFC60000B65A58 /* AppDelegate.m */; };
 		231BE4571ACFC60000B65A58 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4561ACFC60000B65A58 /* ViewController.m */; };
@@ -36,7 +41,6 @@
 		23F385431AD42D28002A8F32 /* Master.html in Resources */ = {isa = PBXBuildFile; fileRef = 23F385371AD42D28002A8F32 /* Master.html */; };
 		23F385441AD42D28002A8F32 /* Master.lua in Resources */ = {isa = PBXBuildFile; fileRef = 23F385381AD42D28002A8F32 /* Master.lua */; };
 		23F385451AD42D28002A8F32 /* Master.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F385391AD42D28002A8F32 /* Master.plist */; };
-		23F385A31AD4C247002A8F32 /* MFDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3854F1AD4C247002A8F32 /* MFDataBinding.m */; };
 		23F385A41AD4C247002A8F32 /* MFBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385521AD4C247002A8F32 /* MFBridge.m */; };
 		23F385A51AD4C247002A8F32 /* MFDispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385541AD4C247002A8F32 /* MFDispatchCenter.m */; };
 		23F385A61AD4C247002A8F32 /* MFHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385581AD4C247002A8F32 /* MFHelper.m */; };
@@ -64,11 +68,6 @@
 		23F385BC1AD4C247002A8F32 /* MFRichLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3858B1AD4C247002A8F32 /* MFRichLabel.m */; };
 		23F385BD1AD4C247002A8F32 /* MFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3858D1AD4C247002A8F32 /* MFView.m */; };
 		23F385BE1AD4C247002A8F32 /* MFVoiceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3858F1AD4C247002A8F32 /* MFVoiceLabel.m */; };
-		23F385BF1AD4C247002A8F32 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385951AD4C247002A8F32 /* ESCssParser.m */; };
-		23F385C01AD4C247002A8F32 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385961AD4C247002A8F32 /* ESCssTokenizer.m */; };
-		23F385C11AD4C247002A8F32 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385981AD4C247002A8F32 /* ESCssTokens.m */; };
-		23F385C21AD4C247002A8F32 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3859B1AD4C247002A8F32 /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		23F385C31AD4C247002A8F32 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3859D1AD4C247002A8F32 /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23F385C41AD4C247002A8F32 /* UIView+Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3859F1AD4C247002A8F32 /* UIView+Events.m */; };
 		23F385C51AD4C247002A8F32 /* MFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385A21AD4C247002A8F32 /* MFViewController.m */; };
 /* End PBXBuildFile section */
@@ -101,6 +100,15 @@
 		1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDOM.m; sourceTree = "<group>"; };
 		1CE2F3881AD518CD00E27AA8 /* MFScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFScene.h; sourceTree = "<group>"; };
 		1CE2F3891AD518CD00E27AA8 /* MFScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFScene.m; sourceTree = "<group>"; };
+		1CE9330F1AD62FD6001BE962 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
+		1CE933101AD62FD6001BE962 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
+		1CE933111AD62FD6001BE962 /* ESCssTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokenizer.m; sourceTree = "<group>"; };
+		1CE933121AD62FD6001BE962 /* ESCssTokens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssTokens.h; sourceTree = "<group>"; };
+		1CE933131AD62FD6001BE962 /* ESCssTokens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokens.m; sourceTree = "<group>"; };
+		1CE933151AD62FD6001BE962 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		1CE933161AD62FD6001BE962 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		1CE933171AD62FD6001BE962 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		1CE933181AD62FD6001BE962 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		231BE44B1ACFC60000B65A58 /* MFSDKBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFSDKBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		231BE44F1ACFC60000B65A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		231BE4501ACFC60000B65A58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -128,8 +136,6 @@
 		23F385371AD42D28002A8F32 /* Master.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Master.html; path = MFSDKBase/scripts/Master.html; sourceTree = SOURCE_ROOT; };
 		23F385381AD42D28002A8F32 /* Master.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Master.lua; path = MFSDKBase/scripts/Master.lua; sourceTree = SOURCE_ROOT; };
 		23F385391AD42D28002A8F32 /* Master.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Master.plist; path = MFSDKBase/scripts/Master.plist; sourceTree = SOURCE_ROOT; };
-		23F3854E1AD4C247002A8F32 /* MFDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDataBinding.h; sourceTree = "<group>"; };
-		23F3854F1AD4C247002A8F32 /* MFDataBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDataBinding.m; sourceTree = "<group>"; };
 		23F385511AD4C247002A8F32 /* MFBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBridge.h; sourceTree = "<group>"; };
 		23F385521AD4C247002A8F32 /* MFBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBridge.m; sourceTree = "<group>"; };
 		23F385531AD4C247002A8F32 /* MFDispatchCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDispatchCenter.h; sourceTree = "<group>"; };
@@ -185,15 +191,6 @@
 		23F3858D1AD4C247002A8F32 /* MFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFView.m; sourceTree = "<group>"; };
 		23F3858E1AD4C247002A8F32 /* MFVoiceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFVoiceLabel.h; sourceTree = "<group>"; };
 		23F3858F1AD4C247002A8F32 /* MFVoiceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFVoiceLabel.m; sourceTree = "<group>"; };
-		23F385941AD4C247002A8F32 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
-		23F385951AD4C247002A8F32 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
-		23F385961AD4C247002A8F32 /* ESCssTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokenizer.m; sourceTree = "<group>"; };
-		23F385971AD4C247002A8F32 /* ESCssTokens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssTokens.h; sourceTree = "<group>"; };
-		23F385981AD4C247002A8F32 /* ESCssTokens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokens.m; sourceTree = "<group>"; };
-		23F3859A1AD4C247002A8F32 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
-		23F3859B1AD4C247002A8F32 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
-		23F3859C1AD4C247002A8F32 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
-		23F3859D1AD4C247002A8F32 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		23F3859E1AD4C247002A8F32 /* UIView+Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Events.h"; sourceTree = "<group>"; };
 		23F3859F1AD4C247002A8F32 /* UIView+Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Events.m"; sourceTree = "<group>"; };
 		23F385A11AD4C247002A8F32 /* MFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFViewController.h; sourceTree = "<group>"; };
@@ -246,6 +243,39 @@
 			path = Class/App;
 			sourceTree = "<group>";
 		};
+		1CE9330D1AD62FD6001BE962 /* ESCssParser */ = {
+			isa = PBXGroup;
+			children = (
+				1CE9330E1AD62FD6001BE962 /* Parser */,
+			);
+			name = ESCssParser;
+			path = "../../../../../MFSDKBase----/MFSDKBase/Class/Utils/third-party/ESCssParser";
+			sourceTree = "<group>";
+		};
+		1CE9330E1AD62FD6001BE962 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				1CE9330F1AD62FD6001BE962 /* ESCssParser.h */,
+				1CE933101AD62FD6001BE962 /* ESCssParser.m */,
+				1CE933111AD62FD6001BE962 /* ESCssTokenizer.m */,
+				1CE933121AD62FD6001BE962 /* ESCssTokens.h */,
+				1CE933131AD62FD6001BE962 /* ESCssTokens.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		1CE933141AD62FD6001BE962 /* HTMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				1CE933151AD62FD6001BE962 /* HTMLNode.h */,
+				1CE933161AD62FD6001BE962 /* HTMLNode.m */,
+				1CE933171AD62FD6001BE962 /* HTMLParser.h */,
+				1CE933181AD62FD6001BE962 /* HTMLParser.m */,
+			);
+			name = HTMLParser;
+			path = "../../../../../MFSDKBase----/MFSDKBase/Class/Utils/third-party/HTMLParser";
+			sourceTree = "<group>";
+		};
 		231BE4421ACFC60000B65A58 = {
 			isa = PBXGroup;
 			children = (
@@ -270,7 +300,6 @@
 			children = (
 				1CE2F3811AD4D8BA00E27AA8 /* App */,
 				1CE2F3741AD4D66C00E27AA8 /* DOM */,
-				23F3854D1AD4C247002A8F32 /* DataBinding */,
 				23F385501AD4C247002A8F32 /* Event */,
 				23F385551AD4C247002A8F32 /* Helper */,
 				23F385611AD4C247002A8F32 /* Layout */,
@@ -360,16 +389,6 @@
 				23F3852D1AD42C68002A8F32 /* MFSDK.bundle */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		23F3854D1AD4C247002A8F32 /* DataBinding */ = {
-			isa = PBXGroup;
-			children = (
-				23F3854E1AD4C247002A8F32 /* MFDataBinding.h */,
-				23F3854F1AD4C247002A8F32 /* MFDataBinding.m */,
-			);
-			name = DataBinding;
-			path = Class/DataBinding;
 			sourceTree = "<group>";
 		};
 		23F385501AD4C247002A8F32 /* Event */ = {
@@ -519,41 +538,10 @@
 		23F385911AD4C247002A8F32 /* Third-party */ = {
 			isa = PBXGroup;
 			children = (
-				23F385921AD4C247002A8F32 /* ESCssParser */,
-				23F385991AD4C247002A8F32 /* HTMLParser */,
+				1CE9330D1AD62FD6001BE962 /* ESCssParser */,
+				1CE933141AD62FD6001BE962 /* HTMLParser */,
 			);
 			path = "Third-party";
-			sourceTree = "<group>";
-		};
-		23F385921AD4C247002A8F32 /* ESCssParser */ = {
-			isa = PBXGroup;
-			children = (
-				23F385931AD4C247002A8F32 /* Parser */,
-			);
-			path = ESCssParser;
-			sourceTree = "<group>";
-		};
-		23F385931AD4C247002A8F32 /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				23F385941AD4C247002A8F32 /* ESCssParser.h */,
-				23F385951AD4C247002A8F32 /* ESCssParser.m */,
-				23F385961AD4C247002A8F32 /* ESCssTokenizer.m */,
-				23F385971AD4C247002A8F32 /* ESCssTokens.h */,
-				23F385981AD4C247002A8F32 /* ESCssTokens.m */,
-			);
-			path = Parser;
-			sourceTree = "<group>";
-		};
-		23F385991AD4C247002A8F32 /* HTMLParser */ = {
-			isa = PBXGroup;
-			children = (
-				23F3859A1AD4C247002A8F32 /* HTMLNode.h */,
-				23F3859B1AD4C247002A8F32 /* HTMLNode.m */,
-				23F3859C1AD4C247002A8F32 /* HTMLParser.h */,
-				23F3859D1AD4C247002A8F32 /* HTMLParser.m */,
-			);
-			path = HTMLParser;
 			sourceTree = "<group>";
 		};
 		23F385A01AD4C247002A8F32 /* ViewController */ = {
@@ -678,30 +666,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F385C21AD4C247002A8F32 /* HTMLNode.m in Sources */,
 				23F385B91AD4C247002A8F32 /* MFEmojiView.m in Sources */,
 				231BE4571ACFC60000B65A58 /* ViewController.m in Sources */,
 				23F385AB1AD4C247002A8F32 /* MFLayoutCenter.m in Sources */,
 				1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */,
+				1CE9331D1AD62FD6001BE962 /* HTMLParser.m in Sources */,
+				1CE9331C1AD62FD6001BE962 /* HTMLNode.m in Sources */,
 				23F385A71AD4C247002A8F32 /* MFResourceCenter.m in Sources */,
 				231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */,
 				23F385B71AD4C247002A8F32 /* MFButton.m in Sources */,
 				1CE2F37D1AD4D6BF00E27AA8 /* MFLayoutNode.m in Sources */,
-				23F385C01AD4C247002A8F32 /* ESCssTokenizer.m in Sources */,
 				23F385BC1AD4C247002A8F32 /* MFRichLabel.m in Sources */,
 				23F385BA1AD4C247002A8F32 /* MFImageView.m in Sources */,
 				23F385BE1AD4C247002A8F32 /* MFVoiceLabel.m in Sources */,
 				23F385B21AD4C247002A8F32 /* MFCorePlugInFactory.m in Sources */,
 				23F385AC1AD4C247002A8F32 /* MFPlugIn.m in Sources */,
-				23F385C31AD4C247002A8F32 /* HTMLParser.m in Sources */,
+				1CE933191AD62FD6001BE962 /* ESCssParser.m in Sources */,
 				23F385AF1AD4C247002A8F32 /* MFParser.m in Sources */,
+				1CE9331A1AD62FD6001BE962 /* ESCssTokenizer.m in Sources */,
 				23F385A91AD4C247002A8F32 /* UIView+Sizes.m in Sources */,
 				1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */,
 				1CB259961AD572DF002BE0B1 /* NSObject+DOM.m in Sources */,
 				23F385B31AD4C247002A8F32 /* MFCorePlugInService.m in Sources */,
 				23F385B01AD4C247002A8F32 /* MFLuaScript.m in Sources */,
 				23F385AA1AD4C247002A8F32 /* UIView+UUID.m in Sources */,
-				23F385A31AD4C247002A8F32 /* MFDataBinding.m in Sources */,
+				1CE9331B1AD62FD6001BE962 /* ESCssTokens.m in Sources */,
 				1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */,
 				23F385B81AD4C247002A8F32 /* MFCell.m in Sources */,
 				1CE2F3771AD4D69500E27AA8 /* MFEventNode.m in Sources */,
@@ -711,7 +700,6 @@
 				23F385BB1AD4C247002A8F32 /* MFLabel.m in Sources */,
 				1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */,
 				23F385C41AD4C247002A8F32 /* UIView+Events.m in Sources */,
-				23F385BF1AD4C247002A8F32 /* ESCssParser.m in Sources */,
 				23F385C51AD4C247002A8F32 /* MFViewController.m in Sources */,
 				23F385B11AD4C247002A8F32 /* MFScript.m in Sources */,
 				23F385B61AD4C247002A8F32 /* MFAudioLabel.m in Sources */,
@@ -721,7 +709,6 @@
 				1CE2F37A1AD4D6A700E27AA8 /* MFDataNode.m in Sources */,
 				23F385B41AD4C247002A8F32 /* MFSceneFactory.m in Sources */,
 				23F385A81AD4C247002A8F32 /* MFStrategyCenter.m in Sources */,
-				23F385C11AD4C247002A8F32 /* ESCssTokens.m in Sources */,
 				23F385A41AD4C247002A8F32 /* MFBridge.m in Sources */,
 				23F385BD1AD4C247002A8F32 /* MFView.m in Sources */,
 			);

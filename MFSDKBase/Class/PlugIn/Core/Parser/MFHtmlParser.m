@@ -27,7 +27,7 @@
 
 - (id)parse
 {
-    return _parser;
+    return self;
 }
 
 - (HTMLNode*)doc
@@ -50,4 +50,8 @@
     return [self.parser head];
 }
 
+- (NSArray*)bodyList
+{
+    return [[self.parser body] children];
+}
 @end

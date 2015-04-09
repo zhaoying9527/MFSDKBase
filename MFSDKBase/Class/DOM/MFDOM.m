@@ -9,6 +9,10 @@
 #import "MFDOM.h"
 #import "HTMLNode.h"
 #import "MFDefine.h"
+#import "MFLabel.h"
+#import "MFImageView.h"
+#import "MFHelper.h"
+#import "MFResourceCenter.h"
 @interface MFDOM()
 
 
@@ -20,7 +24,7 @@
     if (self = [super init]) {
         self.htmlNodes = html;
         self.cssNodes = css;
-        self.bindingField = dataBinding;
+        self.bindingField = [dataBinding objectForKey:@"dsKey"];
         self.eventNodes = events;
     }
     return self;
@@ -38,9 +42,41 @@
 }
 
 //双向数据交换
-- (void)updateDate:(BOOL)flag
+- (void)updateDate:(BOOL)flag inDataSource:(NSDictionary*)dataSource
 {
+
+    [self bindingDomToWidget:dataSource];
+ 
+}
+
+- (void)bindingDomToWidget:(NSDictionary*)dataSource
+{
+    //绑定数据
+    [self bindDataToWidget:self dataSource:dataSource];
     
+    for (MFDOM *subDomObj in self.subDoms) {
+        if (subDomObj.objReference) {
+            [self bindDataToWidget:subDomObj.objReference dataSource:dataSource];
+        }
+    }
+}
+
+- (void)bindDataToWidget:(id)widget dataSource:(NSDictionary*)dataSource
+{
+    if (nil == dataSource) {
+        return;
+    }
+    NSString *dataValue = dataSource[self.bindingField];
+    if ([widget isKindOfClass:[MFLabel class]]) {
+         ((MFLabel*)widget).text = dataValue;
+    } else if ([widget isKindOfClass:[MFImageView class]]) {
+        if ([MFHelper isURLString:dataValue]) {
+            //TODO;
+        } else {
+            UIImage *image = [MFResourceCenter imageNamed:dataValue];
+            ((MFImageView*)widget).image = image;
+        }
+    }
 }
 
 - (MFDOM*)findSubDomWithID:(NSString*)ID
@@ -51,7 +87,7 @@
     
     MFDOM *matchDom = nil;
     for (MFDOM *subDom in self.subDoms) {
-        matchDom = [self findSubDomWithID:ID];
+        matchDom = [subDom findSubDomWithID:ID];
         if (matchDom) {
             return matchDom;
         }
@@ -59,4 +95,9 @@
     return matchDom;
 }
 
+- (BOOL)isBindingToWidget
+{
+    
+    return YES;
+}
 @end

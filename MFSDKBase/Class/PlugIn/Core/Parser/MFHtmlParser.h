@@ -21,4 +21,6 @@
 
 //Returns the head tag
 - (HTMLNode*)head;
+
+- (NSArray*)bodyList;
 @end
