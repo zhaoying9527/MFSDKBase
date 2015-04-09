@@ -64,10 +64,10 @@
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.scriptName];
     NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
-    self.dataArray = [data objectForKey:@"data"];
+    self.scene.dataArray = [data objectForKey:@"data"];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self autoLayoutOperations:self.dataArray callback:^(NSDictionary *prepareLayoutDict, NSInteger prepareHeight) {
+        [self.scene autoLayoutOperations:self.dataArray callback:^(NSDictionary *prepareLayoutDict, NSInteger prepareHeight) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.indexPathDictionary = [NSMutableDictionary dictionaryWithDictionary:prepareLayoutDict];
                 [self.tableView reloadData];
@@ -98,7 +98,7 @@
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.dataArray count];
+    return [self.scene.dataArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -107,27 +107,26 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSDictionary *dataDict = self.dataArray[indexPath.section];
-//    NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-//    MFDOM *matchDom = [self.scene.doms findSubDomWithID:templateId];
-//
-//    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-//    NSInteger retHeight = [[[self.indexPathDictionary objectForKey:indexKey] objectForKey:KEY_WIDGET_HEIGHT] intValue];
-//    if (retHeight <= 0) {
-//        CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
-//        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
-//        [self.indexPathDictionary setObject:indexPathDict forKey:indexKey];
-//        retHeight = [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
-//    }
-//
-//    return retHeight;
-    
-    return 150.0f;
+    NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
+    NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
+    MFDOM *matchDom = [self.scene findDomWithID:templateId];
+
+    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+    NSInteger retHeight = [[[self.indexPathDictionary objectForKey:indexKey] objectForKey:KEY_WIDGET_HEIGHT] intValue];
+    if (retHeight <= 0) {
+        CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
+        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
+        [self.indexPathDictionary setObject:indexPathDict forKey:indexKey];
+        retHeight = [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
+    }
+
+    return retHeight;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dataDict = self.dataArray[indexPath.section];
+    NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
     
     NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
     //NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
@@ -144,7 +143,8 @@
     
     }
     //数据绑定
-    [self.scene bind:cell.contentView withDataSource:self.dataArray[indexPath.section]];
+    [self.scene bind:cell.contentView withDataSource:self.scene.dataArray[indexPath.section]];
+    [self.scene layout:cell.contentView];
 //    
 //    NSDictionary * sumLayoutInfo = [self.indexPathDictionary objectForKey:indexKey];
 //    NSDictionary * widgetSizeDict = sumLayoutInfo[KEY_WIDGET_SIZE];
@@ -155,26 +155,10 @@
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
 }
 
-- (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSDictionary*prepareLayoutDict,NSInteger prepareHeight))callback
-{
-    NSInteger retHeight = 0;
-    NSMutableDictionary * indexPathDictionary = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
-    for (int accessIndex=0; accessIndex < dataArray.count; accessIndex++) {
-        NSDictionary *dataDict = [dataArray objectAtIndex:accessIndex];
-        NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-        MFDOM *matchDom = [self.scene findDomWithID:templateId];
-        NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)accessIndex];
-
-        CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
-        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
-        [indexPathDictionary setObject:indexPathDict forKey:indexKey];
-        retHeight += [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
-    }
-    callback(indexPathDictionary, retHeight);
-}
 @end

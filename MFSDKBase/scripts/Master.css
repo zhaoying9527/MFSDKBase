@@ -1,7 +1,7 @@
 cell1
 {
     width:100%;
-    height:150;
+    height:200;
     background-color:RGB(216,216,216);
     border-color:LightGray;
     border-width:1;
@@ -13,8 +13,8 @@ cell1-label
     top:25px;
     left:160px;
     width:160;
-    height:55;
-    background-color:RGB(233,233,233);
+    height:50%;
+    background-color:RGB(23,233,233);
     color:Red;
     text-align:left;
     font:bold 17;
@@ -45,11 +45,11 @@ cell2-label
     left:200;
     width:100;
     height:50;
-    background-color:RGB(200,200,200);
+    background-color:RGB(200,0,200);
     color:Green;
     text-align:center;
-    font:bold 17;
-    numberOfLines:2;
+    font:bold 27;
+    numberOfLines:0;
 }
 
 cell2-image
@@ -76,11 +76,11 @@ cell3-label
     left:30;
     width:150;
     height:50;
-    background-color:RGB(206,206,206);
+    background-color:RGB(206,206,26);
     color:Orange;
     text-align:right;
     font:normal 17;
-    numberOfLines:1;
+    numberOfLines:0;
 }
 
 cell3-image

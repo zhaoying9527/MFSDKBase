@@ -16,7 +16,7 @@
 
 @interface MFScene : NSObject
 @property (nonatomic,strong)NSString *sceneName;
-@property (nonatomic,strong)NSMutableDictionary *doms;
+@property (nonatomic,strong)NSMutableArray *dataArray;
 //
 - (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
 //
@@ -26,6 +26,8 @@
 //
 - (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource;
 //
-- (void)layout;
+- (void)layout:(UIView*)view;
+
+- (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSDictionary*prepareLayoutDict,NSInteger prepareHeight))callback;
 
 @end
