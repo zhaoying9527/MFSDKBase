@@ -65,7 +65,7 @@
     NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.scriptName];
     NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
     self.dataArray = [data objectForKey:@"data"];
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self autoLayoutOperations:self.dataArray callback:^(NSDictionary *prepareLayoutDict, NSInteger prepareHeight) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -132,22 +132,22 @@
     NSString *identifier = templateId;
 
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
+    if (nil == cell) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
         cell.contentView.layer.borderWidth = 0.5;
         cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     }
-
+    
     MFDOM *matchDom = [self.scene.dom findSubDomWithID:templateId];
     NSDictionary * sumLayoutInfo = [self.indexPathDictionary objectForKey:indexKey];
     NSDictionary * widgetSizeDict = sumLayoutInfo[KEY_WIDGET_SIZE];
     NSInteger cellHeight = [sumLayoutInfo[KEY_WIDGET_HEIGHT] intValue];
     NSInteger cellWidth = [sumLayoutInfo[KEY_WIDGET_WIDTH] intValue];
-    [cell.contentView removeAllSubviews];
-    [cell setFrame:CGRectMake(0, 0, cellWidth, cellHeight)];
+    [cell setFrame:CGRectMake(0, 0, [MFHelper screenXY].width, cellHeight)];
 
     UIView *templateView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:matchDom sizeInfo:widgetSizeDict];
+    [cell.contentView removeAllSubviews];
     [cell.contentView addSubview:templateView];
     return cell;
 }

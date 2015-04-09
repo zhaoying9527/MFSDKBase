@@ -29,18 +29,17 @@
     if (!htmlNode) {
         return nil;
     }
-    
+
     __block NSString *key = [htmlNode getAttributeNamed:KEYWORD_ID];
     MFDOM *dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[key] withDataBinding:dataBinding[key] withEvents:events[key]];
     dom.clsType = htmlNode.tagName;
+    dom.objReference = [[MFSceneFactory sharedMFSceneFactory] createWidgetWithDOM:dom];
 
     [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
         key = [childNode getAttributeNamed:KEYWORD_ID];
         MFDOM *childDom = nil;
         if (nil != key) {
             childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
-            //创建控件
-            childDom.objReference = [[MFSceneFactory sharedMFSceneFactory] createWidgetWithDOM:childDom];
             [dom addSubDom:childDom];
         }
     }];

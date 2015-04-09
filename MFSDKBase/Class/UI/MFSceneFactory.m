@@ -84,8 +84,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     UIView *widget = domObj.objReference;
     [widget removeAllSubviews];
     NSString *uuid = [widget UUID];
-    CGRect frame = [sizeInfo[uuid] CGRectValue];
-    widget.frame = frame;
+    widget.frame = [sizeInfo[uuid] CGRectValue];
     //绑定数据
     [self bindDataToWidget:widget dataSource:domObj.dataSource];
     
