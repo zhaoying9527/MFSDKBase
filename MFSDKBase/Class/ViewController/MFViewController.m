@@ -1,4 +1,6 @@
 #import "MFViewController.h"
+#import "MFLayoutCenter.h"
+#import "MFSceneFactory.h"
 #import "HTMLParser.h"
 #import "ESCssParser.h"
 #import "UIView+Sizes.h"
@@ -6,9 +8,9 @@
 #import "MFBridge.h"
 #import "MFCell.h"
 #import "MFHelper.h"
-#import "MFLayoutCenter.h"
 #import "MFDOM.h"
 #import "MFScene.h"
+
 
 
 
@@ -107,29 +109,15 @@
 {
     NSDictionary *dataDict = self.dataArray[indexPath.section];
     NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-    NSDictionary *layoutDict = self.scene.dom.cssNodes;
-    NSDictionary *dataBinding = self.scene.dom.bindingField;
-    NSArray *matchNodes = [(HTMLNode *)self.scene.dom.htmlNodes findChildrenWithAttribute:KEYWORD_ID matchingName:templateId allowPartial:NO];
-    HTMLNode *pageNode = [matchNodes firstObject];
-    //MFDOM *matchDom = [self.scene.dom findSubDomWithID:templateId];
+    MFDOM *matchDom = [self.scene.dom findSubDomWithID:templateId];
 
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
     NSInteger retHeight = [[[self.indexPathDictionary objectForKey:indexKey] objectForKey:KEY_WIDGET_HEIGHT] intValue];
     if (retHeight <= 0) {
-        NSMutableDictionary *widgetDict = [NSMutableDictionary dictionary];
-        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] getLayoutInfoForPage:pageNode
-                                                                                       templateId:templateId
-                                                                                        styleDict:layoutDict
-                                                                                         dataDict:dataDict
-                                                                                      dataBinding:dataBinding
-                                                                                  parentViewFrame:CGRectMake(0, 0, [MFHelper screenXY].width, 0)
-                                                                                    retWidgetInfo:widgetDict];
-        
-
-        if (nil != indexKey) {
-            [self.indexPathDictionary setObject:indexPathDict forKey:indexKey];
-        }
-        retHeight =  [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
+        CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
+        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
+        [self.indexPathDictionary setObject:indexPathDict forKey:indexKey];
+        retHeight = [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
     }
 
     return retHeight;
@@ -139,63 +127,51 @@
 {
     NSDictionary *dataDict = self.dataArray[indexPath.section];
     
-    NSString *tempateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
+    NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    NSString *identifier = tempateId;
+    NSString *identifier = templateId;
 
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
+        cell.contentView.layer.borderWidth = 0.5;
+        cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     }
-    
-    NSArray *matchNodes = [(HTMLNode *)self.scene.dom.htmlNodes findChildrenWithAttribute:KEYWORD_ID matchingName:tempateId allowPartial:NO];
-    HTMLNode *pageNode = [matchNodes firstObject];
-    NSDictionary *layoutDict = self.scene.dom.cssNodes;
-    NSDictionary *dataBinding = self.scene.dom.bindingField;
-    NSDictionary *events = self.scene.dom.eventNodes;
 
-    NSDictionary * sumLayoutInfoItems = [self.indexPathDictionary objectForKey:indexKey];
-    NSDictionary * widgetSizeDict = [sumLayoutInfoItems objectForKey:KEY_WIDGET_SIZE];
-    NSInteger cellHeight = [[sumLayoutInfoItems objectForKey:KEY_WIDGET_HEIGHT] intValue];
-    NSInteger cellWidth = [[sumLayoutInfoItems objectForKey:KEY_WIDGET_WIDTH] intValue];
-    CGSize screenXY = [MFHelper screenXY];
-    [cell setFrame:CGRectMake(0, 0, screenXY.width , cellHeight)];
-    [cell setPageHeight:cellHeight];
-    [cell setPageWidth:cellWidth];
-    [cell createPage:tempateId pageNode:pageNode styleParams:layoutDict dataBinding:dataBinding events:events parentView:cell.contentView];
-    [cell setAutoLayoutSizeInfo:widgetSizeDict];
-    [cell bindingAndLayoutPageData:dataDict parentView:cell.contentView];
+    MFDOM *matchDom = [self.scene.dom findSubDomWithID:templateId];
+    NSDictionary * sumLayoutInfo = [self.indexPathDictionary objectForKey:indexKey];
+    NSDictionary * widgetSizeDict = sumLayoutInfo[KEY_WIDGET_SIZE];
+    NSInteger cellHeight = [sumLayoutInfo[KEY_WIDGET_HEIGHT] intValue];
+    NSInteger cellWidth = [sumLayoutInfo[KEY_WIDGET_WIDTH] intValue];
+    [cell.contentView removeAllSubviews];
+    [cell setFrame:CGRectMake(0, 0, cellWidth, cellHeight)];
 
-    cell.contentView.layer.borderWidth = 0.5;
-    cell.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    UIView *templateView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:matchDom sizeInfo:widgetSizeDict];
+    [cell.contentView addSubview:templateView];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
 }
 
 - (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSDictionary*prepareLayoutDict,NSInteger prepareHeight))callback
 {
     NSInteger retHeight = 0;
     NSMutableDictionary * indexPathDictionary = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
-    for (int accessIndex=0; accessIndex < [dataArray count]; accessIndex++) {
+    for (int accessIndex=0; accessIndex < dataArray.count; accessIndex++) {
         NSDictionary *dataDict = [dataArray objectAtIndex:accessIndex];
         NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
+        MFDOM *matchDom = [self.scene.dom findSubDomWithID:templateId];
         NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)accessIndex];
-        NSDictionary *layoutDict = self.scene.dom.cssNodes;
-        NSDictionary *dataBinding = self.scene.dom.bindingField;
-        NSArray *matchNodes = [(HTMLNode *)self.scene.dom.htmlNodes findChildrenWithAttribute:KEYWORD_ID matchingName:templateId allowPartial:NO];
-        HTMLNode *pageNode = [matchNodes firstObject];
-        NSMutableDictionary *widgetDict = [NSMutableDictionary dictionary];
-        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] getLayoutInfoForPage:pageNode templateId:templateId styleDict:layoutDict dataDict:dataDict dataBinding:dataBinding parentViewFrame:CGRectMake(0, 0, [MFHelper screenXY].width, 0) retWidgetInfo:widgetDict];
 
-        if (nil != indexKey) {
-            [indexPathDictionary setObject:indexPathDict forKey:indexKey];
-        }
+        CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
+        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
+        [indexPathDictionary setObject:indexPathDict forKey:indexKey];
         retHeight += [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
     }
-    callback(indexPathDictionary,retHeight);
+    callback(indexPathDictionary, retHeight);
 }
 @end

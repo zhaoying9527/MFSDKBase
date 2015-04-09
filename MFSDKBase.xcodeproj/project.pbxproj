@@ -35,7 +35,6 @@
 		23F385431AD42D28002A8F32 /* Master.html in Resources */ = {isa = PBXBuildFile; fileRef = 23F385371AD42D28002A8F32 /* Master.html */; };
 		23F385441AD42D28002A8F32 /* Master.lua in Resources */ = {isa = PBXBuildFile; fileRef = 23F385381AD42D28002A8F32 /* Master.lua */; };
 		23F385451AD42D28002A8F32 /* Master.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F385391AD42D28002A8F32 /* Master.plist */; };
-		23F385A31AD4C247002A8F32 /* MFDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3854F1AD4C247002A8F32 /* MFDataBinding.m */; };
 		23F385A41AD4C247002A8F32 /* MFBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385521AD4C247002A8F32 /* MFBridge.m */; };
 		23F385A51AD4C247002A8F32 /* MFDispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385541AD4C247002A8F32 /* MFDispatchCenter.m */; };
 		23F385A61AD4C247002A8F32 /* MFHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385581AD4C247002A8F32 /* MFHelper.m */; };
@@ -125,8 +124,6 @@
 		23F385371AD42D28002A8F32 /* Master.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Master.html; path = MFSDKBase/scripts/Master.html; sourceTree = SOURCE_ROOT; };
 		23F385381AD42D28002A8F32 /* Master.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Master.lua; path = MFSDKBase/scripts/Master.lua; sourceTree = SOURCE_ROOT; };
 		23F385391AD42D28002A8F32 /* Master.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Master.plist; path = MFSDKBase/scripts/Master.plist; sourceTree = SOURCE_ROOT; };
-		23F3854E1AD4C247002A8F32 /* MFDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDataBinding.h; sourceTree = "<group>"; };
-		23F3854F1AD4C247002A8F32 /* MFDataBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDataBinding.m; sourceTree = "<group>"; };
 		23F385511AD4C247002A8F32 /* MFBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBridge.h; sourceTree = "<group>"; };
 		23F385521AD4C247002A8F32 /* MFBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBridge.m; sourceTree = "<group>"; };
 		23F385531AD4C247002A8F32 /* MFDispatchCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDispatchCenter.h; sourceTree = "<group>"; };
@@ -267,7 +264,6 @@
 			children = (
 				1CE2F3811AD4D8BA00E27AA8 /* App */,
 				1CE2F3741AD4D66C00E27AA8 /* DOM */,
-				23F3854D1AD4C247002A8F32 /* DataBinding */,
 				23F385501AD4C247002A8F32 /* Event */,
 				23F385551AD4C247002A8F32 /* Helper */,
 				23F385611AD4C247002A8F32 /* Layout */,
@@ -357,16 +353,6 @@
 				23F3852D1AD42C68002A8F32 /* MFSDK.bundle */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		23F3854D1AD4C247002A8F32 /* DataBinding */ = {
-			isa = PBXGroup;
-			children = (
-				23F3854E1AD4C247002A8F32 /* MFDataBinding.h */,
-				23F3854F1AD4C247002A8F32 /* MFDataBinding.m */,
-			);
-			name = DataBinding;
-			path = Class/DataBinding;
 			sourceTree = "<group>";
 		};
 		23F385501AD4C247002A8F32 /* Event */ = {
@@ -695,7 +681,6 @@
 				23F385B31AD4C247002A8F32 /* MFCorePlugInService.m in Sources */,
 				23F385B01AD4C247002A8F32 /* MFLuaScript.m in Sources */,
 				23F385AA1AD4C247002A8F32 /* UIView+UUID.m in Sources */,
-				23F385A31AD4C247002A8F32 /* MFDataBinding.m in Sources */,
 				1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */,
 				23F385B81AD4C247002A8F32 /* MFCell.m in Sources */,
 				1CE2F3771AD4D69500E27AA8 /* MFEventNode.m in Sources */,

@@ -51,7 +51,7 @@
     
     MFDOM *matchDom = nil;
     for (MFDOM *subDom in self.subDoms) {
-        matchDom = [self findSubDomWithID:ID];
+        matchDom = [subDom findSubDomWithID:ID];
         if (matchDom) {
             return matchDom;
         }

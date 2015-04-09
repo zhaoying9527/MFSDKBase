@@ -7,6 +7,7 @@
 //
 
 #import "MFImageView.h"
+#import "MFHelper.h"
 
 @implementation MFImageView
 

@@ -51,7 +51,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, self.sceneName];
     NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, self.sceneName];
     NSString *dataBindingPath = [NSString stringWithFormat:@"%@/%@.dataBinding", bundlePath, self.sceneName];
-    NSString *luaPath = [NSString stringWithFormat:@"%@/%@.lua", bundlePath, self.sceneName];
     
     HTMLParser *result_h5 = nil;
     id result_css = nil;
@@ -65,6 +64,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     result_events = [self parseEvent:result_h5];
     
     /*
+    NSString *luaPath = [NSString stringWithFormat:@"%@/%@.lua", bundlePath, self.sceneName];     
     MFLuaScript *luaScript = (MFLuaScript *)[self.pluginService findPlugInWithType:MFSDK_PLUGIN_LUA];
     [luaScript loadText:[NSString stringWithContentsOfFile:luaPath encoding:NSUTF8StringEncoding error:&error]]; */
     

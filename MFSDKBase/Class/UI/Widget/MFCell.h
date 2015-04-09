@@ -28,12 +28,5 @@
 - (void)specialHandling;
 - (void)setupUI;
 - (void)releaseUI;
-- (void)createPage:(NSString*)pageID
-          pageNode:(HTMLNode*)pageNode
-       styleParams:(NSDictionary*)styleParams
-       dataBinding:(NSDictionary*)dataBinding
-            events:(NSDictionary*)events
-        parentView:(UIView*)parentView;
-- (id)findWidgetWithId:(NSString*)widgetId;
-- (void)bindingAndLayoutPageData:(NSDictionary*)dataSource parentView:(UIView*)parentView;
+
 @end

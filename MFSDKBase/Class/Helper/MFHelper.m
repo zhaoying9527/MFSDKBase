@@ -282,7 +282,7 @@
     return [MFHelper fitRect:retRect];
 }
 
-+ (CGRect)formatRectWithString:(NSString*)rectString parentFrame:(CGRect)parentFrame
++ (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)superFrame
 {
     CGRect retRect = CGRectMake(0, 0, 0, 0);
     NSArray *rectArray = [rectString componentsSeparatedByString:@","];
@@ -299,10 +299,10 @@
         CGFloat width = [[rectArray objectAtIndex:2] floatValue];
         CGFloat height = [[rectArray objectAtIndex:3] floatValue];
         
-        left = relativeLeft ? left*parentFrame.size.width/100 : left;
-        top = relativeTop ? top*parentFrame.size.height/100 : top;
-        width = relativeWidth ? width*parentFrame.size.width/100 : width;
-        height = relativeHeight ? height*parentFrame.size.height/100 : height;
+        left = relativeLeft ? left*superFrame.size.width/100 : left;
+        top = relativeTop ? top*superFrame.size.height/100 : top;
+        width = relativeWidth ? width*superFrame.size.width/100 : width;
+        height = relativeHeight ? height*superFrame.size.height/100 : height;
 
         retRect = CGRectMake(left, top, width, height);
     }

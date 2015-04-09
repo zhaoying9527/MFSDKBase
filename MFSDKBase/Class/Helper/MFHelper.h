@@ -36,7 +36,7 @@
 
 + (NSString*)getFrameStringWithStyle:(NSDictionary*)styleDict;
 + (CGRect)formatRectWithString:(NSString*)rectString;
-+ (CGRect)formatRectWithString:(NSString*)rectString parentFrame:(CGRect)frame;
++ (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)frame;
 
 + (MFAlignmentType)formatAlignmentWithString:(NSString*)alignmentString;
 + (NSTextAlignment)formatTextAlignmentWithString:(NSString*)textAlignmentString;

@@ -10,6 +10,7 @@
 #import "HTMLNode.h"
 #import "HTMLParser.h"
 #import "MFSceneFactory.h"
+#import "MFDefine.h"
 #import "MFDOM.h"
 
 @implementation MFScene
@@ -29,19 +30,17 @@
         return nil;
     }
     
-    __block NSString *key = [htmlNode getAttributeNamed:@"id"];
-    MFDOM *dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[key] withDataBinding:dataBinding[key]  withEvents:events[key]];
+    __block NSString *key = [htmlNode getAttributeNamed:KEYWORD_ID];
+    MFDOM *dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[key] withDataBinding:dataBinding[key] withEvents:events[key]];
     dom.clsType = htmlNode.tagName;
-    NSLog(@"Dom tag: %@", htmlNode.tagName);
 
     [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
-        key = [childNode getAttributeNamed:@"id"];
+        key = [childNode getAttributeNamed:KEYWORD_ID];
         MFDOM *childDom = nil;
         if (nil != key) {
             childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
-            NSLog(@"Dom tag: %@", childNode.tagName);
             //创建控件
-            childDom.objReference = [[MFSceneFactory sharedMFSceneFactory] createUiWithDOM:childDom];
+            childDom.objReference = [[MFSceneFactory sharedMFSceneFactory] createWidgetWithDOM:childDom];
             [dom addSubDom:childDom];
         }
     }];
