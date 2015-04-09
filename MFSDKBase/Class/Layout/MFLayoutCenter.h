@@ -17,4 +17,5 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFLayoutCenter)
 - (CGRect)absoluteRect:(CGRect)rect;
 - (NSInteger)round:(CGFloat)floatVal;
 - (NSDictionary*)sizeOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource;
+- (void)layout:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo;
 @end

@@ -108,16 +108,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
-    NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
+    NSString *templateId = dataDict[KEYWORD_TEMPLATE_ID];
     MFDOM *matchDom = [self.scene findDomWithID:templateId];
 
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    NSInteger retHeight = [[[self.indexPathDictionary objectForKey:indexKey] objectForKey:KEY_WIDGET_HEIGHT] intValue];
+    NSInteger retHeight = [self.scene.layoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
     if (retHeight <= 0) {
         CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
         NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
-        [self.indexPathDictionary setObject:indexPathDict forKey:indexKey];
-        retHeight = [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
+        [self.scene.layoutDict setObject:indexPathDict forKey:indexKey];
+        retHeight = [indexPathDict[KEY_WIDGET_HEIGHT] intValue];
     }
 
     return retHeight;
@@ -127,8 +127,8 @@
 {
     NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
     
-    NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-    //NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+    NSString *templateId = dataDict[KEYWORD_TEMPLATE_ID];
+    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
     NSString *identifier = @"identifier";
 
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
@@ -142,7 +142,7 @@
     }
     //数据绑定
     [self.scene bind:cell.contentView withDataSource:self.scene.dataArray[indexPath.section]];
-    [self.scene layout:cell.contentView];
+    [self.scene layout:cell.contentView withSizeInfo:self.scene.layoutDict[indexKey]];
 //    
 //    NSDictionary * sumLayoutInfo = [self.indexPathDictionary objectForKey:indexKey];
 //    NSDictionary * widgetSizeDict = sumLayoutInfo[KEY_WIDGET_SIZE];

@@ -6,6 +6,8 @@
 #import "MFSceneFactory.h"
 #import "MFHelper.h"
 #import "MFDOM.h"
+#import "NSObject+DOM.h"
+#import "UIView+UUID.h"
 
 @implementation MFLayoutCenter
 SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
@@ -118,7 +120,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *domID = dom.uuid;
     NSString *dataKey = dom.bindingField;
     NSDictionary *cssItem = dom.cssNodes;
-    //dom.dataField = dataSource[dataKey];
     
     NSString *layoutKey = cssItem[@"layout"];
     NSInteger layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
@@ -163,6 +164,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     [widgetsInfo setObject:[NSValue valueWithCGRect:pageFrame] forKey:domID];
 
     return pageFrame;
+}
+
+- (void)layout:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
+{
+    if (![view UUID]) {
+        return;
+    }
+    
+    CGRect rectValue = [sizeInfo[KEY_WIDGET_SIZE][view.UUID] CGRectValue];
+    view.frame = rectValue;
+
+    for (UIView *subView in view.subviews) {
+        [self layout:subView withSizeInfo:sizeInfo];
+    }
 }
 
 - (CGSize)imageSizeWithDataInfo:(NSDictionary*)dataInfo dataItems:(NSString*)dataItems

@@ -22,16 +22,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFSDKBase/Class/ViewController/MFViewController.m"
-            timestampString = "450274157.59294"
+            timestampString = "450284565.347534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-prepareData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
