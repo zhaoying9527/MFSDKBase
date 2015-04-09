@@ -208,7 +208,6 @@
     NSError *error = nil ;
     bool rt = [fileManager copyItemAtPath:strSource toPath:strDim error:&error];
     if (!rt){
-        //        NSLog(@"%@",[error localizedDescription]);
         return FALSE ;
     }
     return rt ;
@@ -258,7 +257,7 @@
     return time;
 }
 
-+ (NSString*)getFrameStringWithStyle:(NSDictionary*)styleDict
++ (NSString*)getFrameStringWithCssStyle:(NSDictionary*)styleDict
 {
     NSString *left = [styleDict objectForKey:KEY_WIDGET_LEFT] ? [styleDict objectForKey:KEY_WIDGET_LEFT] : @"0";
     NSString *top = [styleDict objectForKey:KEY_WIDGET_TOP] ? [styleDict objectForKey:KEY_WIDGET_TOP] : @"0";
@@ -267,6 +266,19 @@
     
     NSString *frameString = [NSString stringWithFormat:@"%@,%@,%@,%@",left,top,width,height];
     return frameString;
+}
+
++ (CGRect)formatFrameWithString:(NSString*)rectString layoutType:(MFLayoutType)layout superFrame:(CGRect)superFrame
+{
+    CGRect retRect = CGRectZero;
+    if (MFLayoutTypeAbsolute == layout) {
+        retRect = [self formatAbsoluteRectWithString:rectString];        
+    } else if (MFLayoutTypeStretch == layout) {
+        retRect = [self formatFitRectWithString:rectString];
+    } else if (MFLayoutTypeNone == layout) {
+        retRect = [self formatRectWithString:rectString superFrame:superFrame];
+    }
+    return retRect;
 }
 
 + (CGRect)formatAbsoluteRectWithString:(NSString*)amlString

@@ -82,8 +82,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         return nil;
     }
 
-    UIView *widget = domObj.objReference;
-    //[widget removeAllSubviews];
+//    UIView *widget = domObj.objReference;
+    UIView *widget = [self createWidgetWithDOM:domObj];
     NSString *uuid = [widget UUID];
     widget.frame = [sizeInfo[uuid] CGRectValue];
     //绑定数据
@@ -92,7 +92,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     for (MFDOM *subDomObj in domObj.subDoms) {
         UIView *subWidget = [self createUIWithDOM:subDomObj sizeInfo:sizeInfo];
         if (subWidget) {
-            //[self bindDataToWidget:subWidget dataSource:subDomObj.dataField];
             [widget addSubview:subWidget];
         }
     }

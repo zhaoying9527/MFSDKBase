@@ -13,6 +13,7 @@
 #import "MFImageView.h"
 #import "MFHelper.h"
 #import "MFResourceCenter.h"
+#import "UIView+UUID.h"
 @interface MFDOM()
 
 
@@ -42,11 +43,9 @@
 }
 
 //双向数据交换
-- (void)updateDate:(BOOL)flag inDataSource:(NSDictionary*)dataSource
+- (void)updateData:(BOOL)flag inDataSource:(NSDictionary*)dataSource;
 {
-
     [self bindingDomToWidget:dataSource];
- 
 }
 
 - (void)bindingDomToWidget:(NSDictionary*)dataSource

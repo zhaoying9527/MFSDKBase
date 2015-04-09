@@ -50,7 +50,7 @@
     return [self.parser head];
 }
 
-- (NSArray*)bodyList
+- (NSArray*)bodyEntity
 {
     return [[self.parser body] children];
 }

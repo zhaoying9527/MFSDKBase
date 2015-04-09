@@ -120,8 +120,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSDictionary *cssItem = dom.cssNodes;
     //dom.dataField = dataSource[dataKey];
     
-    NSString *pageFrameStr = [MFHelper getFrameStringWithStyle:cssItem];
-    CGRect pageFrame = [MFHelper formatRectWithString:pageFrameStr superFrame:superFrame];
+    NSString *layoutKey = cssItem[@"layout"];
+    NSInteger layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
+    NSString *pageFrameStr = [MFHelper getFrameStringWithCssStyle:cssItem];
+    CGRect pageFrame = [MFHelper formatFrameWithString:pageFrameStr layoutType:layoutType superFrame:superFrame];
     CGSize realSize = CGSizeZero;
 
     if ([MFHelper isKindOfLabel:clsType]) {
@@ -142,10 +144,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     } else {
         realSize = pageFrame.size;
     }
-
     pageFrame.size.width = realSize.width;
     pageFrame.size.height = realSize.height;
     CGSize pageSize = pageFrame.size;
+
     NSMutableDictionary *childWidgetsInfo = [NSMutableDictionary dictionary];
     for (MFDOM *subDom in dom.subDoms) {
         CGRect childFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo];
@@ -190,20 +192,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 {
     NSString *fontString = [layoutInfo objectForKey:@"font"];
     UIFont *font = [MFHelper formatFontWithString:fontString];
-    
+
     NSString *layoutKey = [layoutInfo objectForKey:@"layout"];
     NSInteger layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
-    
+
     CGRect frame;
-    NSString *frameString = [MFHelper getFrameStringWithStyle:layoutInfo];
+    NSString *frameString = [MFHelper getFrameStringWithCssStyle:layoutInfo];
     if (MFLayoutTypeNone == layoutType) {
         frame = [MFHelper formatRectWithString:frameString superFrame:superFrame];
-    }else if (MFLayoutTypeAbsolute == layoutType) {
+    } else if (MFLayoutTypeAbsolute == layoutType) {
         frame = [MFHelper formatAbsoluteRectWithString:frameString];
-    }else if (MFLayoutTypeStretch == layoutType) {
+    } else if (MFLayoutTypeStretch == layoutType) {
         frame = [MFHelper formatFitRectWithString:frameString];
     }
-    
+
     return [MFHelper sizeWithFont:dataSource font:font size:frame.size];
 }
 @end

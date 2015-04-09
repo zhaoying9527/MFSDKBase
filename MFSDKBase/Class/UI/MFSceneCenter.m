@@ -69,7 +69,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     [luaScript loadText:[NSString stringWithContentsOfFile:luaPath encoding:NSUTF8StringEncoding error:&error]]; */
     
     //加载场景
-    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyList] withCss:result_css withDataBinding:result_databinding withEvents:result_events];
+    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyEntity] withCss:result_css withDataBinding:result_databinding withEvents:result_events];
 }
 
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error
@@ -81,11 +81,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     return nil;
 }
 
-- (id)parseEvent:(HTMLParser *)html
+- (id)parseEvent:(MFHtmlParser *)htmlParser
 {
-    HTMLNode *body = [html body];
-    return [self extractEventNode:body];
-    
+    NSArray *bodyEntity = [htmlParser bodyEntity];
+
+    NSMutableDictionary *allEvents = [NSMutableDictionary dictionary];
+    for (HTMLNode *htmlNode in bodyEntity) {
+        NSDictionary *events = [self extractEventNode:htmlNode];
+        [allEvents addEntriesFromDictionary:events];
+    }
+    return allEvents;
 }
 
 -(NSDictionary *)extractEventNode:(HTMLNode *)htmlNode

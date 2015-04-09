@@ -34,7 +34,8 @@
 + (BOOL)isExistDirectory:(NSString *)strDirectory;
 + (BOOL)isExistFile:(NSString *)strFileName;
 
-+ (NSString*)getFrameStringWithStyle:(NSDictionary*)styleDict;
++ (NSString*)getFrameStringWithCssStyle:(NSDictionary*)styleDict;
++ (CGRect)formatFrameWithString:(NSString*)rectString layoutType:(MFLayoutType)layout superFrame:(CGRect)superFrame;
 + (CGRect)formatRectWithString:(NSString*)rectString;
 + (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)frame;
 

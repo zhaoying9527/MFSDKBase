@@ -24,6 +24,8 @@
 @property (nonatomic,strong)id objReference;
 //绑定类别
 @property (nonatomic,copy)NSString *clsType;
+//唯一标示
+@property (nonatomic,copy)NSString *uuid;
 //扩展信息节点
 @property (nonatomic,strong)NSDictionary *params;
 //父对象
@@ -36,7 +38,7 @@
 - (void)addSubDom:(MFDOM *)subDom;
 
 //双向数据交换
-- (void)updateDate:(BOOL)flag inDataSource:(NSDictionary*)dataSource;
+- (void)updateData:(BOOL)flag inDataSource:(NSDictionary*)dataSource;
 
 //查询接口
 - (MFDOM*)findSubDomWithID:(NSString*)ID;

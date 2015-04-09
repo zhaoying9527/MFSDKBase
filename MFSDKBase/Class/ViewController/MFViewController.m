@@ -107,20 +107,22 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dataDict = self.dataArray[indexPath.section];
-    NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-    MFDOM *matchDom = [self.scene.dom findSubDomWithID:templateId];
-
-    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    NSInteger retHeight = [[[self.indexPathDictionary objectForKey:indexKey] objectForKey:KEY_WIDGET_HEIGHT] intValue];
-    if (retHeight <= 0) {
-        CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
-        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
-        [self.indexPathDictionary setObject:indexPathDict forKey:indexKey];
-        retHeight = [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
-    }
-
-    return retHeight;
+//    NSDictionary *dataDict = self.dataArray[indexPath.section];
+//    NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
+//    MFDOM *matchDom = [self.scene.doms findSubDomWithID:templateId];
+//
+//    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+//    NSInteger retHeight = [[[self.indexPathDictionary objectForKey:indexKey] objectForKey:KEY_WIDGET_HEIGHT] intValue];
+//    if (retHeight <= 0) {
+//        CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
+//        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
+//        [self.indexPathDictionary setObject:indexPathDict forKey:indexKey];
+//        retHeight = [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
+//    }
+//
+//    return retHeight;
+    
+    return 150.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,11 +150,9 @@
     if (![MFHelper isAdd:cell subView:matchDom.objReference]) {
         //绑定到控件
         UIView *templateView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:matchDom sizeInfo:widgetSizeDict];
-        //[cell.contentView removeAllSubviews];
+        [matchDom updateData:YES inDataSource:[self.dataArray objectAtIndex:indexPath.row]];
         [cell.contentView addSubview:templateView];
     }
-
-    [matchDom updateDate:YES inDataSource:[self.dataArray objectAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -168,7 +168,7 @@
     for (int accessIndex=0; accessIndex < dataArray.count; accessIndex++) {
         NSDictionary *dataDict = [dataArray objectAtIndex:accessIndex];
         NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-        MFDOM *matchDom = [self.scene.dom findSubDomWithID:templateId];
+        MFDOM *matchDom = [self.scene findDomWithID:templateId];
         NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)accessIndex];
 
         CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
