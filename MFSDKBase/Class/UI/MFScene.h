@@ -27,11 +27,7 @@
 //
 - (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource;
 //
-<<<<<<< HEAD
-- (void)layout:(UIView*)view;
-=======
 - (void)layout:(UIView*)view withSizeInfo:(NSDictionary*)sizeInfo;
->>>>>>> 修改事件挂载
 
 - (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSDictionary*prepareLayoutDict,NSInteger prepareHeight))callback;
 
