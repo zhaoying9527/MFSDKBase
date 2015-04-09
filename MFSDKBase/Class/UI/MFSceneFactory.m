@@ -19,7 +19,7 @@
 #import "MFStrategyCenter.h"
 #import "MFResourceCenter.h"
 #import "MFDOM.h"
-
+#import "NSObject+DOM.h"
 @interface MFSceneFactory()
 @property (nonatomic,weak)id object;
 @property (nonatomic,copy)NSString *pageID;
@@ -54,7 +54,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     if ([self supportHtmlTag:domObj.clsType]) {
         widget = [self allocObject:domObj.clsType];
         NSString *uuid = [domObj.htmlNodes getAttributeNamed:KEYWORD_ID];
-        [widget setUUID:uuid];
+
         if([self bindObject:widget]) {
             [self batchExecution:domObj.cssNodes];
         }
@@ -70,6 +70,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         for(NSString *event in domObj.eventNodes.allKeys) {
             [widget attachEvent:event handlerName:domObj.eventNodes[event]];
         }
+        
+        [widget setUUID:uuid];
     }
 
     return widget;
@@ -81,20 +83,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     if (![self supportHtmlTag:domObj.clsType]) {
         return nil;
     }
-
-//    UIView *widget = domObj.objReference;
-    UIView *widget = [self createWidgetWithDOM:domObj];
-    NSString *uuid = [widget UUID];
-    widget.frame = [sizeInfo[uuid] CGRectValue];
-    //绑定数据
-    //[self bindDataToWidget:widget dataSource:domObj.dataField];
     
+    UIView * widget = nil;
+    widget = [self createWidgetWithDOM:domObj];
+    [widget attachDOM:domObj];
     for (MFDOM *subDomObj in domObj.subDoms) {
         UIView *subWidget = [self createUIWithDOM:subDomObj sizeInfo:sizeInfo];
         if (subWidget) {
             [widget addSubview:subWidget];
         }
     }
+
     return widget;
 }
 

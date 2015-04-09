@@ -18,5 +18,13 @@
         objc_setAssociatedObject(self, DomKey, actionDict, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
 }
-- (void)removeDOM{;}
+
+- (MFDOM*)DOM
+{
+    NSDictionary *dict = objc_getAssociatedObject(self, DomKey);
+    return dict[CFBridgingRelease(DomKey)];
+}
+
+- (void)detachDOM
+{;}
 @end

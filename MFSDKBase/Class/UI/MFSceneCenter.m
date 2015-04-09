@@ -63,11 +63,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     result_databinding = [self parse:MFSDK_PLUGIN_CSS withPath:dataBindingPath error:&error];
     result_events = [self parseEvent:result_h5];
     
-    /*
-    NSString *luaPath = [NSString stringWithFormat:@"%@/%@.lua", bundlePath, self.sceneName];     
-    MFLuaScript *luaScript = (MFLuaScript *)[self.pluginService findPlugInWithType:MFSDK_PLUGIN_LUA];
-    [luaScript loadText:[NSString stringWithContentsOfFile:luaPath encoding:NSUTF8StringEncoding error:&error]]; */
-    
     //加载场景
     return [[MFScene alloc] initWithDomNodes:[result_h5 bodyEntity] withCss:result_css withDataBinding:result_databinding withEvents:result_events];
 }

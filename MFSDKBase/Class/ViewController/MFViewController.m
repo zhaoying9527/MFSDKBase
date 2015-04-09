@@ -10,7 +10,7 @@
 #import "MFHelper.h"
 #import "MFDOM.h"
 #import "MFScene.h"
-
+#import "UIView+UUID.h"
 
 
 
@@ -83,7 +83,7 @@
     if (nil == self.tableView) {
         self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         self.tableView.backgroundColor = [UIColor grayColor];
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         self.tableView.allowsSelection = YES;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -130,29 +130,28 @@
     NSDictionary *dataDict = self.dataArray[indexPath.section];
     
     NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    NSString *identifier = templateId;
+    //NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+    NSString *identifier = @"identifier";
 
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     if (nil == cell) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
+        UIView *sceneCanvas = [self.scene sceneViewWithDomId:templateId];
+        if (nil != sceneCanvas) {
+            [cell.contentView addSubview:sceneCanvas];
+        }
+    
     }
-    
-    NSDictionary * sumLayoutInfo = [self.indexPathDictionary objectForKey:indexKey];
-    NSDictionary * widgetSizeDict = sumLayoutInfo[KEY_WIDGET_SIZE];
-    NSInteger cellHeight = [sumLayoutInfo[KEY_WIDGET_HEIGHT] intValue];
-    NSInteger cellWidth = [sumLayoutInfo[KEY_WIDGET_WIDTH] intValue];
-    [cell setFrame:CGRectMake(0, 0, [MFHelper screenXY].width, cellHeight)];
-    
-    
-    MFDOM *matchDom = [self.scene findDomWithID:templateId];
-    if (![MFHelper isAdd:cell subView:matchDom.objReference]) {
-        //绑定到控件
-        UIView *templateView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:matchDom sizeInfo:widgetSizeDict];
-        [matchDom updateData:YES inDataSource:[self.dataArray objectAtIndex:indexPath.row]];
-        [cell.contentView addSubview:templateView];
-    }
+    //数据绑定
+    [self.scene bind:cell.contentView withDataSource:self.dataArray[indexPath.section]];
+//    
+//    NSDictionary * sumLayoutInfo = [self.indexPathDictionary objectForKey:indexKey];
+//    NSDictionary * widgetSizeDict = sumLayoutInfo[KEY_WIDGET_SIZE];
+//    NSInteger cellHeight = [sumLayoutInfo[KEY_WIDGET_HEIGHT] intValue];
+//    NSInteger cellWidth = [sumLayoutInfo[KEY_WIDGET_WIDTH] intValue];
+//    [cell setFrame:CGRectMake(0, 0, [MFHelper screenXY].width, cellHeight)];
+
     return cell;
 }
 

@@ -13,5 +13,6 @@ static void * DomKey = (void *)@"DomKey";
 @interface NSObject (DOM)
 
 - (void)attachDOM:(MFDOM*)dom;
-- (void)removeDOM;
+- (MFDOM*)DOM;
+- (void)detachDOM;
 @end

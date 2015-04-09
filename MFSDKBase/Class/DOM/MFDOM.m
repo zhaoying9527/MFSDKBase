@@ -14,6 +14,7 @@
 #import "MFHelper.h"
 #import "MFResourceCenter.h"
 #import "UIView+UUID.h"
+#import "NSObject+DOM.h"
 @interface MFDOM()
 
 
@@ -40,6 +41,12 @@
     if (nil != subDom) {
         [self.subDoms addObject:subDom];
     }
+}
+
+- (void)attachObjReference:(NSObject*)objReference
+{
+    self.objReference = objReference;
+    [objReference attachDOM:self];
 }
 
 //双向数据交换
