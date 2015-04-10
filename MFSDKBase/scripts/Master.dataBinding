@@ -1,6 +1,6 @@
 cell1-label
 {
-    dsKey:labelText;
+    dsKey:linkUrl;
 }
 
 cell1-detaillabel

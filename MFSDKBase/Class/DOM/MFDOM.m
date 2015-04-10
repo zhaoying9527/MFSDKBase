@@ -25,9 +25,12 @@
 @end
 
 @implementation MFDOM
-- (id)initWithDomNode:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
+- (id)initWithDomNode:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
 {
     if (self = [super init]) {
+        
+        self.uuid = [html getAttributeNamed:KEYWORD_ID];
+        self.clsType = html.tagName;
         self.htmlNodes = html;
         self.cssNodes = css;
         self.bindingField = [dataBinding objectForKey:@"dsKey"];

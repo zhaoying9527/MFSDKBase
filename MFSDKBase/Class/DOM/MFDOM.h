@@ -34,7 +34,7 @@
 @property (nonatomic,strong)NSMutableArray *subDoms;
 
 //创建接口
-- (id)initWithDomNode:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
+- (id)initWithDomNode:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
 - (void)addSubDom:(MFDOM *)subDom;
 
 //双向关联

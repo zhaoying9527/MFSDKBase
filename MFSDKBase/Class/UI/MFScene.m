@@ -20,6 +20,9 @@
 #import "MFLayoutCenter.h"
 @interface MFScene ()
 @property (nonatomic,strong)NSMutableDictionary *doms;
+@property (nonatomic,strong)NSMutableArray *orders;
+//
+- (void)addDom:(MFDOM *)dom;
 //
 - (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource;
 //
@@ -32,27 +35,49 @@
 {
     if (self = [super init]) {
         self.sceneName = sceneName;
-        self.doms = [NSMutableDictionary dictionary];
+        self.doms = [[NSMutableDictionary alloc] init];
         for (HTMLNode *htmlNode in (NSArray*)html) {
             if ([[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:htmlNode.tagName]) {
                 MFDOM *dom = [self loadDom:htmlNode withCss:css withDataBinding:dataBinding withEvents:events];
                 if (dom && dom.uuid) {
-                    [self.doms setObject:dom forKey:dom.uuid];
+                    [self addDom:dom];
                 }
             }
         }
+        
+        [self createOrders:css];
     }
     return self;
 }
 
-- (MFDOM*)loadDom:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
+- (void)createOrders:(NSDictionary*)cssNodes
+{
+    self.orders = [[NSMutableArray alloc] initWithCapacity:cssNodes.allKeys.count];
+    //占位
+    for (int i=0; i<cssNodes.allKeys.count; i++) {
+        [self.orders addObject:[NSNull null]];
+    }
+    //填充
+    for (NSString *key in cssNodes.allKeys) {
+        NSDictionary *css = cssNodes[key];
+        [self.orders replaceObjectAtIndex:[css[@"order"] intValue] withObject:key];
+    }
+    //检查
+    [self.orders removeObject:[NSNull null] inRange:NSMakeRange(0, self.orders.count)];
+}
+
+- (void)addDom:(MFDOM *)dom
+{
+    [self.doms setObject:dom forKey:dom.uuid];
+}
+
+- (MFDOM*)loadDom:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
 {
     MFDOM *dom = nil;
     HTMLNode *htmlNode = (HTMLNode*)html;
     NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
     dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[uid] withDataBinding:dataBinding[uid] withEvents:events[uid]];
-    dom.uuid = uid;
-    dom.clsType = htmlNode.tagName;
+   
     
     [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
         MFDOM *childDom = nil;
@@ -67,7 +92,7 @@
 }
 
 - (MFDOM*)domWithId:(NSString*)ID
-{
+{    
     return self.doms[ID];
 }
 
