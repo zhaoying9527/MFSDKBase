@@ -91,24 +91,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     return widget;
 }
 
-- (void)bindDataToWidget:(id)widget dataSource:(NSString*)dataSource
-{
-    if (nil == dataSource) {
-        return;
-    }
-
-    if ([widget isKindOfClass:[MFLabel class]]) {
-        ((MFLabel*)widget).text = dataSource;
-    } else if ([widget isKindOfClass:[MFImageView class]]) {
-        if ([MFHelper isURLString:dataSource]) {
-            //TODO;
-        } else {
-            UIImage *image = [MFResourceCenter imageNamed:dataSource];
-            ((MFImageView*)widget).image = image;
-        }
-    }
-}
-
 - (id)allocObject:(NSString*)classKey
 {
     id result = nil;

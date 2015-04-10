@@ -37,8 +37,6 @@
 - (id)initWithDomNode:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
 - (void)addSubDom:(MFDOM *)subDom;
 
-//双向数据交换
-- (void)updateData:(BOOL)flag inDataSource:(NSDictionary*)dataSource;
 //双向关联
 - (void)attachObjReference:(NSObject*)objReference;
 //查询接口

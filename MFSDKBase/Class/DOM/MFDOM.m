@@ -53,42 +53,6 @@
     [objReference attachDOM:self];
 }
 
-//双向数据交换
-- (void)updateData:(BOOL)flag inDataSource:(NSDictionary*)dataSource;
-{
-    [self bindingDomToWidget:dataSource];
-}
-
-- (void)bindingDomToWidget:(NSDictionary*)dataSource
-{
-    //绑定数据
-    [self bindDataToWidget:self dataSource:dataSource];
-    
-    for (MFDOM *subDomObj in self.subDoms) {
-        if (subDomObj.objReference) {
-            [self bindDataToWidget:subDomObj.objReference dataSource:dataSource];
-        }
-    }
-}
-
-- (void)bindDataToWidget:(id)widget dataSource:(NSDictionary*)dataSource
-{
-    if (nil == dataSource) {
-        return;
-    }
-    NSString *dataValue = dataSource[self.bindingField];
-    if ([widget isKindOfClass:[MFLabel class]]) {
-         ((MFLabel*)widget).text = dataValue;
-    } else if ([widget isKindOfClass:[MFImageView class]]) {
-        if ([MFHelper isURLString:dataValue]) {
-            //TODO;
-        } else {
-            UIImage *image = [MFResourceCenter imageNamed:dataValue];
-            ((MFImageView*)widget).image = image;
-        }
-    }
-}
-
 - (MFDOM*)findSubDomWithID:(NSString*)ID
 {
     if ([[self.htmlNodes getAttributeNamed:KEYWORD_ID] isEqualToString:ID]) {
