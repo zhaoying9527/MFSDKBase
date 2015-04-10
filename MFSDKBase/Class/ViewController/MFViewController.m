@@ -101,9 +101,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+    return [self.scene.layoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
+/*
     NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
     NSString *templateId = dataDict[KEYWORD_TEMPLATE_ID];
-    MFDOM *matchDom = [self.scene findDomWithID:templateId];
+    MFDOM *matchDom = [self.scene domWithId:templateId];
 
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
     NSInteger retHeight = [self.scene.layoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
@@ -113,31 +116,33 @@
         [self.scene.layoutDict setObject:indexPathDict forKey:indexKey];
         retHeight = [indexPathDict[KEY_WIDGET_HEIGHT] intValue];
     }
-
     return retHeight;
+*/
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
     
-    NSString *templateId = dataDict[KEYWORD_TEMPLATE_ID];
-    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    NSString *identifier = [NSString stringWithFormat:@"%@",templateId];
+    NSString *tId = dataDict[KEYWORD_TEMPLATE_ID];
+    NSString *identifier = [NSString stringWithFormat:@"%@",tId];
 
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     if (nil == cell) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
-        UIView *sceneCanvas = [self.scene sceneViewWithDomId:templateId];
+        UIView *sceneCanvas = [self.scene sceneViewWithDomId:tId];
         if (nil != sceneCanvas) {
             [cell.contentView addSubview:sceneCanvas];
         }
     }
+    
     //数据绑定
-    [self.scene bind:cell.contentView withDataSource:self.scene.dataArray[indexPath.section]];
+    [self.scene bind:cell.contentView withIndex:indexPath.section];
     //布局设置
-    [self.scene layout:cell.contentView withSizeInfo:self.scene.layoutDict[indexKey]];
+    [self.scene layout:cell.contentView withIndex:indexPath.section];
+    
     return cell;
 }
 

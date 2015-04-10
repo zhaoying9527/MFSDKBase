@@ -21,14 +21,14 @@
 //
 - (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withSceneName:(NSString *)sceneName;
 //
-- (MFDOM*)findDomWithID:(NSString*)ID;
+- (MFDOM*)domWithId:(NSString*)ID;
 //
 - (UIView*)sceneViewWithDomId:(NSString*)domId;
 //
-- (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource;
+- (void)bind:(UIView *)view withIndex:(NSInteger)index;
 //
-- (void)layout:(UIView*)view withSizeInfo:(NSDictionary*)sizeInfo;
-
+- (void)layout:(UIView*)view withIndex:(NSInteger)index;
+//
 - (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSDictionary*prepareLayoutDict,NSInteger prepareHeight))callback;
 
 @end

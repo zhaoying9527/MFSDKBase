@@ -20,6 +20,10 @@
 #import "MFLayoutCenter.h"
 @interface MFScene ()
 @property (nonatomic,strong)NSMutableDictionary *doms;
+//
+- (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource;
+//
+- (void)layout:(UIView*)view withSizeInfo:(NSDictionary*)sizeInfo;
 @end
 
 @implementation MFScene
@@ -62,7 +66,7 @@
     return dom;
 }
 
-- (MFDOM*)findDomWithID:(NSString*)ID
+- (MFDOM*)domWithId:(NSString*)ID
 {
     return self.doms[ID];
 }
@@ -75,6 +79,17 @@
     }
 }
 
+- (void)bind:(UIView *)view withIndex:(NSInteger)index
+{
+    [self bind:view withDataSource:self.dataArray[index]];
+}
+
+- (void)layout:(UIView*)view withIndex:(NSInteger)index
+{
+    NSString *indexKey = [NSString stringWithFormat:@"%ld",index];
+    [self layout:view withSizeInfo:self.layoutDict[indexKey]];
+}
+
 - (void)layout:(UIView*)view withSizeInfo:(NSDictionary*)sizeInfo
 {
     if (view.subviews.count > 0) {
@@ -85,7 +100,7 @@
 
 - (UIView*)sceneViewWithDomId:(NSString*)domId
 {
-    MFDOM *matchDom = [self findDomWithID:domId];
+    MFDOM *matchDom = [self domWithId:domId];
     return [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:matchDom sizeInfo:nil];
 }
 
@@ -98,7 +113,7 @@
     for (int accessIndex=0; accessIndex < datas.count; accessIndex++) {
         NSDictionary *dataDict = [datas objectAtIndex:accessIndex];
         NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-        MFDOM *matchDom = [self findDomWithID:templateId];
+        MFDOM *matchDom = [self domWithId:templateId];
         NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)accessIndex];
         
         CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);

@@ -9,6 +9,7 @@
 #import "MFDataBinding.h"
 #import "MFLabel.h"
 #import "MFImageView.h"
+#import "MFButton.h"
 #import "MFHelper.h"
 #import "MFResourceCenter.h"
 #import "NSObject+DOM.h"
@@ -39,6 +40,8 @@
             UIImage *image = [MFResourceCenter imageNamed:dataSource];
             ((MFImageView*)widget).image = image;
         }
+    }else if ([widget isKindOfClass:[MFButton class]]) {
+        ((MFButton*)widget).text = dataSource;
     }
 }
 @end

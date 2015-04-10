@@ -1,0 +1,84 @@
+cell1-label
+{
+    dsKey:income;
+}
+
+cell1-label-title
+{
+    dsKey:incomeTitle;
+}
+
+cell1-image
+{
+    dsKey:imageUrl;
+}
+
+cell2-label
+{
+    dsKey:totalMoney;
+}
+
+cell2-label-title
+{
+    dsKey:totalMoneyTitle
+}
+
+cell2-image
+{
+    dsKey:imageUrl;
+}
+
+cell3-label
+{
+    dsKey:income;
+}
+
+cell3-wanfengshouyi-title
+{
+    dsKey:wanfengshouyiTitle;
+}
+
+cell3-wanfengshouyi
+{
+    dsKey:wanfengshouyi;
+}
+
+cell3-leijishouyi-title
+{
+    dsKey:leijishouyiTitle;
+}
+
+cell3-leijishouyi
+{
+    dsKey:leijishouyi;
+}
+
+cell3-oneweek-title
+{
+    dsKey:oneweekTitle;
+}
+
+cell3-oneweek
+{
+    dsKey:oneweek;
+}
+
+cell3-onemonth-title
+{
+    dsKey:onemonthTitle;
+}
+
+cell3-onemonth
+{
+    dsKey:onemonth;
+}
+
+button-in-title
+{
+    dsKey:in
+}
+
+button-out-title
+{
+    dsKey:out
+}

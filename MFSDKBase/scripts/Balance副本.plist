@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>data</key>
+	<array>
+		<dict>
+			<key>income</key>
+			<string>28.68</string>
+			<key>incomeTitle</key>
+			<string>昨日收益</string>
+			<key>templateId</key>
+			<string>cell1</string>
+		</dict>
+		<dict>
+			<key>totalMoney</key>
+			<string>213,414.531</string>
+			<key>totalMoneyTitle</key>
+			<string>总金额(元)</string>
+			<key>templateId</key>
+			<string>cell2</string>
+		</dict>
+		<dict>
+			<key>wanfengshouyi</key>
+			<string>1.3439</string>
+			<key>wanfengshouyiTitle</key>
+			<string>万份收益(元)</string>
+			<key>leijishouyi</key>
+			<string>5,403.86</string>
+			<key>leijishouyiTitle</key>
+			<string>累计收益(元)</string>
+			<key>oneweek</key>
+			<string>204.67</string>
+			<key>oneweekTitle</key>
+			<string>近一周收益(元)</string>
+			<key>onemonth</key>
+			<string>986, 24</string>
+			<key>onemonthTitle</key>
+			<string>近一月收益(元)</string>
+			<key>templateId</key>
+			<string>cell3</string>
+		</dict>
+		<dict>
+			<key>in</key>
+			<string>转入</string>
+			<key>out</key>
+			<string>转出</string>
+			<key>templateId</key>
+			<string>cell4</string>
+		</dict>
+	</array>
+</dict>
+</plist>

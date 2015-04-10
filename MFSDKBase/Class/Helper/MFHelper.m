@@ -43,7 +43,8 @@
     }
 
     UIColor *color = [UIColor clearColor];
-    NSDictionary *colorMap = @{@"gray":[UIColor grayColor],
+    NSDictionary *colorMap = @{@"grey":[UIColor grayColor],
+                               @"gray":[UIColor grayColor],
                                @"darkgray":[UIColor darkGrayColor],
                                @"lightgray":[UIColor lightGrayColor],
                                @"black":[UIColor blackColor],

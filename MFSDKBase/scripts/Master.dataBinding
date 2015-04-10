@@ -3,6 +3,11 @@ cell1-label
     dsKey:labelText;
 }
 
+cell1-detaillabel
+{
+    dsKey:labelText;
+}
+
 cell1-image
 {
     dsKey:imageUrl;

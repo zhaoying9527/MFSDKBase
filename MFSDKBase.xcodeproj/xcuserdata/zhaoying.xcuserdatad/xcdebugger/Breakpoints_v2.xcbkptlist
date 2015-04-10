@@ -9,29 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MFSDKBase/Class/ViewController/MFViewController.m"
-            timestampString = "450279160.17698"
+            filePath = "MFSDKBase/Class/UI/MFDataBinding.m"
+            timestampString = "450339387.902147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-prepareData:"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "+bindDataToWidget:dataSource:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MFSDKBase/Class/UI/MFScene.m"
-            timestampString = "450279613.34299"
+            filePath = "MFSDKBase/Class/UI/Widget/MFButton.m"
+            timestampString = "450339870.720722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-layout:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-setTextColor:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -44,4 +44,15 @@
     _backgroundImage = backgroundImage;
     [self setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 }
+
+- (void)setTextColor:(UIColor *)textColor
+{
+  [self setTitleColor:textColor forState:UIControlStateNormal];
+}
+
+- (void)setText:(NSString *)text
+{
+
+    [self setTitle:text forState:UIControlStateNormal];
+}
 @end

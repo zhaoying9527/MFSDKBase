@@ -1,0 +1,213 @@
+cell1
+{
+    width:100%;
+    height:180;
+    background-color:rgb(233,11,22);
+    touchEnabled:YES;
+}
+
+cell1-label-title
+{
+    top:15;
+    left:20;
+    width:100;
+    height:20;
+    background-color:rgb(233,11,22);
+    color:white;
+    text-align:left;
+    font:normal 15;
+}
+
+cell1-label
+{
+    top:80;
+    left:20;
+    width:80%;
+    height:80;
+    background-color:rgb(233,11,22);
+    color:white;
+    text-align:left;
+    font:normal 90;
+}
+
+cell1-image
+{
+    top:50;
+    left:50;
+    width:85;
+    height:85;
+    background-color:rgb(60,60,60);
+}
+
+
+
+
+
+cell2
+{
+    width:100%;
+    height:130;
+    background-color:rgb(255,255,255);
+    touchEnabled:YES;
+}
+
+cell2-label-title
+{
+    top:30;
+    left:20;
+    width:100;
+    height:20;
+    background-color:rgb(255,255,255);
+    color:grey;
+    text-align:left;
+    font:normal 13;
+}
+
+cell2-label
+{
+    top:50;
+    left:20;
+    width:80%;
+    height:50;
+    background-color:rgb(255,255,255);
+    color:rgb(228,103,83);
+    text-align:left;
+    font:normal 45;
+}
+
+
+cell3
+{
+    width:100%;
+    height:150;
+    background-color:rgb(232,236,235);
+    touchEnabled:YES;    
+}
+
+cell3-wanfengshouyi-title
+{
+    top:15;
+    left:20;
+    width:40%;
+    height:20;
+    background-color:rgb(232,236,235);
+    color:grey;
+    text-align:left;
+    font:normal 13;
+}
+
+cell3-wanfengshouyi
+{
+    top:35;
+    left:20;
+    width:40%;
+    height:20;
+    background-color:rgb(232,236,235);
+    color:grey;
+    text-align:left;
+    font:normal 20;
+}
+
+cell3-leijishouyi-title
+{
+    top:15;
+    left:55%;
+    width:40%;
+    height:20;
+    background-color:rgb(232,236,235);
+    color:grey;
+    text-align:left;
+    font:normal 13;
+}
+
+cell3-leijishouyi
+{
+    top:35;
+    left:55%;
+    width:40%;
+    height:20;
+    background-color:rgb(232,236,235);
+    color:grey;
+    text-align:left;
+    font:normal 20;
+}
+
+cell3-oneweek-title
+{
+    top:80;
+    left:20;
+    width:40%;
+    height:20;
+    background-color:rgb(232,236,235);
+    color:grey;
+    text-align:left;
+    font:normal 13;
+}
+
+cell3-oneweek
+{
+    top:100;
+    left:20;
+    width:40%;
+    height:20;
+    background-color:rgb(232,236,235);
+    color:grey;
+    text-align:left;
+    font:normal 20;
+}
+
+cell3-onemonth-title
+{
+    top:80;
+    left:55%;
+    width:40%;
+    height:20;
+    background-color:rgb(232,236,235);
+    color:grey;
+    text-align:left;
+    font:normal 13;
+}
+
+cell3-onemonth
+{
+    top:100;
+    left:55%;
+    width:40%;
+    height:20;
+    background-color:rgb(232,236,235);
+    color:grey;
+    text-align:left;
+    font:normal 20;
+}
+
+cell4
+{
+    width:100%;
+    height:40;
+    background-color:rgb(255,255,255);
+    touchEnabled:YES;
+}
+
+button-in-title
+{
+    top:0;
+    left:0%;
+    width:50%;
+    height:100%;
+    background-color:rgb(255,255,255);
+    color:rgb(64,173,216);
+    text-align:left;
+    font:normal 20;
+}
+
+button-out-title
+{
+    top:0;
+    left:50%;
+    width:50%;
+    height:100%;
+    background-color:rgb(255,255,255);
+    color:rgb(64,173,216);
+    text-align:left;
+    font:normal 20;
+}

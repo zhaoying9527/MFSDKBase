@@ -15,6 +15,11 @@
 		1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */; };
 		1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */; };
 		1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3891AD518CD00E27AA8 /* MFScene.m */; };
+		1CE473D61AD774A100DB916F /* Balance.css in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473D11AD774A100DB916F /* Balance.css */; };
+		1CE473D71AD774A100DB916F /* Balance.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473D21AD774A100DB916F /* Balance.dataBinding */; };
+		1CE473D81AD774A100DB916F /* Balance.html in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473D31AD774A100DB916F /* Balance.html */; };
+		1CE473D91AD774A100DB916F /* Balance.lua in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473D41AD774A100DB916F /* Balance.lua */; };
+		1CE473DE1AD7756200DB916F /* Balance.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473DD1AD7756200DB916F /* Balance.plist */; };
 		1CE933201AD656B9001BE962 /* MFDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE9331F1AD656B9001BE962 /* MFDataBinding.m */; };
 		231BE4511ACFC60000B65A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4501ACFC60000B65A58 /* main.m */; };
 		231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4531ACFC60000B65A58 /* AppDelegate.m */; };
@@ -98,6 +103,11 @@
 		1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDOM.m; sourceTree = "<group>"; };
 		1CE2F3881AD518CD00E27AA8 /* MFScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFScene.h; sourceTree = "<group>"; };
 		1CE2F3891AD518CD00E27AA8 /* MFScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFScene.m; sourceTree = "<group>"; };
+		1CE473D11AD774A100DB916F /* Balance.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = Balance.css; path = MFSDKBase/scripts/Balance.css; sourceTree = SOURCE_ROOT; };
+		1CE473D21AD774A100DB916F /* Balance.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Balance.dataBinding; path = MFSDKBase/scripts/Balance.dataBinding; sourceTree = SOURCE_ROOT; };
+		1CE473D31AD774A100DB916F /* Balance.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Balance.html; path = MFSDKBase/scripts/Balance.html; sourceTree = SOURCE_ROOT; };
+		1CE473D41AD774A100DB916F /* Balance.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Balance.lua; path = MFSDKBase/scripts/Balance.lua; sourceTree = SOURCE_ROOT; };
+		1CE473DD1AD7756200DB916F /* Balance.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Balance.plist; path = MFSDKBase/scripts/Balance.plist; sourceTree = SOURCE_ROOT; };
 		1CE9331E1AD656B9001BE962 /* MFDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDataBinding.h; sourceTree = "<group>"; };
 		1CE9331F1AD656B9001BE962 /* MFDataBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDataBinding.m; sourceTree = "<group>"; };
 		231BE44B1ACFC60000B65A58 /* MFSDKBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFSDKBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +379,11 @@
 		23F385151AD42AE4002A8F32 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
+				1CE473DD1AD7756200DB916F /* Balance.plist */,
+				1CE473D11AD774A100DB916F /* Balance.css */,
+				1CE473D21AD774A100DB916F /* Balance.dataBinding */,
+				1CE473D31AD774A100DB916F /* Balance.html */,
+				1CE473D41AD774A100DB916F /* Balance.lua */,
 				23F3852F1AD42D28002A8F32 /* AppDelegate.lua */,
 				23F385301AD42D28002A8F32 /* Detail.css */,
 				23F385311AD42D28002A8F32 /* Detail.dataBinding */,
@@ -626,16 +641,21 @@
 				23F3853E1AD42D28002A8F32 /* Detail.html in Resources */,
 				23F385431AD42D28002A8F32 /* Master.html in Resources */,
 				231BE45A1ACFC60000B65A58 /* Main.storyboard in Resources */,
+				1CE473D91AD774A100DB916F /* Balance.lua in Resources */,
 				23F3853B1AD42D28002A8F32 /* AppDelegate.lua in Resources */,
 				23F3852E1AD42C68002A8F32 /* MFSDK.bundle in Resources */,
 				23F3853F1AD42D28002A8F32 /* Detail.lua in Resources */,
 				231BE45F1ACFC60000B65A58 /* LaunchScreen.xib in Resources */,
+				1CE473D61AD774A100DB916F /* Balance.css in Resources */,
 				23F385401AD42D28002A8F32 /* Detail.plist in Resources */,
 				23F385411AD42D28002A8F32 /* Master.css in Resources */,
 				23F385421AD42D28002A8F32 /* Master.dataBinding in Resources */,
 				23F385451AD42D28002A8F32 /* Master.plist in Resources */,
 				23F3853D1AD42D28002A8F32 /* Detail.dataBinding in Resources */,
+				1CE473D71AD774A100DB916F /* Balance.dataBinding in Resources */,
+				1CE473D81AD774A100DB916F /* Balance.html in Resources */,
 				23F385441AD42D28002A8F32 /* Master.lua in Resources */,
+				1CE473DE1AD7756200DB916F /* Balance.plist in Resources */,
 				231BE45C1ACFC60000B65A58 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -821,6 +841,7 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ZHAO YING (S85HNGF48N)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lichunrong/Work/MFSDKBase/MFSDKBase,
@@ -835,6 +856,7 @@
 				INFOPLIST_FILE = MFSDKBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d0292fca-a586-4186-ad3d-52a09878dc90";
 			};
 			name = Debug;
 		};
@@ -843,6 +865,7 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ZHAO YING (S85HNGF48N)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lichunrong/Work/MFSDKBase/MFSDKBase,
@@ -857,6 +880,7 @@
 				INFOPLIST_FILE = MFSDKBase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d0292fca-a586-4186-ad3d-52a09878dc90";
 			};
 			name = Release;
 		};

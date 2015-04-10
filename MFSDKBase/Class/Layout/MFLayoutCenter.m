@@ -129,7 +129,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
     if ([MFHelper isKindOfLabel:clsType]) {
         NSString *multiLineStr = cssItem[KEYWORD_NUMBEROFLINES];
-        if ([MFHelper supportMultiLine:multiLineStr]) {
+        if (nil != multiLineStr && [MFHelper supportMultiLine:multiLineStr]) {
             //emoji格式化
             //TODO dataSource = [dataSource[dataKey] ubb2unified];
             realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:dataSource[dataKey] superFrame:superFrame];
