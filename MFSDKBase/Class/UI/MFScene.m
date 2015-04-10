@@ -20,7 +20,6 @@
 #import "MFLayoutCenter.h"
 @interface MFScene ()
 @property (nonatomic,strong)NSMutableDictionary *doms;
-@property (nonatomic,strong)NSMutableDictionary *layoutDict;
 @end
 
 @implementation MFScene
@@ -76,21 +75,11 @@
     }
 }
 
-<<<<<<< HEAD
-- (void)layout:(UIView*)view
-{
-    if (view.subviews.count > 0) {
-        UIView *subview = [[view subviews] objectAtIndex:0];
-        MFDOM *d = subview.DOM;
-        NSDictionary *indexPathDict = self.layoutDict[subview.DOM.uuid];
-        int x = 10;
-=======
 - (void)layout:(UIView*)view withSizeInfo:(NSDictionary*)sizeInfo
 {
     if (view.subviews.count > 0) {
         UIView *subview = [[view subviews] objectAtIndex:0];
         [[MFLayoutCenter sharedMFLayoutCenter] layout:subview withSizeInfo:sizeInfo];
->>>>>>> 修改事件挂载
     }
 }
 

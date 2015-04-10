@@ -11,15 +11,10 @@
 #import "MFDOM.h"
 #import "MFScene.h"
 #import "UIView+UUID.h"
-
-
-
 #import "MFSceneCenter.h"
 
 @interface MFViewController() <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSMutableArray *dataArray;
-@property (nonatomic,strong) NSMutableDictionary *indexPathDictionary;
 
 @property (nonatomic, copy) NSString *scriptName;
 @property (nonatomic, strong) MFScene *scene;
@@ -67,9 +62,8 @@
     self.scene.dataArray = [data objectForKey:@"data"];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.scene autoLayoutOperations:self.dataArray callback:^(NSDictionary *prepareLayoutDict, NSInteger prepareHeight) {
+        [self.scene autoLayoutOperations:self.scene.dataArray callback:^(NSDictionary *prepareLayoutDict, NSInteger prepareHeight) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.indexPathDictionary = [NSMutableDictionary dictionaryWithDictionary:prepareLayoutDict];
                 [self.tableView reloadData];
             });
         }];
@@ -129,7 +123,7 @@
     
     NSString *templateId = dataDict[KEYWORD_TEMPLATE_ID];
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    NSString *identifier = @"identifier";
+    NSString *identifier = [NSString stringWithFormat:@"%@",templateId];
 
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     if (nil == cell) {
@@ -142,14 +136,8 @@
     }
     //数据绑定
     [self.scene bind:cell.contentView withDataSource:self.scene.dataArray[indexPath.section]];
+    //布局设置
     [self.scene layout:cell.contentView withSizeInfo:self.scene.layoutDict[indexKey]];
-//    
-//    NSDictionary * sumLayoutInfo = [self.indexPathDictionary objectForKey:indexKey];
-//    NSDictionary * widgetSizeDict = sumLayoutInfo[KEY_WIDGET_SIZE];
-//    NSInteger cellHeight = [sumLayoutInfo[KEY_WIDGET_HEIGHT] intValue];
-//    NSInteger cellWidth = [sumLayoutInfo[KEY_WIDGET_WIDTH] intValue];
-//    [cell setFrame:CGRectMake(0, 0, [MFHelper screenXY].width, cellHeight)];
-
     return cell;
 }
 

@@ -11,11 +11,11 @@ cell1
 cell1-label
 {
     top:25px;
-    left:160px;
-    width:160;
+    left:50%;
+    width:50%;
     height:50%;
     background-color:RGB(23,233,233);
-    color:Red;
+    color:black;
     text-align:left;
     font:bold 17;
     numberOfLines:0;
@@ -42,11 +42,11 @@ cell2
 cell2-label
 {
     top:50;
-    left:200;
-    width:80%;
+    left:40%;
+    width:60%;
     height:50;
     background-color:RGB(200,0,200);
-    color:Green;
+    color:blue;
     text-align:center;
     font:bold 27;
     numberOfLines:0;
@@ -73,8 +73,8 @@ cell3
 cell3-label
 {
     top:50;
-    left:30;
-    width:150;
+    left:10%;
+    width:90%;
     height:50;
     background-color:RGB(206,206,26);
     color:Orange;
