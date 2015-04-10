@@ -60,10 +60,17 @@
     //填充
     for (NSString *key in cssNodes.allKeys) {
         NSDictionary *css = cssNodes[key];
-        [self.orders replaceObjectAtIndex:[css[@"order"] intValue] withObject:key];
+        if (css[@"order"] ) {
+            [self.orders replaceObjectAtIndex:[css[@"order"] intValue] withObject:key];
+        }
     }
     //检查
     [self.orders removeObject:[NSNull null] inRange:NSMakeRange(0, self.orders.count)];
+}
+
+- (NSArray *)domOrders
+{
+    return self.orders;
 }
 
 - (void)addDom:(MFDOM *)dom

@@ -23,6 +23,8 @@
 //
 - (MFDOM*)domWithId:(NSString*)ID;
 //
+- (NSArray *)domOrders;
+//
 - (UIView*)sceneViewWithDomId:(NSString*)domId;
 //
 - (void)bind:(UIView *)view withIndex:(NSInteger)index;

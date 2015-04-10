@@ -4,6 +4,7 @@
 #import "HTMLNode.h"
 #import "MFLayoutCenter.h"
 #import "MFSceneFactory.h"
+#import "MFSceneCenter.h"
 #import "MFHelper.h"
 #import "MFDOM.h"
 #import "NSObject+DOM.h"
@@ -151,12 +152,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     pageFrame.size.width = realSize.width;
     pageFrame.size.height = realSize.height;
     CGSize pageSize = pageFrame.size;
+    NSInteger subHeight = 0;
 
     NSMutableDictionary *childWidgetsInfo = [NSMutableDictionary dictionary];
-    for (MFDOM *subDom in dom.subDoms) {
-        CGRect childFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo];
+    NSArray *orders = [[[MFSceneCenter sharedMFSceneCenter] currentScene] domOrders];
+    NSArray *sortedDoms = [self resortDoms:dom.subDoms withOrders:orders];
+    for (MFDOM *subDom in sortedDoms) {
+        layoutKey = subDom.cssNodes[@"layout"];
+        layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
+        NSString *childFrameStr = [MFHelper getFrameStringWithCssStyle:subDom.cssNodes];
+        CGRect childFrame = [MFHelper formatFrameWithString:childFrameStr layoutType:layoutType superFrame:pageFrame];
+        CGRect childRealFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo];
+        childRealFrame.origin.y += subHeight;
+        if (childRealFrame.size.height > childFrame.size.height) {
+            subHeight += childRealFrame.size.height - childFrame.size.height;
+        }
         NSString *subDomID = [subDom.htmlNodes getAttributeNamed:KEYWORD_ID];
-        [childWidgetsInfo setObject:[NSValue valueWithCGRect:childFrame] forKey:subDomID];
+        [childWidgetsInfo setObject:[NSValue valueWithCGRect:childRealFrame] forKey:subDomID];
     }
 
     CGSize fitSize = [self fitPageSize:childWidgetsInfo maxSize:pageSize];
@@ -167,6 +179,36 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     [widgetsInfo setObject:[NSValue valueWithCGRect:pageFrame] forKey:domID];
 
     return pageFrame;
+}
+
+- (NSArray*)resortDoms:(NSArray*)doms withOrders:(NSArray*)orders
+{
+    NSUInteger loopCount = MAX(doms.count, orders.count);
+    NSMutableArray *sortedDoms = [[NSMutableArray alloc] initWithCapacity:loopCount];
+    //占位
+    for (int i=0; i<loopCount; i++) {
+        [sortedDoms addObject:[NSNull null]];
+    }
+    //建立Id到Index映射
+    NSMutableDictionary *orders2Index = [NSMutableDictionary dictionaryWithCapacity:orders.count];
+    for (int i=0; i<orders.count; i++) {
+        [orders2Index setObject:@(i) forKey:orders[i]];
+    }
+    //填充
+    NSUInteger unOrderedIndex = doms.count-1;
+    for (MFDOM* dom in doms) {
+        if (orders2Index[dom.uuid]) {
+            NSUInteger index = [orders2Index[dom.uuid] integerValue];
+            [sortedDoms replaceObjectAtIndex:index withObject:dom];
+        } else {
+            [sortedDoms replaceObjectAtIndex:unOrderedIndex withObject:dom];
+            unOrderedIndex--;
+        }
+    }
+    //检查
+    [sortedDoms removeObject:[NSNull null] inRange:NSMakeRange(0, sortedDoms.count)];
+    
+    return sortedDoms;
 }
 
 - (void)layout:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
