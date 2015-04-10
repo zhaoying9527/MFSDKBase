@@ -132,7 +132,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         if (nil != multiLineStr && [MFHelper supportMultiLine:multiLineStr]) {
             //emoji格式化
             //TODO dataSource = [dataSource[dataKey] ubb2unified];
-            realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:dataSource[dataKey] superFrame:superFrame];
+
+            NSString *defaultText = [dom.htmlNodes getAttributeNamed:@"value"];
+            NSString *realDataValue = dataSource[dataKey] ? dataSource[dataKey] : defaultText;
+            realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:realDataValue superFrame:superFrame];
         }
     } else if ([MFHelper isKindOfImage:clsType]) {
         realSize = [self imageSizeWithDataInfo:dataSource dataItems:dataSource[dataKey]];
