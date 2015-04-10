@@ -86,7 +86,7 @@
         [self.view addSubview:self.tableView];
     }
 
-    self.title = @"Master";
+    self.title = @"魔方";
 }
 
 #pragma mark - UITableViewDelegate

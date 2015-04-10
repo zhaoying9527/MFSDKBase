@@ -842,6 +842,7 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: ZHAO YING (S85HNGF48N)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lichunrong/Work/MFSDKBase/MFSDKBase,
@@ -854,9 +855,11 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = MFSDKBase/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d0292fca-a586-4186-ad3d-52a09878dc90";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -866,6 +869,7 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: ZHAO YING (S85HNGF48N)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lichunrong/Work/MFSDKBase/MFSDKBase,
@@ -878,9 +882,11 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = MFSDKBase/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d0292fca-a586-4186-ad3d-52a09878dc90";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

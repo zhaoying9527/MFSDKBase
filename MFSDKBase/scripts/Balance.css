@@ -8,8 +8,8 @@ cell1
 
 cell1-label-title
 {
-    top:15;
-    left:20;
+    top:20;
+    left:30;
     width:100;
     height:20;
     background-color:rgb(233,11,22);
@@ -20,14 +20,14 @@ cell1-label-title
 
 cell1-label
 {
-    top:80;
+    top:70;
     left:20;
     width:80%;
     height:80;
     background-color:rgb(233,11,22);
     color:white;
     text-align:left;
-    font:normal 90;
+    font:normal 80;
 }
 
 cell1-image
