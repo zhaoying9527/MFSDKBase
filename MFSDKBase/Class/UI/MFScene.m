@@ -118,7 +118,7 @@
 
 - (void)layout:(UIView*)view withIndex:(NSInteger)index
 {
-    NSString *indexKey = [NSString stringWithFormat:@"%ld",index];
+    NSString *indexKey = [NSString stringWithFormat:@"%ld",(long)index];
     [self layout:view withSizeInfo:self.layoutDict[indexKey]];
 }
 
