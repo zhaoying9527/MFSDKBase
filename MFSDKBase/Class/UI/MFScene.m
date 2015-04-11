@@ -18,33 +18,44 @@
 #import "MFDataBinding.h"
 #import "MFHelper.h"
 #import "MFLayoutCenter.h"
+#import "UIView+Sizes.h"
 @interface MFScene ()
 @property (nonatomic,strong)NSMutableDictionary *doms;
+@property (nonatomic,strong)NSMutableDictionary *headers;
+@property (nonatomic,strong)NSMutableDictionary *footers;
 @property (nonatomic,strong)NSMutableArray *orders;
 //
-- (void)addDom:(MFDOM *)dom;
-//
-- (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource;
-//
-- (void)layout:(UIView*)view withSizeInfo:(NSDictionary*)sizeInfo;
+- (void)addDom:(MFDOM *)dom withType:(MFDomType)type;
 @end
 
 @implementation MFScene
 
-- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withSceneName:(NSString *)sceneName
+- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSMutableDictionary*)styles withSceneName:(NSString *)sceneName
 {
     if (self = [super init]) {
         self.sceneName = sceneName;
         self.doms = [[NSMutableDictionary alloc] init];
+        self.headers = [[NSMutableDictionary alloc] init];
+        self.footers = [[NSMutableDictionary alloc] init];
         for (HTMLNode *htmlNode in (NSArray*)html) {
             if ([[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:htmlNode.tagName]) {
+                MFDOM *header = [self loadHeader:htmlNode withCss:css withDataBinding:dataBinding withEvents:events withStyles:styles];
+                if (header && header.uuid) {
+                    [self addDom:header withType:MFDomTypeHead];
+                }
+
                 MFDOM *dom = [self loadDom:htmlNode withCss:css withDataBinding:dataBinding withEvents:events];
                 if (dom && dom.uuid) {
-                    [self addDom:dom];
+                    [self addDom:dom withType:MFDomTypeBody];
+                }
+
+                MFDOM *footer = [self loadFooter:htmlNode withCss:css withDataBinding:dataBinding withEvents:events withStyles:styles];
+                if (footer && footer.uuid) {
+                    [self addDom:footer withType:MFDomTypeFoot];
                 }
             }
         }
-        
+
         [self createOrders:css];
     }
     return self;
@@ -73,9 +84,15 @@
     return self.orders;
 }
 
-- (void)addDom:(MFDOM *)dom
+- (void)addDom:(MFDOM *)dom withType:(MFDomType)type
 {
-    [self.doms setObject:dom forKey:dom.uuid];
+    if (MFDomTypeHead == type) {
+        [self.headers setObject:dom forKey:dom.uuid];
+    } else if (MFDomTypeBody == type) {
+        [self.doms setObject:dom forKey:dom.uuid];
+    } else if (MFDomTypeFoot == type) {
+        [self.footers setObject:dom forKey:dom.uuid];
+    }
 }
 
 - (MFDOM*)loadDom:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
@@ -84,8 +101,7 @@
     HTMLNode *htmlNode = (HTMLNode*)html;
     NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
     dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[uid] withDataBinding:dataBinding[uid] withEvents:events[uid]];
-   
-    
+
     [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
         MFDOM *childDom = nil;
         if (nil != [childNode getAttributeNamed:KEYWORD_ID]) {
@@ -98,61 +114,148 @@
     return dom;
 }
 
-- (MFDOM*)domWithId:(NSString*)ID
-{    
-    return self.doms[ID];
+- (MFDOM*)loadHeader:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSMutableDictionary*)styles
+{
+    MFDOM *header = nil;
+    HTMLNode *htmlNode = (HTMLNode*)html;
+    NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
+    if (!styles[uid]) {
+        return nil;
+    }
+
+    //该Dom上有header
+    NSString *styleCssKey = styles[uid];
+    NSString *headCssKey = css[styleCssKey][@"head"];
+    headCssKey = [headCssKey stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
+    if (headCssKey) {
+        header = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[headCssKey] withDataBinding:dataBinding[headCssKey] withEvents:events[headCssKey]];
+        header.clsType = @"head";
+    }
+    return header;
 }
 
-- (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource
+- (MFDOM*)loadFooter:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSMutableDictionary*)styles
 {
-    if (view.subviews.count > 0) {
-        UIView *subview = [[view subviews] objectAtIndex:0];
-        [MFDataBinding bind:subview withDataSource:dataSource];
+    MFDOM *footer = nil;
+    HTMLNode *htmlNode = (HTMLNode*)html;
+    NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
+    if (!styles[uid]) {
+        return nil;
     }
+    
+    //该Dom上有footer
+    NSString *styleCssKey = styles[uid];
+    NSString *footCssKey = css[styleCssKey][@"foot"];
+    footCssKey = [footCssKey stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
+    if (footCssKey) {
+        footer = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[footCssKey] withDataBinding:dataBinding[footCssKey] withEvents:events[footCssKey]];
+        footer.clsType = @"foot";
+    }
+    return footer;
+}
+
+- (MFDOM*)domWithId:(NSString*)ID withType:(MFDomType)type
+{
+    if (MFDomTypeBody == type) {
+        return self.doms[ID];
+    } else if (MFDomTypeHead == type) {
+        return self.headers[ID];
+    } else if (MFDomTypeFoot == type) {
+        return self.footers[ID];
+    }
+    return nil;
 }
 
 - (void)bind:(UIView *)view withIndex:(NSInteger)index
 {
-    [self bind:view withDataSource:self.dataArray[index]];
+    for (UIView *subView in view.subviews) {
+        [MFDataBinding bind:subView withDataSource:self.dataArray[index]];
+    }
 }
 
 - (void)layout:(UIView*)view withIndex:(NSInteger)index
 {
-    NSString *indexKey = [NSString stringWithFormat:@"%ld",(long)index];
-    [self layout:view withSizeInfo:self.layoutDict[indexKey]];
-}
-
-- (void)layout:(UIView*)view withSizeInfo:(NSDictionary*)sizeInfo
-{
-    if (view.subviews.count > 0) {
-        UIView *subview = [[view subviews] objectAtIndex:0];
-        [[MFLayoutCenter sharedMFLayoutCenter] layout:subview withSizeInfo:sizeInfo];
+    UIView *headView = nil;
+    UIView *bodyView = nil;
+    UIView *footView = nil;
+    for (UIView *subView in view.subviews) {
+        if (1000 == subView.tag) {
+            headView = subView;
+        } else if (1001 == subView.tag) {
+            bodyView = subView;
+        } else if (1002 == subView.tag) {
+            footView = subView;
+        }
     }
+
+    NSString *indexKey = [NSString stringWithFormat:@"%ld",(long)index];
+    [[MFLayoutCenter sharedMFLayoutCenter] layout:headView withSizeInfo:self.headerLayoutDict[indexKey]];
+    [[MFLayoutCenter sharedMFLayoutCenter] layout:bodyView withSizeInfo:self.layoutDict[indexKey]];
+    bodyView.top += headView.height;
+    [[MFLayoutCenter sharedMFLayoutCenter] layout:footView withSizeInfo:self.footerLayoutDict[indexKey]];
+    footView.top += (headView.height+bodyView.height);
 }
 
 - (UIView*)sceneViewWithDomId:(NSString*)domId
 {
-    MFDOM *matchDom = [self domWithId:domId];
-    return [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:matchDom sizeInfo:nil];
+    MFDOM *headDom = [self domWithId:domId withType:MFDomTypeHead];
+    UIView *headView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:headDom sizeInfo:nil];
+    headView.tag = 1000;
+
+    MFDOM *bodyDom = [self domWithId:domId withType:MFDomTypeBody];
+    UIView *bodyView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:bodyDom sizeInfo:nil];
+    bodyView.tag = 1001;
+
+    MFDOM *footDom = [self domWithId:domId withType:MFDomTypeFoot];
+    UIView *footView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:footDom sizeInfo:nil];
+    footView.tag = 1002;
+
+    UIView *sceneView = [[UIView alloc] initWithFrame:CGRectZero];
+    sceneView.backgroundColor = [UIColor clearColor]; sceneView.alpha = 1; sceneView.opaque = YES;
+    [sceneView addSubview:headView];
+    [sceneView addSubview:bodyView];
+    [sceneView addSubview:footView];
+
+    return sceneView;
 }
 
-
-- (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSDictionary*prepareLayoutDict,NSInteger prepareHeight))callback
+- (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSInteger prepareHeight))callback
 {
     NSInteger retHeight = 0;
     NSArray *datas = self.dataArray;
+    self.headerLayoutDict = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
     self.layoutDict = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
+    self.footerLayoutDict = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
     for (int accessIndex=0; accessIndex < datas.count; accessIndex++) {
         NSDictionary *dataDict = [datas objectAtIndex:accessIndex];
         NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
-        MFDOM *matchDom = [self domWithId:templateId];
+        MFDOM *matchHeadDom = [self domWithId:templateId withType:MFDomTypeHead];
+        MFDOM *matchDom = [self domWithId:templateId withType:MFDomTypeBody];
+        MFDOM *matchFootDom = [self domWithId:templateId withType:MFDomTypeFoot];
         NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)accessIndex];
-        
+
         CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
-        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
-        [self.layoutDict setObject:indexPathDict forKey:indexKey];
-        retHeight += [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
+        NSDictionary *indexPathHeadDict = nil;
+        NSDictionary *indexPathDict = nil;
+        NSDictionary *indexPathFootDict = nil;
+        
+        if (matchHeadDom) {
+            indexPathHeadDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchHeadDom superDomFrame:superFrame dataSource:dataDict];
+            [self.headerLayoutDict setObject:indexPathHeadDict forKey:indexKey];
+        }
+        if (matchDom) {
+            indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
+            [self.layoutDict setObject:indexPathDict forKey:indexKey];
+        }
+        if (matchFootDom) {
+            indexPathFootDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchFootDom superDomFrame:superFrame dataSource:dataDict];
+            [self.footerLayoutDict setObject:indexPathFootDict forKey:indexKey];
+        }
+
+        retHeight += [[indexPathHeadDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
+        retHeight += [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];        
+        retHeight += [[indexPathFootDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
     }
-    callback(self.layoutDict, retHeight);
+    callback(retHeight);
 }
 @end

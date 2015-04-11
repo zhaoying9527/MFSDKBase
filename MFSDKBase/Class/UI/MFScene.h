@@ -12,16 +12,25 @@
  *  虚拟场景
  */
 
+typedef enum {
+    MFDomTypeBody = 0,
+    MFDomTypeHead = 1,
+    MFDomTypeFoot = 2,
+} MFDomType;
+
 @class MFDOM;
 
 @interface MFScene : NSObject
 @property (nonatomic,strong)NSString *sceneName;
 @property (nonatomic,strong)NSMutableArray *dataArray;
-@property (nonatomic,strong)NSMutableDictionary *layoutDict;
+@property (nonatomic,strong)NSMutableDictionary *headerLayoutDict;
+@property (nonatomic,strong)NSMutableDictionary *bodyLayoutDict;
+@property (nonatomic,strong)NSMutableDictionary *footerLayoutDict;
+
 //
-- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withSceneName:(NSString *)sceneName;
+- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSDictionary*)styles withSceneName:(NSString *)sceneName;
 //
-- (MFDOM*)domWithId:(NSString*)ID;
+- (MFDOM*)domWithId:(NSString*)ID withType:(MFDomType)type;
 //
 - (NSArray *)domOrders;
 //
@@ -31,6 +40,6 @@
 //
 - (void)layout:(UIView*)view withIndex:(NSInteger)index;
 //
-- (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSDictionary*prepareLayoutDict,NSInteger prepareHeight))callback;
+- (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSInteger prepareHeight))callback;
 
 @end

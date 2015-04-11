@@ -10,6 +10,7 @@
 #import "MFLabel.h"
 #import "MFImageView.h"
 #import "MFButton.h"
+#import "MFTipsWidget.h"
 #import "MFHelper.h"
 #import "MFResourceCenter.h"
 #import "NSObject+DOM.h"
@@ -40,8 +41,10 @@
             UIImage *image = [MFResourceCenter imageNamed:dataSource];
             ((MFImageView*)widget).image = image ? image : defaultImage;
         }
-    }else if ([widget isKindOfClass:[MFButton class]]) {
+    } else if ([widget isKindOfClass:[MFButton class]]) {
         ((MFButton*)widget).text = dataSource;
-    }
+    } else if ([widget isKindOfClass:[MFTipsWidget class]]) {
+            ((MFTipsWidget*)widget).text = dataSource;
+        }
 }
 @end

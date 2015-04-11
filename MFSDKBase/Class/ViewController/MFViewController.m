@@ -62,7 +62,7 @@
     self.scene.dataArray = [data objectForKey:@"data"];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.scene autoLayoutOperations:self.scene.dataArray callback:^(NSDictionary *prepareLayoutDict, NSInteger prepareHeight) {
+        [self.scene autoLayoutOperations:self.scene.dataArray callback:^(NSInteger prepareHeight) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
@@ -102,23 +102,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    return [self.scene.layoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
-/*
-    NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
-    NSString *templateId = dataDict[KEYWORD_TEMPLATE_ID];
-    MFDOM *matchDom = [self.scene domWithId:templateId];
-
-    NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    NSInteger retHeight = [self.scene.layoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
-    if (retHeight <= 0) {
-        CGRect superFrame = CGRectMake(0, 0, [MFHelper screenXY].width, 0);
-        NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
-        [self.scene.layoutDict setObject:indexPathDict forKey:indexKey];
-        retHeight = [indexPathDict[KEY_WIDGET_HEIGHT] intValue];
-    }
-    return retHeight;
-*/
-
+    CGFloat height = [self.scene.layoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
+    height += [self.scene.headerLayoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
+    height += [self.scene.footerLayoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
+    return height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -128,21 +115,22 @@
     NSString *tId = dataDict[KEYWORD_TEMPLATE_ID];
     NSString *identifier = [NSString stringWithFormat:@"%@",tId];
 
+    UIView *sceneCanvas = nil;
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     if (nil == cell) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
-        UIView *sceneCanvas = [self.scene sceneViewWithDomId:tId];
+        sceneCanvas = [self.scene sceneViewWithDomId:tId];
         if (nil != sceneCanvas) {
             [cell.contentView addSubview:sceneCanvas];
         }
     }
-    
+
     //数据绑定
-    [self.scene bind:cell.contentView withIndex:indexPath.section];
+    [self.scene bind:sceneCanvas withIndex:indexPath.section];
     //布局设置
-    [self.scene layout:cell.contentView withIndex:indexPath.section];
-    
+    [self.scene layout:sceneCanvas withIndex:indexPath.section];
+
     return cell;
 }
 

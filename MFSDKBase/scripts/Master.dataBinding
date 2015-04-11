@@ -1,3 +1,14 @@
+header
+{
+   dsKey:headerTitle
+}
+
+footer
+{
+    dsKey:footerTitle
+}
+
+
 cell1-label
 {
     dsKey:linkUrl;

@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8416069450D03A3F5852385DD1AF0818774842D4</key>
-		<string>https://github.com/zhaoying9527/MFSDKBase</string>
+		<string>https://github.com/qcclcr/MFSDKBase.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MFSDKBase.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/zhaoying9527/MFSDKBase</string>
+	<string>https://github.com/qcclcr/MFSDKBase.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
