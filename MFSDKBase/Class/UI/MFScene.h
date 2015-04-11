@@ -34,7 +34,7 @@ typedef enum {
 //
 - (NSArray *)domOrders;
 //
-- (UIView*)sceneViewWithDomId:(NSString*)domId;
+- (UIView*)sceneViewWithDomId:(NSString*)domId withType:(MFDomType)type;
 //
 - (void)bind:(UIView *)view withIndex:(NSInteger)index;
 //

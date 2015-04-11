@@ -128,7 +128,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGRect pageFrame = [MFHelper formatFrameWithString:pageFrameStr layoutType:layoutType superFrame:superFrame];
     CGSize realSize = CGSizeZero;
 
-    if ([MFHelper isKindOfLabel:clsType]) {
+    if ([MFHelper isKindOfLabel:clsType] || [MFHelper isKindOfTips:clsType]) {
         NSString *multiLineStr = cssItem[KEYWORD_NUMBEROFLINES];
         if (nil != multiLineStr && [MFHelper supportMultiLine:multiLineStr]) {
             //emoji格式化
@@ -137,6 +137,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
             NSString *defaultText = [dom.htmlNodes getAttributeNamed:@"value"];
             NSString *realDataValue = dataSource[dataKey] ? dataSource[dataKey] : defaultText;
             realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:realDataValue superFrame:superFrame];
+        }
+        
+        if ([MFHelper isKindOfTips:clsType] && realSize.width> 0 && realSize.height >0) {
+            realSize = CGSizeMake(realSize.width+3*tipsLeftSpace, realSize.height+2*tipsTopSpace);
         }
     } else if ([MFHelper isKindOfImage:clsType]) {
         realSize = [self imageSizeWithDataInfo:dataSource dataItems:dataSource[dataKey]];
@@ -147,8 +151,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
             realSize = pageFrame.size;
         }
     } else {
-        realSize = pageFrame.size;
+        realSize = [MFHelper isKindOfTips:clsType] ? CGSizeZero: pageFrame.size;
     }
+
     pageFrame.size.width = realSize.width;
     pageFrame.size.height = realSize.height;
     CGSize pageSize = pageFrame.size;
@@ -216,7 +221,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     if (![view UUID]) {
         return;
     }
-    
+
     CGRect rectValue = [sizeInfo[KEY_WIDGET_SIZE][view.UUID] CGRectValue];
     view.frame = rectValue;
 

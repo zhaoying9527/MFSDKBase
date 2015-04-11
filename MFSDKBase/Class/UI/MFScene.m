@@ -171,9 +171,8 @@
     if (view.subviews.count <= 0) {
         return;
     }
-    
-    UIView *sceneCanvas = view.subviews[0];
-    for (UIView *subView in sceneCanvas.subviews) {
+
+    for (UIView *subView in view.subviews) {
         [MFDataBinding bind:subView withDataSource:self.dataArray[index]];
     }
 }
@@ -187,8 +186,7 @@
     UIView *headView = nil;
     UIView *bodyView = nil;
     UIView *footView = nil;
-    UIView *sceneCanvas = view.subviews[0];
-    for (UIView *subView in sceneCanvas.subviews) {
+    for (UIView *subView in view.subviews) {
         if (1000 == subView.tag) {
             headView = subView;
         } else if (1001 == subView.tag) {
@@ -206,27 +204,12 @@
     footView.top += (headView.height+bodyView.height);
 }
 
-- (UIView*)sceneViewWithDomId:(NSString*)domId
+- (UIView*)sceneViewWithDomId:(NSString*)domId withType:(MFDomType)type
 {
-    MFDOM *headDom = [self domWithId:domId withType:MFDomTypeHead];
-    UIView *headView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:headDom sizeInfo:nil];
-    headView.tag = 1000;
-
-    MFDOM *bodyDom = [self domWithId:domId withType:MFDomTypeBody];
-    UIView *bodyView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:bodyDom sizeInfo:nil];
-    bodyView.tag = 1001;
-
-    MFDOM *footDom = [self domWithId:domId withType:MFDomTypeFoot];
-    UIView *footView = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:footDom sizeInfo:nil];
-    footView.tag = 1002;
-
-    UIView *sceneView = [[UIView alloc] initWithFrame:CGRectZero];
-    sceneView.backgroundColor = [UIColor clearColor]; sceneView.alpha = 1; sceneView.opaque = YES;
-    [sceneView addSubview:headView];
-    [sceneView addSubview:bodyView];
-    [sceneView addSubview:footView];
-
-    return sceneView;
+    MFDOM *dom =  [self domWithId:domId withType:type];
+    UIView *view = [[MFSceneFactory sharedMFSceneFactory] createUIWithDOM:dom sizeInfo:nil];
+    view.tag = (MFDomTypeHead == type) ? 1000 : (MFDomTypeBody == type ? 1001 : 1002);
+    return view;
 }
 
 - (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSInteger prepareHeight))callback

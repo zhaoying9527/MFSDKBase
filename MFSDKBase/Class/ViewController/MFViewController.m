@@ -119,9 +119,18 @@
     if (nil == cell) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
-        UIView *sceneCanvas = [self.scene sceneViewWithDomId:tId];
-        if (nil != sceneCanvas) {
-            [cell.contentView addSubview:sceneCanvas];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1];
+        UIView *sceneHeadCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeHead];
+        UIView *sceneBodyCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeBody];
+        UIView *sceneFootCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeFoot];
+        if (nil != sceneHeadCanvas) {
+            [cell.contentView addSubview:sceneHeadCanvas];
+        }
+        if (nil != sceneBodyCanvas) {
+            [cell.contentView addSubview:sceneBodyCanvas];
+        }
+        if (nil != sceneFootCanvas) {
+            [cell.contentView addSubview:sceneFootCanvas];
         }
     }
 

@@ -628,6 +628,17 @@
     return retCode;
 }
 
++ (BOOL)isKindOfTips:(NSString*)string
+{
+    BOOL retCode = NO;
+    NSString *lowerString = [string lowercaseString];
+    if ([lowerString isEqualToString:@"head"]
+        || [lowerString isEqualToString:@"foot"]) {
+        retCode = YES;
+    }
+    return retCode;
+}
+
 + (BOOL)isKindOfImage:(NSString*)imageString
 {
     BOOL retCode = NO;
