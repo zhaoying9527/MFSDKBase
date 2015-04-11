@@ -190,7 +190,7 @@
 
     NSString *indexKey = [NSString stringWithFormat:@"%ld",(long)index];
     [[MFLayoutCenter sharedMFLayoutCenter] layout:headView withSizeInfo:self.headerLayoutDict[indexKey]];
-    [[MFLayoutCenter sharedMFLayoutCenter] layout:bodyView withSizeInfo:self.layoutDict[indexKey]];
+    [[MFLayoutCenter sharedMFLayoutCenter] layout:bodyView withSizeInfo:self.bodyLayoutDict[indexKey]];
     bodyView.top += headView.height;
     [[MFLayoutCenter sharedMFLayoutCenter] layout:footView withSizeInfo:self.footerLayoutDict[indexKey]];
     footView.top += (headView.height+bodyView.height);
@@ -224,7 +224,7 @@
     NSInteger retHeight = 0;
     NSArray *datas = self.dataArray;
     self.headerLayoutDict = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
-    self.layoutDict = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
+    self.bodyLayoutDict = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
     self.footerLayoutDict = [[NSMutableDictionary alloc] initWithCapacity:self.dataArray.count];
     for (int accessIndex=0; accessIndex < datas.count; accessIndex++) {
         NSDictionary *dataDict = [datas objectAtIndex:accessIndex];
@@ -245,7 +245,7 @@
         }
         if (matchDom) {
             indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
-            [self.layoutDict setObject:indexPathDict forKey:indexKey];
+            [self.bodyLayoutDict setObject:indexPathDict forKey:indexKey];
         }
         if (matchFootDom) {
             indexPathFootDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchFootDom superDomFrame:superFrame dataSource:dataDict];

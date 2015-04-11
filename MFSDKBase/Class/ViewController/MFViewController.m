@@ -102,8 +102,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-    CGFloat height = [self.scene.layoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
-    height += [self.scene.headerLayoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
+    CGFloat height = [self.scene.headerLayoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
+    height += [self.scene.bodyLayoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
     height += [self.scene.footerLayoutDict[indexKey][KEY_WIDGET_HEIGHT] intValue];
     return height;
 }
