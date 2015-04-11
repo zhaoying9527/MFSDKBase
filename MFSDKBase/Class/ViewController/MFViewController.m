@@ -77,7 +77,7 @@
     if (nil == self.tableView) {
         self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         self.tableView.backgroundColor = [UIColor grayColor];
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.allowsSelection = YES;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -115,21 +115,20 @@
     NSString *tId = dataDict[KEYWORD_TEMPLATE_ID];
     NSString *identifier = [NSString stringWithFormat:@"%@",tId];
 
-    UIView *sceneCanvas = nil;
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     if (nil == cell) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
-        sceneCanvas = [self.scene sceneViewWithDomId:tId];
+        UIView *sceneCanvas = [self.scene sceneViewWithDomId:tId];
         if (nil != sceneCanvas) {
             [cell.contentView addSubview:sceneCanvas];
         }
     }
 
     //数据绑定
-    [self.scene bind:sceneCanvas withIndex:indexPath.section];
+    [self.scene bind:cell.contentView withIndex:indexPath.section];
     //布局设置
-    [self.scene layout:sceneCanvas withIndex:indexPath.section];
+    [self.scene layout:cell.contentView withIndex:indexPath.section];
 
     return cell;
 }

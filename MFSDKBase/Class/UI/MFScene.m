@@ -168,17 +168,27 @@
 
 - (void)bind:(UIView *)view withIndex:(NSInteger)index
 {
-    for (UIView *subView in view.subviews) {
+    if (view.subviews.count <= 0) {
+        return;
+    }
+    
+    UIView *sceneCanvas = view.subviews[0];
+    for (UIView *subView in sceneCanvas.subviews) {
         [MFDataBinding bind:subView withDataSource:self.dataArray[index]];
     }
 }
 
 - (void)layout:(UIView*)view withIndex:(NSInteger)index
 {
+    if (view.subviews.count <= 0) {
+        return;
+    }
+
     UIView *headView = nil;
     UIView *bodyView = nil;
     UIView *footView = nil;
-    for (UIView *subView in view.subviews) {
+    UIView *sceneCanvas = view.subviews[0];
+    for (UIView *subView in sceneCanvas.subviews) {
         if (1000 == subView.tag) {
             headView = subView;
         } else if (1001 == subView.tag) {
