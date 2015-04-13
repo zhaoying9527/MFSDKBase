@@ -17,7 +17,6 @@
 @property (nonatomic, assign)BOOL side;
 @property (nonatomic, assign)NSInteger alignmentType;
 @property (nonatomic, assign)BOOL reverse;
-@property (nonatomic, strong)UIColor *highLightTextColor;
 @property (nonatomic, assign)CGFloat cornerRadius;
 @property (nonatomic, assign)CGFloat borderWidth;
 @property (nonatomic, strong)UIColor *borderColor;

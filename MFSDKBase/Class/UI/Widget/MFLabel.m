@@ -71,6 +71,11 @@
     }
 }
 
+- (void)setHighlightedTextColor:(UIColor *)highlightedTextColor
+{
+    [super setHighlightedTextColor:highlightedTextColor];
+}
+
 - (void)specialHandling
 {
     if (self.alignmentType == MFAlignmentTypeRight) {

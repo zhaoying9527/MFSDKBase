@@ -89,7 +89,7 @@ cell1-body-jine
     height:40;
     background-color:RGB();
     color:black;
-    highLightTextColor:white;
+    highlightedTextColor:white;
     text-align:left;
     font:bold 20;
     numberOfLines:0;
