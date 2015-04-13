@@ -14,7 +14,6 @@
 
 - (void)setupNotify;
 - (void)releaseNotify;
-- (void)specialHandling;
 - (void)setupUI;
 - (void)releaseUI;
 

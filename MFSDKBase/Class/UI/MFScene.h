@@ -39,11 +39,7 @@ typedef enum {
 //
 - (void)bind:(UIView *)view withIndex:(NSInteger)index;
 //
-- (void)layout:(UIView*)view withIndex:(NSInteger)index;
-//
-- (void)sideSubViews:(UIView*)view withIndex:(NSInteger)index withAlignmentType:(MFAlignmentType)alignType;
-//
-- (void)reverseSubViews:(UIView*)view withIndex:(NSInteger)index;
+- (void)layout:(UIView*)view withIndex:(NSInteger)index withAlignmentType:(MFAlignmentType)alignType;
 //
 - (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSInteger prepareHeight))callback;
 

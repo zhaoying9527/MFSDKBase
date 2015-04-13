@@ -227,6 +227,18 @@
         [self stopAnimating];
     }
 }
+
+- (void)specialHandling
+{
+    if (self.alignmentType == MFAlignmentTypeRight) {
+        if (nil != self.highlightedTextColor) {
+            self.timeLineLabel.textColor = self.highlightedTextColor;
+        }
+    }else {
+        self.timeLineLabel.textColor = self.textColor;
+    }
+}
+
 #pragma mark --
 #pragma mark TapGestureRecognizer
 - (void)setupTapGestureRecognizer

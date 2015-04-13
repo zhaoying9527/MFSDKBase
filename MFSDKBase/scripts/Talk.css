@@ -87,14 +87,15 @@ cell1-body-jine
     left:5%;
     width:60%;
     height:40;
-    background-color:RGB(12,34,56);
-    color:white;
+    background-color:RGB();
+    color:black;
+    highLightTextColor:white;
     text-align:left;
     font:bold 20;
     numberOfLines:0;
     alignmentType:left;
     side:YES;
-    reverse:YES;
+    reverse:NO;
 }
 
 cell1-body-shaojuhua
@@ -104,7 +105,7 @@ cell1-body-shaojuhua
     left:5%;
     width:60%;
     height:30;
-    background-color:RGB(34,78,34);
+    background-color:RGB();
     color:black;
     text-align:left;
     font:bold 12;
@@ -122,5 +123,5 @@ cell1-body-icon
     align:left;
     side:YES;
     style:TRANSFER-left,TRANSFER-right;
-    reverse:YES;
+    reverse:NO;
 }

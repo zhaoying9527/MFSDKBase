@@ -25,12 +25,4 @@
         [view removeFromSuperview];
     }
 }
-#pragma mark Layout
--(void)layoutPage
-{
-    [self specialHandling];
-}
-- (void)specialHandling
-{
-}
 @end

@@ -9,6 +9,9 @@
 #import "MFDOM.h"
 #import "NSObject+DOM.h"
 #import "UIView+UUID.h"
+#import "MFLabel.h"
+#import "MFRichLabel.h"
+#import "MFImageView.h"
 
 @implementation MFLayoutCenter
 SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
@@ -265,6 +268,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         if (![MFHelper sameRect:view.frame withRect:rect]) {
             view.frame = rect;
         }
+    }
+    if ([view respondsToSelector:@selector(specialHandling)]) {
+        [(id)view specialHandling];
     }
 
     for (UIView *subView in view.subviews) {

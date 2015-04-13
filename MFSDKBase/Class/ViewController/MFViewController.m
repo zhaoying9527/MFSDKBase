@@ -135,13 +135,9 @@
     }
 
     //布局设置
-    [self.scene layout:cell.contentView withIndex:indexPath.section];
-    //Align设置
     MFAlignmentType alignType = [dataDict[KEY_WIDGET_ALIGNMENTTYPE] intValue];
-    [self.scene sideSubViews:cell.contentView withIndex:indexPath.section withAlignmentType:alignType];
-    // 翻转设置
-    [self.scene reverseSubViews:cell.contentView withIndex:indexPath.section];
-    
+    [self.scene layout:cell.contentView withIndex:indexPath.section withAlignmentType:alignType];
+
     //数据绑定
     [self.scene bind:cell.contentView withIndex:indexPath.section];
 
