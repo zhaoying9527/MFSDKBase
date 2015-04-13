@@ -32,6 +32,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [[MFSceneCenter sharedMFSceneCenter] removeSceneWithName:self.scriptName];
 }
 
 - (instancetype)initWithScriptName:(NSString *)scriptName
@@ -39,7 +40,7 @@
     self = [super init];
     if (self) {
         //场景初始化
-        self.scene = [[MFSceneCenter sharedMFSceneCenter] addSceneWithName:scriptName];
+        self.scene = [[MFSceneCenter sharedMFSceneCenter] loadSceneWithName:scriptName];
         self.scriptName = scriptName;
     }
     return self;
@@ -51,6 +52,11 @@
     self.view.backgroundColor = [UIColor blackColor];
     [self setupUI];
     [self prepareData:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[MFSceneCenter sharedMFSceneCenter] registerScene:self.scene WithName:self.scriptName];
 }
 
 #pragma mark - Data

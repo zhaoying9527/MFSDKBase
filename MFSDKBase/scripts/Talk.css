@@ -33,7 +33,7 @@ footer
 
 cell1
 {
-    order:6;
+    order:0;
     width:100%;
     height:100;
     background-color:RGB(235,235,235);
@@ -53,9 +53,26 @@ cell1-head-image
     side:YES;
 }
 
-cell1-body-backgroundImg
+cell1-name
 {
     order:2;
+    top:10;
+    left:23%;
+    width:0;
+    height:0;
+    background-color:RGB();
+    color:gray;
+    text-align:left;
+    font:normal 11;
+    numberOfLines:0;
+    alignmentType:left;
+    side:NO;
+}
+
+
+cell1-body-backgroundImg
+{
+    order:3;
     left:20%;
     top:10;
     width:65%;
@@ -68,7 +85,7 @@ cell1-body-backgroundImg
 
 cell1-body-bubble
 {
-    order:0;
+    order:6;
     top:0;
     left:0;
     width:100%;
@@ -82,7 +99,7 @@ cell1-body-bubble
 
 cell1-body-jine
 {
-    order:4;
+    order:7;
     top:0;
     left:5%;
     width:60%;
@@ -100,7 +117,7 @@ cell1-body-jine
 
 cell1-body-shaojuhua
 {
-    order:5;
+    order:4;
     top:70;
     left:5%;
     width:60%;
@@ -115,7 +132,7 @@ cell1-body-shaojuhua
 }
 cell1-body-icon
 {
-    order:3;
+    order:5;
     top:5;
     left:70%;
     width:35;
@@ -125,3 +142,7 @@ cell1-body-icon
     style:TRANSFER-left,TRANSFER-right;
     reverse:NO;
 }
+
+
+
+

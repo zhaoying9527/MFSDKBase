@@ -15,5 +15,7 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneCenter)
 @property (nonatomic,strong)NSMutableDictionary *scenes;
 - (MFScene*)currentScene;
 - (MFScene*)sceneWithName:(NSString*)sceneName;
-- (MFScene*)addSceneWithName:(NSString*)sceneName;
+- (MFScene*)loadSceneWithName:(NSString*)sceneName;
+- (void)registerScene:(MFScene*)scene WithName:(NSString*)sceneName;
+- (BOOL)removeSceneWithName:(NSString*)sceneName;
 @end

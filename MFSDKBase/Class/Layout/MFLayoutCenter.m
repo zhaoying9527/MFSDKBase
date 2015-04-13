@@ -164,13 +164,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 - (NSDictionary*)sizeOfBodyDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
     NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
-    CGRect domframe = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo];
+    CGRect domframe = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo withOrders:nil];
     NSDictionary * retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height), KEY_WIDGET_HEIGHT,
                                     @(domframe.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
     return retDictionary;
 }
 
-- (CGRect)layoutInfoOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo
+- (NSDictionary*)sizeOfBodyDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource withOrders:(NSArray*)orders;
+{
+    NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
+    CGRect domframe = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo withOrders:orders];
+    NSDictionary * retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height), KEY_WIDGET_HEIGHT,
+                                    @(domframe.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
+    return retDictionary;
+}
+
+- (CGRect)layoutInfoOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo withOrders:(NSArray*)orders;
 {
     NSString *clsType = [dom.clsType lowercaseString];
     NSString *domID = dom.uuid;
@@ -211,14 +220,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSInteger subHeight = 0;
 
     NSMutableDictionary *childWidgetsInfo = [NSMutableDictionary dictionary];
-    NSArray *orders = [[[MFSceneCenter sharedMFSceneCenter] currentScene] domOrders];
     NSArray *sortedDoms = [self resortDoms:dom.subDoms withOrders:orders];
     for (MFDOM *subDom in sortedDoms) {
         layoutKey = subDom.cssNodes[@"layout"];
         layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
         NSString *childFrameStr = [MFHelper getFrameStringWithCssStyle:subDom.cssNodes];
         CGRect childFrame = [MFHelper formatFrameWithString:childFrameStr layoutType:layoutType superFrame:pageFrame];
-        CGRect childRealFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo];
+        CGRect childRealFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo withOrders:orders];
         childRealFrame.origin.y += subHeight;
         if (childRealFrame.size.height > childFrame.size.height) {
             subHeight += childRealFrame.size.height - childFrame.size.height;
@@ -239,6 +247,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (NSArray*)resortDoms:(NSArray*)doms withOrders:(NSArray*)orders
 {
+    if (nil == orders) {
+        return doms;
+    }
+
     NSUInteger loopCount = MAX(doms.count, orders.count);
     NSMutableArray *sortedDoms = [[NSMutableArray alloc] initWithCapacity:loopCount];
     //占位
@@ -263,7 +275,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     }
     //检查
     [sortedDoms removeObject:[NSNull null] inRange:NSMakeRange(0, sortedDoms.count)];
-    
+
     return sortedDoms;
 }
 

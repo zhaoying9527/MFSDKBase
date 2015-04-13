@@ -17,9 +17,8 @@
 #import "MFDOM.h"
 
 @interface MFSceneCenter ()
-@property (nonatomic, copy) NSString *sceneName;
+@property (nonatomic, copy) NSString *currentSceneName;
 @property (nonatomic, strong)MFCorePlugInService *pluginService;
-- (MFScene*)loadScene;
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error;
 @end
 
@@ -34,15 +33,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     return self;
 }
 
-- (MFScene*)addSceneWithName:(NSString*)sceneName
+- (void)registerScene:(MFScene*)scene WithName:(NSString*)sceneName
 {
-    self.sceneName = sceneName;
-    MFScene *scence = [self loadScene];
+    self.currentSceneName = sceneName;
+    if (nil != scene && nil != sceneName) {
+        [self.scenes setObject:scene forKey:sceneName];
+    }
+}
+
+- (BOOL)removeSceneWithName:(NSString*)sceneName
+{
+    MFScene *scence = [self.scenes objectForKey:sceneName];
     if (nil != scence) {
-        [self.scenes setObject:scence forKey:sceneName];
+        [self.scenes removeObjectForKey:sceneName];
     }
     
-    return scence;
+    return (nil != scence);
 }
 
 - (MFScene*)sceneWithName:(NSString*)sceneName
@@ -52,18 +58,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
 
 - (MFScene*)currentScene
 {
-    return [self.scenes objectForKey:self.sceneName];
+    return [self.scenes objectForKey:self.currentSceneName];
 }
 
-- (MFScene*)loadScene
+- (MFScene*)loadSceneWithName:(NSString*)sceneName
 {
     self.pluginService = [[MFCorePlugInService alloc] init];
     
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-    NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, self.sceneName];
-    NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, self.sceneName];
-    NSString *dataBindingPath = [NSString stringWithFormat:@"%@/%@.dataBinding", bundlePath, self.sceneName];
-    
+    NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, sceneName];
+    NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, sceneName];
+    NSString *dataBindingPath = [NSString stringWithFormat:@"%@/%@.dataBinding", bundlePath, sceneName];
+
     MFHtmlParser *result_h5 = nil;
     id result_css = nil;
     id result_databinding = nil;
@@ -78,7 +84,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     result_style = [self parseStyle:result_h5];
     
     //加载场景
-    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyEntity] withCss:result_css withDataBinding:result_databinding withEvents:result_events withStyles:result_style withSceneName:self.sceneName];
+    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyEntity] withCss:result_css withDataBinding:result_databinding withEvents:result_events withStyles:result_style withSceneName:sceneName];
 }
 
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error

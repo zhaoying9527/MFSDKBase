@@ -244,7 +244,7 @@
             [self.headerLayoutDict setObject:indexPathHeadDict forKey:indexKey];
         }
         if (matchBodyDom) {
-            indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfBodyDom:matchBodyDom superDomFrame:superFrame dataSource:dataDict];
+            indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfBodyDom:matchBodyDom superDomFrame:superFrame dataSource:dataDict withOrders:self.orders];
             [self.bodyLayoutDict setObject:indexPathDict forKey:indexKey];
         }
         if (matchFootDom) {

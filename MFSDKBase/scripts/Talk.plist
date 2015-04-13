@@ -29,6 +29,8 @@
 			<string>发送消息包含违禁词</string>
 			<key>alignmentType</key>
 			<string>0</string>
+			<key>user-name</key>
+			<string>嗷嗷</string>
 		</dict>
 		<dict>
 			<key>linkUrl</key>

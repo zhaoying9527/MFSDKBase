@@ -22,7 +22,7 @@ typedef enum {
 @class MFDOM;
 
 @interface MFScene : NSObject
-@property (nonatomic,strong)NSString *sceneName;
+@property (nonatomic,copy)NSString *sceneName;
 @property (nonatomic,strong)NSMutableArray *dataArray;
 @property (nonatomic,strong)NSMutableDictionary *headerLayoutDict;
 @property (nonatomic,strong)NSMutableDictionary *bodyLayoutDict;

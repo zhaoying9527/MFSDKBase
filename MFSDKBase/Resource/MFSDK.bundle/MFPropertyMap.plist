@@ -37,7 +37,7 @@
 	<key>reverse</key>
 	<string>reverse</string>
 	<key>visibility</key>
-	<string>hiddel</string>
+	<string>hidden</string>
 	<key>numberOfLines</key>
 	<string>numberOfLines</string>
 	<key>layout</key>
