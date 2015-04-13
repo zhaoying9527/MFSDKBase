@@ -12,6 +12,7 @@
 @property (nonatomic, assign) BOOL side;
 @property (nonatomic, assign)NSInteger alignmentType;
 @property (nonatomic, assign)BOOL reverse;
+@property (nonatomic, copy)NSString* style;
 
 @property (nonatomic, assign)BOOL touchEnabled;
 @property (nonatomic, assign)CGFloat cornerRadius;

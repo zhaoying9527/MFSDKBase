@@ -9,11 +9,15 @@
 #import "MFView.h"
 #import "MFDefine.h"
 #import "NSObject+DOM.h"
+#import "MFHelper.h"
+#import "MFResourceCenter.h"
 
 @interface MFView () <UIGestureRecognizerDelegate>
 @property (nonatomic,strong)UITapGestureRecognizer *singleTap;
 @property (nonatomic,strong)UILongPressGestureRecognizer *longPressTap;
 @property (nonatomic,strong)UISwipeGestureRecognizer *swipeTap;
+@property (nonatomic,strong)UIImageView *backgroundImageView;
+
 @end
 
 @implementation MFView
@@ -132,5 +136,91 @@
 {
     _cornerRadius = cornerRadius;
     self.layer.cornerRadius = cornerRadius;
+}
+
+- (UIImage*)transStyleImageWithName:(NSString*)imageName
+{
+    return [[MFResourceCenter sharedMFResourceCenter] imageWithId:imageName];
+}
+
+- (UIImage *)styleCenterImageWithId:(NSString*)imageId
+{
+    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
+    if (nil == retImage) {
+        UIImage * image = [self transStyleImageWithName:imageId];
+        retImage = [MFHelper stretchableCellImage:image];
+        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
+    }
+    return retImage;
+}
+
+- (UIImage*)styleLeftImageWithId:(NSString*)imageId
+{
+    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
+    if (nil == retImage) {
+        UIImage * image = [self transStyleImageWithName:imageId];
+        retImage = [MFHelper resizeableLeftBgImage:image];
+        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
+    }
+    return retImage;
+}
+
+- (UIImage*)styleRightImageWithId:(NSString*)imageId
+{
+    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
+    if (nil == retImage) {
+        UIImage * image = [self transStyleImageWithName:imageId];
+        retImage = [MFHelper resizeableRightBgImage:image];
+        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
+    }
+    return retImage;
+}
+
+- (void)setStyle:(NSString*)style
+{
+    
+    _style = style;
+    
+    UIImage *image= nil;
+    NSArray *styleArray = [style componentsSeparatedByString:@","];
+    if ([styleArray count]>=2) {
+        switch (self.alignmentType) {
+            case MFAlignmentTypeLeft:
+                image = [self styleLeftImageWithId:[styleArray objectAtIndex:0]];
+                break;
+            case MFAlignmentTypeCenter:
+                image = [self styleCenterImageWithId:[styleArray objectAtIndex:0]];
+                break;
+            case MFAlignmentTypeRight:
+                image = [self styleRightImageWithId:[styleArray objectAtIndex:1]];
+                break;
+            default:
+                break;
+        }
+    } else {
+        image = [self styleLeftImageWithId:[styleArray objectAtIndex:0]];
+    }
+    
+    if (nil == _backgroundImageView) {
+        _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _backgroundImageView.backgroundColor = [UIColor clearColor];
+        _backgroundImageView.opaque = 0;
+        _backgroundImageView.alpha = 1;
+        [self addSubview:_backgroundImageView];
+    }
+    _backgroundImageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    _backgroundImageView.image = image;
+}
+
+- (void)setAlignmentType:(NSInteger)type
+{
+    _alignmentType = type;
+    self.style = _style;
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    _backgroundImageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
 }
 @end
