@@ -47,6 +47,7 @@
 + (UIFont*)formatFontWithString:(NSString*)font;
 + (UIImage *)formatImageWithString:(NSString*)imageUrl;
 + (MFLayoutType)formatLayoutWithString:(NSString*)layout;
++ (NSNumber *)formatreverseWithString:(NSString*)reverse;
 
 + (NSString*)formatDate:(NSDate*)date;
 + (NSString*)formateTimeInterval:(NSTimeInterval)timecontent;

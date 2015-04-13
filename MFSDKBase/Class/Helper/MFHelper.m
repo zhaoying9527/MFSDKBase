@@ -372,10 +372,11 @@
 + (NSNumber *)formatSideWithString:(NSString*)side
 {
     BOOL retSide = NO;
-    if ([side isEqualToString:@"YES"]) {
+    NSString * tas = [side lowercaseString];
+    if ([tas isEqualToString:@"yes"]) {
         retSide = YES;
     }
-    else if ([side isEqualToString:@"NO"]) {
+    else if ([tas isEqualToString:@"no"]) {
         retSide = NO;
     }
     return [NSNumber numberWithBool:retSide];
@@ -384,10 +385,11 @@
 + (NSNumber *)formatTouchEnableWithString:(NSString*)touchEnable
 {
     BOOL retTouchEnable = NO;
-    if ([touchEnable isEqualToString:@"YES"]) {
+    NSString * tas = [touchEnable lowercaseString];
+    if ([tas isEqualToString:@"yes"]) {
         retTouchEnable = YES;
     }
-    else if ([touchEnable isEqualToString:@"NO"]) {
+    else if ([tas isEqualToString:@"no"]) {
         retTouchEnable = NO;
     }
     return [NSNumber numberWithBool:retTouchEnable];
@@ -396,10 +398,11 @@
 + (NSNumber *)formatVisibilityWithString:(NSString*)visibility
 {
     BOOL retVisibility = NO;
-    if ([visibility isEqualToString:@"visible"]) {
+    NSString * tas = [visibility lowercaseString];
+    if ([tas isEqualToString:@"visible"]) {
         retVisibility = YES;
     }
-    else if ([visibility isEqualToString:@"hidden"]) {
+    else if ([tas isEqualToString:@"hidden"]) {
         retVisibility = NO;
     }
     return [NSNumber numberWithBool:retVisibility];
@@ -437,6 +440,17 @@
         retLayoutType = MFLayoutTypeNone;
     }
     return retLayoutType;
+}
+
++ (NSNumber *)formatreverseWithString:(NSString*)reverse
+{
+    BOOL reverseType = NO;
+    NSString * tas = [reverse lowercaseString];
+    if ([tas isEqualToString:@"yes"]) {
+        reverseType = YES;
+    }
+
+    return [NSNumber numberWithBool:reverseType];
 }
 
 + (UIImage*)scaleToSize:(UIImage*)image size:(CGSize)size

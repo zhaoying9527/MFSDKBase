@@ -167,7 +167,7 @@
 {
     
     _style = style;
-    
+
     NSArray *styleArray = [style componentsSeparatedByString:@","];
     if ([styleArray count]>=2) {
         switch (self.alignmentType) {
@@ -211,11 +211,6 @@
     _side = side;
 }
 
-- (void)setImage:(UIImage *)image
-{
-    [super setImage:image];
-}
-
 - (void)centerLayout
 {
     CGRect rect = self.rawRect;
@@ -227,6 +222,7 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
+    self.style = _style;
     if (self.side) {
         if (MFAlignmentTypeLeft == _alignmentType) {
             self.frame = self.rawRect;

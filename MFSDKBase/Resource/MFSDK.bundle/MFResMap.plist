@@ -28,9 +28,9 @@
 	<string>HiChat.bundle/PEEAPAY.right.png</string>
 	<key>shareBG</key>
 	<string>HiChat.bundle/Dialog_blue2.png</string>
-	<key>TRANSFER.left</key>
+	<key>TRANSFER-left</key>
 	<string>HiChat.bundle/TRANSFER.left.png</string>
-	<key>TRANSFER.right</key>
+	<key>TRANSFER-right</key>
 	<string>HiChat.bundle/TRANSFER.right.png</string>
 	<key>whiteAdvBG</key>
 	<string>HiChat.bundle/Dialog_white2.png</string>

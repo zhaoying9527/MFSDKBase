@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MFView.h"
 
-@interface MFAudioLabel : MFView
+@interface MFAudioLabel : UIView
+@property (nonatomic, assign)BOOL side;
+@property (nonatomic, assign)NSInteger alignmentType;
+@property (nonatomic, assign)BOOL reverse;
+
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIColor *highlightedTextColor;
 @property (nonatomic, strong) UIFont *font;
-@property (nonatomic, assign) NSInteger alignmentType;
 @property (nonatomic, copy) NSString * layout;
 @property (nonatomic, assign) BOOL canStretch;
 

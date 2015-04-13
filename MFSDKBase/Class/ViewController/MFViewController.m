@@ -119,7 +119,7 @@
     if (nil == cell) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
-        cell.contentView.backgroundColor = [UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:235.0/255 green:235.0/255 blue:235.0/255 alpha:1];
         UIView *sceneHeadCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeHead];
         UIView *sceneBodyCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeBody];
         UIView *sceneFootCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeFoot];
@@ -134,10 +134,16 @@
         }
     }
 
-    //数据绑定
-    [self.scene bind:cell.contentView withIndex:indexPath.section];
     //布局设置
     [self.scene layout:cell.contentView withIndex:indexPath.section];
+    //Align设置
+    MFAlignmentType alignType = [dataDict[KEY_WIDGET_ALIGNMENTTYPE] intValue];
+    [self.scene sideSubViews:cell.contentView withIndex:indexPath.section withAlignmentType:alignType];
+    // 翻转设置
+    [self.scene reverseSubViews:cell.contentView withIndex:indexPath.section];
+    
+    //数据绑定
+    [self.scene bind:cell.contentView withIndex:indexPath.section];
 
     return cell;
 }

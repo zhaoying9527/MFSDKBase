@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface MFButton : UIButton
+@property (nonatomic, assign) BOOL side;
+@property (nonatomic, assign)NSInteger alignmentType;
+@property (nonatomic, assign)BOOL reverse;
 @property (nonatomic, strong)NSString *text;
 @property (nonatomic, strong)UIImage *image;
 @property (nonatomic, strong)UIImage *backgroundImage;

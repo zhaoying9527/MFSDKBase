@@ -16,6 +16,7 @@
 @property (nonatomic, copy)NSString* style;
 @property (nonatomic, assign)NSInteger alignmentType;
 @property (nonatomic, assign)NSInteger align;
+@property (nonatomic, assign)BOOL reverse;
 @property (nonatomic, assign)CGFloat cornerRadius;
 @property (nonatomic, assign)CGFloat borderWidth;
 @property (nonatomic, strong)UIColor *borderColor;

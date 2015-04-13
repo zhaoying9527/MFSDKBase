@@ -32,6 +32,10 @@
 	<string>backgroundImage</string>
 	<key>align</key>
 	<string>align</string>
+	<key>alignmentType</key>
+	<string>alignmentType</string>
+	<key>reverse</key>
+	<string>reverse</string>
 	<key>visibility</key>
 	<string>hiddel</string>
 	<key>numberOfLines</key>
@@ -44,5 +48,9 @@
 	<string>side</string>
 	<key>touchEnabled</key>
 	<string>touchEnabled</string>
+	<key>style</key>
+	<string>style</string>
+	<key>text</key>
+	<string>text</string>
 </dict>
 </plist>

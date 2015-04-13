@@ -114,14 +114,32 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
 
 - (void)batchExecution:(NSDictionary *)scriptDict
 {
+    NSString *propertyName = nil;
+    NSString *propertyValue = nil;
+    id dataObject = nil;
+    
+    propertyName = [self.propertyMapDict objectForKey:@"side"];
+    propertyValue = [scriptDict objectForKey:@"side"];
+    dataObject = [self valueFormat:propertyValue withPropertyName:@"side"];
+    if (nil != propertyName && nil != dataObject) {
+        [self setProperty:self.object popertyName:propertyName withObject:dataObject];
+    }
+    
     for (NSString *metaProperty in [scriptDict allKeys]) {
-        NSString *propertyName = [self.propertyMapDict objectForKey:metaProperty];
-        NSString *propertyValue = [scriptDict objectForKey:metaProperty];
-        id dataObject = [self valueFormat:propertyValue withPropertyName:metaProperty];
+        propertyName = [self.propertyMapDict objectForKey:metaProperty];
+        propertyValue = [scriptDict objectForKey:metaProperty];
+        dataObject = [self valueFormat:propertyValue withPropertyName:metaProperty];
         if (nil == propertyName || nil == dataObject) {
             NSLog(@"warning: propertyName or dataObject is nil");
             continue;
         }
+        [self setProperty:self.object popertyName:propertyName withObject:dataObject];
+    }
+    
+    propertyName = [self.propertyMapDict objectForKey:@"style"];
+    propertyValue = [scriptDict objectForKey:@"style"];
+    dataObject = [self valueFormat:propertyValue withPropertyName:@"style"];
+    if (nil != propertyName && nil != dataObject) {
         [self setProperty:self.object popertyName:propertyName withObject:dataObject];
     }
 }
@@ -195,6 +213,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     }else if ([propertyName isEqualToString:@"align"]) {
         MFAlignmentType alignment = [MFHelper formatAlignmentWithString:propertyValue];
         retObj = [NSNumber numberWithInt:alignment];
+    }else if ([propertyName isEqualToString:@"alignmentType"]) {
+        MFAlignmentType alignment = [MFHelper formatAlignmentWithString:propertyValue];
+        retObj = [NSNumber numberWithInt:alignment];
     }else if ([propertyName isEqualToString:@"visibility"]) {
         retObj = [MFHelper formatVisibilityWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"layout"]) {
@@ -206,6 +227,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         retObj = [MFHelper formatSideWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"touchEnabled"]) {
         retObj = [MFHelper formatTouchEnableWithString:propertyValue];
+    }else if ([propertyName isEqualToString:@"style"]) {
+        retObj = propertyValue;
+    }else if ([propertyName isEqualToString:@"local"]) {
+        retObj = propertyValue;
+    }else if ([propertyName isEqualToString:@"reverse"]) {
+        retObj = [MFHelper formatreverseWithString:propertyValue];
     }
 
     return retObj;

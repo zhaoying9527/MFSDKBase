@@ -15,11 +15,6 @@
 		1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */; };
 		1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */; };
 		1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3891AD518CD00E27AA8 /* MFScene.m */; };
-		1CE473D61AD774A100DB916F /* Balance.css in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473D11AD774A100DB916F /* Balance.css */; };
-		1CE473D71AD774A100DB916F /* Balance.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473D21AD774A100DB916F /* Balance.dataBinding */; };
-		1CE473D81AD774A100DB916F /* Balance.html in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473D31AD774A100DB916F /* Balance.html */; };
-		1CE473D91AD774A100DB916F /* Balance.lua in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473D41AD774A100DB916F /* Balance.lua */; };
-		1CE473DE1AD7756200DB916F /* Balance.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CE473DD1AD7756200DB916F /* Balance.plist */; };
 		1CE933201AD656B9001BE962 /* MFDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE9331F1AD656B9001BE962 /* MFDataBinding.m */; };
 		231BE4511ACFC60000B65A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4501ACFC60000B65A58 /* main.m */; };
 		231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4531ACFC60000B65A58 /* AppDelegate.m */; };
@@ -30,24 +25,35 @@
 		231BE46B1ACFC60000B65A58 /* MFSDKBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */; };
 		231BE4D81AD0377100B65A58 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4D71AD0377100B65A58 /* libxml2.2.dylib */; };
 		231BE4ED1AD39AEB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4EC1AD39AEB00B65A58 /* wax.framework */; };
+		2386EB8A1AD9DB17006FE937 /* AppDelegate.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB751AD9DB17006FE937 /* AppDelegate.lua */; };
+		2386EB8B1AD9DB17006FE937 /* Balance.css in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB761AD9DB17006FE937 /* Balance.css */; };
+		2386EB8C1AD9DB17006FE937 /* Balance.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB771AD9DB17006FE937 /* Balance.dataBinding */; };
+		2386EB8D1AD9DB17006FE937 /* Balance.html in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB781AD9DB17006FE937 /* Balance.html */; };
+		2386EB8E1AD9DB17006FE937 /* Balance.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB791AD9DB17006FE937 /* Balance.lua */; };
+		2386EB8F1AD9DB17006FE937 /* Balance.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB7A1AD9DB17006FE937 /* Balance.plist */; };
+		2386EB901AD9DB17006FE937 /* Detail.css in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB7B1AD9DB17006FE937 /* Detail.css */; };
+		2386EB911AD9DB17006FE937 /* Detail.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB7C1AD9DB17006FE937 /* Detail.dataBinding */; };
+		2386EB921AD9DB17006FE937 /* Detail.html in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB7D1AD9DB17006FE937 /* Detail.html */; };
+		2386EB931AD9DB17006FE937 /* Detail.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB7E1AD9DB17006FE937 /* Detail.lua */; };
+		2386EB941AD9DB17006FE937 /* Detail.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB7F1AD9DB17006FE937 /* Detail.plist */; };
+		2386EB951AD9DB17006FE937 /* Master.css in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB801AD9DB17006FE937 /* Master.css */; };
+		2386EB961AD9DB17006FE937 /* Master.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB811AD9DB17006FE937 /* Master.dataBinding */; };
+		2386EB971AD9DB17006FE937 /* Master.html in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB821AD9DB17006FE937 /* Master.html */; };
+		2386EB981AD9DB17006FE937 /* Master.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB831AD9DB17006FE937 /* Master.lua */; };
+		2386EB991AD9DB17006FE937 /* Master.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB841AD9DB17006FE937 /* Master.plist */; };
+		2386EB9A1AD9DB17006FE937 /* Talk.css in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB851AD9DB17006FE937 /* Talk.css */; };
+		2386EB9B1AD9DB17006FE937 /* Talk.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB861AD9DB17006FE937 /* Talk.dataBinding */; };
+		2386EB9C1AD9DB17006FE937 /* Talk.html in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB871AD9DB17006FE937 /* Talk.html */; };
+		2386EB9D1AD9DB17006FE937 /* Talk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB881AD9DB17006FE937 /* Talk.lua */; };
+		2386EB9E1AD9DB17006FE937 /* Talk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB891AD9DB17006FE937 /* Talk.plist */; };
+		2386EBA01AD9E239006FE937 /* MFSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB9F1AD9E239006FE937 /* MFSDK.bundle */; };
+		2386EBA21ADA20E6006FE937 /* HiChat.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2386EBA11ADA20E6006FE937 /* HiChat.bundle */; };
 		23E94F521AD634FC006B2946 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F491AD634FC006B2946 /* ESCssParser.m */; };
 		23E94F531AD634FC006B2946 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F4A1AD634FC006B2946 /* ESCssTokenizer.m */; };
 		23E94F541AD634FC006B2946 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F4C1AD634FC006B2946 /* ESCssTokens.m */; };
 		23E94F551AD634FC006B2946 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F4F1AD634FC006B2946 /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23E94F561AD634FC006B2946 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F511AD634FC006B2946 /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23E94F661AD8BB9A006B2946 /* MFTipsWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F651AD8BB9A006B2946 /* MFTipsWidget.m */; };
-		23F3852E1AD42C68002A8F32 /* MFSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 23F3852D1AD42C68002A8F32 /* MFSDK.bundle */; };
-		23F3853B1AD42D28002A8F32 /* AppDelegate.lua in Resources */ = {isa = PBXBuildFile; fileRef = 23F3852F1AD42D28002A8F32 /* AppDelegate.lua */; };
-		23F3853C1AD42D28002A8F32 /* Detail.css in Resources */ = {isa = PBXBuildFile; fileRef = 23F385301AD42D28002A8F32 /* Detail.css */; };
-		23F3853D1AD42D28002A8F32 /* Detail.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 23F385311AD42D28002A8F32 /* Detail.dataBinding */; };
-		23F3853E1AD42D28002A8F32 /* Detail.html in Resources */ = {isa = PBXBuildFile; fileRef = 23F385321AD42D28002A8F32 /* Detail.html */; };
-		23F3853F1AD42D28002A8F32 /* Detail.lua in Resources */ = {isa = PBXBuildFile; fileRef = 23F385331AD42D28002A8F32 /* Detail.lua */; };
-		23F385401AD42D28002A8F32 /* Detail.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F385341AD42D28002A8F32 /* Detail.plist */; };
-		23F385411AD42D28002A8F32 /* Master.css in Resources */ = {isa = PBXBuildFile; fileRef = 23F385351AD42D28002A8F32 /* Master.css */; };
-		23F385421AD42D28002A8F32 /* Master.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 23F385361AD42D28002A8F32 /* Master.dataBinding */; };
-		23F385431AD42D28002A8F32 /* Master.html in Resources */ = {isa = PBXBuildFile; fileRef = 23F385371AD42D28002A8F32 /* Master.html */; };
-		23F385441AD42D28002A8F32 /* Master.lua in Resources */ = {isa = PBXBuildFile; fileRef = 23F385381AD42D28002A8F32 /* Master.lua */; };
-		23F385451AD42D28002A8F32 /* Master.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F385391AD42D28002A8F32 /* Master.plist */; };
 		23F385A41AD4C247002A8F32 /* MFBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385521AD4C247002A8F32 /* MFBridge.m */; };
 		23F385A51AD4C247002A8F32 /* MFDispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385541AD4C247002A8F32 /* MFDispatchCenter.m */; };
 		23F385A61AD4C247002A8F32 /* MFHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385581AD4C247002A8F32 /* MFHelper.m */; };
@@ -104,11 +110,6 @@
 		1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDOM.m; sourceTree = "<group>"; };
 		1CE2F3881AD518CD00E27AA8 /* MFScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFScene.h; sourceTree = "<group>"; };
 		1CE2F3891AD518CD00E27AA8 /* MFScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFScene.m; sourceTree = "<group>"; };
-		1CE473D11AD774A100DB916F /* Balance.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = Balance.css; path = MFSDKBase/scripts/Balance.css; sourceTree = SOURCE_ROOT; };
-		1CE473D21AD774A100DB916F /* Balance.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Balance.dataBinding; path = MFSDKBase/scripts/Balance.dataBinding; sourceTree = SOURCE_ROOT; };
-		1CE473D31AD774A100DB916F /* Balance.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Balance.html; path = MFSDKBase/scripts/Balance.html; sourceTree = SOURCE_ROOT; };
-		1CE473D41AD774A100DB916F /* Balance.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Balance.lua; path = MFSDKBase/scripts/Balance.lua; sourceTree = SOURCE_ROOT; };
-		1CE473DD1AD7756200DB916F /* Balance.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Balance.plist; path = MFSDKBase/scripts/Balance.plist; sourceTree = SOURCE_ROOT; };
 		1CE9331E1AD656B9001BE962 /* MFDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDataBinding.h; sourceTree = "<group>"; };
 		1CE9331F1AD656B9001BE962 /* MFDataBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDataBinding.m; sourceTree = "<group>"; };
 		231BE44B1ACFC60000B65A58 /* MFSDKBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFSDKBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +127,29 @@
 		231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFSDKBaseTests.m; sourceTree = "<group>"; };
 		231BE4D71AD0377100B65A58 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		231BE4EC1AD39AEB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
+		2386EB751AD9DB17006FE937 /* AppDelegate.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDelegate.lua; sourceTree = "<group>"; };
+		2386EB761AD9DB17006FE937 /* Balance.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Balance.css; sourceTree = "<group>"; };
+		2386EB771AD9DB17006FE937 /* Balance.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Balance.dataBinding; sourceTree = "<group>"; };
+		2386EB781AD9DB17006FE937 /* Balance.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Balance.html; sourceTree = "<group>"; };
+		2386EB791AD9DB17006FE937 /* Balance.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Balance.lua; sourceTree = "<group>"; };
+		2386EB7A1AD9DB17006FE937 /* Balance.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Balance.plist; sourceTree = "<group>"; };
+		2386EB7B1AD9DB17006FE937 /* Detail.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Detail.css; sourceTree = "<group>"; };
+		2386EB7C1AD9DB17006FE937 /* Detail.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Detail.dataBinding; sourceTree = "<group>"; };
+		2386EB7D1AD9DB17006FE937 /* Detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Detail.html; sourceTree = "<group>"; };
+		2386EB7E1AD9DB17006FE937 /* Detail.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Detail.lua; sourceTree = "<group>"; };
+		2386EB7F1AD9DB17006FE937 /* Detail.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Detail.plist; sourceTree = "<group>"; };
+		2386EB801AD9DB17006FE937 /* Master.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Master.css; sourceTree = "<group>"; };
+		2386EB811AD9DB17006FE937 /* Master.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Master.dataBinding; sourceTree = "<group>"; };
+		2386EB821AD9DB17006FE937 /* Master.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Master.html; sourceTree = "<group>"; };
+		2386EB831AD9DB17006FE937 /* Master.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Master.lua; sourceTree = "<group>"; };
+		2386EB841AD9DB17006FE937 /* Master.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Master.plist; sourceTree = "<group>"; };
+		2386EB851AD9DB17006FE937 /* Talk.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Talk.css; sourceTree = "<group>"; };
+		2386EB861AD9DB17006FE937 /* Talk.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Talk.dataBinding; sourceTree = "<group>"; };
+		2386EB871AD9DB17006FE937 /* Talk.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Talk.html; sourceTree = "<group>"; };
+		2386EB881AD9DB17006FE937 /* Talk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Talk.lua; sourceTree = "<group>"; };
+		2386EB891AD9DB17006FE937 /* Talk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Talk.plist; sourceTree = "<group>"; };
+		2386EB9F1AD9E239006FE937 /* MFSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MFSDK.bundle; sourceTree = "<group>"; };
+		2386EBA11ADA20E6006FE937 /* HiChat.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HiChat.bundle; sourceTree = "<group>"; };
 		23E94F481AD634FC006B2946 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
 		23E94F491AD634FC006B2946 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
 		23E94F4A1AD634FC006B2946 /* ESCssTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokenizer.m; sourceTree = "<group>"; };
@@ -137,18 +161,6 @@
 		23E94F511AD634FC006B2946 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		23E94F641AD8BB9A006B2946 /* MFTipsWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFTipsWidget.h; sourceTree = "<group>"; };
 		23E94F651AD8BB9A006B2946 /* MFTipsWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFTipsWidget.m; sourceTree = "<group>"; };
-		23F3852D1AD42C68002A8F32 /* MFSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MFSDK.bundle; sourceTree = "<group>"; };
-		23F3852F1AD42D28002A8F32 /* AppDelegate.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppDelegate.lua; path = MFSDKBase/scripts/AppDelegate.lua; sourceTree = SOURCE_ROOT; };
-		23F385301AD42D28002A8F32 /* Detail.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = Detail.css; path = MFSDKBase/scripts/Detail.css; sourceTree = SOURCE_ROOT; };
-		23F385311AD42D28002A8F32 /* Detail.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Detail.dataBinding; path = MFSDKBase/scripts/Detail.dataBinding; sourceTree = SOURCE_ROOT; };
-		23F385321AD42D28002A8F32 /* Detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Detail.html; path = MFSDKBase/scripts/Detail.html; sourceTree = SOURCE_ROOT; };
-		23F385331AD42D28002A8F32 /* Detail.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Detail.lua; path = MFSDKBase/scripts/Detail.lua; sourceTree = SOURCE_ROOT; };
-		23F385341AD42D28002A8F32 /* Detail.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Detail.plist; path = MFSDKBase/scripts/Detail.plist; sourceTree = SOURCE_ROOT; };
-		23F385351AD42D28002A8F32 /* Master.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = Master.css; path = MFSDKBase/scripts/Master.css; sourceTree = SOURCE_ROOT; };
-		23F385361AD42D28002A8F32 /* Master.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Master.dataBinding; path = MFSDKBase/scripts/Master.dataBinding; sourceTree = SOURCE_ROOT; };
-		23F385371AD42D28002A8F32 /* Master.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Master.html; path = MFSDKBase/scripts/Master.html; sourceTree = SOURCE_ROOT; };
-		23F385381AD42D28002A8F32 /* Master.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Master.lua; path = MFSDKBase/scripts/Master.lua; sourceTree = SOURCE_ROOT; };
-		23F385391AD42D28002A8F32 /* Master.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Master.plist; path = MFSDKBase/scripts/Master.plist; sourceTree = SOURCE_ROOT; };
 		23F385511AD4C247002A8F32 /* MFBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBridge.h; sourceTree = "<group>"; };
 		23F385521AD4C247002A8F32 /* MFBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBridge.m; sourceTree = "<group>"; };
 		23F385531AD4C247002A8F32 /* MFDispatchCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDispatchCenter.h; sourceTree = "<group>"; };
@@ -253,7 +265,7 @@
 		231BE4421ACFC60000B65A58 = {
 			isa = PBXGroup;
 			children = (
-				23F385141AD42AE4002A8F32 /* demo */,
+				2386EB731AD9DB04006FE937 /* demo */,
 				231BE44D1ACFC60000B65A58 /* MFSDKBase */,
 				231BE4671ACFC60000B65A58 /* MFSDKBaseTests */,
 				231BE44C1ACFC60000B65A58 /* Products */,
@@ -331,6 +343,43 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		2386EB731AD9DB04006FE937 /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				2386EB741AD9DB17006FE937 /* scripts */,
+			);
+			name = demo;
+			sourceTree = "<group>";
+		};
+		2386EB741AD9DB17006FE937 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2386EB751AD9DB17006FE937 /* AppDelegate.lua */,
+				2386EB761AD9DB17006FE937 /* Balance.css */,
+				2386EB771AD9DB17006FE937 /* Balance.dataBinding */,
+				2386EB781AD9DB17006FE937 /* Balance.html */,
+				2386EB791AD9DB17006FE937 /* Balance.lua */,
+				2386EB7A1AD9DB17006FE937 /* Balance.plist */,
+				2386EB7B1AD9DB17006FE937 /* Detail.css */,
+				2386EB7C1AD9DB17006FE937 /* Detail.dataBinding */,
+				2386EB7D1AD9DB17006FE937 /* Detail.html */,
+				2386EB7E1AD9DB17006FE937 /* Detail.lua */,
+				2386EB7F1AD9DB17006FE937 /* Detail.plist */,
+				2386EB801AD9DB17006FE937 /* Master.css */,
+				2386EB811AD9DB17006FE937 /* Master.dataBinding */,
+				2386EB821AD9DB17006FE937 /* Master.html */,
+				2386EB831AD9DB17006FE937 /* Master.lua */,
+				2386EB841AD9DB17006FE937 /* Master.plist */,
+				2386EB851AD9DB17006FE937 /* Talk.css */,
+				2386EB861AD9DB17006FE937 /* Talk.dataBinding */,
+				2386EB871AD9DB17006FE937 /* Talk.html */,
+				2386EB881AD9DB17006FE937 /* Talk.lua */,
+				2386EB891AD9DB17006FE937 /* Talk.plist */,
+			);
+			name = scripts;
+			path = MFSDKBase/scripts;
+			sourceTree = "<group>";
+		};
 		23E94F451AD634FC006B2946 /* Third-party */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,41 +420,11 @@
 			path = HTMLParser;
 			sourceTree = "<group>";
 		};
-		23F385141AD42AE4002A8F32 /* demo */ = {
-			isa = PBXGroup;
-			children = (
-				23F385151AD42AE4002A8F32 /* scripts */,
-			);
-			path = demo;
-			sourceTree = "<group>";
-		};
-		23F385151AD42AE4002A8F32 /* scripts */ = {
-			isa = PBXGroup;
-			children = (
-				1CE473DD1AD7756200DB916F /* Balance.plist */,
-				1CE473D11AD774A100DB916F /* Balance.css */,
-				1CE473D21AD774A100DB916F /* Balance.dataBinding */,
-				1CE473D31AD774A100DB916F /* Balance.html */,
-				1CE473D41AD774A100DB916F /* Balance.lua */,
-				23F3852F1AD42D28002A8F32 /* AppDelegate.lua */,
-				23F385301AD42D28002A8F32 /* Detail.css */,
-				23F385311AD42D28002A8F32 /* Detail.dataBinding */,
-				23F385321AD42D28002A8F32 /* Detail.html */,
-				23F385331AD42D28002A8F32 /* Detail.lua */,
-				23F385341AD42D28002A8F32 /* Detail.plist */,
-				23F385351AD42D28002A8F32 /* Master.css */,
-				23F385361AD42D28002A8F32 /* Master.dataBinding */,
-				23F385371AD42D28002A8F32 /* Master.html */,
-				23F385381AD42D28002A8F32 /* Master.lua */,
-				23F385391AD42D28002A8F32 /* Master.plist */,
-			);
-			path = scripts;
-			sourceTree = "<group>";
-		};
 		23F3852C1AD42C68002A8F32 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				23F3852D1AD42C68002A8F32 /* MFSDK.bundle */,
+				2386EBA11ADA20E6006FE937 /* HiChat.bundle */,
+				2386EB9F1AD9E239006FE937 /* MFSDK.bundle */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -642,26 +661,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F3853C1AD42D28002A8F32 /* Detail.css in Resources */,
-				23F3853E1AD42D28002A8F32 /* Detail.html in Resources */,
-				23F385431AD42D28002A8F32 /* Master.html in Resources */,
 				231BE45A1ACFC60000B65A58 /* Main.storyboard in Resources */,
-				1CE473D91AD774A100DB916F /* Balance.lua in Resources */,
-				23F3853B1AD42D28002A8F32 /* AppDelegate.lua in Resources */,
-				23F3852E1AD42C68002A8F32 /* MFSDK.bundle in Resources */,
-				23F3853F1AD42D28002A8F32 /* Detail.lua in Resources */,
+				2386EB8F1AD9DB17006FE937 /* Balance.plist in Resources */,
+				2386EBA21ADA20E6006FE937 /* HiChat.bundle in Resources */,
+				2386EB8E1AD9DB17006FE937 /* Balance.lua in Resources */,
+				2386EB9E1AD9DB17006FE937 /* Talk.plist in Resources */,
+				2386EB8C1AD9DB17006FE937 /* Balance.dataBinding in Resources */,
+				2386EB961AD9DB17006FE937 /* Master.dataBinding in Resources */,
+				2386EBA01AD9E239006FE937 /* MFSDK.bundle in Resources */,
+				2386EB8A1AD9DB17006FE937 /* AppDelegate.lua in Resources */,
+				2386EB9A1AD9DB17006FE937 /* Talk.css in Resources */,
+				2386EB991AD9DB17006FE937 /* Master.plist in Resources */,
+				2386EB9B1AD9DB17006FE937 /* Talk.dataBinding in Resources */,
 				231BE45F1ACFC60000B65A58 /* LaunchScreen.xib in Resources */,
-				1CE473D61AD774A100DB916F /* Balance.css in Resources */,
-				23F385401AD42D28002A8F32 /* Detail.plist in Resources */,
-				23F385411AD42D28002A8F32 /* Master.css in Resources */,
-				23F385421AD42D28002A8F32 /* Master.dataBinding in Resources */,
-				23F385451AD42D28002A8F32 /* Master.plist in Resources */,
-				23F3853D1AD42D28002A8F32 /* Detail.dataBinding in Resources */,
-				1CE473D71AD774A100DB916F /* Balance.dataBinding in Resources */,
-				1CE473D81AD774A100DB916F /* Balance.html in Resources */,
-				23F385441AD42D28002A8F32 /* Master.lua in Resources */,
-				1CE473DE1AD7756200DB916F /* Balance.plist in Resources */,
+				2386EB941AD9DB17006FE937 /* Detail.plist in Resources */,
+				2386EB8D1AD9DB17006FE937 /* Balance.html in Resources */,
+				2386EB911AD9DB17006FE937 /* Detail.dataBinding in Resources */,
+				2386EB9C1AD9DB17006FE937 /* Talk.html in Resources */,
+				2386EB8B1AD9DB17006FE937 /* Balance.css in Resources */,
+				2386EB971AD9DB17006FE937 /* Master.html in Resources */,
+				2386EB921AD9DB17006FE937 /* Detail.html in Resources */,
 				231BE45C1ACFC60000B65A58 /* Images.xcassets in Resources */,
+				2386EB981AD9DB17006FE937 /* Master.lua in Resources */,
+				2386EB9D1AD9DB17006FE937 /* Talk.lua in Resources */,
+				2386EB951AD9DB17006FE937 /* Master.css in Resources */,
+				2386EB901AD9DB17006FE937 /* Detail.css in Resources */,
+				2386EB931AD9DB17006FE937 /* Detail.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Message</key>
+	<string>1</string>
+	<key>voice</key>
+	<string>2</string>
+	<key>Emoji</key>
+	<string>3</string>
+	<key>Image</key>
+	<string>4</string>
+	<key>video</key>
+	<string>5</string>
+	<key>template_common_emoji</key>
+	<string>101</string>
+	<key>template_common_emoji_big</key>
+	<string>111</string>
+	<key>template_common_voice_emoji</key>
+	<string>102</string>
+	<key>compositeBusinessTemplate_complex</key>
+	<string>103</string>
+	<key>template_banner</key>
+	<string>1002</string>
+	<key>template_share</key>
+	<string>1001</string>
+	<key>template_common_voice_emoji - 2</key>
+	<string>112</string>
+</dict>
+</plist>

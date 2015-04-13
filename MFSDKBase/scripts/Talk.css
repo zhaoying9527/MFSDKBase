@@ -1,0 +1,126 @@
+HeadFootStyle
+{
+    head:#header;
+    foot:#footer;
+}
+header
+{
+    width:100%;
+    height:20;
+    color:white;
+    text-align:center;
+    font:bold 17;
+    numberOfLines:0;
+    align:center;
+    background-color:red;
+    side:YES;
+}
+
+footer
+{
+    width:100%;
+    height:20;
+    color:white;
+    text-align:center;
+    font:bold 17;
+    numberOfLines:0;
+    align:center;
+    background-color:green;
+    side:YES;
+}
+
+
+
+cell1
+{
+    order:6;
+    width:100%;
+    height:100;
+    background-color:RGB(235,235,235);
+    touchEnabled:YES;
+    side:YES;
+}
+
+cell1-head-image
+{
+    order:1;
+    top:10;
+    left:5%;
+    width:35;
+    height:35;
+    background-color:RGB();
+    touchEnabled:YES;
+    side:YES;
+}
+
+cell1-body-backgroundImg
+{
+    order:2;
+    left:20%;
+    top:10;
+    width:65%;
+    height:100;
+    background-color:RGB();
+    touchEnabled:YES;
+    align:left;
+    side:YES;
+}
+
+cell1-body-bubble
+{
+    order:0;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:RGB();
+    touchEnabled:YES;
+    style:whiteAdvBG,blueAdvBG;
+    align:left;
+    side:YES;
+}
+
+cell1-body-jine
+{
+    order:4;
+    top:0;
+    left:5%;
+    width:60%;
+    height:40;
+    background-color:RGB(12,34,56);
+    color:white;
+    text-align:left;
+    font:bold 20;
+    numberOfLines:0;
+    alignmentType:left;
+    side:YES;
+    reverse:YES;
+}
+
+cell1-body-shaojuhua
+{
+    order:5;
+    top:70;
+    left:5%;
+    width:60%;
+    height:30;
+    background-color:RGB(34,78,34);
+    color:black;
+    text-align:left;
+    font:bold 12;
+    numberOfLines:0;
+    alignmentType:left;
+    side:NO;
+}
+cell1-body-icon
+{
+    order:3;
+    top:5;
+    left:70%;
+    width:35;
+    height:35;
+    align:left;
+    side:YES;
+    style:TRANSFER-left,TRANSFER-right;
+    reverse:YES;
+}

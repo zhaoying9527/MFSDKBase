@@ -204,6 +204,52 @@
     footView.top += (headView.height+bodyView.height);
 }
 
+- (void)sideSubViews:(UIView*)view withIndex:(NSInteger)index withAlignmentType:(MFAlignmentType)alignType
+{
+    if (view.subviews.count <= 0) {
+        return;
+    }
+    
+    UIView *headView = nil;
+    UIView *bodyView = nil;
+    UIView *footView = nil;
+    for (UIView *subView in view.subviews) {
+        if (1000 == subView.tag) {
+            headView = subView;
+        } else if (1001 == subView.tag) {
+            bodyView = subView;
+        } else if (1002 == subView.tag) {
+            footView = subView;
+        }
+    }
+
+    NSString *indexKey = [NSString stringWithFormat:@"%ld",(long)index];
+    [[MFLayoutCenter sharedMFLayoutCenter] sideSubViews:bodyView withSizeInfo:self.bodyLayoutDict[indexKey] withAlignmentType:alignType];
+}
+
+- (void)reverseSubViews:(UIView*)view withIndex:(NSInteger)index
+{
+    if (view.subviews.count <= 0) {
+        return;
+    }
+    
+    UIView *headView = nil;
+    UIView *bodyView = nil;
+    UIView *footView = nil;
+    for (UIView *subView in view.subviews) {
+        if (1000 == subView.tag) {
+            headView = subView;
+        } else if (1001 == subView.tag) {
+            bodyView = subView;
+        } else if (1002 == subView.tag) {
+            footView = subView;
+        }
+    }
+    
+    NSString *indexKey = [NSString stringWithFormat:@"%ld",(long)index];
+    [[MFLayoutCenter sharedMFLayoutCenter] reverseSubViews:bodyView withSizeInfo:self.bodyLayoutDict[indexKey]];
+}
+
 - (UIView*)sceneViewWithDomId:(NSString*)domId withType:(MFDomType)type
 {
     MFDOM *dom =  [self domWithId:domId withType:type];

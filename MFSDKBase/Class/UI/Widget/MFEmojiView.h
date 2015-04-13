@@ -10,5 +10,8 @@
 #import "MFImageView.h"
 
 @interface MFEmojiView : MFImageView
+@property (nonatomic, assign)BOOL side;
+@property (nonatomic, assign)NSInteger alignmentType;
+@property (nonatomic, assign)BOOL reverse;
 @property (nonatomic,strong)NSDictionary *emoji;
 @end

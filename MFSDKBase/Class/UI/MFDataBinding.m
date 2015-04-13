@@ -33,13 +33,15 @@
         NSString *defaultText = [((MFLabel*)widget).DOM.htmlNodes getAttributeNamed:@"value"];
         ((MFLabel*)widget).text = dataSource ? dataSource : defaultText;
     } else if ([widget isKindOfClass:[MFImageView class]]) {
-        if ([MFHelper isURLString:dataSource]) {
-            //TODO;
-        } else {
-            NSString *defaultImageUrl = [((MFLabel*)widget).DOM.htmlNodes getAttributeNamed:@"src"];
-            UIImage *defaultImage = [MFResourceCenter imageNamed:defaultImageUrl];
-            UIImage *image = [MFResourceCenter imageNamed:dataSource];
-            ((MFImageView*)widget).image = image ? image : defaultImage;
+        NSString *defaultSrc = [((MFLabel*)widget).DOM.htmlNodes getAttributeNamed:@"src"];
+        if ((nil != dataSource && [dataSource length] > 0) || (defaultSrc && defaultSrc.length>0)) {
+            if ([MFHelper isURLString:dataSource]) {
+                //TODO;
+            } else {
+                UIImage *defaultImage = [MFResourceCenter imageNamed:defaultSrc];
+                UIImage *image = [MFResourceCenter imageNamed:dataSource];
+                ((MFImageView*)widget).image = image ? image : defaultImage;
+            }
         }
     } else if ([widget isKindOfClass:[MFButton class]]) {
         ((MFButton*)widget).text = dataSource;

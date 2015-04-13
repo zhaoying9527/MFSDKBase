@@ -230,6 +230,72 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     }
 }
 
+- (void)sideSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo  withAlignmentType:(MFAlignmentType)alignType
+{
+    if (![view UUID]) {
+        return;
+    }
+
+   [[MFSceneFactory sharedMFSceneFactory] setProperty:view popertyName:@"alignmentType" withObject:@(alignType)];
+    BOOL side = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"side"] boolValue];
+    NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"alignmentType"] integerValue];
+
+    CGRect rawRect = view.frame;
+    UIView *superView = view.superview;
+
+    if (MFAlignmentTypeLeft == alignmentType ) {
+        if (![MFHelper sameRect:view.frame withRect:rawRect]) {
+            view.frame = rawRect;
+        }
+    }else if (MFAlignmentTypeCenter == alignmentType) {
+        CGRect rect = rawRect;
+        rect.origin.x = (superView.frame.size.width - rect.size.width)/2;
+        if (![MFHelper sameRect:view.frame withRect:rect]) {
+            view.frame = rect;
+        }
+    }
+    else if (MFAlignmentTypeRight == alignmentType) {
+        CGRect rect = rawRect;
+        //TODO why ??
+        if (!side) {
+            rect.origin.x -= 7;
+        }else {
+            rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+        }
+        if (![MFHelper sameRect:view.frame withRect:rect]) {
+            view.frame = rect;
+        }
+    }
+
+    for (UIView *subView in view.subviews) {
+        [self sideSubViews:subView withSizeInfo:sizeInfo withAlignmentType:alignType];
+    }
+}
+
+- (void)reverseSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
+{
+    if (![view UUID]) {
+        return;
+    }
+    BOOL parentSide = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"side"] boolValue];
+    NSInteger parentAlignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"alignmentType"] integerValue];
+    BOOL reverse = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
+    CGRect rawRect = view.frame;
+    UIView *superView = view.superview;
+    
+    if (parentSide && parentAlignmentType && reverse) {
+        CGRect rect = rawRect;
+        rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+        if (![MFHelper sameRect:view.frame withRect:rect]) {
+            view.frame = rect;
+        }
+    }
+
+    for (UIView *subView in view.subviews) {
+        [self reverseSubViews:subView withSizeInfo:sizeInfo];
+    }
+}
+
 - (CGSize)imageSizeWithDataInfo:(NSDictionary*)dataInfo dataItems:(NSString*)dataItems
 {
     CGSize retSize = CGSizeMake(0, 0);

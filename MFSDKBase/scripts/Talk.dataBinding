@@ -1,0 +1,34 @@
+header
+{
+   dsKey:headerTitle
+}
+
+footer
+{
+    dsKey:footerTitle
+}
+
+
+cell1-head-image
+{
+    dsKey:head-image;
+}
+cell1-body-bubble
+{
+    dsKey:bubble-image;
+}
+
+cell1-body-jine
+{
+    dsKey:jine;
+}
+
+cell1-body-shaojuhua
+{
+    dsKey:shaojuhua;
+}
+
+cell1-body-icon
+{
+    dsKey:icon;
+}
