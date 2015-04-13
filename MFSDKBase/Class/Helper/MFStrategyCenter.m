@@ -26,10 +26,4 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFStrategyCenter)
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:strFilePath];
     return dict;
 }
-
-//- (NSDictionary*)itemWithID:(NSString*)itemID subItemID:(NSString*)subItemID source:(NSDictionary*)source
-//{
-//    return [[source objectForKey:itemID] objectForKey:subItemID];
-//}
-
 @end

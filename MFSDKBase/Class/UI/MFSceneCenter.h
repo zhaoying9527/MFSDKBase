@@ -13,7 +13,7 @@
 @interface MFSceneCenter : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneCenter)
 @property (nonatomic,strong)NSMutableDictionary *scenes;
-- (MFScene*)addSceneWithName:(NSString*)sceneName;
-- (MFScene*)sceneWithName:(NSString*)sceneName;
 - (MFScene*)currentScene;
+- (MFScene*)sceneWithName:(NSString*)sceneName;
+- (MFScene*)addSceneWithName:(NSString*)sceneName;
 @end

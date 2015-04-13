@@ -17,9 +17,8 @@
 #import "MFDOM.h"
 
 @interface MFSceneCenter ()
-
-@property (nonatomic, strong)MFCorePlugInService *pluginService;
 @property (nonatomic, copy) NSString *sceneName;
+@property (nonatomic, strong)MFCorePlugInService *pluginService;
 - (MFScene*)loadScene;
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error;
 @end
@@ -79,8 +78,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     result_style = [self parseStyle:result_h5];
     
     //加载场景
-    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyEntity] withCss:result_css withDataBinding:result_databinding withEvents:result_events
-                              withStyles:result_style withSceneName:self.sceneName];
+    return [[MFScene alloc] initWithDomNodes:[result_h5 bodyEntity] withCss:result_css withDataBinding:result_databinding withEvents:result_events withStyles:result_style withSceneName:self.sceneName];
 }
 
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error
@@ -102,7 +100,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
         NSString *key = [htmlNode getAttributeNamed:KEYWORD_ID];
         if (key && style) {
             [allStyles setObject:style forKey:key];
-         }
+        }
     }
     return allStyles;
 }

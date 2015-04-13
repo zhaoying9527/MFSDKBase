@@ -16,8 +16,8 @@
 @interface MFViewController() <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 
-@property (nonatomic, copy) NSString *scriptName;
 @property (nonatomic, strong) MFScene *scene;
+@property (nonatomic, copy) NSString *scriptName;
 
 @end
 

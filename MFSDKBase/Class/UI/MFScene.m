@@ -24,7 +24,7 @@
 @property (nonatomic,strong)NSMutableDictionary *headers;
 @property (nonatomic,strong)NSMutableDictionary *footers;
 @property (nonatomic,strong)NSMutableArray *orders;
-//
+
 - (void)addDom:(MFDOM *)dom withType:(MFDomType)type;
 @end
 
@@ -38,21 +38,23 @@
         self.headers = [[NSMutableDictionary alloc] init];
         self.footers = [[NSMutableDictionary alloc] init];
         for (HTMLNode *htmlNode in (NSArray*)html) {
-            if ([[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:htmlNode.tagName]) {
-                MFDOM *header = [self loadHeader:htmlNode withCss:css withDataBinding:dataBinding withEvents:events withStyles:styles];
-                if (header && header.uuid) {
-                    [self addDom:header withType:MFDomTypeHead];
-                }
+            if (![[MFSceneFactory sharedMFSceneFactory] supportHtmlTag:htmlNode.tagName]) {
+                continue;
+            }
+            
+            MFDOM *header = [self loadHeader:htmlNode withCss:css withDataBinding:dataBinding withEvents:events withStyles:styles];
+            if (header && header.uuid) {
+                [self addDom:header withType:MFDomTypeHead];
+            }
 
-                MFDOM *dom = [self loadDom:htmlNode withCss:css withDataBinding:dataBinding withEvents:events];
-                if (dom && dom.uuid) {
-                    [self addDom:dom withType:MFDomTypeBody];
-                }
+            MFDOM *dom = [self loadDom:htmlNode withCss:css withDataBinding:dataBinding withEvents:events];
+            if (dom && dom.uuid) {
+                [self addDom:dom withType:MFDomTypeBody];
+            }
 
-                MFDOM *footer = [self loadFooter:htmlNode withCss:css withDataBinding:dataBinding withEvents:events withStyles:styles];
-                if (footer && footer.uuid) {
-                    [self addDom:footer withType:MFDomTypeFoot];
-                }
+            MFDOM *footer = [self loadFooter:htmlNode withCss:css withDataBinding:dataBinding withEvents:events withStyles:styles];
+            if (footer && footer.uuid) {
+                [self addDom:footer withType:MFDomTypeFoot];
             }
         }
 
@@ -88,24 +90,24 @@
 {
     if (MFDomTypeHead == type) {
         [self.headers setObject:dom forKey:dom.uuid];
-    } else if (MFDomTypeBody == type) {
+    }
+    else if (MFDomTypeBody == type) {
         [self.doms setObject:dom forKey:dom.uuid];
-    } else if (MFDomTypeFoot == type) {
+    }
+    else if (MFDomTypeFoot == type) {
         [self.footers setObject:dom forKey:dom.uuid];
     }
 }
 
 - (MFDOM*)loadDom:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
 {
-    MFDOM *dom = nil;
     HTMLNode *htmlNode = (HTMLNode*)html;
     NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
-    dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[uid] withDataBinding:dataBinding[uid] withEvents:events[uid]];
+    MFDOM *dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[uid] withDataBinding:dataBinding[uid] withEvents:events[uid]];
 
     [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
-        MFDOM *childDom = nil;
         if (nil != [childNode getAttributeNamed:KEYWORD_ID]) {
-            childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
+            MFDOM *childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
             NSLog(@"Dom tag: %@", childNode.tagName);
             [dom addSubDom:childDom];
         }
@@ -116,7 +118,6 @@
 
 - (MFDOM*)loadHeader:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSMutableDictionary*)styles
 {
-    MFDOM *header = nil;
     HTMLNode *htmlNode = (HTMLNode*)html;
     NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
     if (!styles[uid]) {
@@ -124,6 +125,7 @@
     }
 
     //该Dom上有header
+    MFDOM *header = nil;
     NSString *styleCssKey = styles[uid];
     NSString *headCssKey = css[styleCssKey][@"head"];
     headCssKey = [headCssKey stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
@@ -136,7 +138,6 @@
 
 - (MFDOM*)loadFooter:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSMutableDictionary*)styles
 {
-    MFDOM *footer = nil;
     HTMLNode *htmlNode = (HTMLNode*)html;
     NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
     if (!styles[uid]) {
@@ -144,6 +145,7 @@
     }
     
     //该Dom上有footer
+    MFDOM *footer = nil;
     NSString *styleCssKey = styles[uid];
     NSString *footCssKey = css[styleCssKey][@"foot"];
     footCssKey = [footCssKey stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
@@ -158,9 +160,11 @@
 {
     if (MFDomTypeBody == type) {
         return self.doms[ID];
-    } else if (MFDomTypeHead == type) {
+    }
+    else if (MFDomTypeHead == type) {
         return self.headers[ID];
-    } else if (MFDomTypeFoot == type) {
+    }
+    else if (MFDomTypeFoot == type) {
         return self.footers[ID];
     }
     return nil;
@@ -183,15 +187,15 @@
         return;
     }
 
-    UIView *headView = nil;
-    UIView *bodyView = nil;
-    UIView *footView = nil;
+    UIView *headView = nil; UIView *bodyView = nil; UIView *footView = nil;
     for (UIView *subView in view.subviews) {
         if (1000 == subView.tag) {
             headView = subView;
-        } else if (1001 == subView.tag) {
+        }
+        else if (1001 == subView.tag) {
             bodyView = subView;
-        } else if (1002 == subView.tag) {
+        }
+        else if (1002 == subView.tag) {
             footView = subView;
         }
     }
@@ -226,7 +230,7 @@
         NSDictionary *dataDict = [datas objectAtIndex:accessIndex];
         NSString *templateId = [dataDict objectForKey:KEYWORD_TEMPLATE_ID];
         MFDOM *matchHeadDom = [self domWithId:templateId withType:MFDomTypeHead];
-        MFDOM *matchDom = [self domWithId:templateId withType:MFDomTypeBody];
+        MFDOM *matchBodyDom = [self domWithId:templateId withType:MFDomTypeBody];
         MFDOM *matchFootDom = [self domWithId:templateId withType:MFDomTypeFoot];
         NSString *indexKey = [NSString stringWithFormat:@"%ld", (long)accessIndex];
 
@@ -239,8 +243,8 @@
             indexPathHeadDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfHeadDom:matchHeadDom superDomFrame:superFrame dataSource:dataDict];
             [self.headerLayoutDict setObject:indexPathHeadDict forKey:indexKey];
         }
-        if (matchDom) {
-            indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchDom superDomFrame:superFrame dataSource:dataDict];
+        if (matchBodyDom) {
+            indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfBodyDom:matchBodyDom superDomFrame:superFrame dataSource:dataDict];
             [self.bodyLayoutDict setObject:indexPathDict forKey:indexKey];
         }
         if (matchFootDom) {
