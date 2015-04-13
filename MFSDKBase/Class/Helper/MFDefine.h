@@ -58,8 +58,8 @@
 #define sectionCellHeight                       25
 #define sectionHeaderHeight                     15
 #define sectionFooterHeight                     15
-#define tipsTopSpace                            4
-#define tipsLeftSpace                           4
+#define tipsHeightSpace                          4
+#define tipsWidthSpace                           4
 #define cellHeaderFontSize                      12
 #define cellFooterFontSize                      13
 

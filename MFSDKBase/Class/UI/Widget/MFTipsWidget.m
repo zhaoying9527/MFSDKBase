@@ -55,7 +55,7 @@
     [super setFrame:retFrame];
 
     self.titleLabel.frame = (retFrame.size.width <= 0 || retFrame.size.height <= 0) ? retFrame :
-    CGRectMake(1.5*tipsLeftSpace, tipsTopSpace, retFrame.size.width - 3.0*tipsLeftSpace, retFrame.size.height - 2*tipsTopSpace);
+    CGRectMake(1.5*tipsWidthSpace, tipsHeightSpace, retFrame.size.width - 3.0*tipsWidthSpace, retFrame.size.height - 2*tipsHeightSpace);
     
     NSLog(@"");
 }

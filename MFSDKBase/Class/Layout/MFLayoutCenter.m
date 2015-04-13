@@ -109,6 +109,58 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     return CGSizeMake(size.width, size.height);
 }
 
+- (NSDictionary*)sizeOfHeadDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
+{
+    NSString *dataKey = dom.bindingField;
+    NSString *dataString = dataSource[dataKey];
+    CGSize maxSize = CGSizeMake(250+self.compensateWidth, 1000);
+    CGSize size  = CGSizeZero;
+    if (dataString) {
+        size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:cellHeaderFontSize] size:maxSize];
+        size.width += 3*tipsWidthSpace;
+        size.height += tipsHeightSpace;
+    }
+    CGRect domframe = CGRectMake(0, 0, size.width, size.height);
+
+    NSDictionary * retDictionary = nil;
+    NSString *domID = dom.uuid;
+    if (domID) {
+        NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domframe] forKey:domID];
+        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height),
+                         KEY_WIDGET_HEIGHT, @(domframe.size.width), KEY_WIDGET_WIDTH,
+                         widgetsInfo, KEY_WIDGET_SIZE, nil];
+        
+    }
+
+    return retDictionary;
+}
+
+- (NSDictionary*)sizeOfFootDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
+{
+    NSString *dataKey = dom.bindingField;
+    NSString *dataString = dataSource[dataKey];
+    CGSize maxSize = CGSizeMake(250+self.compensateWidth, 1000);
+    CGSize size  = CGSizeZero;
+    if (dataString) {
+        size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:cellFooterFontSize] size:maxSize];
+        size.width += 3*tipsWidthSpace;
+        size.height += tipsHeightSpace;
+    }
+    CGRect domframe = CGRectMake(0, 0, size.width, size.height);
+    
+    NSDictionary * retDictionary = nil;
+    NSString *domID = dom.uuid;
+    if (domID) {
+        NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domframe] forKey:domID];
+        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height),
+                         KEY_WIDGET_HEIGHT, @(domframe.size.width), KEY_WIDGET_WIDTH,
+                         widgetsInfo, KEY_WIDGET_SIZE, nil];
+        
+    }
+    
+    return retDictionary;
+}
+
 - (NSDictionary*)sizeOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
     NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
@@ -131,7 +183,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGRect pageFrame = [MFHelper formatFrameWithString:pageFrameStr layoutType:layoutType superFrame:superFrame];
     CGSize realSize = CGSizeZero;
 
-    if ([MFHelper isKindOfLabel:clsType] || [MFHelper isKindOfTips:clsType]) {
+    if ([MFHelper isKindOfLabel:clsType]) {
         NSString *multiLineStr = cssItem[KEYWORD_NUMBEROFLINES];
         if (nil != multiLineStr && [MFHelper supportMultiLine:multiLineStr]) {
             //emoji格式化
@@ -140,10 +192,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
             NSString *defaultText = [dom.htmlNodes getAttributeNamed:@"value"];
             NSString *realDataValue = dataSource[dataKey] ? dataSource[dataKey] : defaultText;
             realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:realDataValue superFrame:superFrame];
-        }
-        
-        if ([MFHelper isKindOfTips:clsType] && realSize.width> 0 && realSize.height >0) {
-            realSize = CGSizeMake(realSize.width+3*tipsLeftSpace, realSize.height+2*tipsTopSpace);
         }
     } else if ([MFHelper isKindOfImage:clsType]) {
         realSize = [self imageSizeWithDataInfo:dataSource dataItems:dataSource[dataKey]];
@@ -154,7 +202,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
             realSize = pageFrame.size;
         }
     } else {
-        realSize = [MFHelper isKindOfTips:clsType] ? CGSizeZero: pageFrame.size;
+        realSize = pageFrame.size;
     }
 
     pageFrame.size.width = realSize.width;

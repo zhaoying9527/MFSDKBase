@@ -236,7 +236,7 @@
         NSDictionary *indexPathFootDict = nil;
         
         if (matchHeadDom) {
-            indexPathHeadDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchHeadDom superDomFrame:superFrame dataSource:dataDict];
+            indexPathHeadDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfHeadDom:matchHeadDom superDomFrame:superFrame dataSource:dataDict];
             [self.headerLayoutDict setObject:indexPathHeadDict forKey:indexKey];
         }
         if (matchDom) {
@@ -244,7 +244,7 @@
             [self.bodyLayoutDict setObject:indexPathDict forKey:indexKey];
         }
         if (matchFootDom) {
-            indexPathFootDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfDom:matchFootDom superDomFrame:superFrame dataSource:dataDict];
+            indexPathFootDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfFootDom:matchFootDom superDomFrame:superFrame dataSource:dataDict];
             [self.footerLayoutDict setObject:indexPathFootDict forKey:indexKey];
         }
 

@@ -9,7 +9,7 @@ header
     height:20;
     color:white;
     text-align:center;
-    font:bold 17;
+    font:normal 12;
     numberOfLines:0;
     align:center;
     background-color:red;
@@ -22,7 +22,7 @@ footer
     height:20;
     color:white;
     text-align:center;
-    font:bold 17;
+    font:normal 13;
     numberOfLines:0;
     align:center;
     background-color:green;
