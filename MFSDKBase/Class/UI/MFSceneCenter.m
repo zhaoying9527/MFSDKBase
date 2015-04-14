@@ -41,7 +41,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     }
 }
 
-- (BOOL)removeSceneWithName:(NSString*)sceneName
+- (BOOL)unRegisterScene:(NSString*)sceneName
 {
     MFScene *scence = [self.scenes objectForKey:sceneName];
     if (nil != scence) {

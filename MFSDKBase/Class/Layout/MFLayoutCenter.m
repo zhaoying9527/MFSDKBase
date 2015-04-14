@@ -161,16 +161,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     return retDictionary;
 }
 
-- (NSDictionary*)sizeOfBodyDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource withOrders:(NSArray*)orders;
+- (NSDictionary*)sizeOfBodyDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
     NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
-    CGRect domframe = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo withOrders:orders];
+    CGRect domframe = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo];
     NSDictionary * retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height), KEY_WIDGET_HEIGHT,
                                     @(domframe.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
     return retDictionary;
 }
 
-- (CGRect)layoutInfoOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo withOrders:(NSArray*)orders;
+- (CGRect)layoutInfoOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo
 {
     NSString *clsType = [dom.clsType lowercaseString];
     NSString *domID = dom.uuid;
@@ -217,7 +217,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
         NSString *childFrameStr = [MFHelper getFrameStringWithCssStyle:subDom.cssNodes];
         CGRect childFrame = [MFHelper formatFrameWithString:childFrameStr layoutType:layoutType superFrame:pageFrame];
-        CGRect childRealFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo withOrders:orders];
+        CGRect childRealFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo];
         childRealFrame.origin.y += subHeight;
         if (childRealFrame.size.height > childFrame.size.height) {
             subHeight += childRealFrame.size.height - childFrame.size.height;

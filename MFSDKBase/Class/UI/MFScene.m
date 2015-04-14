@@ -23,7 +23,6 @@
 @property (nonatomic,strong)NSMutableDictionary *doms;
 @property (nonatomic,strong)NSMutableDictionary *headers;
 @property (nonatomic,strong)NSMutableDictionary *footers;
-@property (nonatomic,strong)NSMutableArray *orders;
 
 - (void)addDom:(MFDOM *)dom withType:(MFDomType)type;
 @end
@@ -218,7 +217,7 @@
             [self.headerLayoutDict setObject:indexPathHeadDict forKey:indexKey];
         }
         if (matchBodyDom) {
-            indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfBodyDom:matchBodyDom superDomFrame:superFrame dataSource:dataDict withOrders:self.orders];
+            indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfBodyDom:matchBodyDom superDomFrame:superFrame dataSource:dataDict];
             [self.bodyLayoutDict setObject:indexPathDict forKey:indexKey];
         }
         if (matchFootDom) {

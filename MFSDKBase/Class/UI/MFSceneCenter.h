@@ -17,5 +17,5 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneCenter)
 - (MFScene*)sceneWithName:(NSString*)sceneName;
 - (MFScene*)loadSceneWithName:(NSString*)sceneName;
 - (void)registerScene:(MFScene*)scene WithName:(NSString*)sceneName;
-- (BOOL)removeSceneWithName:(NSString*)sceneName;
+- (BOOL)unRegisterScene:(NSString*)sceneName;
 @end

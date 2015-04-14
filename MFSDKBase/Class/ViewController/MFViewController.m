@@ -34,7 +34,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [[MFSceneCenter sharedMFSceneCenter] removeSceneWithName:self.scriptName];
+    [[MFSceneCenter sharedMFSceneCenter] unRegisterScene:self.scriptName];
 }
 
 - (instancetype)initWithScriptName:(NSString *)scriptName

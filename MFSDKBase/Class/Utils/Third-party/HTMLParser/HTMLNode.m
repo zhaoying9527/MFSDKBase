@@ -55,7 +55,7 @@ NSString * getAttributeNamed(xmlNode * node, const char * nameStr)
 {
 	for(xmlAttrPtr attr = node->properties; NULL != attr; attr = attr->next)
 	{
-		if (strcmp((char*)attr->name, nameStr) == 0)
+		if (attr->name && strcmp((char*)attr->name, nameStr) == 0)
 		{				
 			for(xmlNode * child = attr->children; NULL != child; child = child->next)
 			{
