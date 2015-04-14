@@ -125,44 +125,6 @@
     NSLog(@"%@",result);
 }
 
-- (UIImage*)transStyleImageWithName:(NSString*)imageName
-{
-    return [[MFResourceCenter sharedMFResourceCenter] imageWithId:imageName];
-}
-
-- (UIImage *)styleCenterImageWithId:(NSString*)imageId
-{
-    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
-    if (nil == retImage) {
-        UIImage * image = [self transStyleImageWithName:imageId];
-        retImage = [MFHelper stretchableCellImage:image];
-        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
-    }
-    return retImage;
-}
-
-- (UIImage*)styleLeftImageWithId:(NSString*)imageId
-{
-    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
-    if (nil == retImage) {
-        UIImage * image = [self transStyleImageWithName:imageId];
-        retImage = [MFHelper resizeableLeftBgImage:image];
-        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
-    }
-    return retImage;
-}
-
-- (UIImage*)styleRightImageWithId:(NSString*)imageId
-{
-    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
-    if (nil == retImage) {
-        UIImage * image = [self transStyleImageWithName:imageId];
-        retImage = [MFHelper resizeableRightBgImage:image];
-        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
-    }
-    return retImage;
-}
-
 - (void)setBackgroundImage:(NSString*)backgroundImage
 {
     _backgroundImage = backgroundImage;
@@ -188,21 +150,21 @@
             }
         }
         
-        if (MFAlignmentTypeLeft == self.alignmentType) {
-            image = [self styleLeftImageWithId:leftImageUrl];
+        if (MFAlignmentTypeLeft == _alignmentType) {
+            image = [MFHelper styleLeftImageWithId:leftImageUrl];
         }
-        else if (MFAlignmentTypeCenter == self.alignmentType) {
-            image = [self styleCenterImageWithId:centerImageUrl];
+        else if (MFAlignmentTypeCenter == _alignmentType) {
+            image = [MFHelper styleCenterImageWithId:centerImageUrl];
         }
-        else if (MFAlignmentTypeRight == self.alignmentType) {
-            image = [self styleRightImageWithId:rightImageUrl];
+        else if (MFAlignmentTypeRight == _alignmentType) {
+            image = [MFHelper styleRightImageWithId:rightImageUrl];
         }
     }
     else if ([backgroundImage hasPrefix:@"http://"]) {
         //TODO setImage with URL;
     }
     else {
-        image = [self styleLeftImageWithId:backgroundImage];
+        image = [MFHelper styleLeftImageWithId:backgroundImage];
     }
 
     self.image = image;
@@ -236,13 +198,6 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    if (self.side) {
-        if (MFAlignmentTypeLeft == _alignmentType) {
-            self.frame = self.rawRect;
-        } else if (MFAlignmentTypeCenter == _alignmentType) {
-        } else if (MFAlignmentTypeRight == _alignmentType) {
-        }
-    }
 }
 
 - (void)setBorderColor:(UIColor *)borderColor
@@ -263,12 +218,12 @@
     self.layer.cornerRadius = cornerRadius;
 }
 
-- (void)specialHandling
+- (void)alignHandling
 {
     self.backgroundImage = _backgroundImage;
 }
 
-- (void)revertHandling
+- (void)reverseHandling
 {
     CGRect rawRect = self.frame;
     UIView *superView = self.superview;

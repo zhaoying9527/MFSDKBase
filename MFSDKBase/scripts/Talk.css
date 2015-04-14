@@ -202,7 +202,7 @@ cell2-body-jine
     font:bold 20;
     numberOfLines:0;
     alignmentType:left;
-    side:NO;
+    side:YES;
     reverse:YES;
 }
 
@@ -229,7 +229,7 @@ cell2-body-icon
     width:35;
     height:35;
     alignmentType:left;
-    side:NO;
+    side:YES;
     background-image:url(MFLayout://left:COLLET-left#center:COLLET-left#right:COLLET-right);
     reverse:YES;
 }

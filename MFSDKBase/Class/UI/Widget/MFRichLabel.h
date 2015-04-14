@@ -20,6 +20,6 @@
 @property (nonatomic, assign)CGFloat cornerRadius;
 @property (nonatomic, assign)CGFloat borderWidth;
 @property (nonatomic, strong)UIColor *borderColor;
-- (void)specialHandling;
-- (void)revertHandling;
+- (void)alignHandling;
+- (void)reverseHandling;
 @end

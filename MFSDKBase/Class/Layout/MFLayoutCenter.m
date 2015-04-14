@@ -193,7 +193,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
             NSString *realDataValue = dataSource[dataKey] ? dataSource[dataKey] : defaultText;
             realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:realDataValue superFrame:superFrame];
         }
-    } else if ([MFHelper isKindOfImage:clsType]) {
+    }else if ([MFHelper isKindOfImage:clsType]) {
         realSize = [self imageSizeWithDataInfo:dataSource dataItems:dataSource[dataKey]];
     }
 
@@ -201,7 +201,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         if (realSize.height <= pageFrame.size.height) {
             realSize = pageFrame.size;
         }
-    } else {
+    }else {
         realSize = pageFrame.size;
     }
 
@@ -243,9 +243,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         NSInteger order2 = dom2.cssNodes[@"order"] ? [dom2.cssNodes[@"order"] intValue] : INT32_MAX;
         if (order1 > order2) {
             return NSOrderedDescending;
-        } else if (order1 == order2) {
+        }else if (order1 == order2) {
             return NSOrderedSame;
-        } else {
+        }else {
             return NSOrderedAscending;
         }
     }];
@@ -274,15 +274,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
    [[MFSceneFactory sharedMFSceneFactory] setProperty:view popertyName:@"alignmentType" withObject:@(alignType)];
     BOOL side = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"side"] boolValue];
+    BOOL reverse = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
     NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"alignmentType"] integerValue];
 
     CGRect rawRect = view.frame;
     UIView *superView = view.superview;
 
     if (MFAlignmentTypeLeft == alignmentType ) {
-        if (![MFHelper sameRect:view.frame withRect:rawRect]) {
-            view.frame = rawRect;
-        }
+
     }else if (MFAlignmentTypeCenter == alignmentType) {
         CGRect rect = rawRect;
         rect.origin.x = (superView.frame.size.width - rect.size.width)/2;
@@ -291,18 +290,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         }
     }else if (MFAlignmentTypeRight == alignmentType) {
         CGRect rect = rawRect;
-        //TODO why ??
-        if (!side) {
-            rect.origin.x -= 7;
+        if (side) {
+            if (!reverse) {
+                rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+            }
         }else {
-            rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+            rect.origin.x -= 7;
         }
+
         if (![MFHelper sameRect:view.frame withRect:rect]) {
             view.frame = rect;
         }
     }
-    if ([view respondsToSelector:@selector(specialHandling)]) {
-        [(id)view specialHandling];
+    if ([view respondsToSelector:@selector(alignHandling)]) {
+        [(id)view alignHandling];
     }
 
     for (UIView *subView in view.subviews) {
@@ -316,11 +317,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         return;
     }
 
-    NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"alignmentType"] integerValue];
-    BOOL reverse = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
-    if (MFAlignmentTypeRight == alignmentType && reverse) {
-        if ([view respondsToSelector:@selector(revertHandling)]) {
-            [(id)view revertHandling];
+    BOOL side = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"side"] boolValue];
+    BOOL reverseType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
+    NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"alignmentType"] integerValue];
+    if (reverseType && side && MFAlignmentTypeRight == alignmentType) {
+        if ([view respondsToSelector:@selector(reverseHandling)]) {
+            [(id)view reverseHandling];
         }
     }
 
@@ -328,30 +330,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         [self reverseSubViews:subView withSizeInfo:sizeInfo];
     }
 }
-
-//- (void)reverseSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
-//{
-//    if (![view UUID]) {
-//        return;
-//    }
-//    BOOL parentSide = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"side"] boolValue];
-//    NSInteger parentAlignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"alignmentType"] integerValue];
-//    BOOL reverse = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
-//    CGRect rawRect = view.frame;
-//    UIView *superView = view.superview;
-//    
-//    if (parentSide && parentAlignmentType && reverse) {
-//        CGRect rect = rawRect;
-//        rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
-//        if (![MFHelper sameRect:view.frame withRect:rect]) {
-//            view.frame = rect;
-//        }
-//    }
-//    
-//    for (UIView *subView in view.subviews) {
-//        [self reverseSubViews:subView withSizeInfo:sizeInfo];
-//    }
-//}
 
 - (CGSize)imageSizeWithDataInfo:(NSDictionary*)dataInfo dataItems:(NSString*)dataItems
 {
@@ -388,9 +366,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *frameString = [MFHelper getFrameStringWithCssStyle:layoutInfo];
     if (MFLayoutTypeNone == layoutType) {
         frame = [MFHelper formatRectWithString:frameString superFrame:superFrame];
-    } else if (MFLayoutTypeAbsolute == layoutType) {
+    }else if (MFLayoutTypeAbsolute == layoutType) {
         frame = [MFHelper formatAbsoluteRectWithString:frameString];
-    } else if (MFLayoutTypeStretch == layoutType) {
+    }else if (MFLayoutTypeStretch == layoutType) {
         frame = [MFHelper formatFitRectWithString:frameString];
     }
 

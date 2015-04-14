@@ -26,6 +26,6 @@
 @property (nonatomic, strong) NSMutableDictionary * mediaState;
 @property (nonatomic, copy) NSString * clientMsgID;
 - (CGFloat)voiceFactor;
-- (void)specialHandling;
-- (void)revertHandling;
+- (void)alignHandling;
+- (void)reverseHandling;
 @end

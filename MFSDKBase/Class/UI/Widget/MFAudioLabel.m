@@ -228,9 +228,9 @@
     }
 }
 
-- (void)specialHandling
+- (void)alignHandling
 {
-    if (self.alignmentType == MFAlignmentTypeRight) {
+    if (MFAlignmentTypeRight == self.alignmentType) {
         if (nil != self.highlightedTextColor) {
             self.timeLineLabel.textColor = self.highlightedTextColor;
         }
@@ -239,7 +239,7 @@
     }
 }
 
-- (void)revertHandling
+- (void)reverseHandling;
 {
     CGRect rawRect = self.frame;
     UIView *superView = self.superview;

@@ -14,6 +14,7 @@
 #define LABELTEXTCOLOR [MFHelper colorWithHexString:@"0x00aaff"]
 
 @interface MFRichLabel () <UIGestureRecognizerDelegate>
+@property (nonatomic, assign)NSTextAlignment rawTextAlignmentType;
 @property (nonatomic,strong)UILongPressGestureRecognizer *longPressTap;
 @end
 
@@ -52,22 +53,6 @@
 {
     id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
     NSLog(@"%@",result);
-}
-
-- (void)setAlignmentType:(NSInteger)type
-{
-    _alignmentType = type;
-    
-    if (self.side) {
-        if (_alignmentType == MFAlignmentTypeLeft) {
-            self.textAlignment = NSTextAlignmentLeft;
-        }else if (_alignmentType == MFAlignmentTypeCenter) {
-            self.textAlignment = NSTextAlignmentLeft;
-        }else if (_alignmentType == MFAlignmentTypeRight) {
-            self.textAlignment = NSTextAlignmentRight;
-        }
-    }
-    
 }
 
 - (void)setFormatString:(NSString *)formatString
@@ -119,19 +104,22 @@
 //    }
 }
 
-- (void)specialHandling
+- (void)setAlignmentType:(NSInteger)type
 {
-    if (self.alignmentType == MFAlignmentTypeRight) {
+    _alignmentType = type;
+}
+
+- (void)alignHandling
+{
+    if (MFAlignmentTypeRight == self.alignmentType) {
         if (nil != self.highlightedTextColor) {
             self.textColor = self.highlightedTextColor;
         }
-    }else {
-        self.textColor = self.textColor;
     }
     self.formatString = self.rawString;
 }
 
-- (void)revertHandling
+- (void)reverseHandling
 {
     CGRect rawRect = self.frame;
     UIView *superView = self.superview;
@@ -142,11 +130,20 @@
         self.frame = rect;
     }
     
-    if (NSTextAlignmentLeft == self.textAlignment) {
+    if (NSTextAlignmentLeft == self.rawTextAlignmentType) {
         self.textAlignment = NSTextAlignmentRight;
-    } else if(NSTextAlignmentRight == self.textAlignment) {
+    }
+    else if(NSTextAlignmentRight == self.rawTextAlignmentType) {
         self.textAlignment = NSTextAlignmentLeft;
     }
+}
+
+- (void)setTextAlignment:(NSTextAlignment)textAlignment
+{
+    if (MFAlignmentTypeLeft == self.alignmentType) {
+        self.rawTextAlignmentType = textAlignment;
+    }
+    [super setTextAlignment:textAlignment];
 }
 
 - (void)setBorderColor:(UIColor *)borderColor

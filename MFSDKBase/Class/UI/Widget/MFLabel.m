@@ -12,6 +12,7 @@
 #import "NSObject+DOM.h"
 
 @interface MFLabel () <UIGestureRecognizerDelegate>
+@property (nonatomic, assign)NSTextAlignment rawTextAlignmentType;
 @property (nonatomic,strong)UILongPressGestureRecognizer *longPressTap;
 @end
 
@@ -61,34 +62,18 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    if (self.side) {
-        if (_alignmentType == MFAlignmentTypeLeft) {
-            self.textAlignment = NSTextAlignmentLeft;
-        } else if (_alignmentType == MFAlignmentTypeCenter) {
-            self.textAlignment = NSTextAlignmentCenter;
-        } else if (_alignmentType == MFAlignmentTypeRight) {
-            self.textAlignment = NSTextAlignmentRight;
-        }
-    }
 }
 
-- (void)setHighlightedTextColor:(UIColor *)highlightedTextColor
+- (void)alignHandling
 {
-    [super setHighlightedTextColor:highlightedTextColor];
-}
-
-- (void)specialHandling
-{
-    if (self.alignmentType == MFAlignmentTypeRight) {
+    if (MFAlignmentTypeRight == self.alignmentType) {
         if (nil != self.highlightedTextColor) {
             self.textColor = self.highlightedTextColor;
         }
-    } else {
-        self.textColor = self.textColor;
     }
 }
 
-- (void)revertHandling
+- (void)reverseHandling
 {
     CGRect rawRect = self.frame;
     UIView *superView = self.superview;
@@ -98,12 +83,21 @@
     if (![MFHelper sameRect:rawRect withRect:rect]) {
         self.frame = rect;
     }
-    
-    if (NSTextAlignmentLeft == self.textAlignment) {
+
+    if (NSTextAlignmentLeft == self.rawTextAlignmentType) {
         self.textAlignment = NSTextAlignmentRight;
-    } else if(NSTextAlignmentRight == self.textAlignment) {
+    }
+    else if(NSTextAlignmentRight == self.rawTextAlignmentType) {
         self.textAlignment = NSTextAlignmentLeft;
     }
+}
+
+- (void)setTextAlignment:(NSTextAlignment)textAlignment
+{
+    if (MFAlignmentTypeLeft == self.alignmentType) {
+        self.rawTextAlignmentType = textAlignment;
+    }
+    [super setTextAlignment:textAlignment];
 }
 
 - (void)setBorderColor:(UIColor *)borderColor

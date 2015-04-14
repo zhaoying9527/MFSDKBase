@@ -116,23 +116,6 @@
     NSLog(@"%@",result);
 }
 
-- (void)specialHandling
-{
-    self.backgroundImage = _backgroundImage;
-}
-
-- (void)revertHandling
-{
-    CGRect rawRect = self.frame;
-    UIView *superView = self.superview;
-    
-    CGRect rect = rawRect;
-    rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
-    if (![MFHelper sameRect:rawRect withRect:rect]) {
-        self.frame = rect;
-    }
-}
-
 - (void)setBorderColor:(UIColor *)borderColor
 {
     _borderColor = borderColor;
@@ -149,44 +132,6 @@
 {
     _cornerRadius = cornerRadius;
     self.layer.cornerRadius = cornerRadius;
-}
-
-- (UIImage*)transStyleImageWithName:(NSString*)imageName
-{
-    return [[MFResourceCenter sharedMFResourceCenter] imageWithId:imageName];
-}
-
-- (UIImage *)styleCenterImageWithId:(NSString*)imageId
-{
-    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
-    if (nil == retImage) {
-        UIImage * image = [self transStyleImageWithName:imageId];
-        retImage = [MFHelper stretchableCellImage:image];
-        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
-    }
-    return retImage;
-}
-
-- (UIImage*)styleLeftImageWithId:(NSString*)imageId
-{
-    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
-    if (nil == retImage) {
-        UIImage * image = [self transStyleImageWithName:imageId];
-        retImage = [MFHelper resizeableLeftBgImage:image];
-        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
-    }
-    return retImage;
-}
-
-- (UIImage*)styleRightImageWithId:(NSString*)imageId
-{
-    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
-    if (nil == retImage) {
-        UIImage * image = [self transStyleImageWithName:imageId];
-        retImage = [MFHelper resizeableRightBgImage:image];
-        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
-    }
-    return retImage;
 }
 
 - (void)setBackgroundImage:(NSString*)backgroundImage
@@ -214,21 +159,21 @@
             }
         }
 
-        if (MFAlignmentTypeLeft == self.alignmentType) {
-            image = [self styleLeftImageWithId:leftImageUrl];
+        if (MFAlignmentTypeLeft == _alignmentType) {
+            image = [MFHelper styleLeftImageWithId:leftImageUrl];
         }
-        else if (MFAlignmentTypeCenter == self.alignmentType) {
-            image = [self styleCenterImageWithId:centerImageUrl];
+        else if (MFAlignmentTypeCenter == _alignmentType) {
+            image = [MFHelper styleCenterImageWithId:centerImageUrl];
         }
-        else if (MFAlignmentTypeRight == self.alignmentType) {
-            image = [self styleRightImageWithId:rightImageUrl];
+        else if (MFAlignmentTypeRight == _alignmentType) {
+            image = [MFHelper styleRightImageWithId:rightImageUrl];
         }
     }
     else if ([backgroundImage hasPrefix:@"http://"]) {
         //TODO setImage with URL;
     }
     else {
-        image = [self styleLeftImageWithId:backgroundImage];
+        image = [MFHelper styleLeftImageWithId:backgroundImage];
     }
 
     if (nil == _backgroundImageView) {
@@ -242,14 +187,31 @@
     _backgroundImageView.image = image;
 }
 
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    _backgroundImageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+}
+
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
 }
 
-- (void)setFrame:(CGRect)frame
+- (void)alignHandling
 {
-    [super setFrame:frame];
-    _backgroundImageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    self.backgroundImage = _backgroundImage;
+}
+
+- (void)reverseHandling
+{
+    CGRect rawRect = self.frame;
+    UIView *superView = self.superview;
+    
+    CGRect rect = rawRect;
+    rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+    if (![MFHelper sameRect:rawRect withRect:rect]) {
+        self.frame = rect;
+    }
 }
 @end

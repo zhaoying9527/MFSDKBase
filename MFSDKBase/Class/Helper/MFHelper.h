@@ -20,6 +20,10 @@
 + (UIImage*)stretchableCellImage:(UIImage*)image;
 + (UIImage*)resizeableLeftBgImage:(UIImage *)image;
 + (UIImage*)resizeableRightBgImage:(UIImage *)image;
++ (UIImage*)transStyleImageWithName:(NSString*)imageName;
++ (UIImage *)styleCenterImageWithId:(NSString*)imageId;
++ (UIImage*)styleLeftImageWithId:(NSString*)imageId;
++ (UIImage*)styleRightImageWithId:(NSString*)imageId;
 + (UIImage*)scaleToSize:(UIImage*)image size:(CGSize)size;
 + (CGRect)imageFitRect:(CGRect)aInRect aImageSize:(CGSize)aImageSize;
 + (CGSize)sizeWithFont:(NSString*)text font:(UIFont*)font size:(CGSize)size;

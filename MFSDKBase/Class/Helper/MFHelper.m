@@ -167,6 +167,44 @@
     return newRect;
 }
 
++ (UIImage*)transStyleImageWithName:(NSString*)imageName
+{
+    return [[MFResourceCenter sharedMFResourceCenter] imageWithId:imageName];
+}
+
++ (UIImage *)styleCenterImageWithId:(NSString*)imageId
+{
+    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
+    if (nil == retImage) {
+        UIImage * image = [self transStyleImageWithName:imageId];
+        retImage = [MFHelper stretchableCellImage:image];
+        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
+    }
+    return retImage;
+}
+
++ (UIImage*)styleLeftImageWithId:(NSString*)imageId
+{
+    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
+    if (nil == retImage) {
+        UIImage * image = [self transStyleImageWithName:imageId];
+        retImage = [MFHelper resizeableLeftBgImage:image];
+        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
+    }
+    return retImage;
+}
+
++ (UIImage*)styleRightImageWithId:(NSString*)imageId
+{
+    UIImage *retImage = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:imageId];
+    if (nil == retImage) {
+        UIImage * image = [self transStyleImageWithName:imageId];
+        retImage = [MFHelper resizeableRightBgImage:image];
+        [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
+    }
+    return retImage;
+}
+
 + (CGSize)sizeWithFont:(NSString*)text font:(UIFont*)font size:(CGSize)size
 {
     CGSize avaliableSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(size.width, size.height*100)
