@@ -10,7 +10,4 @@
 
 @interface MFTipsWidget : UIImageView
 @property (nonatomic, strong)NSString *text;
-@property (nonatomic, assign)NSInteger align;
-@property (nonatomic, assign)NSInteger alignmentType;
-@property (nonatomic, assign)BOOL reverse;
 @end

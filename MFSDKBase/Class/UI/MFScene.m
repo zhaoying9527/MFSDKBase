@@ -57,33 +57,8 @@
                 [self addDom:footer withType:MFDomTypeFoot];
             }
         }
-
-        [self createOrders:css];
     }
     return self;
-}
-
-- (void)createOrders:(NSDictionary*)cssNodes
-{
-    self.orders = [[NSMutableArray alloc] initWithCapacity:cssNodes.allKeys.count];
-    //占位
-    for (int i=0; i<cssNodes.allKeys.count; i++) {
-        [self.orders addObject:[NSNull null]];
-    }
-    //填充
-    for (NSString *key in cssNodes.allKeys) {
-        NSDictionary *css = cssNodes[key];
-        if (css[@"order"] ) {
-            [self.orders replaceObjectAtIndex:[css[@"order"] intValue] withObject:key];
-        }
-    }
-    //检查
-    [self.orders removeObject:[NSNull null] inRange:NSMakeRange(0, self.orders.count)];
-}
-
-- (NSArray *)domOrders
-{
-    return self.orders;
 }
 
 - (void)addDom:(MFDOM *)dom withType:(MFDomType)type
@@ -108,7 +83,6 @@
     [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
         if (nil != [childNode getAttributeNamed:KEYWORD_ID]) {
             MFDOM *childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
-            NSLog(@"Dom tag: %@", childNode.tagName);
             [dom addSubDom:childDom];
         }
     }];

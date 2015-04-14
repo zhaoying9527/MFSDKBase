@@ -239,6 +239,17 @@
     }
 }
 
+- (void)revertHandling
+{
+    CGRect rawRect = self.frame;
+    UIView *superView = self.superview;
+    
+    CGRect rect = rawRect;
+    rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+    if (![MFHelper sameRect:rawRect withRect:rect]) {
+        self.frame = rect;
+    }
+}
 #pragma mark --
 #pragma mark TapGestureRecognizer
 - (void)setupTapGestureRecognizer

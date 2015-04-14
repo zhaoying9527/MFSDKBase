@@ -28,10 +28,8 @@
 	<string>highlightedTextColor</string>
 	<key>image</key>
 	<string>image</string>
-	<key>backgroundImage</key>
+	<key>background-image</key>
 	<string>backgroundImage</string>
-	<key>align</key>
-	<string>align</string>
 	<key>alignmentType</key>
 	<string>alignmentType</string>
 	<key>reverse</key>

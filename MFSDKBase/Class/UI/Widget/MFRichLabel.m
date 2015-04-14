@@ -8,6 +8,7 @@
 
 #import "MFRichLabel.h"
 #import "MFDefine.h"
+#import "MFHelper.h"
 #import "NSObject+DOM.h"
 
 #define LABELTEXTCOLOR [MFHelper colorWithHexString:@"0x00aaff"]
@@ -128,6 +129,24 @@
         self.textColor = self.textColor;
     }
     self.formatString = self.rawString;
+}
+
+- (void)revertHandling
+{
+    CGRect rawRect = self.frame;
+    UIView *superView = self.superview;
+    
+    CGRect rect = rawRect;
+    rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+    if (![MFHelper sameRect:rawRect withRect:rect]) {
+        self.frame = rect;
+    }
+    
+    if (NSTextAlignmentLeft == self.textAlignment) {
+        self.textAlignment = NSTextAlignmentRight;
+    } else if(NSTextAlignmentRight == self.textAlignment) {
+        self.textAlignment = NSTextAlignmentLeft;
+    }
 }
 
 - (void)setBorderColor:(UIColor *)borderColor

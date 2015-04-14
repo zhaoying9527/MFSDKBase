@@ -161,15 +161,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     return retDictionary;
 }
 
-- (NSDictionary*)sizeOfBodyDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
-{
-    NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
-    CGRect domframe = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo withOrders:nil];
-    NSDictionary * retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height), KEY_WIDGET_HEIGHT,
-                                    @(domframe.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
-    return retDictionary;
-}
-
 - (NSDictionary*)sizeOfBodyDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource withOrders:(NSArray*)orders;
 {
     NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
@@ -220,7 +211,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSInteger subHeight = 0;
 
     NSMutableDictionary *childWidgetsInfo = [NSMutableDictionary dictionary];
-    NSArray *sortedDoms = [self resortDoms:dom.subDoms withOrders:orders];
+    NSArray *sortedDoms = [self resortDoms:dom.subDoms];
     for (MFDOM *subDom in sortedDoms) {
         layoutKey = subDom.cssNodes[@"layout"];
         layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
@@ -245,38 +236,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     return pageFrame;
 }
 
-- (NSArray*)resortDoms:(NSArray*)doms withOrders:(NSArray*)orders
+- (NSArray*)resortDoms:(NSArray*)doms
 {
-    if (nil == orders) {
-        return doms;
-    }
-
-    NSUInteger loopCount = MAX(doms.count, orders.count);
-    NSMutableArray *sortedDoms = [[NSMutableArray alloc] initWithCapacity:loopCount];
-    //占位
-    for (int i=0; i<loopCount; i++) {
-        [sortedDoms addObject:[NSNull null]];
-    }
-    //建立Id到Index映射
-    NSMutableDictionary *orders2Index = [NSMutableDictionary dictionaryWithCapacity:orders.count];
-    for (int i=0; i<orders.count; i++) {
-        [orders2Index setObject:@(i) forKey:orders[i]];
-    }
-    //填充
-    NSUInteger unOrderedIndex = doms.count-1;
-    for (MFDOM* dom in doms) {
-        if (orders2Index[dom.uuid]) {
-            NSUInteger index = [orders2Index[dom.uuid] integerValue];
-            [sortedDoms replaceObjectAtIndex:index withObject:dom];
+    NSArray *sortedArray = [doms sortedArrayUsingComparator:^NSComparisonResult(MFDOM *dom1, MFDOM *dom2) {
+        NSInteger order1 = dom1.cssNodes[@"order"] ? [dom1.cssNodes[@"order"] intValue] : INT32_MAX;
+        NSInteger order2 = dom2.cssNodes[@"order"] ? [dom2.cssNodes[@"order"] intValue] : INT32_MAX;
+        if (order1 > order2) {
+            return NSOrderedDescending;
+        } else if (order1 == order2) {
+            return NSOrderedSame;
         } else {
-            [sortedDoms replaceObjectAtIndex:unOrderedIndex withObject:dom];
-            unOrderedIndex--;
+            return NSOrderedAscending;
         }
-    }
-    //检查
-    [sortedDoms removeObject:[NSNull null] inRange:NSMakeRange(0, sortedDoms.count)];
-
-    return sortedDoms;
+    }];
+    return sortedArray;
 }
 
 - (void)layout:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
@@ -316,8 +289,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         if (![MFHelper sameRect:view.frame withRect:rect]) {
             view.frame = rect;
         }
-    }
-    else if (MFAlignmentTypeRight == alignmentType) {
+    }else if (MFAlignmentTypeRight == alignmentType) {
         CGRect rect = rawRect;
         //TODO why ??
         if (!side) {
@@ -343,17 +315,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     if (![view UUID]) {
         return;
     }
-    BOOL parentSide = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"side"] boolValue];
-    NSInteger parentAlignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"alignmentType"] integerValue];
+
+    NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"alignmentType"] integerValue];
     BOOL reverse = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
-    CGRect rawRect = view.frame;
-    UIView *superView = view.superview;
-    
-    if (parentSide && parentAlignmentType && reverse) {
-        CGRect rect = rawRect;
-        rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
-        if (![MFHelper sameRect:view.frame withRect:rect]) {
-            view.frame = rect;
+    if (MFAlignmentTypeRight == alignmentType && reverse) {
+        if ([view respondsToSelector:@selector(revertHandling)]) {
+            [(id)view revertHandling];
         }
     }
 
@@ -361,6 +328,30 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         [self reverseSubViews:subView withSizeInfo:sizeInfo];
     }
 }
+
+//- (void)reverseSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
+//{
+//    if (![view UUID]) {
+//        return;
+//    }
+//    BOOL parentSide = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"side"] boolValue];
+//    NSInteger parentAlignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view.superview popertyName:@"alignmentType"] integerValue];
+//    BOOL reverse = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
+//    CGRect rawRect = view.frame;
+//    UIView *superView = view.superview;
+//    
+//    if (parentSide && parentAlignmentType && reverse) {
+//        CGRect rect = rawRect;
+//        rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+//        if (![MFHelper sameRect:view.frame withRect:rect]) {
+//            view.frame = rect;
+//        }
+//    }
+//    
+//    for (UIView *subView in view.subviews) {
+//        [self reverseSubViews:subView withSizeInfo:sizeInfo];
+//    }
+//}
 
 - (CGSize)imageSizeWithDataInfo:(NSDictionary*)dataInfo dataItems:(NSString*)dataItems
 {

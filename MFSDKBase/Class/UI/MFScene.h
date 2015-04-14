@@ -33,8 +33,6 @@ typedef enum {
 //
 - (MFDOM*)domWithId:(NSString*)ID withType:(MFDomType)type;
 //
-- (NSArray *)domOrders;
-//
 - (UIView*)sceneViewWithDomId:(NSString*)domId withType:(MFDomType)type;
 //
 - (void)bind:(UIView *)view withIndex:(NSInteger)index;

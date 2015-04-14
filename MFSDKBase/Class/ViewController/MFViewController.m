@@ -1,5 +1,6 @@
 #import "MFViewController.h"
 #import "MFLayoutCenter.h"
+#import "MFResourceCenter.h"
 #import "MFSceneFactory.h"
 #import "HTMLParser.h"
 #import "ESCssParser.h"
@@ -28,6 +29,7 @@
 {
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
+    [[MFResourceCenter sharedMFResourceCenter] removeAll];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -117,9 +119,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
-    
+    MFAlignmentType alignType = [dataDict[KEY_WIDGET_ALIGNMENTTYPE] intValue];
+
     NSString *tId = dataDict[KEYWORD_TEMPLATE_ID];
-    NSString *identifier = [NSString stringWithFormat:@"%@",tId];
+    NSString *identifier = [NSString stringWithFormat:@"%@_%d",tId, alignType];
 
     MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     if (nil == cell) {
@@ -141,7 +144,6 @@
     }
 
     //布局设置
-    MFAlignmentType alignType = [dataDict[KEY_WIDGET_ALIGNMENTTYPE] intValue];
     [self.scene layout:cell.contentView withIndex:indexPath.section withAlignmentType:alignType];
 
     //数据绑定

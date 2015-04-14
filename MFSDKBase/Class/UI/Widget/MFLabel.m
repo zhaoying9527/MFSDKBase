@@ -8,6 +8,7 @@
 
 #import "MFLabel.h"
 #import "MFDefine.h"
+#import "MFHelper.h"
 #import "NSObject+DOM.h"
 
 @interface MFLabel () <UIGestureRecognizerDelegate>
@@ -84,6 +85,24 @@
         }
     } else {
         self.textColor = self.textColor;
+    }
+}
+
+- (void)revertHandling
+{
+    CGRect rawRect = self.frame;
+    UIView *superView = self.superview;
+
+    CGRect rect = rawRect;
+    rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+    if (![MFHelper sameRect:rawRect withRect:rect]) {
+        self.frame = rect;
+    }
+    
+    if (NSTextAlignmentLeft == self.textAlignment) {
+        self.textAlignment = NSTextAlignmentRight;
+    } else if(NSTextAlignmentRight == self.textAlignment) {
+        self.textAlignment = NSTextAlignmentLeft;
     }
 }
 

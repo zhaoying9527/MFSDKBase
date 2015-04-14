@@ -117,14 +117,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     NSString *propertyName = nil;
     NSString *propertyValue = nil;
     id dataObject = nil;
-    
-    propertyName = [self.propertyMapDict objectForKey:@"side"];
-    propertyValue = [scriptDict objectForKey:@"side"];
-    dataObject = [self valueFormat:propertyValue withPropertyName:@"side"];
-    if (nil != propertyName && nil != dataObject) {
-        [self setProperty:self.object popertyName:propertyName withObject:dataObject];
-    }
-    
+
     for (NSString *metaProperty in [scriptDict allKeys]) {
         propertyName = [self.propertyMapDict objectForKey:metaProperty];
         propertyValue = [scriptDict objectForKey:metaProperty];
@@ -133,13 +126,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
             NSLog(@"warning: propertyName or dataObject is nil");
             continue;
         }
-        [self setProperty:self.object popertyName:propertyName withObject:dataObject];
-    }
-    
-    propertyName = [self.propertyMapDict objectForKey:@"style"];
-    propertyValue = [scriptDict objectForKey:@"style"];
-    dataObject = [self valueFormat:propertyValue withPropertyName:@"style"];
-    if (nil != propertyName && nil != dataObject) {
         [self setProperty:self.object popertyName:propertyName withObject:dataObject];
     }
 }
@@ -208,8 +194,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         retObj = [MFHelper formatFontWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"image"]) {
         retObj = [MFHelper formatImageWithString:propertyValue];
-    }else if ([propertyName isEqualToString:@"backgroundImage"]) {
-        retObj = [MFHelper formatImageWithString:propertyValue];
+    }else if ([propertyName isEqualToString:@"background-image"]) {
+        retObj = propertyValue;
     }else if ([propertyName isEqualToString:@"align"]) {
         MFAlignmentType alignment = [MFHelper formatAlignmentWithString:propertyValue];
         retObj = [NSNumber numberWithInt:alignment];

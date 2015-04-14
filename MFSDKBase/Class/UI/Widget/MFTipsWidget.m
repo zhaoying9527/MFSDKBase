@@ -45,19 +45,11 @@
 - (void)setFrame:(CGRect)frame
 {
     CGRect retFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-    if (MFAlignmentTypeLeft == self.alignmentType) {
-        retFrame = retFrame;
-    } else if (MFAlignmentTypeCenter == self.alignmentType) {
-        retFrame.origin.x = (kDeviceWidth - retFrame.size.width)/2;
-    } else if (MFAlignmentTypeRight == self.alignmentType) {
-        retFrame.origin.x = (self.superview.frame.size.width - retFrame.size.width - retFrame.origin.x);
-    }
+    retFrame.origin.x = (kDeviceWidth - retFrame.size.width)/2;
     [super setFrame:retFrame];
 
     self.titleLabel.frame = (retFrame.size.width <= 0 || retFrame.size.height <= 0) ? retFrame :
     CGRectMake(1.5*tipsWidthSpace, tipsHeightSpace, retFrame.size.width - 3.0*tipsWidthSpace, retFrame.size.height - 2*tipsHeightSpace);
-    
-    NSLog(@"");
 }
 
 - (void)setText:(NSString *)text
@@ -73,17 +65,6 @@
 - (NSString*)text
 {
     return self.titleLabel.text;
-}
-
-- (void)setAlign:(NSInteger)align
-{
-    _align = align;
-    self.alignmentType = _align;
-}
-
-- (void)setAlignmentType:(NSInteger)type
-{
-    _alignmentType = type;
 }
 
 - (void)setBackgroundColor:(UIColor*)backgroundColor

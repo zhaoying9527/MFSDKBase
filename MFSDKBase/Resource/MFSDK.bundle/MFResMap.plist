@@ -10,9 +10,9 @@
 	<string>HiChat.bundle/Dialog_blue_white.png</string>
 	<key>blueBG</key>
 	<string>HiChat.bundle/Dialog_blue.png</string>
-	<key>COLLET.left</key>
+	<key>COLLET-left</key>
 	<string>HiChat.bundle/COLLET.left.png</string>
-	<key>COLLET.right</key>
+	<key>COLLET-right</key>
 	<string>HiChat.bundle/COLLET.right.png</string>
 	<key>FAMILYPAY.left</key>
 	<string>HiChat.bundle/FAMILYPAY.left.png</string>

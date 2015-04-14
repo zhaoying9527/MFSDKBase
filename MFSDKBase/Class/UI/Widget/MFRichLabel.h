@@ -21,4 +21,5 @@
 @property (nonatomic, assign)CGFloat borderWidth;
 @property (nonatomic, strong)UIColor *borderColor;
 - (void)specialHandling;
+- (void)revertHandling;
 @end

@@ -118,6 +118,19 @@
 
 - (void)specialHandling
 {
+    self.backgroundImage = _backgroundImage;
+}
+
+- (void)revertHandling
+{
+    CGRect rawRect = self.frame;
+    UIView *superView = self.superview;
+    
+    CGRect rect = rawRect;
+    rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+    if (![MFHelper sameRect:rawRect withRect:rect]) {
+        self.frame = rect;
+    }
 }
 
 - (void)setBorderColor:(UIColor *)borderColor
@@ -176,31 +189,48 @@
     return retImage;
 }
 
-- (void)setStyle:(NSString*)style
+- (void)setBackgroundImage:(NSString*)backgroundImage
 {
-    
-    _style = style;
-    
+    _backgroundImage = backgroundImage;
+
     UIImage *image= nil;
-    NSArray *styleArray = [style componentsSeparatedByString:@","];
-    if ([styleArray count]>=2) {
-        switch (self.alignmentType) {
-            case MFAlignmentTypeLeft:
-                image = [self styleLeftImageWithId:[styleArray objectAtIndex:0]];
-                break;
-            case MFAlignmentTypeCenter:
-                image = [self styleCenterImageWithId:[styleArray objectAtIndex:0]];
-                break;
-            case MFAlignmentTypeRight:
-                image = [self styleRightImageWithId:[styleArray objectAtIndex:1]];
-                break;
-            default:
-                break;
+
+    if ([backgroundImage hasPrefix:@"url(MFLayout://"]) {
+        NSRange startRange = [backgroundImage rangeOfString:@"url(MFLayout://"];
+        NSRange endRange = [backgroundImage rangeOfString:@")"];
+        NSString *subUrlString = [backgroundImage substringWithRange:NSMakeRange(startRange.length, MAX(0,endRange.location-startRange.length))];
+        
+        NSString *leftImageUrl = nil; NSString *centerImageUrl = nil; NSString *rightImageUrl = nil;
+        NSArray *imageUrls = [subUrlString componentsSeparatedByString:@"#"];
+        for (NSString * imageUrl in imageUrls) {
+            if ([imageUrl hasPrefix:@"left:"]) {
+                leftImageUrl = [imageUrl substringWithRange:NSMakeRange(5, imageUrl.length-5)];
+            }
+            if ([imageUrl hasPrefix:@"center:"]) {
+                centerImageUrl = [imageUrl substringWithRange:NSMakeRange(7, imageUrl.length-7)];
+            }
+            if ([imageUrl hasPrefix:@"right:"]) {
+                rightImageUrl = [imageUrl substringWithRange:NSMakeRange(6, imageUrl.length-6)];
+            }
         }
-    } else {
-        image = [self styleLeftImageWithId:[styleArray objectAtIndex:0]];
+
+        if (MFAlignmentTypeLeft == self.alignmentType) {
+            image = [self styleLeftImageWithId:leftImageUrl];
+        }
+        else if (MFAlignmentTypeCenter == self.alignmentType) {
+            image = [self styleCenterImageWithId:centerImageUrl];
+        }
+        else if (MFAlignmentTypeRight == self.alignmentType) {
+            image = [self styleRightImageWithId:rightImageUrl];
+        }
     }
-    
+    else if ([backgroundImage hasPrefix:@"http://"]) {
+        //TODO setImage with URL;
+    }
+    else {
+        image = [self styleLeftImageWithId:backgroundImage];
+    }
+
     if (nil == _backgroundImageView) {
         _backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _backgroundImageView.backgroundColor = [UIColor clearColor];
@@ -215,7 +245,6 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    self.style = _style;
 }
 
 - (void)setFrame:(CGRect)frame
