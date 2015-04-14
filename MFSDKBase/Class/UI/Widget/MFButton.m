@@ -8,6 +8,7 @@
 
 #import "MFButton.h"
 #import "MFDefine.h"
+#import "MFHelper.h"
 #import "NSObject+DOM.h"
 
 @implementation MFButton
@@ -35,24 +36,48 @@
 
 - (void)setImage:(UIImage *)image
 {
-    _image = image;
     [self setImage:image forState:UIControlStateNormal];
 }
 
 - (void)setBackgroundImage:(UIImage *)backgroundImage
 {
-    _backgroundImage = backgroundImage;
     [self setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 }
 
 - (void)setTextColor:(UIColor *)textColor
 {
-  [self setTitleColor:textColor forState:UIControlStateNormal];
+    [self setTitleColor:textColor forState:UIControlStateNormal];
 }
 
 - (void)setText:(NSString *)text
 {
-
     [self setTitle:text forState:UIControlStateNormal];
 }
+
+- (void)setAlignmentType:(NSInteger)type
+{
+    _alignmentType = type;
+}
+
+- (void)alignHandling
+{
+    if (MFAlignmentTypeRight == self.alignmentType) {
+        if (nil != self.highlightedTextColor) {
+            [self setTitleColor:self.highlightedTextColor forState:UIControlStateNormal];
+        }
+    }
+}
+
+- (void)reverseHandling
+{
+    CGRect rawRect = self.frame;
+    UIView *superView = self.superview;
+    
+    CGRect rect = rawRect;
+    rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+    if (![MFHelper sameRect:rawRect withRect:rect]) {
+        self.frame = rect;
+    }
+}
+
 @end

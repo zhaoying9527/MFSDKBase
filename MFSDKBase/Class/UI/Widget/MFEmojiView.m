@@ -8,6 +8,7 @@
 
 #import "MFEmojiView.h"
 #import "MFResourceCenter.h"
+#import "MFHelper.h"
 
 @interface MFEmojiView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
@@ -83,5 +84,21 @@
 //            [self setImage:bannerImage];
 //        }
 //    }
+}
+
+- (void)alignHandling
+{
+}
+
+- (void)reverseHandling
+{
+    CGRect rawRect = self.frame;
+    UIView *superView = self.superview;
+
+    CGRect rect = rawRect;
+    rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+    if (![MFHelper sameRect:rawRect withRect:rect]) {
+        self.frame = rect;
+    }
 }
 @end

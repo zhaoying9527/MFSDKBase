@@ -187,14 +187,6 @@
     _side = side;
 }
 
-- (void)centerLayout
-{
-    CGRect rect = self.rawRect;
-    CGSize screenXY = [MFHelper screenXY];
-    rect.origin.x = (screenXY.width - rect.size.width)/2;
-    [super setFrame:rect];
-}
-
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;

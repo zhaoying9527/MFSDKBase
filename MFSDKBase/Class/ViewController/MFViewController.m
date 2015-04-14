@@ -134,6 +134,7 @@
         cell.contentView.width = kDeviceWidth;
         cell.contentView.height = 0;
         cell.contentView.backgroundColor = [UIColor colorWithRed:235.0/255 green:235.0/255 blue:235.0/255 alpha:1];
+
         UIView *sceneHeadCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeHead];
         UIView *sceneBodyCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeBody];
         UIView *sceneFootCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeFoot];
