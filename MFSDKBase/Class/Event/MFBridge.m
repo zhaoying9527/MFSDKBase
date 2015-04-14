@@ -8,13 +8,14 @@
 #import "MFBridge.h"
 #import "MFLuaScript.h"
 #import "MFCorePlugInService.h"
+#import "MFSceneCenter.h"
 
 @implementation MFBridge
 - (id)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType
 {
     //lua
     if (MFSDK_SCRIPT_LUA == scriptType) {
-        MFLuaScript *plugin = (MFLuaScript *)[[[MFCorePlugInService alloc] init] findPlugInWithType:MFSDK_PLUGIN_LUA];
+        MFLuaScript *plugin = (MFLuaScript *)[[[MFSceneCenter sharedMFSceneCenter] pluginService] findPlugInWithType:MFSDK_PLUGIN_LUA];
         id result = [plugin executeScript:scriptNode];
         NSLog(@"Lua result:%@", result);
         return result;

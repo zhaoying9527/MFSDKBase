@@ -362,7 +362,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *layoutKey = [layoutInfo objectForKey:@"layout"];
     NSInteger layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
 
-    CGRect frame;
+    CGRect frame = CGRectZero;
     NSString *frameString = [MFHelper getFrameStringWithCssStyle:layoutInfo];
     if (MFLayoutTypeNone == layoutType) {
         frame = [MFHelper formatRectWithString:frameString superFrame:superFrame];

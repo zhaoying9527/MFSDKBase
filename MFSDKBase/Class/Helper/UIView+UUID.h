@@ -1,6 +1,6 @@
 //
 //  UIView+UUID.h
-//  PKApp
+//  MFSDK
 //
 //  Created by 李春荣 on 15/3/23.
 //  Copyright (c) 2015年 alipay. All rights reserved.

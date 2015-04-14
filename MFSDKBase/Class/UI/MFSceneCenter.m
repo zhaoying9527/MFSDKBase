@@ -19,6 +19,8 @@
 @interface MFSceneCenter ()
 @property (nonatomic, copy) NSString *currentSceneName;
 @property (nonatomic, strong)MFCorePlugInService *pluginService;
+@property (nonatomic, strong)NSMutableDictionary *htmlParsers;
+
 - (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error;
 @end
 
@@ -29,11 +31,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
 {
     if (self = [super init]) {
         self.scenes = [NSMutableDictionary dictionary];
+        self.htmlParsers = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
-- (void)registerScene:(MFScene*)scene WithName:(NSString*)sceneName
+- (void)registerScene:(MFScene*)scene withName:(NSString*)sceneName
 {
     self.currentSceneName = sceneName;
     if (nil != scene && nil != sceneName) {
@@ -61,9 +64,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     return [self.scenes objectForKey:self.currentSceneName];
 }
 
+- (void)releaseHtmlParserWithName:(NSString*)sceneName
+{
+    [self.htmlParsers removeObjectForKey:sceneName];
+}
+
 - (MFScene*)loadSceneWithName:(NSString*)sceneName
 {
-    self.pluginService = [[MFCorePlugInService alloc] init];
+    if (nil == _pluginService) {
+        _pluginService = [[MFCorePlugInService alloc] init];
+    }
     
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, sceneName];
@@ -78,6 +88,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     
     NSError *error;
     result_h5 = [self parse:MFSDK_PLUGIN_HTML withPath:htmlPath error:&error];
+    [self.htmlParsers setObject:[result_h5 parser] forKey:sceneName];
     result_css = [self parse:MFSDK_PLUGIN_CSS withPath:cssPath error:&error];
     result_databinding = [self parse:MFSDK_PLUGIN_CSS withPath:dataBindingPath error:&error];
     result_events = [self parseEvent:result_h5];
@@ -177,5 +188,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     }];
 
     return rootNodeEvents;
+}
+
+- (MFCorePlugInService*)pluginService
+{
+    return _pluginService;
 }
 @end

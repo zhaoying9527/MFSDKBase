@@ -10,12 +10,18 @@
 #import "MFSDK.h"
 #import "MFDOM.h"
 #import "MFScene.h"
+@class HTMLParser;
+@class MFCorePlugInService;
 @interface MFSceneCenter : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneCenter)
 @property (nonatomic,strong)NSMutableDictionary *scenes;
 - (MFScene*)currentScene;
 - (MFScene*)sceneWithName:(NSString*)sceneName;
 - (MFScene*)loadSceneWithName:(NSString*)sceneName;
-- (void)registerScene:(MFScene*)scene WithName:(NSString*)sceneName;
+- (void)releaseHtmlParserWithName:(NSString*)sceneName;
+
+- (void)registerScene:(MFScene*)scene withName:(NSString*)sceneName;
 - (BOOL)unRegisterScene:(NSString*)sceneName;
+
+- (MFCorePlugInService*)pluginService;
 @end

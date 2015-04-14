@@ -30,10 +30,12 @@
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
     [[MFResourceCenter sharedMFResourceCenter] removeAll];
+    [[MFSceneCenter sharedMFSceneCenter] releaseHtmlParserWithName:self.scriptName];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     [[MFSceneCenter sharedMFSceneCenter] unRegisterScene:self.scriptName];
 }
 
@@ -58,7 +60,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [[MFSceneCenter sharedMFSceneCenter] registerScene:self.scene WithName:self.scriptName];
+    [super viewDidAppear:animated];
+    [[MFSceneCenter sharedMFSceneCenter] registerScene:self.scene withName:self.scriptName];
 }
 
 #pragma mark - Data
@@ -128,6 +131,8 @@
     if (nil == cell) {
         cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.userInteractionEnabled = YES;
+        cell.contentView.width = kDeviceWidth;
+        cell.contentView.height = 0;
         cell.contentView.backgroundColor = [UIColor colorWithRed:235.0/255 green:235.0/255 blue:235.0/255 alpha:1];
         UIView *sceneHeadCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeHead];
         UIView *sceneBodyCanvas = [self.scene sceneViewWithDomId:tId withType:MFDomTypeBody];

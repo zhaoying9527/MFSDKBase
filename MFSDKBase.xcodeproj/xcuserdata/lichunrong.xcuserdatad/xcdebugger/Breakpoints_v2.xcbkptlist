@@ -9,13 +9,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MFSDKBase/Class/ViewController/MFViewController.m"
-            timestampString = "450691210.144487"
+            filePath = "MFSDKBase/Class/Utils/Third-party/HTMLParser/HTMLNode.m"
+            timestampString = "450696716.19685"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "-initWithXMLNode:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFSDKBase/Class/Layout/MFLayoutCenter.m"
+            timestampString = "450709455.983727"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "-sideSubViews:withSizeInfo:withAlignmentType:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

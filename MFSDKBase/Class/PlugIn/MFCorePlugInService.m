@@ -16,9 +16,10 @@
 @implementation MFCorePlugInService
 - (id)init
 {
-    self.pluginDict = [[NSMutableDictionary alloc] init];
-    [self registerCorePlugIn];
-    
+    if (self = [super init]) {
+        self.pluginDict = [[NSMutableDictionary alloc] init];
+        [self registerCorePlugIn];
+    }
     return self;
 }
 

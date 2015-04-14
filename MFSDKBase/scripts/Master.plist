@@ -71,6 +71,8 @@
 			<string>billIcon</string>
 			<key>headerTitle</key>
 			<string>2015.4.11 2:30</string>
+			<key>templateId</key>
+			<string>cell1</string>
 		</dict>
 		<dict>
 			<key>linkUrl</key>

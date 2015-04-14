@@ -1,6 +1,6 @@
 //
 //  UIView+UUID.m
-//  PKApp
+//  MFSDK
 //
 //  Created by 李春荣 on 15/3/23.
 //  Copyright (c) 2015年 alipay. All rights reserved.
@@ -17,6 +17,6 @@
 
 - (void)setUUID:(NSString *)UUID
 {
-    objc_setAssociatedObject(self, UUIDPorpertyKey, UUID, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, UUIDPorpertyKey, UUID, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 @end

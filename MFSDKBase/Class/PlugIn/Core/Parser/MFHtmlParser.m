@@ -30,6 +30,11 @@
     return self;
 }
 
+- (id)parser
+{
+    return _parser;
+}
+
 - (HTMLNode*)doc
 {
    return [self.parser doc];

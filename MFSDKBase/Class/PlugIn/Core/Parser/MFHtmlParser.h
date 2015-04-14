@@ -22,5 +22,9 @@
 //Returns the head tag
 - (HTMLNode*)head;
 
+//Returns nodes of body
 - (NSArray*)bodyEntity;
+
+//Returns HTMLParser
+- (id)parser;
 @end
