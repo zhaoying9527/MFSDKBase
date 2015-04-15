@@ -20,6 +20,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    self.side = YES;
     return self;
 }
 

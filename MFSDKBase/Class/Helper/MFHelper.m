@@ -654,7 +654,7 @@
 
 + (BOOL)supportMultiLine:(NSString*)string
 {
-    if (string && [string isEqualToString:@"0"]) {
+    if ([string isEqualToString:@"0"]) {
         return YES;
     }
     return NO;
@@ -673,6 +673,7 @@
     BOOL retCode = NO;
     NSString *lowLabelString = [labelString lowercaseString];
     if ([lowLabelString isEqualToString:@"label"]
+        || [lowLabelString isEqualToString:@"slidelabel"]
         || [lowLabelString isEqualToString:@"richlabel"]) {
         retCode = YES;
     }

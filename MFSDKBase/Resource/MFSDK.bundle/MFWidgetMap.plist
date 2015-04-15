@@ -19,7 +19,7 @@
 	<key>richlabel</key>
 	<string>MFRichLabel</string>
 	<key>slidelabel</key>
-	<string>MFSlideLabel</string>
+	<string>MFLabel</string>
 	<key>audio</key>
 	<string>MFAudioLabel</string>
 </dict>
