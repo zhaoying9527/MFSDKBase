@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MFTipsWidget : UIImageView
-@property (nonatomic, strong)NSString *text;
+@property (nonatomic, copy)NSString *text;
 @end

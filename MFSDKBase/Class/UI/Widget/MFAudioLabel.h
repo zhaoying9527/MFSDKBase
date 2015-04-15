@@ -11,20 +11,20 @@
 
 @interface MFAudioLabel : UIView
 @property (nonatomic, assign)BOOL side;
-@property (nonatomic, assign)NSInteger alignmentType;
 @property (nonatomic, assign)BOOL reverse;
+@property (nonatomic, assign)NSInteger alignmentType;
 
-@property (nonatomic, strong) UIColor *textColor;
-@property (nonatomic, strong) UIColor *highlightedTextColor;
-@property (nonatomic, strong) UIFont *font;
-@property (nonatomic, copy) NSString * layout;
-@property (nonatomic, assign) BOOL canStretch;
+@property (nonatomic, strong)UIColor *textColor;
+@property (nonatomic, strong)UIColor *highlightedTextColor;
+@property (nonatomic, strong)UIFont *font;
+@property (nonatomic, copy)NSString *layout;
+@property (nonatomic, assign)BOOL canStretch;
 
-@property (nonatomic, assign) BOOL showBadge;
-@property (nonatomic, copy) NSString *timeLine;
-@property (nonatomic, copy) NSString *voiceUrl;
-@property (nonatomic, strong) NSMutableDictionary * mediaState;
-@property (nonatomic, copy) NSString * clientMsgID;
+@property (nonatomic, assign)BOOL showBadge;
+@property (nonatomic, copy)NSString *timeLine;
+@property (nonatomic, copy)NSString *voiceUrl;
+@property (nonatomic, strong)NSMutableDictionary *mediaState;
+@property (nonatomic, copy)NSString *clientMsgID;
 - (CGFloat)voiceFactor;
 - (void)alignHandling;
 - (void)reverseHandling;

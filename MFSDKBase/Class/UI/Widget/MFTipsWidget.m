@@ -29,7 +29,7 @@
     self.titleLabel.opaque = YES;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.titleLabel];
-    
+
     return self;
 }
 

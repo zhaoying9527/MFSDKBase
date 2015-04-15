@@ -23,7 +23,6 @@
     [self releaseTapGestureRecognizer];
 }
 
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -79,8 +78,8 @@
     self.multipleTouchEnabled = YES;
     self.userInteractionEnabled = YES;
     self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
-    self.singleTap.numberOfTouchesRequired = 1; //手指数
-    self.singleTap.numberOfTapsRequired = 1; //tap次数
+    self.singleTap.numberOfTouchesRequired = 1;
+    self.singleTap.numberOfTapsRequired = 1;
     self.singleTap.delegate = self;
     [self addGestureRecognizer:self.singleTap];
 }
@@ -97,8 +96,8 @@
     self.multipleTouchEnabled = YES;
     self.userInteractionEnabled = YES;
     self.longPressTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressEvent:)];
-    self.longPressTap.numberOfTouchesRequired = 1; //手指数
-    self.longPressTap.numberOfTapsRequired = 1; //tap次数
+    self.longPressTap.numberOfTouchesRequired = 1;
+    self.longPressTap.numberOfTapsRequired = 1;
     self.longPressTap.delegate = self;
     [self addGestureRecognizer:self.longPressTap];
 }

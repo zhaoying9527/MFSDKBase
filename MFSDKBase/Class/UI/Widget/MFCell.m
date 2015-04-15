@@ -14,15 +14,6 @@
 
 - (void)setupNotify {;}
 - (void)releaseNotify {;}
-
-- (void)setupUI
-{
-}
-
-- (void)releaseUI
-{
-    for (UIView *view in self.contentView.subviews) {
-        [view removeFromSuperview];
-    }
-}
+- (void)setupUI {;}
+- (void)releaseUI {;}
 @end
