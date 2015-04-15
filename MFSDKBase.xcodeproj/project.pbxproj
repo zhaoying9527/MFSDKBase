@@ -79,6 +79,11 @@
 		23F385BC1AD4C247002A8F32 /* MFRichLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3858B1AD4C247002A8F32 /* MFRichLabel.m */; };
 		23F385BD1AD4C247002A8F32 /* MFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3858D1AD4C247002A8F32 /* MFView.m */; };
 		23F385C51AD4C247002A8F32 /* MFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385A21AD4C247002A8F32 /* MFViewController.m */; };
+		23FC98371ADE1C84008F61DD /* HiChat.css in Resources */ = {isa = PBXBuildFile; fileRef = 23FC98321ADE1C84008F61DD /* HiChat.css */; };
+		23FC98381ADE1C84008F61DD /* HiChat.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 23FC98331ADE1C84008F61DD /* HiChat.dataBinding */; };
+		23FC98391ADE1C84008F61DD /* HiChat.html in Resources */ = {isa = PBXBuildFile; fileRef = 23FC98341ADE1C84008F61DD /* HiChat.html */; };
+		23FC983A1ADE1C84008F61DD /* HiChat.lua in Resources */ = {isa = PBXBuildFile; fileRef = 23FC98351ADE1C84008F61DD /* HiChat.lua */; };
+		23FC983B1ADE1C84008F61DD /* HiChat.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23FC98361ADE1C84008F61DD /* HiChat.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +217,11 @@
 		23F3858D1AD4C247002A8F32 /* MFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFView.m; sourceTree = "<group>"; };
 		23F385A11AD4C247002A8F32 /* MFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFViewController.h; sourceTree = "<group>"; };
 		23F385A21AD4C247002A8F32 /* MFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFViewController.m; sourceTree = "<group>"; };
+		23FC98321ADE1C84008F61DD /* HiChat.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = HiChat.css; sourceTree = "<group>"; };
+		23FC98331ADE1C84008F61DD /* HiChat.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HiChat.dataBinding; sourceTree = "<group>"; };
+		23FC98341ADE1C84008F61DD /* HiChat.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = HiChat.html; sourceTree = "<group>"; };
+		23FC98351ADE1C84008F61DD /* HiChat.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HiChat.lua; sourceTree = "<group>"; };
+		23FC98361ADE1C84008F61DD /* HiChat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HiChat.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +361,11 @@
 		2386EB741AD9DB17006FE937 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
+				23FC98321ADE1C84008F61DD /* HiChat.css */,
+				23FC98331ADE1C84008F61DD /* HiChat.dataBinding */,
+				23FC98341ADE1C84008F61DD /* HiChat.html */,
+				23FC98351ADE1C84008F61DD /* HiChat.lua */,
+				23FC98361ADE1C84008F61DD /* HiChat.plist */,
 				2386EB751AD9DB17006FE937 /* AppDelegate.lua */,
 				2386EB761AD9DB17006FE937 /* Balance.css */,
 				2386EB771AD9DB17006FE937 /* Balance.dataBinding */,
@@ -658,23 +673,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23FC98371ADE1C84008F61DD /* HiChat.css in Resources */,
 				2386EB8F1AD9DB17006FE937 /* Balance.plist in Resources */,
 				2386EBA21ADA20E6006FE937 /* HiChat.bundle in Resources */,
 				2386EB8E1AD9DB17006FE937 /* Balance.lua in Resources */,
 				2386EB9E1AD9DB17006FE937 /* Talk.plist in Resources */,
 				2386EB8C1AD9DB17006FE937 /* Balance.dataBinding in Resources */,
 				2386EB961AD9DB17006FE937 /* Master.dataBinding in Resources */,
+				23FC983B1ADE1C84008F61DD /* HiChat.plist in Resources */,
 				2386EBA01AD9E239006FE937 /* MFSDK.bundle in Resources */,
 				2386EB8A1AD9DB17006FE937 /* AppDelegate.lua in Resources */,
 				2386EB9A1AD9DB17006FE937 /* Talk.css in Resources */,
 				2386EB991AD9DB17006FE937 /* Master.plist in Resources */,
 				2386EB9B1AD9DB17006FE937 /* Talk.dataBinding in Resources */,
 				231BE45F1ACFC60000B65A58 /* LaunchScreen.xib in Resources */,
+				23FC98381ADE1C84008F61DD /* HiChat.dataBinding in Resources */,
 				2386EB941AD9DB17006FE937 /* Detail.plist in Resources */,
 				2386EB8D1AD9DB17006FE937 /* Balance.html in Resources */,
+				23FC983A1ADE1C84008F61DD /* HiChat.lua in Resources */,
 				2386EB911AD9DB17006FE937 /* Detail.dataBinding in Resources */,
 				2386EB9C1AD9DB17006FE937 /* Talk.html in Resources */,
 				2386EB8B1AD9DB17006FE937 /* Balance.css in Resources */,
+				23FC98391ADE1C84008F61DD /* HiChat.html in Resources */,
 				2386EB971AD9DB17006FE937 /* Master.html in Resources */,
 				2386EB921AD9DB17006FE937 /* Detail.html in Resources */,
 				231BE45C1ACFC60000B65A58 /* Images.xcassets in Resources */,

@@ -43,6 +43,7 @@
 {
     self = [super init];
     if (self) {
+        self.side = YES;
         self.userInteractionEnabled = YES;
         self.multipleTouchEnabled = YES;
         
@@ -207,7 +208,7 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
+    self.side = (_alignmentType != MFAlignmentTypeNone && self.side) ? YES : NO;
 
     if (self.side) {
         if (MFAlignmentTypeLeft == self.alignmentType) {
@@ -296,7 +297,7 @@
 //        }
 //        
 //    }];
-//    [self reloadMediaState];
+    [self reloadMediaState];
 }
 
 - (void)reloadMediaState
@@ -325,11 +326,11 @@
 //        }
 //    }
 //    
-//    if (self.isPlaying) {
-//        [self playAnimating];
-//    }else {
-//        [self stopAnimating];
-//    }
+    if (self.isPlaying) {
+        [self playAnimating];
+    }else {
+        [self stopAnimating];
+    }
 }
 
 -(void)playAudio
@@ -349,7 +350,7 @@
 //    }
 //    [self.mediaState setInteger:1 forKey:@"audioState"];
 //    [self postMediaStateChangeNotification];
-//    [self reloadMediaState];
+    [self reloadMediaState];
 }
 
 - (void)postMediaStateChangeNotification

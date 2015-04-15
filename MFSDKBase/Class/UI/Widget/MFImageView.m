@@ -30,7 +30,7 @@
         self.opaque = YES;
         self.corner = NO;
         self.aspectFit = NO;
-        self.side = NO;
+        self.side = YES;
         self.alignmentType = MFAlignmentTypeLeft;
     }
     
@@ -179,7 +179,7 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
+    self.side = (_alignmentType != MFAlignmentTypeNone && self.side) ? YES : NO;
 }
 
 - (void)setBorderColor:(UIColor *)borderColor

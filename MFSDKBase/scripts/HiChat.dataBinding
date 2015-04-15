@@ -1,0 +1,148 @@
+header
+{
+   dsKey:headerTitle
+}
+
+footer
+{
+    dsKey:footerTitle
+}
+
+tid-10000-head-view
+{
+    dsKey:portalIcon;
+}
+
+tid-8001-body-description
+{
+    dsKey:message;
+}
+
+tid-8002-body-description
+{
+    dsKey:message;
+}
+
+tid-10000-head-view
+{
+    dsKey:portalIcon;
+}
+
+tid-1-head-view
+{
+    dsKey:portalIcon;
+}
+tid-1-body-description
+{
+    dsKey:message;
+}
+
+tid-2-head-view
+{
+    dsKey:portalIcon;
+}
+tid-2-body-voice
+{
+    dsKey:voice;
+}
+
+tid-3-head-view
+{
+    dsKey:portalIcon;
+}
+tid-3-body-emoji
+{
+    dsKey:emoji;
+}
+
+tid-4-head-view
+{
+    dsKey:portalIcon;
+}
+tid-4-body-img
+{
+    dsKey:image;
+}
+
+tid-11-head-view
+{
+    dsKey:portalIcon;
+}
+tid-11-body-description
+{
+    dsKey:m;
+}
+
+tid-12-head-view
+{
+    dsKey:portalIcon;
+}
+tid-12-body-voice
+{
+    dsKey:v;
+}
+
+tid-13-head-view
+{
+    dsKey:portalIcon;
+}
+tid-13-body-emoji
+{
+    dsKey:e;
+}
+
+tid-14-head-view
+{
+    dsKey:portalIcon;
+}
+tid-14-body-img
+{
+    dsKey:i;
+}
+
+tid-1001-head-view
+{
+    dsKey:portalIcon;
+}
+tid-1001-body-title
+{
+    dsKey:title;
+}
+tid-1001-body-image
+{
+    dsKey:image;
+}
+tid-1001-body-description
+{
+    dsKey:desc;
+}
+
+tid-1002-head-view
+{
+    dsKey:portalIcon;
+}
+tid-1002-body-title
+{
+    dsKey:title;
+}
+tid-1002-body-image
+{
+    dsKey:image;
+}
+tid-1002-body-description
+{
+    dsKey:desc;
+}
+
+tid-1003-head-view
+{
+    dsKey:portalIcon;
+}
+tid-1003-body-image
+{
+    dsKey:image;
+}
+tid-1003-body-description
+{
+    dsKey:desc;
+}

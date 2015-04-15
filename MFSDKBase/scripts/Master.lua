@@ -10,7 +10,7 @@ function didSelectCell(param)
 
     local navigationController = UIApplication:sharedApplication():keyWindow():rootViewController()
     if navigationController then
-    local viewController = MFViewController:initWithScriptName("Talk")
+    local viewController = MFViewController:initWithScriptName("HiChat")
     navigationController:pushViewController_animated(viewController,toobjc(true))
     else
     wax.alert("navigationController is null", "navigationController")

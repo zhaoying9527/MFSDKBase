@@ -62,7 +62,7 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
+    self.side = (_alignmentType != MFAlignmentTypeNone && self.side) ? YES : NO;
 }
 
 - (void)alignHandling

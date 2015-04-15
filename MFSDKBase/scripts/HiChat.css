@@ -1,0 +1,739 @@
+HeadFootStyle
+{
+    head:#header;
+    foot:#footer;
+}
+header
+{
+    width:100%;
+    height:20;
+    color:white;
+    text-align:center;
+    font:normal 12;
+    numberOfLines:0;
+    alignmentType:center;
+    background-color:RGB();
+}
+footer
+{
+    width:100%;
+    height:20;
+    color:white;
+    text-align:center;
+    font:normal 13;
+    numberOfLines:0;
+    alignmentType:center;
+    background-color:RGB();
+}
+
+
+tid-10000
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-10000-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-10000-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:75;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:whiteBG#center:whiteBG#right:blueBG);
+}
+tid-10000-body-title
+{
+    order:4;
+    left:20;
+    top:11;
+    width:200;
+    height:32;
+    font:bold 13;
+    numberOfLines:2;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-10000-body-icon
+{
+    order:5;
+    left:76;
+    top:50;
+    width:12;
+    height:12;
+    alignmentType:none;
+}
+tid-10000-body-description
+{
+    order:6;
+    left:94;
+    top:49;
+    width:120;
+    height:14;
+    font:normal 12;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:right;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+
+
+tid-8001
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-8001-body-canvas
+{
+    order:2;
+    left:75;
+    top:2;
+    width:72%;
+    height:22;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:center;
+    background-image:url(MFLayout://left:grayBG#center:grayBG#right:grayBG);
+}
+tid-8001-body-description
+{
+    order:3;
+    left:8;
+    top:5;
+    width:93%;
+    height:10;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+
+
+tid-8002
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-8002-body-canvas
+{
+    order:2;
+    left:75;
+    top:2;
+    width:72%;
+    height:22;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:grayBG#center:grayBG#right:grayBG);
+}
+tid-8002-body-description
+{
+    order:3;
+    left:8;
+    top:2;
+    width:93%;
+    height:10;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:right;
+    background-color:RGB();
+    alignmentType:left;
+    format:setting;
+}
+
+tid-1
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:40;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:whiteBG#center:whiteBG#right:blueBG);
+}
+tid-1-body-description
+{
+    order:4;
+    left:20;
+    top:10;
+    width:83%;
+    height:16;
+    font:normal 16;
+    numberOfLines:0;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+
+
+tid-2
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-2-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-2-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:40;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:whiteBG#center:whiteBG#right:blueBG);
+}
+tid-2-body-voice
+{
+    order:4;
+    left:20;
+    top:10;
+    width:80%;
+    height:16;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f95;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:left;
+    format:text;
+}
+
+
+tid-3
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-3-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-3-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:100;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-3-body-emoji
+{
+    order:4;
+    left:12;
+    top:10;
+    width:80;
+    height:80;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+
+
+tid-4
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-4-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-4-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:90;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-4-body-img
+{
+    order:4;
+    left:15;
+    top:10;
+    width:200;
+    height:70;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+
+
+tid-11
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-11-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-11-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:40;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:whiteBG#center:whiteBG#right:blueBG);
+}
+tid-11-body-description
+{
+    order:4;
+    left:20;
+    top:10;
+    width:83%;
+    height:16;
+    font:normal 16;
+    text-align:left;
+    numberOfLines:0;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+
+
+tid-12
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-12-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-12-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:40;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:whiteBG#center:whiteBG#right:blueBG);
+}
+tid-12-body-voice
+{
+    order:4;
+    left:15;
+    top:10;
+    width:80%;
+    height:20;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f95;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:left;
+    format:text;
+}
+
+
+tid-13
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-13-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-13-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:100;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-13-body-emoji
+{
+    order:4;
+    left:12;
+    top:10;
+    width:80;
+    height:80;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+
+
+tid-14
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-14-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-14-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:90;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-14-body-img
+{
+    order:4;
+    left:15;
+    top:10;
+    width:200;
+    height:70;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+
+
+tid-1001
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1001-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1001-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:114;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:whiteBG#center:whiteBG#right:shareBG);
+}
+tid-1001-body-title
+{
+    order:4;
+    left:19;
+    top:11;
+    width:194;
+    height:18;
+    font:bold 17;
+    numberOfLines:0;
+    text-align:left;
+    color:#333333;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-1001-body-image
+{
+    order:5;
+    left:20;
+    top:38;
+    width:60;
+    height:60;
+    alignmentType:none;
+}
+tid-1001-body-description
+{
+    order:6;
+    left:85;
+    top:32;
+    width:135;
+    height:70;
+    font:normal 13;
+    numberOfLines:4;
+    color:#8f8f8f;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+
+
+tid-1002
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1002-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1002-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:180;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:whiteBG#center:whiteBG#right:shareBG);
+}
+tid-1002-body-title
+{
+    order:4;
+    left:19;
+    top:11;
+    width:194;
+    height:18;
+    font:bold 17;
+    numberOfLines:0;
+    text-align:left;
+    color:#333333;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-1002-body-image
+{
+    order:5;
+    left:19;
+    top:38;
+    width:198;
+    height:105;
+    alignmentType:none;
+}
+tid-1002-body-description
+{
+    order:6;
+    left:22;
+    top:152;
+    width:198;
+    height:15;
+    font:normal 13;
+    numberOfLines:0;
+    color:#8f8f8f;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+
+
+tid-1003
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1003-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1003-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:150;
+    background-color:#ebebeb;
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:whiteBG#center:whiteBG#right:shareBG);
+}
+tid-1003-body-image
+{
+    order:5;
+    left:19;
+    top:12;
+    width:198;
+    height:105;
+    alignmentType:center;
+}
+tid-1003-body-description
+{
+    order:6;
+    left:19;
+    top:123;
+    width:198;
+    height:15;
+    font:normal 13;
+    numberOfLines:0;
+    color:#8f8f8f;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:left;
+    format:text;
+}

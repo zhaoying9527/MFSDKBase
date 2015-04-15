@@ -33,6 +33,7 @@
 #pragma mark TapGestureRecognizer
 - (void)setupLongPressGestureRecognizer
 {
+    self.side = YES;
     self.multipleTouchEnabled = YES;
     self.userInteractionEnabled = YES;
     self.longPressTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressEvent:)];
@@ -57,22 +58,22 @@
 
 - (void)setFormatString:(NSString *)formatString
 {
-//    _formatString = formatString;
-//    
-//    if (nil == formatString) {
-//        self.text = nil;
-//        return;
-//    }
-//    if ([formatString isKindOfClass:[NSNumber class]]) {
-//        formatString = [NSString stringWithFormat:@"%.2f",[formatString floatValue]];
-//    }
-//    if ([formatString isKindOfClass:[NSString class]]) {
-//        _formatString = formatString;
-//        if ([self.format isEqualToString:@"money"]) {
-//            __weak __typeof(self)weakSelf = self;
-//            NSString *outString = [NSString stringWithFormat:@"¥ %@",_formatString];
-//            CGFloat size = weakSelf.font.pointSize;
-//            int fontSize = size-size/4;
+    _formatString = formatString;
+    
+    if (nil == formatString) {
+        self.text = nil;
+        return;
+    }
+    if ([formatString isKindOfClass:[NSNumber class]]) {
+        formatString = [NSString stringWithFormat:@"%.2f",[formatString floatValue]];
+    }
+    if ([formatString isKindOfClass:[NSString class]]) {
+        _formatString = formatString;
+        if ([self.format isEqualToString:@"money"]) {
+            __weak __typeof(self)weakSelf = self;
+            NSString *outString = [NSString stringWithFormat:@"¥ %@",_formatString];
+            CGFloat size = weakSelf.font.pointSize;
+            int fontSize = size-size/4;
 //            [self setText:outString afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
 //                NSRange moneyRange = [[mutableAttributedString string] rangeOfString:@"¥ " options:NSCaseInsensitiveSearch];
 //                CTFontRef font  = CTFontCreateWithName((__bridge CFStringRef)weakSelf.font.fontName, fontSize, NULL);
@@ -85,10 +86,12 @@
 //                CFRelease(oriFont);
 //                return mutableAttributedString;
 //            }];
-//            _formatString = outString;
-//            
-//        }else if ([self.format isEqualToString:@"setting"]) {
-//            NSString *outString = _formatString;//[NSString stringWithFormat:@"%@ 去设置",_formatString];
+            
+            self.text = outString;
+            _formatString = outString;
+            
+        }else if ([self.format isEqualToString:@"setting"]) {
+            NSString *outString = _formatString;//[NSString stringWithFormat:@"%@ 去设置",_formatString];
 //            [self setText:outString afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
 //                if (nil != mutableAttributedString) {
 //                    NSRange textRange = NSMakeRange(outString.length - 3,3);
@@ -96,18 +99,19 @@
 //                }
 //                return mutableAttributedString;
 //            }];
-//            _formatString = outString;
-//        }
-//        else {
-//            self.text = _formatString;
-//        }
-//    }
+            self.text = outString;            
+            _formatString = outString;
+        }
+        else {
+            self.text = _formatString;
+        }
+    }
 }
 
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
+    self.side = (_alignmentType != MFAlignmentTypeNone && self.side) ? YES : NO;
 }
 
 - (void)alignHandling

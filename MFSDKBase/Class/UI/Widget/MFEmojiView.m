@@ -20,6 +20,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.side = YES;
         self.multipleTouchEnabled = YES;
         [self setupTapGestureRecognizer];
     }
@@ -51,6 +52,9 @@
 
 - (void)setEmoji:(NSDictionary*)emoji
 {
+    UIImage *bannerImage = [MFResourceCenter imageNamed:@"daxiang"];
+    [self setImage:bannerImage];
+
 //    _emoji = emoji;
 //    if ([_emoji isKindOfClass:[NSDictionary class]]) {
 //        UIImage *bannerImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
@@ -89,7 +93,7 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
+    self.side = (_alignmentType != MFAlignmentTypeNone && self.side) ? YES : NO;
 }
 
 - (void)alignHandling

@@ -16,6 +16,7 @@
 {
     self = [super init];
     if (self) {
+        self.side = YES;
         self.userInteractionEnabled = YES;
         self.multipleTouchEnabled = YES;
         [self setupTapTarget];
@@ -57,7 +58,7 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
+    self.side = (_alignmentType != MFAlignmentTypeNone && self.side) ? YES : NO;
 }
 
 - (void)alignHandling

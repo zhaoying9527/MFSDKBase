@@ -21,6 +21,13 @@
 @end
 
 @implementation MFView
+- (instancetype)init{
+    if (self = [super init]) {
+        self.side = YES;
+    }
+    return self;
+}
+
 - (void)dealloc
 {
     [self releaseTapGestureRecognizer];
@@ -196,7 +203,7 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
-    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
+    self.side = (_alignmentType != MFAlignmentTypeNone && self.side) ? YES : NO;
 }
 
 - (void)alignHandling
