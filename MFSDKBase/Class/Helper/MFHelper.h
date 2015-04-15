@@ -40,6 +40,8 @@
 
 + (NSString*)getFrameStringWithCssStyle:(NSDictionary*)styleDict;
 + (CGRect)formatFrameWithString:(NSString*)rectString layoutType:(MFLayoutType)layout superFrame:(CGRect)superFrame;
++ (BOOL)autoWidthTypeWithCssStyle:(NSDictionary*)styleDict;
++ (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict;
 + (CGRect)formatRectWithString:(NSString*)rectString;
 + (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)frame;
 
@@ -68,7 +70,6 @@
 + (BOOL)isKindOfTips:(NSString*)string;
 + (BOOL)isKindOfImage:(NSString*)imageString;
 + (BOOL)supportMultiLine:(NSString*)string;
-+ (BOOL)supportAutoSize:(NSString*)string;
 
 + (NSInteger)sectionHeight;
 + (NSInteger)cellFooterHeight;

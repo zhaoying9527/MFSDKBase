@@ -70,10 +70,10 @@
     if ([formatString isKindOfClass:[NSString class]]) {
         _formatString = formatString;
         if ([self.format isEqualToString:@"money"]) {
-            __weak __typeof(self)weakSelf = self;
+//            __weak __typeof(self)weakSelf = self;
             NSString *outString = [NSString stringWithFormat:@"¥ %@",_formatString];
-            CGFloat size = weakSelf.font.pointSize;
-            int fontSize = size-size/4;
+//            CGFloat size = weakSelf.font.pointSize;
+//            int fontSize = size-size/4;
 //            [self setText:outString afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
 //                NSRange moneyRange = [[mutableAttributedString string] rangeOfString:@"¥ " options:NSCaseInsensitiveSearch];
 //                CTFontRef font  = CTFontCreateWithName((__bridge CFStringRef)weakSelf.font.fontName, fontSize, NULL);

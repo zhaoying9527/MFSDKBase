@@ -111,10 +111,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (NSDictionary*)sizeOfHeadDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
-    NSString *dataKey = dom.bindingField;
-    NSString *dataString = dataSource[dataKey];
-    CGSize maxSize = CGSizeMake(250+self.compensateWidth, 1000);
-    CGSize size  = CGSizeZero;
+    NSString *dataKey           = dom.bindingField;
+    NSString *dataString        = dataSource[dataKey];
+    CGSize maxSize              = CGSizeMake(250+self.compensateWidth, 1000);
+    CGSize size                 = CGSizeZero;
     if (dataString) {
         size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:cellHeaderFontSize] size:maxSize];
         size.width += 3*tipsWidthSpace;
@@ -122,7 +122,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     }
     CGRect domFrame = CGRectMake(0, 0, size.width, size.height);
 
-    NSDictionary * retDictionary = nil;
+    NSDictionary *retDictionary = nil;
     NSString *domID = dom.uuid;
     if (domID) {
         NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
@@ -137,10 +137,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (NSDictionary*)sizeOfFootDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
-    NSString *dataKey = dom.bindingField;
-    NSString *dataString = dataSource[dataKey];
-    CGSize maxSize = CGSizeMake(250+self.compensateWidth, 1000);
-    CGSize size  = CGSizeZero;
+    NSString *dataKey           = dom.bindingField;
+    NSString *dataString        = dataSource[dataKey];
+    CGSize maxSize              = CGSizeMake(250+self.compensateWidth, 1000);
+    CGSize size                 = CGSizeZero;
     if (dataString) {
         size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:cellFooterFontSize] size:maxSize];
         size.width += 3*tipsWidthSpace;
@@ -172,66 +172,56 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (CGRect)layoutInfoOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo
 {
-    NSString *clsType = [dom.clsType lowercaseString];
-    NSString *domID = dom.uuid;
-    NSString *dataKey = dom.bindingField;
-    NSDictionary *cssItem = dom.cssNodes;
+    NSString *domID        = dom.uuid;
+    NSDictionary *cssItem  = dom.cssNodes;
+    NSString *dataKey      = dom.bindingField;
+    NSString *clsType      = [dom.clsType lowercaseString];
     
-    NSString *layoutKey = cssItem[@"layout"];
-    NSInteger layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
+    NSString *layoutKey    = cssItem[@"layout"];
+    NSInteger layoutType   = layoutKey?[MFHelper formatLayoutWithString:layoutKey]:MFLayoutTypeNone;
     NSString *pageFrameStr = [MFHelper getFrameStringWithCssStyle:cssItem];
-    CGRect pageFrame = [MFHelper formatFrameWithString:pageFrameStr layoutType:layoutType superFrame:superFrame];
-    CGSize realSize = CGSizeZero;
+    CGRect pageFrame       = [MFHelper formatFrameWithString:pageFrameStr layoutType:layoutType superFrame:superFrame];
+    BOOL autoWidth         = [MFHelper autoWidthTypeWithCssStyle:cssItem];
+    BOOL autoHeight        = [MFHelper autoHeightTypeWithCssStyle:cssItem];
+    CGSize realSize        = CGSizeZero;
+
 
     NSString *multiLineStr = cssItem[KEYWORD_NUMBEROFLINES];
-    if ([MFHelper isKindOfLabel:clsType]) {
-        if ([MFHelper supportMultiLine:multiLineStr] || [MFHelper supportAutoSize:multiLineStr]) {
-            //emoji格式化
-            //TODO dataSource = [dataSource[dataKey] ubb2unified];
-
-            NSString *defaultText = [dom.htmlNodes getAttributeNamed:@"value"];
-            NSString *realDataValue = dataSource[dataKey] ? dataSource[dataKey] : defaultText;
-            realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:realDataValue superFrame:superFrame];
-        }
+    if ([MFHelper isKindOfLabel:clsType] && [MFHelper supportMultiLine:multiLineStr]) {
+        //emoji格式化
+        //TODO dataSource = [dataSource[dataKey] ubb2unified];
+        NSString *defaultText = [dom.htmlNodes getAttributeNamed:@"value"];
+        NSString *realDataValue = dataSource[dataKey] ? dataSource[dataKey] : defaultText;
+        realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:realDataValue superFrame:superFrame];
     }else if ([MFHelper isKindOfImage:clsType]) {
         realSize = [self imageSizeWithDataInfo:dataSource dataItems:dataSource[dataKey]];
     }
 
+    realSize.width         = autoWidth? realSize.width : MAX(realSize.width, pageFrame.size.width);
+    realSize.height        = autoHeight ? realSize.height : MAX(realSize.height, pageFrame.size.height);
 
-    if ([MFHelper isKindOfLabel:clsType] && [MFHelper supportAutoSize:multiLineStr]) {
-        if (realSize.width > 0 && realSize.height > 0) {
-            realSize = CGSizeMake(MIN(realSize.width, pageFrame.size.width), MAX(realSize.height, pageFrame.size.height));
-        }else {
-            realSize = pageFrame.size;
-        }
-    } else {
-        if (realSize.width > 0 && realSize.height > 0) {
-            if (realSize.height <= pageFrame.size.height) {
-                realSize = pageFrame.size;
-            }
-        }else {
-            realSize = pageFrame.size;
-        }
-    }
-
-
-    pageFrame.size.width = realSize.width;
-    pageFrame.size.height = realSize.height;
-    CGSize pageSize = pageFrame.size;
-    NSInteger subHeight = 0;
+    pageFrame.size.width   = realSize.width;
+    pageFrame.size.height  = realSize.height;
+    CGSize pageSize        = pageFrame.size;
+    NSInteger subWidth     = 0;
+    NSInteger subHeight    = 0;
 
     NSMutableDictionary *childWidgetsInfo = [NSMutableDictionary dictionary];
     NSArray *sortedDoms = [self resortDoms:dom.subDoms];
     for (MFDOM *subDom in sortedDoms) {
         layoutKey = subDom.cssNodes[@"layout"];
-        layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
+        layoutType = layoutKey?[MFHelper formatLayoutWithString:layoutKey]:MFLayoutTypeNone;
         NSString *childFrameStr = [MFHelper getFrameStringWithCssStyle:subDom.cssNodes];
         CGRect childFrame = [MFHelper formatFrameWithString:childFrameStr layoutType:layoutType superFrame:pageFrame];
         CGRect childRealFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo];
         childRealFrame.origin.y += subHeight;
-        if (childRealFrame.size.height > childFrame.size.height) {
-            subHeight += childRealFrame.size.height - childFrame.size.height;
-        }
+        childRealFrame.origin.x += subWidth;
+
+        NSInteger deltaHeight = childRealFrame.size.height - childFrame.size.height;
+        subHeight += autoHeight ? deltaHeight : MAX(0, deltaHeight);
+        NSInteger deltaWidth = childRealFrame.size.width - childFrame.size.width;
+        subWidth += autoWidth ? deltaWidth : MAX(0, deltaWidth);
+
         NSString *subDomID = [subDom.htmlNodes getAttributeNamed:KEYWORD_ID];
         [childWidgetsInfo setObject:[NSValue valueWithCGRect:childRealFrame] forKey:subDomID];
     }

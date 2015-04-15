@@ -42,8 +42,6 @@
 	<string>layout</string>
 	<key>format</key>
 	<string>format</string>
-	<key>side</key>
-	<string>side</string>
 	<key>touchEnabled</key>
 	<string>touchEnabled</string>
 	<key>style</key>

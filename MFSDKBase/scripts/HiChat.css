@@ -114,7 +114,7 @@ tid-8001-body-canvas
     order:2;
     left:75;
     top:2;
-    width:72%;
+    width:auto;
     height:22;
     background-color:#ebebeb;
     touchEnabled:YES;
@@ -126,7 +126,7 @@ tid-8001-body-description
     order:3;
     left:8;
     top:5;
-    width:93%;
+    width:auto;
     height:10;
     font:normal 13;
     numberOfLines:0;
@@ -153,7 +153,7 @@ tid-8002-body-canvas
     order:2;
     left:75;
     top:2;
-    width:72%;
+    width:auto;
     height:22;
     background-color:#ebebeb;
     touchEnabled:YES;
@@ -165,7 +165,7 @@ tid-8002-body-description
     order:3;
     left:8;
     top:2;
-    width:93%;
+    width:auto;
     height:10;
     font:normal 13;
     numberOfLines:0;
@@ -201,7 +201,7 @@ tid-1-body-canvas
     order:3;
     left:50;
     top:-1;
-    width:72%;
+    width:auto;
     height:40;
     background-color:#ebebeb;
     touchEnabled:YES;
@@ -213,7 +213,7 @@ tid-1-body-description
     order:4;
     left:20;
     top:10;
-    width:83%;
+    width:auto;
     height:16;
     font:normal 16;
     numberOfLines:0;
@@ -382,7 +382,7 @@ tid-11-body-canvas
     order:3;
     left:50;
     top:-1;
-    width:72%;
+    width:auto;
     height:40;
     background-color:#ebebeb;
     touchEnabled:YES;
@@ -394,7 +394,7 @@ tid-11-body-description
     order:4;
     left:20;
     top:10;
-    width:83%;
+    width:auto;
     height:16;
     font:normal 16;
     text-align:left;

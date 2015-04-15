@@ -323,6 +323,26 @@
     return retRect;
 }
 
++ (BOOL)autoWidthTypeWithCssStyle:(NSDictionary*)styleDict
+{
+    BOOL autoWidth = NO;
+    NSString *width = [styleDict objectForKey:KEY_WIDGET_WIDTH] ? [styleDict objectForKey:KEY_WIDGET_WIDTH] : @"0";
+    if (width && [[width lowercaseString] isEqualToString:@"auto"]) {
+        autoWidth = YES;
+    }
+    return autoWidth;
+}
+
++ (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict
+{
+    BOOL autoHeight = NO;
+    NSString *height = [styleDict objectForKey:KEY_WIDGET_HEIGHT] ? [styleDict objectForKey:KEY_WIDGET_HEIGHT] : @"0";
+    if (height && [[height lowercaseString] isEqualToString:@"auto"]) {
+        autoHeight = YES;
+    }
+    return NO;
+}
+
 + (CGRect)formatAbsoluteRectWithString:(NSString*)amlString
 {
     CGRect retRect = [MFHelper formatRectWithString:amlString];
@@ -655,14 +675,6 @@
 + (BOOL)supportMultiLine:(NSString*)string
 {
     if ([string isEqualToString:@"0"]) {
-        return YES;
-    }
-    return NO;
-}
-
-+ (BOOL)supportAutoSize:(NSString*)string
-{
-    if ([string isEqualToString:@"auto"]) {
         return YES;
     }
     return NO;
