@@ -220,7 +220,8 @@ tid-1-body-description
     color:#333333;
     highlightedTextColor:#ffffff;
     background-color:RGB();
-    alignmentType:none;
+    alignmentType:left;
+    reverse:YES;
     format:text;
 }
 
@@ -401,7 +402,8 @@ tid-11-body-description
     color:#333333;
     highlightedTextColor:#ffffff;
     background-color:RGB();
-    alignmentType:none;
+    alignmentType:left;
+    reverse:YES;
     format:text;
 }
 

@@ -120,14 +120,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         size.width += 3*tipsWidthSpace;
         size.height += tipsHeightSpace;
     }
-    CGRect domframe = CGRectMake(0, 0, size.width, size.height);
+    CGRect domFrame = CGRectMake(0, 0, size.width, size.height);
 
     NSDictionary * retDictionary = nil;
     NSString *domID = dom.uuid;
     if (domID) {
-        NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domframe] forKey:domID];
-        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height),
-                         KEY_WIDGET_HEIGHT, @(domframe.size.width), KEY_WIDGET_WIDTH,
+        NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
+        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height),
+                         KEY_WIDGET_HEIGHT, @(domFrame.size.width), KEY_WIDGET_WIDTH,
                          widgetsInfo, KEY_WIDGET_SIZE, nil];
         
     }
@@ -146,14 +146,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         size.width += 3*tipsWidthSpace;
         size.height += tipsHeightSpace;
     }
-    CGRect domframe = CGRectMake(0, 0, size.width, size.height);
+    CGRect domFrame = CGRectMake(0, 0, size.width, size.height);
     
     NSDictionary * retDictionary = nil;
     NSString *domID = dom.uuid;
     if (domID) {
-        NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domframe] forKey:domID];
-        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height),
-                         KEY_WIDGET_HEIGHT, @(domframe.size.width), KEY_WIDGET_WIDTH,
+        NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
+        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height),
+                         KEY_WIDGET_HEIGHT, @(domFrame.size.width), KEY_WIDGET_WIDTH,
                          widgetsInfo, KEY_WIDGET_SIZE, nil];
         
     }
@@ -164,9 +164,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 - (NSDictionary*)sizeOfBodyDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
     NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
-    CGRect domframe = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo];
-    NSDictionary * retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domframe.size.height), KEY_WIDGET_HEIGHT,
-                                    @(domframe.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
+    CGRect domFrame = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo];
+    NSDictionary * retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
+                                    @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
     return retDictionary;
 }
 
