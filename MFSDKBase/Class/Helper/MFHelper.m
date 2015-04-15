@@ -388,6 +388,9 @@
     else if ([tas isEqualToString:@"right"]) {
         retTextAlignment = MFAlignmentTypeRight;
     }
+    else if ([tas isEqualToString:@"none"]) {
+        retTextAlignment = MFAlignmentTypeNone;
+    }
     return retTextAlignment;
 }
 
@@ -405,19 +408,6 @@
         retTextAlignment = NSTextAlignmentRight;
     }
     return retTextAlignment;
-}
-
-+ (NSNumber *)formatSideWithString:(NSString*)side
-{
-    BOOL retSide = NO;
-    NSString * tas = [side lowercaseString];
-    if ([tas isEqualToString:@"yes"]) {
-        retSide = YES;
-    }
-    else if ([tas isEqualToString:@"no"]) {
-        retSide = NO;
-    }
-    return [NSNumber numberWithBool:retSide];
 }
 
 + (NSNumber *)formatTouchEnableWithString:(NSString*)touchEnable
@@ -480,7 +470,7 @@
     return retLayoutType;
 }
 
-+ (NSNumber *)formatreverseWithString:(NSString*)reverse
++ (NSNumber *)formatReverseWithString:(NSString*)reverse
 {
     BOOL reverseType = NO;
     NSString * tas = [reverse lowercaseString];
@@ -662,8 +652,15 @@
 
 + (BOOL)supportMultiLine:(NSString*)string
 {
-    NSInteger numberOfLines = [string integerValue];
-    if (numberOfLines==0) {
+    if (string && [string isEqualToString:@"0"]) {
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)supportAutoSize:(NSString*)string
+{
+    if ([string isEqualToString:@"auto"]) {
         return YES;
     }
     return NO;

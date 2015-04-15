@@ -84,7 +84,7 @@ typedef enum {
     MFAlignmentTypeLeft = 0,
     MFAlignmentTypeCenter = 1,
     MFAlignmentTypeRight = 2,
-    
+    MFAlignmentTypeNone = 3,
 } MFAlignmentType;
 
 typedef enum {

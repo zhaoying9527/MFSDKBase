@@ -15,7 +15,6 @@
 @property (nonatomic,strong)UITapGestureRecognizer *singleTap;
 @property (nonatomic,strong)UILongPressGestureRecognizer *longPressTap;
 @property (nonatomic,strong)UIImageView *maskImageView;
-@property (nonatomic,assign)CGRect rawRect;
 @end
 
 @implementation MFImageView
@@ -150,7 +149,7 @@
             }
         }
         
-        if (MFAlignmentTypeLeft == _alignmentType) {
+        if (MFAlignmentTypeLeft == _alignmentType || MFAlignmentTypeNone == _alignmentType) {
             image = [MFHelper styleLeftImageWithId:leftImageUrl];
         }
         else if (MFAlignmentTypeCenter == _alignmentType) {
@@ -172,24 +171,17 @@
 
 - (void)setFrame:(CGRect)frame
 {
-    if (MFAlignmentTypeLeft == self.alignmentType) {
-        self.rawRect = frame;
-    }
-    
     [super setFrame:frame];
     
     self.maskImageView.hidden = !self.corner;
     self.maskImageView.frame = self.bounds;
 }
 
-- (void)setSide:(BOOL)side
-{
-    _side = side;
-}
-
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
+    
+    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
 }
 
 - (void)setBorderColor:(UIColor *)borderColor

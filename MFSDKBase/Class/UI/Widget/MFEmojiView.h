@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MFImageView.h"
 
-@interface MFEmojiView : MFImageView
+@interface MFEmojiView : UIImageView
 @property (nonatomic, assign)BOOL side;
 @property (nonatomic, assign)NSInteger alignmentType;
 @property (nonatomic, assign)BOOL reverse;

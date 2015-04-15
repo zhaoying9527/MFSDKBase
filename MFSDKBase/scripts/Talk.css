@@ -13,7 +13,6 @@ header
     numberOfLines:0;
     alignmentType:center;
     background-color:RGB();
-    side:YES;
 }
 
 footer
@@ -26,7 +25,6 @@ footer
     numberOfLines:0;
     alignmentType:center;
     background-color:RGB();
-    side:YES;
 }
 
 
@@ -38,7 +36,7 @@ cell1
     height:100;
     background-color:RGB(235,235,235);
     touchEnabled:YES;
-    side:YES;
+    alignmentType:left;
 }
 
 cell1-head-image
@@ -50,7 +48,7 @@ cell1-head-image
     height:35;
     background-color:RGB();
     touchEnabled:YES;
-    side:YES;
+    alignmentType:left;
 }
 
 cell1-name
@@ -58,15 +56,14 @@ cell1-name
     order:3;
     top:10;
     left:23%;
-    width:0;
+    width:50%;
     height:0;
     background-color:RGB();
     color:gray;
     text-align:left;
     font:normal 11;
-    numberOfLines:0;
-    alignmentType:left;
-    side:NO;
+    numberOfLines:auto;
+    alignmentType:none;
 }
 
 
@@ -80,7 +77,6 @@ cell1-body-backgroundImg
     background-color:RGB();
     touchEnabled:YES;
     alignmentType:left;
-    side:YES;
     background-image:url(MFLayout://left:whiteAdvBG#center:whiteAdvBG#right:blueAdvBG);
 }
 
@@ -98,7 +94,6 @@ cell1-body-jine
     font:bold 20;
     numberOfLines:0;
     alignmentType:left;
-    side:YES;
     reverse:NO;
 }
 
@@ -114,8 +109,7 @@ cell1-body-shaojuhua
     text-align:left;
     font:bold 12;
     numberOfLines:0;
-    alignmentType:left;
-    side:NO;
+    alignmentType:none;
 }
 cell1-body-icon
 {
@@ -125,7 +119,6 @@ cell1-body-icon
     width:35;
     height:35;
     alignmentType:left;
-    side:YES;
     background-image:url(MFLayout://left:TRANSFER-left#center:TRANSFER-left#right:TRANSFER-right);
     reverse:NO;
 }
@@ -142,7 +135,7 @@ cell2
     height:100;
     background-color:RGB(235,235,235);
     touchEnabled:YES;
-    side:YES;
+    alignmentType:left;
 }
 
 cell2-head-image
@@ -154,7 +147,7 @@ cell2-head-image
     height:35;
     background-color:RGB();
     touchEnabled:YES;
-    side:YES;
+    alignmentType:left;
 }
 
 cell2-name
@@ -169,8 +162,7 @@ cell2-name
     text-align:left;
     font:normal 11;
     numberOfLines:0;
-    alignmentType:left;
-    side:NO;
+    alignmentType:none;
 }
 
 
@@ -184,7 +176,6 @@ cell2-body-backgroundImg
     background-color:RGB();
     touchEnabled:YES;
     alignmentType:left;
-    side:YES;
     background-image:url(MFLayout://left:whiteAdvBG#center:whiteAdvBG#right:blueAdvBG);
 }
 
@@ -202,7 +193,6 @@ cell2-body-jine
     font:bold 20;
     numberOfLines:0;
     alignmentType:left;
-    side:YES;
     reverse:YES;
 }
 
@@ -219,7 +209,6 @@ cell2-body-shaojuhua
     font:bold 12;
     numberOfLines:0;
     alignmentType:left;
-    side:NO;
 }
 cell2-body-icon
 {
@@ -229,7 +218,6 @@ cell2-body-icon
     width:35;
     height:35;
     alignmentType:left;
-    side:YES;
     background-image:url(MFLayout://left:COLLET-left#center:COLLET-left#right:COLLET-right);
     reverse:YES;
 }

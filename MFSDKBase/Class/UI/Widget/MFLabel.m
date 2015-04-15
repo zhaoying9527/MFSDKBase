@@ -62,6 +62,8 @@
 - (void)setAlignmentType:(NSInteger)type
 {
     _alignmentType = type;
+
+    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
 }
 
 - (void)alignHandling
@@ -94,7 +96,7 @@
 
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
 {
-    if (MFAlignmentTypeLeft == self.alignmentType) {
+    if (MFAlignmentTypeLeft == self.alignmentType || MFAlignmentTypeNone == self.alignmentType) {
         self.rawTextAlignmentType = textAlignment;
     }
     [super setTextAlignment:textAlignment];

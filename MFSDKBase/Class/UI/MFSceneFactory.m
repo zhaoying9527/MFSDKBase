@@ -196,9 +196,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         retObj = [MFHelper formatImageWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"background-image"]) {
         retObj = propertyValue;
-    }else if ([propertyName isEqualToString:@"align"]) {
-        MFAlignmentType alignment = [MFHelper formatAlignmentWithString:propertyValue];
-        retObj = [NSNumber numberWithInt:alignment];
     }else if ([propertyName isEqualToString:@"alignmentType"]) {
         MFAlignmentType alignment = [MFHelper formatAlignmentWithString:propertyValue];
         retObj = [NSNumber numberWithInt:alignment];
@@ -209,16 +206,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         retObj = [NSNumber numberWithInt:layoutType];
     }else if ([propertyName isEqualToString:@"format"]) {
         retObj = propertyValue;
-    }else if ([propertyName isEqualToString:@"side"]) {
-        retObj = [MFHelper formatSideWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"touchEnabled"]) {
         retObj = [MFHelper formatTouchEnableWithString:propertyValue];
     }else if ([propertyName isEqualToString:@"style"]) {
         retObj = propertyValue;
-    }else if ([propertyName isEqualToString:@"local"]) {
-        retObj = propertyValue;
     }else if ([propertyName isEqualToString:@"reverse"]) {
-        retObj = [MFHelper formatreverseWithString:propertyValue];
+        retObj = [MFHelper formatReverseWithString:propertyValue];
     }
 
     return retObj;

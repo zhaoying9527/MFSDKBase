@@ -183,9 +183,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGRect pageFrame = [MFHelper formatFrameWithString:pageFrameStr layoutType:layoutType superFrame:superFrame];
     CGSize realSize = CGSizeZero;
 
+    NSString *multiLineStr = cssItem[KEYWORD_NUMBEROFLINES];
     if ([MFHelper isKindOfLabel:clsType]) {
-        NSString *multiLineStr = cssItem[KEYWORD_NUMBEROFLINES];
-        if (nil != multiLineStr && [MFHelper supportMultiLine:multiLineStr]) {
+        if ([MFHelper supportMultiLine:multiLineStr] || [MFHelper supportAutoSize:multiLineStr]) {
             //emoji格式化
             //TODO dataSource = [dataSource[dataKey] ubb2unified];
 
@@ -197,13 +197,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         realSize = [self imageSizeWithDataInfo:dataSource dataItems:dataSource[dataKey]];
     }
 
-    if (realSize.width > 0 && realSize.height > 0) {
-        if (realSize.height <= pageFrame.size.height) {
+
+    if ([MFHelper isKindOfLabel:clsType] && [MFHelper supportAutoSize:multiLineStr]) {
+        if (realSize.width > 0 && realSize.height > 0) {
+            realSize = CGSizeMake(MIN(realSize.width, pageFrame.size.width), MAX(realSize.height, pageFrame.size.height));
+        }else {
             realSize = pageFrame.size;
         }
-    }else {
-        realSize = pageFrame.size;
+    } else {
+        if (realSize.width > 0 && realSize.height > 0) {
+            if (realSize.height <= pageFrame.size.height) {
+                realSize = pageFrame.size;
+            }
+        }else {
+            realSize = pageFrame.size;
+        }
     }
+
 
     pageFrame.size.width = realSize.width;
     pageFrame.size.height = realSize.height;
@@ -280,7 +290,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGRect rawRect = view.frame;
     UIView *superView = view.superview;
 
-    if (MFAlignmentTypeLeft == alignmentType ) {
+    if (MFAlignmentTypeLeft == alignmentType || MFAlignmentTypeNone == alignmentType) {
 
     }else if (MFAlignmentTypeCenter == alignmentType) {
         CGRect rect = rawRect;

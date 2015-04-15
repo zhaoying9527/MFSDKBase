@@ -204,9 +204,12 @@
     self.timeLineLabel.font = font;
 }
 
-- (void)setAlignmentType:(NSInteger)alignmentType
+- (void)setAlignmentType:(NSInteger)type
 {
-    _alignmentType = alignmentType;
+    _alignmentType = type;
+    
+    self.side = (_alignmentType == MFAlignmentTypeNone) ? NO : YES;
+
     if (self.side) {
         if (MFAlignmentTypeLeft == self.alignmentType) {
             self.transform = CGAffineTransformMakeScale(1, 1);

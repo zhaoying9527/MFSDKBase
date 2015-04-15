@@ -45,13 +45,12 @@
 
 + (MFAlignmentType)formatAlignmentWithString:(NSString*)alignmentString;
 + (NSTextAlignment)formatTextAlignmentWithString:(NSString*)textAlignmentString;
-+ (NSNumber*)formatSideWithString:(NSString*)side;
 + (NSNumber*)formatTouchEnableWithString:(NSString*)touchEnable;
 + (NSNumber*)formatVisibilityWithString:(NSString*)visibility;
 + (UIFont*)formatFontWithString:(NSString*)font;
 + (UIImage *)formatImageWithString:(NSString*)imageUrl;
 + (MFLayoutType)formatLayoutWithString:(NSString*)layout;
-+ (NSNumber *)formatreverseWithString:(NSString*)reverse;
++ (NSNumber *)formatReverseWithString:(NSString*)reverse;
 
 + (NSString*)formatDate:(NSDate*)date;
 + (NSString*)formateTimeInterval:(NSTimeInterval)timecontent;
@@ -69,6 +68,7 @@
 + (BOOL)isKindOfTips:(NSString*)string;
 + (BOOL)isKindOfImage:(NSString*)imageString;
 + (BOOL)supportMultiLine:(NSString*)string;
++ (BOOL)supportAutoSize:(NSString*)string;
 
 + (NSInteger)sectionHeight;
 + (NSInteger)cellFooterHeight;
