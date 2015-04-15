@@ -12,8 +12,8 @@
 + (float)getOsVersion;
 + (CGSize)screenXY;
 
-+ (UIColor*)colorWithOctString:(NSString *)stringToConvert;
 + (UIColor*)colorWithString:(NSString *)stringToConvert;
++ (UIColor*)colorWithOctString:(NSString *)stringToConvert;
 + (UIColor*)colorWithHexString:(NSString *)stringToConvert;
 
 + (UIImage*)stretchableBannerCellImage:(UIImage*)image;

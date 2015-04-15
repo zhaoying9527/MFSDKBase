@@ -58,10 +58,10 @@
 #define sectionCellHeight                       25
 #define sectionHeaderHeight                     15
 #define sectionFooterHeight                     15
-#define tipsHeightSpace                          4
-#define tipsWidthSpace                           4
 #define cellHeaderFontSize                      12
 #define cellFooterFontSize                      13
+#define tipsHeightSpace                         4
+#define tipsWidthSpace                          4
 
 #define kMFOnKeyLongPressEventKey               @"onKeyLongPress"
 #define kMFOnClickEventKey                      @"onclick"
@@ -95,18 +95,16 @@ typedef enum {
 
 typedef enum {
     MFCellStatusNone = 0,
-    MFCellStatusRuning,
-    MFCellStatusFinish,
-    MFCellStatusNotSend,
-    MFCellStatusFail,
-    
+    MFCellStatusRuning = 1,
+    MFCellStatusFinish = 2,
+    MFCellStatusNotSend = 3,
+    MFCellStatusFail = 4,
 } MFCellStatusType;
 
 typedef enum {
     MFChatMessageTypeOrdinary = 0,
-    MFChatMessageTypeReminder,
-    MFChatMessageTypeInvalid,
-    
+    MFChatMessageTypeReminder = 1,
+    MFChatMessageTypeInvalid = 2,
 } MFChatMessageType;
 
 #endif

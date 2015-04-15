@@ -18,28 +18,14 @@
     return [[UIScreen mainScreen] bounds].size;
 }
 
-+ (UIColor *)colorWithOctString:(NSString *)stringToConvert
-{
-    NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    NSArray * components = [cString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(,)"]];
-    if ([components count] < 3) return [UIColor clearColor];
-
-    NSString *rString = components[0];
-    NSString *gString = components[1];
-    NSString *bString = components[2];
-
-    return [UIColor colorWithRed:((float) [rString integerValue] / 255.0f)
-                           green:((float) [gString integerValue] / 255.0f)
-                            blue:((float) [bString integerValue] / 255.0f)
-                           alpha:1.0f];
-}
-
 + (UIColor *)colorWithString:(NSString *)stringToConvert
 {
     NSString *cString = [stringToConvert lowercaseString];
     if ([cString hasPrefix:@"rgb"]) {
         NSString *trimString = [cString stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"rgb()"]];
         return [self colorWithOctString:trimString];
+    } else if([cString hasPrefix:@"0X"] || [cString hasPrefix:@"#"]) {
+        return [self colorWithHexString:cString];
     }
 
     UIColor *color = [UIColor clearColor];
@@ -59,6 +45,22 @@
         color = colorMap[cString];
     }
     return color;
+}
+
++ (UIColor *)colorWithOctString:(NSString *)stringToConvert
+{
+    NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    NSArray * components = [cString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"(,)"]];
+    if ([components count] < 3) return [UIColor clearColor];
+
+    NSString *rString = components[0];
+    NSString *gString = components[1];
+    NSString *bString = components[2];
+
+    return [UIColor colorWithRed:((float) [rString integerValue] / 255.0f)
+                           green:((float) [gString integerValue] / 255.0f)
+                            blue:((float) [bString integerValue] / 255.0f)
+                           alpha:1.0f];
 }
 
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert
