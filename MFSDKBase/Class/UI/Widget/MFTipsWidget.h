@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MFTipsWidget : UIImageView
+@property (nonatomic, assign)BOOL touchEnabled;
 @property (nonatomic, copy)NSString *text;
 @end

@@ -51,8 +51,7 @@ LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s);
     
     if (fileName && !self.scriptFiles[fileName]) {
         [self loadFile:fileName];
-    }
-    if (contents && ![contents isEqualToString:self.luaText]) {
+    }else if (contents && ![contents isEqualToString:self.luaText]) {
         [self loadText:contents];
     }
 

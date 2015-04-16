@@ -24,6 +24,7 @@
 - (instancetype)init{
     if (self = [super init]) {
         self.side = YES;
+        self.exclusiveTouch = YES;
     }
     return self;
 }
@@ -104,23 +105,35 @@
 
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
-    if (sender.numberOfTapsRequired == 1) {
-    id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
+    if (self.DOM.eventNodes[kMFOnClickEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
         NSLog(@"%@",result);
-        
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnClickEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
     }
 }
 
 - (void)handleLongPressEvent:(UITapGestureRecognizer *)sender
 {
-    id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
-    NSLog(@"%@",result);
+    if (self.DOM.eventNodes[kMFOnKeyLongPressEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnKeyLongPressEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+    }
 }
 
 - (void)handleSwipeEvent:(UITapGestureRecognizer *)sender
 {
-    id result = [self.DOM triggerEvent:kMFOnSwipeEventKey withParams:@{}];
-    NSLog(@"%@",result);
+    if (self.DOM.eventNodes[kMFOnSwipeEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnSwipeEventKey withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnSwipeEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+    }
 }
 
 - (void)setBorderColor:(UIColor *)borderColor

@@ -35,6 +35,7 @@
         self.cssNodes = css;
         self.bindingField = [dataBinding objectForKey:@"dsKey"];
         self.eventNodes = events;
+        self.superDom = nil;
     }
     return self;
 }
@@ -47,6 +48,7 @@
 
     if (nil != subDom) {
         [self.subDoms addObject:subDom];
+        subDom.superDom = self;
     }
 }
 

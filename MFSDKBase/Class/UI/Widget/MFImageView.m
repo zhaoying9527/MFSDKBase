@@ -31,6 +31,7 @@
         self.corner = NO;
         self.aspectFit = NO;
         self.side = YES;
+        self.exclusiveTouch = YES;
         self.alignmentType = MFAlignmentTypeLeft;
     }
     
@@ -111,16 +112,24 @@
 
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
-    if (sender.numberOfTapsRequired == 1) {
-    id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
+    if (self.DOM.eventNodes[kMFOnClickEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
         NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnClickEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
     }
 }
 
 - (void)handleLongPressEvent:(UITapGestureRecognizer *)sender
 {
-    id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
-    NSLog(@"%@",result);
+    if (self.DOM.eventNodes[kMFOnKeyLongPressEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnKeyLongPressEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+    }
 }
 
 - (void)setBackgroundImage:(NSString*)backgroundImage
@@ -150,18 +159,14 @@
         
         if (MFAlignmentTypeLeft == _alignmentType || MFAlignmentTypeNone == _alignmentType) {
             image = [MFHelper styleLeftImageWithId:leftImageUrl];
-        }
-        else if (MFAlignmentTypeCenter == _alignmentType) {
+        }else if (MFAlignmentTypeCenter == _alignmentType) {
             image = [MFHelper styleCenterImageWithId:centerImageUrl];
-        }
-        else if (MFAlignmentTypeRight == _alignmentType) {
+        }else if (MFAlignmentTypeRight == _alignmentType) {
             image = [MFHelper styleRightImageWithId:rightImageUrl];
         }
-    }
-    else if ([backgroundImage hasPrefix:@"http://"]) {
+    }else if ([backgroundImage hasPrefix:@"http://"]) {
         //TODO setImage with URL;
-    }
-    else {
+    }else {
         image = [MFHelper styleLeftImageWithId:backgroundImage];
     }
 

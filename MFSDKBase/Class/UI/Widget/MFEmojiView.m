@@ -8,6 +8,7 @@
 
 #import "MFEmojiView.h"
 #import "MFResourceCenter.h"
+#import "NSObject+DOM.h"
 #import "MFHelper.h"
 
 @interface MFEmojiView () <UIGestureRecognizerDelegate>
@@ -21,6 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.side = YES;
+        self.exclusiveTouch = YES;
         self.multipleTouchEnabled = YES;
         [self setupTapGestureRecognizer];
     }
@@ -44,6 +46,13 @@
 
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
+    if (self.DOM.eventNodes[kMFOnClickEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnClickEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+    }
 //    if (sender.numberOfTapsRequired == 1 && self.chatEmotion) {
 //        self.chatEmotion.hasGrayBg = NO;
 //        [self.chatEmotion playWithinView:nil];

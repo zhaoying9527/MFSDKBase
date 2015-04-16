@@ -8,11 +8,13 @@
 
 #import "MFTipsWidget.h"
 #import "MFResourceCenter.h"
+#import "NSObject+DOM.h"
 #import "MFHelper.h"
 #import "MFDefine.h"
 
-@interface MFTipsWidget()
+@interface MFTipsWidget() <UIGestureRecognizerDelegate>
 @property (nonatomic,strong)UILabel *titleLabel;
+@property (nonatomic,strong)UILongPressGestureRecognizer *longPressTap;
 @end
 
 @implementation MFTipsWidget
@@ -21,6 +23,7 @@
 {
     self = [super initWithFrame:frame];
 
+    self.exclusiveTouch = YES;
     self.titleLabel = [[UILabel alloc] initWithFrame:frame];
     self.titleLabel.numberOfLines = 0;
     self.titleLabel.textColor = [UIColor whiteColor];
@@ -31,6 +34,47 @@
     [self addSubview:self.titleLabel];
 
     return self;
+}
+
+- (void)setTouchEnabled:(BOOL)touchEnabled
+{
+    _touchEnabled = touchEnabled;
+    if (touchEnabled) {
+        [self setupLongPressGestureRecognizer];
+    }else {
+        [self releaseLongPressGestureRecognizer];
+    }
+}
+
+#pragma mark --
+#pragma mark TapGestureRecognizer
+- (void)setupLongPressGestureRecognizer
+{
+    self.multipleTouchEnabled = YES;
+    self.userInteractionEnabled = YES;
+    self.longPressTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressEvent:)];
+    self.longPressTap.numberOfTouchesRequired = 1;
+    self.longPressTap.numberOfTapsRequired = 1;
+    self.longPressTap.delegate = self;
+    [self addGestureRecognizer:self.longPressTap];
+}
+
+- (void)releaseLongPressGestureRecognizer
+{
+    self.multipleTouchEnabled = NO;
+    self.userInteractionEnabled = NO;
+    self.longPressTap = nil;
+}
+
+- (void)handleLongPressEvent:(UITapGestureRecognizer *)sender
+{
+    if (self.DOM.eventNodes[kMFOnKeyLongPressEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnKeyLongPressEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+    }
 }
 
 - (UIImage*)BGImage

@@ -17,6 +17,7 @@
     self = [super init];
     if (self) {
         self.side = YES;
+        self.exclusiveTouch = YES;
         self.userInteractionEnabled = YES;
         self.multipleTouchEnabled = YES;
         [self setupTapTarget];
@@ -31,8 +32,13 @@
 
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
-    id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
-    NSLog(@"%@",result);
+    if (self.DOM.eventNodes[kMFOnClickEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnClickEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+    }
 }
 
 - (void)setImage:(UIImage *)image

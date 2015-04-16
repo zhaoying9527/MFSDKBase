@@ -13,6 +13,7 @@
 #import "MFHelper.h"
 #import "MFSceneFactory.h"
 #import "UIView+Sizes.h"
+#import "NSObject+DOM.h"
 
 #define CTVW_dot_image   @"MFSDK.bundle/HC_dot.png"
 #define CTVM_dot_image_frame    CGRectMake(0,0,)
@@ -44,9 +45,10 @@
     self = [super init];
     if (self) {
         self.side = YES;
+        self.exclusiveTouch = YES;
         self.userInteractionEnabled = YES;
         self.multipleTouchEnabled = YES;
-        
+
         [self initResource];
         [self createPlayImageView];
         [self createTimeLineLabel];
@@ -282,13 +284,20 @@
 
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
-    if (sender.numberOfTapsRequired == 1) {
-        if (self.isPlaying) {
-            [self pauseAudio];
-        }else {
-            [self playAudio];
-        }
+    if (self.DOM.eventNodes[kMFOnClickEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnClickEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
     }
+//    if (sender.numberOfTapsRequired == 1) {
+//        if (self.isPlaying) {
+//            [self pauseAudio];
+//        }else {
+//            [self playAudio];
+//        }
+//    }
 }
 
 - (void)setVoiceUrl:(NSString *)voiceUrl

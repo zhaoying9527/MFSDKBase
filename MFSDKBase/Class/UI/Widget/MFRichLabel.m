@@ -23,6 +23,7 @@
 {
     if (self = [super init]) {
         self.side = YES;
+        self.exclusiveTouch = YES;
     }
     return self;
 }
@@ -59,8 +60,13 @@
 
 - (void)handleLongPressEvent:(UITapGestureRecognizer *)sender
 {
-    id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
-    NSLog(@"%@",result);
+    if (self.DOM.eventNodes[kMFOnKeyLongPressEventKey]) {
+        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnKeyLongPressEventKey};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+    }
 }
 
 - (void)setFormatString:(NSString *)formatString

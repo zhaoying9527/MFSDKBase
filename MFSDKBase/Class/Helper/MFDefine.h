@@ -71,6 +71,10 @@
 #define kMFOnPageShowEventKey                   @"onpageshow"
 #define kMFOnPageHideEventKey                   @"onpagehide"
 
+#define kMFDispatcherKey                        @"MFDispatcherKey"
+#define kMFDispatcherEventTypeKey               @"MFDispatcherEventTypeKey"
+#define kMFDispatcherParamsKey                  @"MFDispatcherParamsKey"
+
 typedef enum {
     MFBGImageTypeWhite = 0,
     MFBGImageTypeWhite2 = 1,
