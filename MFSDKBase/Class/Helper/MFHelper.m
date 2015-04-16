@@ -713,6 +713,16 @@
     return retCode;
 }
 
++ (BOOL)isKindOfAudio:(NSString*)audioString
+{
+    BOOL retCode = NO;
+    NSString *lowAudioString = [audioString lowercaseString];
+    if ([lowAudioString isEqualToString:@"audio"]) {
+        retCode = YES;
+    }
+    return retCode;
+}
+
 + (NSInteger)sectionHeight
 {
     return sectionCellHeight;

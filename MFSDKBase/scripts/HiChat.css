@@ -250,7 +250,7 @@ tid-2-body-canvas
     order:3;
     left:50;
     top:-1;
-    width:72%;
+    width:auto;
     height:40;
     background-color:#ebebeb;
     touchEnabled:YES;
@@ -262,7 +262,7 @@ tid-2-body-voice
     order:4;
     left:20;
     top:10;
-    width:80%;
+    width:auto;
     height:16;
     font:normal 15;
     numberOfLines:1;
@@ -432,7 +432,7 @@ tid-12-body-canvas
     order:3;
     left:50;
     top:-1;
-    width:72%;
+    width:auto;
     height:40;
     background-color:#ebebeb;
     touchEnabled:YES;
@@ -444,7 +444,7 @@ tid-12-body-voice
     order:4;
     left:15;
     top:10;
-    width:80%;
+    width:auto;
     height:20;
     font:normal 15;
     numberOfLines:1;

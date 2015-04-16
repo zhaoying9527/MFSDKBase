@@ -195,6 +195,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         realSize = [self sizeOfLabelWithDataSource:cssItem dataSource:realDataValue superFrame:superFrame];
     }else if ([MFHelper isKindOfImage:clsType]) {
         realSize = [self imageSizeWithDataInfo:dataSource dataItems:dataSource[dataKey]];
+    }else if ([MFHelper isKindOfAudio:clsType]) {
+        realSize = [self audioSizeWithDataInfo:dataSource dataItems:dataSource[dataKey] superFrame:superFrame];
     }
 
     realSize.width         = autoWidth? realSize.width : MAX(realSize.width, pageFrame.size.width);
@@ -329,6 +331,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     for (UIView *subView in view.subviews) {
         [self reverseSubViews:subView withSizeInfo:sizeInfo];
     }
+}
+
+- (CGSize)audioSizeWithDataInfo:(NSDictionary*)dataInfo dataItems:(NSString*)dataItems superFrame:(CGRect)superFrame
+{
+    CGFloat audioLen = 35;
+    NSDictionary *data = dataInfo;
+    CGFloat lenght = [[data objectForKey:@"l"] floatValue];
+
+    if (lenght > 0) {
+        audioLen += lenght*2.0 + (30-lenght)*0.01;
+    }
+
+    return CGSizeMake(audioLen, 0);
 }
 
 - (CGSize)imageSizeWithDataInfo:(NSDictionary*)dataInfo dataItems:(NSString*)dataItems

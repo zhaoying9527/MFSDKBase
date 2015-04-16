@@ -69,6 +69,7 @@
 + (BOOL)isKindOfLabel:(NSString*)labelString;
 + (BOOL)isKindOfTips:(NSString*)string;
 + (BOOL)isKindOfImage:(NSString*)imageString;
++ (BOOL)isKindOfAudio:(NSString*)audioString;
 + (BOOL)supportMultiLine:(NSString*)string;
 
 + (NSInteger)sectionHeight;

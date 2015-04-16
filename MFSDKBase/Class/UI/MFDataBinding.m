@@ -21,42 +21,44 @@
 @implementation MFDataBinding
 + (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource
 {
-    [self bindDataToWidget:view dataSource:dataSource[view.DOM.bindingField]];
+    [self bindDataToWidget:view dataSource:dataSource bindingField:view.DOM.bindingField];
 
     for (UIView *subView in view.subviews) {
         [self bind:subView withDataSource:dataSource];
     }
 }
 
-+ (void)bindDataToWidget:(id)widget dataSource:(NSString*)dataSource
++ (void)bindDataToWidget:(id)widget dataSource:(NSDictionary*)dataSource bindingField:(NSString*)bindingField
 {
+    NSString *dataObj = dataSource[bindingField];
+
     if ([widget isKindOfClass:[MFLabel class]]) {
         NSString *defaultText = [((MFLabel*)widget).DOM.htmlNodes getAttributeNamed:@"value"];
-        ((MFLabel*)widget).text = dataSource ? dataSource : defaultText;
+        ((MFLabel*)widget).text = dataObj ? dataObj : defaultText;
     }else if ([widget isKindOfClass:[MFRichLabel class]]) {
             NSString *defaultText = [((MFRichLabel*)widget).DOM.htmlNodes getAttributeNamed:@"value"];
-            ((MFRichLabel*)widget).text = dataSource ? dataSource : defaultText;
+            ((MFRichLabel*)widget).text = dataObj ? dataObj : defaultText;
     }else if ([widget isKindOfClass:[MFImageView class]]) {
         NSString *defaultSrc = [((MFImageView*)widget).DOM.htmlNodes getAttributeNamed:@"src"];
         UIImage *defaultImage = [[MFResourceCenter sharedMFResourceCenter] imageWithId:defaultSrc];
-        if (!defaultImage) defaultImage = [MFResourceCenter imageNamed:dataSource];
+        if (!defaultImage) defaultImage = [MFResourceCenter imageNamed:dataObj];
         UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];        
-        if ((nil != dataSource && [dataSource length] > 0) || (defaultSrc && defaultSrc.length>0)) {
-            if ([MFHelper isURLString:dataSource]) {
+        if ((nil != dataObj && [dataObj length] > 0) || (defaultSrc && defaultSrc.length>0)) {
+            if ([MFHelper isURLString:dataObj]) {
                 //TODO setImageWithUrl
             } else {
-                UIImage *image = [[MFResourceCenter sharedMFResourceCenter] imageWithId:dataSource];
-                if (!image) image = [MFResourceCenter imageNamed:dataSource];
+                UIImage *image = [[MFResourceCenter sharedMFResourceCenter] imageWithId:dataObj];
+                if (!image) image = [MFResourceCenter imageNamed:dataObj];
                 ((MFImageView*)widget).image = image ? image : defaultImage;
             }
         }
     }else if ([widget isKindOfClass:[MFButton class]]) {
-        ((MFButton*)widget).text = dataSource;
+        ((MFButton*)widget).text = dataObj;
     }else if ([widget isKindOfClass:[MFTipsWidget class]]) {
-        ((MFTipsWidget*)widget).text = dataSource;
+        ((MFTipsWidget*)widget).text = dataObj;
     }else if ([widget isKindOfClass:[MFAudioLabel class]]) {
         MFAudioLabel * voice = (MFAudioLabel*)widget;
-        voice.timeLine = @"7";
+        voice.timeLine = dataSource[@"l"];
         voice.voiceUrl = @"xxx";
         voice.hidden = NO;
         
