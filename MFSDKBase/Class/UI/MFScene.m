@@ -177,6 +177,7 @@
     [[MFLayoutCenter sharedMFLayoutCenter] layout:headView withSizeInfo:self.headerLayoutDict[indexKey]];
     [[MFLayoutCenter sharedMFLayoutCenter] layout:bodyView withSizeInfo:self.bodyLayoutDict[indexKey]];
     bodyView.top += headView.height;
+    
     [[MFLayoutCenter sharedMFLayoutCenter] layout:footView withSizeInfo:self.footerLayoutDict[indexKey]];
     footView.top += (headView.height+bodyView.height);
     

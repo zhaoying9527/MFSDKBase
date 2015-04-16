@@ -19,6 +19,14 @@
 @end
 
 @implementation MFRichLabel
+- (instancetype)init
+{
+    if (self = [super init]) {
+        self.side = YES;
+    }
+    return self;
+}
+
 - (void)setTouchEnabled:(BOOL)touchEnabled
 {
     _touchEnabled = touchEnabled;
@@ -33,7 +41,6 @@
 #pragma mark TapGestureRecognizer
 - (void)setupLongPressGestureRecognizer
 {
-    self.side = YES;
     self.multipleTouchEnabled = YES;
     self.userInteractionEnabled = YES;
     self.longPressTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressEvent:)];

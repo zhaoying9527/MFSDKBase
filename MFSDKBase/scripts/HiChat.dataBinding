@@ -199,3 +199,361 @@ tid-101-message-emoji-body-emoji
 {
     dsKey:emoji;
 }
+
+
+tid-101-voice-emoji-head-view
+{
+    dsKey:portalIcon;
+}
+tid-101-voice-emoji-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-101-voice-emoji-body-image
+{
+    dsKey:bizImage;
+}
+tid-101-voice-emoji-body-voice
+{
+    dsKey:voice;
+}
+tid-101-voice-emoji-body-emoji
+{
+    dsKey:emoji;
+}
+
+tid-101-voice-head-view
+{
+    dsKey:portalIcon;
+}
+tid-101-voice-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-101-voice-body-image
+{
+    dsKey:bizImage;
+}
+tid-101-voice-body-voice
+{
+    dsKey:voice;
+}
+
+
+tid-102-head-view
+{
+    dsKey:portalIcon;
+}
+tid-102-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-102-body-image
+{
+    dsKey:bizImage;
+}
+
+
+tid-102-message-head-view
+{
+    dsKey:portalIcon;
+}
+tid-102-message-body-toptitle
+{
+   dsKey:topTitle;
+}
+tid-102-message-body-image
+{
+    dsKey:bizImage;
+}
+tid-102-message-body-message
+{
+    dsKey:message;
+}
+
+
+tid-102-message-emoji-head-view
+{
+    dsKey:portalIcon;
+}
+tid-102-message-emoji-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-102-message-emoji-body-image
+{
+    dsKey:bizImage;
+}
+tid-102-message-emoji-body-message
+{
+    dsKey:message;
+}
+tid-102-message-emoji-body-emoji
+{
+    dsKey:emoji;
+}
+
+
+tid-102-voice-emoji-head-view
+{
+    dsKey:portalIcon;
+}
+tid-102-voice-emoji-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-102-voice-emoji-body-image
+{
+    dsKey:bizImage;
+}
+tid-102-voice-emoji-body-voice
+{
+    dsKey:voice;
+}
+tid-102-voice-emoji-body-emoji
+{
+    dsKey:emoji;
+}
+
+tid-102-voice-head-view
+{
+    dsKey:portalIcon;
+}
+tid-102-voice-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-102-voice-body-image
+{
+    dsKey:bizImage;
+}
+tid-102-voice-body-voice
+{
+    dsKey:voice;
+}
+
+
+
+
+tid-103-head-view
+{
+    dsKey:portalIcon;
+}
+tid-103-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-103-body-image
+{
+    dsKey:bizImage;
+}
+tid-103-body-midtitle
+{
+    dsKey:midTitle;
+}
+
+tid-103-message-head-view
+{
+    dsKey:portalIcon;
+}
+tid-103-message-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-103-message-body-image
+{
+    dsKey:bizImage;
+}
+tid-103-message-body-midtitle
+{
+    dsKey:midTitle;
+}
+tid-103-message-body-message
+{
+    dsKey:message;
+}
+
+
+tid-103-message-emoji-head-view
+{
+    dsKey:portalIcon;
+}
+tid-103-message-emoji-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-103-message-emoji-body-image
+{
+    dsKey:bizImage;
+}
+tid-103-message-emoji-body-midtitle
+{
+    dsKey:midTitle;
+}
+tid-103-message-emoji-body-message
+{
+    dsKey:message;
+}
+tid-103-message-emoji-body-emoji
+{
+    dsKey:emoji;
+}
+
+
+tid-103-voice-emoji-head-view
+{
+    dsKey:portalIcon;
+}
+tid-103-voice-emoji-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-103-voice-emoji-body-image
+{
+    dsKey:bizImage;
+}
+tid-103-voice-emoji-body-midtitle
+{
+    dsKey:midTitle;
+}
+tid-103-voice-emoji-body-voice
+{
+    dsKey:voice;
+}
+tid-103-voice-emoji-body-emoji
+{
+    dsKey:emoji;
+}
+
+tid-103-voice-head-view
+{
+    dsKey:portalIcon;
+}
+tid-103-voice-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-103-voice-body-image
+{
+    dsKey:bizImage;
+}
+tid-103-voice-body-midtitle
+{
+    dsKey:midTitle;
+}
+tid-103-voice-body-voice
+{
+    dsKey:voice;
+}
+
+
+tid-104-head-view
+{
+    dsKey:portalIcon;
+}
+tid-104-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-104-body-image
+{
+    dsKey:bizImage;
+}
+tid-104-body-midtitle
+{
+    dsKey:midTitle;
+}
+
+tid-104-message-head-view
+{
+    dsKey:portalIcon;
+}
+tid-104-message-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-104-message-body-image
+{
+    dsKey:bizImage;
+}
+tid-104-message-body-midtitle
+{
+    dsKey:midTitle;
+}
+tid-104-message-body-message
+{
+    dsKey:message;
+}
+
+
+tid-104-message-emoji-head-view
+{
+    dsKey:portalIcon;
+}
+tid-104-message-emoji-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-104-message-emoji-body-image
+{
+    dsKey:bizImage;
+}
+tid-104-message-emoji-body-midtitle
+{
+    dsKey:midTitle;
+}
+tid-104-message-emoji-body-message
+{
+    dsKey:message;
+}
+tid-104-message-emoji-body-emoji
+{
+    dsKey:emoji;
+}
+
+
+tid-104-voice-emoji-head-view
+{
+    dsKey:portalIcon;
+}
+tid-104-voice-emoji-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-104-voice-emoji-body-image
+{
+    dsKey:bizImage;
+}
+tid-104-voice-emoji-body-midtitle
+{
+    dsKey:midTitle;
+}
+tid-104-voice-emoji-body-voice
+{
+    dsKey:voice;
+}
+tid-104-voice-emoji-body-emoji
+{
+    dsKey:emoji;
+}
+
+tid-104-voice-head-view
+{
+    dsKey:portalIcon;
+}
+tid-104-voice-body-toptitle
+{
+    dsKey:topTitle;
+}
+tid-104-voice-body-image
+{
+    dsKey:bizImage;
+}
+tid-104-voice-body-midtitle
+{
+    dsKey:midTitle;
+}
+tid-104-voice-body-voice
+{
+    dsKey:voice;
+}

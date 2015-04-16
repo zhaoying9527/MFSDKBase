@@ -61,7 +61,6 @@
 
 - (void)initResource
 {
-    self.side = NO;
     self.mediaState = [[NSMutableDictionary alloc] init];
     self.voiceImageArray = [[NSMutableArray alloc] init];
     self.voiceRImageArray = [[NSMutableArray alloc] init];
@@ -202,7 +201,14 @@
 
 - (void)setFont:(UIFont*)font
 {
+    _font = font;
     self.timeLineLabel.font = font;
+}
+
+- (void)setTextColor:(UIColor *)textColor
+{
+    _textColor = textColor;
+    self.timeLineLabel.textColor = textColor;
 }
 
 - (void)setAlignmentType:(NSInteger)type
@@ -224,9 +230,10 @@
             self.timeLineLabel.transform = CGAffineTransformMakeScale(-1, 1);
             self.timeLineLabel.textColor = self.highlightedTextColor;
             self.timeLineLabel.textAlignment = NSTextAlignmentRight;
-            self.playImageView.transform = CGAffineTransformMakeScale(-1, 1);
+            //self.playImageView.transform = CGAffineTransformMakeScale(-1, 1);
+            
         }
-        
+
         [self stopAnimating];
     }
 }
@@ -234,8 +241,10 @@
 - (void)alignHandling
 {
     if (MFAlignmentTypeRight == self.alignmentType) {
-        if (nil != self.highlightedTextColor) {
+        if (nil != self.highlightedTextColor && self.side) {
             self.timeLineLabel.textColor = self.highlightedTextColor;
+        }else {
+            self.timeLineLabel.textColor = self.textColor;
         }
     }else {
         self.timeLineLabel.textColor = self.textColor;
