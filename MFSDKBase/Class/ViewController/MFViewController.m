@@ -13,9 +13,8 @@
 #import "MFScene.h"
 #import "UIView+UUID.h"
 #import "MFSceneCenter.h"
-#import "MFDispatchProtocol.h"
 
-@interface MFViewController() <UITableViewDataSource,UITableViewDelegate,MFDispatchProtocol>
+@interface MFViewController() <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 
 @property (nonatomic, strong) MFScene *scene;
@@ -151,7 +150,7 @@
     }
 
     //布局设置
-    [self.scene layout:cell.contentView withIndex:indexPath.section withAlignmentType:alignType];
+    [self.scene layout:cell.contentView withIndex:indexPath.section withAlignmentType:1];
 
     //数据绑定
     [self.scene bind:cell.contentView withIndex:indexPath.section];
@@ -165,11 +164,5 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-}
-
-#pragma mark - MFDispatchProtocol
-- (void)dispatchWithTarget:(id)target params:(NSDictionary *)params
-{
-    //......
 }
 @end

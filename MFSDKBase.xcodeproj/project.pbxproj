@@ -153,7 +153,6 @@
 		2386EB891AD9DB17006FE937 /* Talk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Talk.plist; sourceTree = "<group>"; };
 		2386EB9F1AD9E239006FE937 /* MFSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MFSDK.bundle; sourceTree = "<group>"; };
 		2386EBA11ADA20E6006FE937 /* HiChat.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HiChat.bundle; sourceTree = "<group>"; };
-		23DC8A291AE023DA00CED56A /* MFDispatchProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFDispatchProtocol.h; sourceTree = "<group>"; };
 		23DC8A371AE0B6DE00CED56A /* MFSDKBase-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MFSDKBase-Prefix.pch"; sourceTree = "<group>"; };
 		23E94F481AD634FC006B2946 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
 		23E94F491AD634FC006B2946 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
@@ -451,7 +450,6 @@
 				23F385521AD4C247002A8F32 /* MFBridge.m */,
 				23F385531AD4C247002A8F32 /* MFDispatchCenter.h */,
 				23F385541AD4C247002A8F32 /* MFDispatchCenter.m */,
-				23DC8A291AE023DA00CED56A /* MFDispatchProtocol.h */,
 			);
 			name = Event;
 			path = Class/Event;

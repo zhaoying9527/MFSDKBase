@@ -113,8 +113,4 @@ typedef enum {
     MFChatMessageTypeInvalid = 2,
 } MFChatMessageType;
 
-
-#import <UIKit/UIKit.h>
-#import "UIView+Sizes.h"
-#import "MFDispatchProtocol.h"
 #endif

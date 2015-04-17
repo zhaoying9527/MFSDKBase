@@ -324,11 +324,6 @@
     if (self.DOM.eventNodes[kMFOnClickEvent]) {
         id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
         NSLog(@"%@",result);
-    }else {
-        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
-        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
-            [(id)self.viewController dispatchWithTarget:self params:params];
-        }
     }
 //    if (sender.numberOfTapsRequired == 1) {
 //        if (self.isPlaying) {

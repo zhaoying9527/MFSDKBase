@@ -115,11 +115,6 @@
     if (self.DOM.eventNodes[kMFOnClickEvent]) {
         id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
         NSLog(@"%@",result);
-    }else {
-        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
-        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
-            [(id)self.viewController dispatchWithTarget:self params:params];
-        }
     }
 }
 
@@ -128,11 +123,6 @@
     if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
         id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
         NSLog(@"%@",result);
-    }else {
-        NSDictionary *params = @{kMFDispatcherEventType:kMFOnKeyLongPressEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
-        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
-            [(id)self.viewController dispatchWithTarget:self params:params];
-        }
     }
 }
 

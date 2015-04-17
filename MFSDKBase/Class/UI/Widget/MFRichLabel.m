@@ -87,11 +87,6 @@
     if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
         id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
         NSLog(@"%@",result);
-    }else {
-        NSDictionary *params = @{kMFDispatcherEventType:kMFOnKeyLongPressEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
-        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
-            [(id)self.viewController dispatchWithTarget:self params:params];
-        }
     }
 }
 

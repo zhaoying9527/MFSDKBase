@@ -8,6 +8,5 @@
 #import <UIKit/UIkit.h>
 
 #import "UIView+Sizes.h"
-#import "MFDispatchProtocol.h"
 #import "MFCell.h"
 #endif
