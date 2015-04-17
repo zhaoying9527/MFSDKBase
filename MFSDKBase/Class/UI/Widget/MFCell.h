@@ -7,10 +7,7 @@
 
 @class HTMLNode;
 @interface MFCell : UITableViewCell
-@property (nonatomic, copy)NSString *pageID;
-@property (nonatomic, assign)NSInteger pageHeight;
-@property (nonatomic, assign)NSInteger pageWidth;
-@property (nonatomic, assign)BOOL canDelete;
+@property (nonatomic, assign) NSIndexPath *indexPath;
 
 - (void)setupNotify;
 - (void)releaseNotify;

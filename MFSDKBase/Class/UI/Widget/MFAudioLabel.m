@@ -284,12 +284,14 @@
 
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
-    if (self.DOM.eventNodes[kMFOnClickEventKey]) {
-        id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
+    if (self.DOM.eventNodes[kMFOnClickEvent]) {
+        id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnClickEventKey};
-        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent};
+        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
+            [(id)self.viewController dispatchWithTarget:self params:params];
+        }
     }
 //    if (sender.numberOfTapsRequired == 1) {
 //        if (self.isPlaying) {

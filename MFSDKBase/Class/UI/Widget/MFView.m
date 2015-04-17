@@ -105,34 +105,40 @@
 
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
-    if (self.DOM.eventNodes[kMFOnClickEventKey]) {
-        id result = [self.DOM triggerEvent:kMFOnClickEventKey withParams:@{}];
+    if (self.DOM.eventNodes[kMFOnClickEvent]) {
+        id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnClickEventKey};
-        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent};
+        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
+            [(id)self.viewController dispatchWithTarget:self params:params];
+        }
     }
 }
 
 - (void)handleLongPressEvent:(UITapGestureRecognizer *)sender
 {
-    if (self.DOM.eventNodes[kMFOnKeyLongPressEventKey]) {
-        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
+    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
+        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnKeyLongPressEventKey};
-        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnKeyLongPressEvent};
+        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
+            [(id)self.viewController dispatchWithTarget:self params:params];
+        }
     }
 }
 
 - (void)handleSwipeEvent:(UITapGestureRecognizer *)sender
 {
-    if (self.DOM.eventNodes[kMFOnSwipeEventKey]) {
-        id result = [self.DOM triggerEvent:kMFOnSwipeEventKey withParams:@{}];
+    if (self.DOM.eventNodes[kMFOnSwipeEvent]) {
+        id result = [self.DOM triggerEvent:kMFOnSwipeEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnSwipeEventKey};
-        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnSwipeEvent};
+        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
+            [(id)self.viewController dispatchWithTarget:self params:params];
+        }
     }
 }
 

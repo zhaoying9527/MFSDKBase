@@ -13,8 +13,9 @@
 #import "MFScene.h"
 #import "UIView+UUID.h"
 #import "MFSceneCenter.h"
+#import "MFDispatchProtocol.h"
 
-@interface MFViewController() <UITableViewDataSource,UITableViewDelegate>
+@interface MFViewController() <UITableViewDataSource,UITableViewDelegate,MFDispatchProtocol>
 @property (nonatomic,strong) UITableView *tableView;
 
 @property (nonatomic, strong) MFScene *scene;
@@ -164,4 +165,9 @@
 
 }
 
+#pragma mark - MFDispatchProtocol
+- (void)dispatchWithTarget:(id)target params:(NSDictionary *)params
+{
+    //......
+}
 @end

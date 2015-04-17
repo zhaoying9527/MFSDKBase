@@ -63,17 +63,17 @@
 #define tipsHeightSpace                         4
 #define tipsWidthSpace                          4
 
-#define kMFOnKeyLongPressEventKey               @"onKeyLongPress"
-#define kMFOnClickEventKey                      @"onclick"
-#define kMFOnSwipeEventKey                      @"onswipe"
-#define kMFOnLoadEventKey                       @"onload"
-#define kMFOnUnloadEventKey                     @"onunload"
-#define kMFOnPageShowEventKey                   @"onpageshow"
-#define kMFOnPageHideEventKey                   @"onpagehide"
+#define kMFOnKeyLongPressEvent               @"onKeyLongPress"
+#define kMFOnClickEvent                      @"onclick"
+#define kMFOnSwipeEvent                      @"onswipe"
+#define kMFOnLoadEvent                       @"onload"
+#define kMFOnUnloadEvent                     @"onunload"
+#define kMFOnPageShowEvent                   @"onpageshow"
+#define kMFOnPageHideEvent                   @"onpagehide"
 
-#define kMFDispatcherKey                        @"MFDispatcherKey"
-#define kMFDispatcherEventTypeKey               @"MFDispatcherEventTypeKey"
-#define kMFDispatcherParamsKey                  @"MFDispatcherParamsKey"
+#define kMFDispatcherKey                     @"MFDispatcherKey"
+#define kMFDispatcherEventType               @"MFDispatcherEventTypeKey"
+#define kMFDispatcherParams                  @"MFDispatcherParamsKey"
 
 typedef enum {
     MFBGImageTypeWhite = 0,
@@ -111,4 +111,8 @@ typedef enum {
     MFChatMessageTypeInvalid = 2,
 } MFChatMessageType;
 
+
+#import <UIKit/UIKit.h>
+#import "UIView+Sizes.h"
+#import "MFDispatchProtocol.h"
 #endif

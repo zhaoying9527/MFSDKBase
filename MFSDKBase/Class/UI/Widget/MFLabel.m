@@ -57,12 +57,14 @@
 
 - (void)handleLongPressEvent:(UITapGestureRecognizer *)sender
 {
-    if (self.DOM.eventNodes[kMFOnKeyLongPressEventKey]) {
-        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEventKey withParams:@{}];
+    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
+        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventTypeKey:kMFOnKeyLongPressEventKey};
-        [[NSNotificationCenter defaultCenter] postNotificationName:kMFDispatcherKey object:self userInfo:params];
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnKeyLongPressEvent};
+        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
+            [(id)self.viewController dispatchWithTarget:self params:params];
+        }
     }
 }
 
