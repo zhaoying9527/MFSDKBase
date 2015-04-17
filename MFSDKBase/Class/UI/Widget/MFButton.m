@@ -11,32 +11,82 @@
 #import "MFHelper.h"
 #import "NSObject+DOM.h"
 
+@interface MFButton ()
+@property (nonatomic, strong)NSTimer *longPressTimer;
+@end
+
 @implementation MFButton
+- (void)dealloc
+{
+    [self.longPressTimer invalidate];
+    self.longPressTimer = nil;
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
         self.side = YES;
         self.exclusiveTouch = YES;
-        self.userInteractionEnabled = YES;
-        self.multipleTouchEnabled = YES;
-        [self setupTapTarget];
     }
     return self;
 }
 
-- (void)setupTapTarget
+- (void)setTouchEnabled:(BOOL)touchEnabled
 {
-    [self addTarget:self action:@selector(handleSingleFingerEvent:) forControlEvents:UIControlEventTouchUpInside];
+    _touchEnabled = touchEnabled;
+    self.userInteractionEnabled = touchEnabled;
 }
 
-- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
+#pragma mark --
+#pragma mark touches
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.DOM.eventNodes[kMFOnClickEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleSinglePressEvent) userInfo:nil repeats:NO];
+    }else {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    }else {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    }else {
+        [super touchesEnded:touches withEvent:event];
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    } else {
+        [super touchesCancelled:touches withEvent:event];
+    }
+}
+
+- (void)handleSinglePressEvent
+{
+    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
+        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent};
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnKeyLongPressEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
         if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
             [(id)self.viewController dispatchWithTarget:self params:params];
         }
@@ -89,5 +139,4 @@
         self.frame = rect;
     }
 }
-
 @end

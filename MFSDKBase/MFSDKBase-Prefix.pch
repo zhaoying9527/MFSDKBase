@@ -9,4 +9,5 @@
 
 #import "UIView+Sizes.h"
 #import "MFDispatchProtocol.h"
+#import "MFCell.h"
 #endif

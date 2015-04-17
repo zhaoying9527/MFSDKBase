@@ -156,6 +156,8 @@
     //数据绑定
     [self.scene bind:cell.contentView withIndex:indexPath.section];
 
+    cell.indexPath = indexPath;
+
     return cell;
 }
 

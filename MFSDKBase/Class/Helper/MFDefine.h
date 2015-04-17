@@ -71,9 +71,11 @@
 #define kMFOnPageShowEvent                   @"onpageshow"
 #define kMFOnPageHideEvent                   @"onpagehide"
 
+#define kLongPressTimeInterval               0.5
 #define kMFDispatcherKey                     @"MFDispatcherKey"
 #define kMFDispatcherEventType               @"MFDispatcherEventTypeKey"
 #define kMFDispatcherParams                  @"MFDispatcherParamsKey"
+#define kMFIndexPath                         @"MFIndexPath"
 
 typedef enum {
     MFBGImageTypeWhite = 0,

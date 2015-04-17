@@ -21,8 +21,8 @@
 #define BADGEWH 13
 #define TIMELBW 30
 
-@interface MFAudioLabel () <UIGestureRecognizerDelegate>
-@property (nonatomic,strong)UITapGestureRecognizer *singleTap;
+@interface MFAudioLabel ()
+@property (nonatomic, strong)NSTimer *longPressTimer;
 @property (nonatomic,strong)NSMutableArray *voiceImageArray;
 @property (nonatomic,strong)NSMutableArray *voiceRImageArray;
 @property (nonatomic,strong)MFImageView *playImageView;
@@ -40,19 +40,21 @@
 @end
 
 @implementation MFAudioLabel
+- (void)dealloc{
+    [self.longPressTimer invalidate];
+    self.longPressTimer = nil;
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
         self.side = YES;
         self.exclusiveTouch = YES;
-        self.userInteractionEnabled = YES;
-        self.multipleTouchEnabled = YES;
 
         [self initResource];
         [self createPlayImageView];
         [self createTimeLineLabel];
-        [self setupTapGestureRecognizer];
         [self stopAnimating];
         [self setAlignmentType:MFAlignmentTypeLeft];
         [self setTimeLine:nil];
@@ -264,31 +266,66 @@
         self.frame = rect;
     }
 }
+- (void)setTouchEnabled:(BOOL)touchEnabled
+{
+    _touchEnabled = touchEnabled;
+    self.userInteractionEnabled = touchEnabled;
+}
+
 #pragma mark --
-#pragma mark TapGestureRecognizer
-- (void)setupTapGestureRecognizer
+#pragma mark touches
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.userInteractionEnabled = YES;
-    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
-    self.singleTap.numberOfTouchesRequired = 1; //手指数
-    self.singleTap.numberOfTapsRequired = 1; //tap次数
-    self.singleTap.delegate = self;
-    [self addGestureRecognizer:self.singleTap];
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleLongPressEvent) userInfo:nil repeats:NO];
+    }else {
+        [super touchesBegan:touches withEvent:event];
+    }
 }
 
-- (void)releaseTapGestureRecognizer
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self removeGestureRecognizer:self.singleTap];
-    self.singleTap = nil;
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    }else {
+        [super touchesBegan:touches withEvent:event];
+    }
 }
 
-- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    }else {
+        [super touchesEnded:touches withEvent:event];
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    } else {
+        [super touchesCancelled:touches withEvent:event];
+    }
+}
+
+- (void)handleLongPressEvent
+{
+    
+}
+
+- (void)handleSingleFingerEvent
 {
     if (self.DOM.eventNodes[kMFOnClickEvent]) {
         id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent};
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
         if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
             [(id)self.viewController dispatchWithTarget:self params:params];
         }
@@ -428,9 +465,5 @@
         [self.playImageView startAnimating];
         [self addSubview:self.playImageView];
     }
-}
-
-- (void)dealloc{
-    self.singleTap.delegate = nil;
 }
 @end

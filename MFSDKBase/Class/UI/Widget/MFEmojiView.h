@@ -13,5 +13,6 @@
 @property (nonatomic, assign)BOOL side;
 @property (nonatomic, assign)BOOL reverse;
 @property (nonatomic, assign)NSInteger alignmentType;
+@property (nonatomic, assign)BOOL touchEnabled;
 @property (nonatomic,strong)NSDictionary *emoji;
 @end

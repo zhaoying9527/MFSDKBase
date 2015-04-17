@@ -11,8 +11,8 @@
 #import "NSObject+DOM.h"
 #import "MFHelper.h"
 
-@interface MFEmojiView () <UIGestureRecognizerDelegate>
-@property (nonatomic, strong) UITapGestureRecognizer *singleTap;
+@interface MFEmojiView ()
+@property (nonatomic, strong)NSTimer *longPressTimer;
 //@property (nonatomic, strong) APChatEmotion * chatEmotion;
 @end
 
@@ -23,42 +23,94 @@
     if (self) {
         self.side = YES;
         self.exclusiveTouch = YES;
-        self.multipleTouchEnabled = YES;
-        [self setupTapGestureRecognizer];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [self.longPressTimer invalidate];
+    self.longPressTimer = nil;
 //    [self.chatEmotion stopPlay];
 }
 
-- (void)setupTapGestureRecognizer
+- (void)setTouchEnabled:(BOOL)touchEnabled
 {
-    self.userInteractionEnabled = YES;
-    self.singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
-    self.singleTap.numberOfTouchesRequired = 1;
-    self.singleTap.numberOfTapsRequired = 1;
-    [self addGestureRecognizer:self.singleTap];
+    _touchEnabled = touchEnabled;
+    self.userInteractionEnabled = touchEnabled;
 }
 
+#pragma mark --
+#pragma mark touches
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleLongPressEvent) userInfo:nil repeats:NO];
+    }else {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
 
-- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    }else {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+        [self handleSingleFingerEvent];
+    }else {
+        [super touchesEnded:touches withEvent:event];
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    } else {
+        [super touchesCancelled:touches withEvent:event];
+    }
+}
+
+- (void)handleSingleFingerEvent
 {
     if (self.DOM.eventNodes[kMFOnClickEvent]) {
         id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent};
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnClickEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
         if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
             [(id)self.viewController dispatchWithTarget:self params:params];
         }
     }
-//    if (sender.numberOfTapsRequired == 1 && self.chatEmotion) {
-//        self.chatEmotion.hasGrayBg = NO;
-//        [self.chatEmotion playWithinView:nil];
-//    }
+}
+
+- (void)handleLongPressEvent
+{
+    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
+        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
+        NSLog(@"%@",result);
+    }else {
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnKeyLongPressEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
+        if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
+            [(id)self.viewController dispatchWithTarget:self params:params];
+        }
+    }
+    //    if (sender.numberOfTapsRequired == 1 && self.chatEmotion) {
+    //        self.chatEmotion.hasGrayBg = NO;
+    //        [self.chatEmotion playWithinView:nil];
+    //    }
 }
 
 - (void)setEmoji:(NSDictionary*)emoji

@@ -11,12 +11,17 @@
 #import "MFHelper.h"
 #import "NSObject+DOM.h"
 
-@interface MFLabel () <UIGestureRecognizerDelegate>
+@interface MFLabel ()
+@property (nonatomic, strong)NSTimer *longPressTimer;
 @property (nonatomic, assign)NSTextAlignment rawTextAlignmentType;
-@property (nonatomic,strong)UILongPressGestureRecognizer *longPressTap;
 @end
 
 @implementation MFLabel
+- (void)dealloc
+{
+    [self.longPressTimer invalidate];
+    self.longPressTimer = nil;
+}
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -28,40 +33,58 @@
 - (void)setTouchEnabled:(BOOL)touchEnabled
 {
     _touchEnabled = touchEnabled;
-    if (touchEnabled) {
-        [self setupLongPressGestureRecognizer];
-    }else {
-        [self releaseLongPressGestureRecognizer];
-    }
+    self.userInteractionEnabled = touchEnabled;
 }
 
 #pragma mark --
-#pragma mark TapGestureRecognizer
-- (void)setupLongPressGestureRecognizer
+#pragma mark touches
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.multipleTouchEnabled = YES;
-    self.userInteractionEnabled = YES;
-    self.longPressTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressEvent:)];
-    self.longPressTap.numberOfTouchesRequired = 1;
-    self.longPressTap.numberOfTapsRequired = 1;
-    self.longPressTap.delegate = self;
-    [self addGestureRecognizer:self.longPressTap];
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleLongPressEvent) userInfo:nil repeats:NO];
+    }else {
+        [super touchesBegan:touches withEvent:event];
+    }
 }
 
-- (void)releaseLongPressGestureRecognizer
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.multipleTouchEnabled = NO;
-    self.userInteractionEnabled = NO;
-    self.longPressTap = nil;
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    }else {
+        [super touchesBegan:touches withEvent:event];
+    }
 }
 
-- (void)handleLongPressEvent:(UITapGestureRecognizer *)sender
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    }else {
+        [super touchesEnded:touches withEvent:event];
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+        [self.longPressTimer invalidate];
+        self.longPressTimer = nil;
+    } else {
+        [super touchesCancelled:touches withEvent:event];
+    }
+}
+
+- (void)handleLongPressEvent
 {
     if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
         id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
         NSLog(@"%@",result);
     }else {
-        NSDictionary *params = @{kMFDispatcherEventType:kMFOnKeyLongPressEvent};
+        NSDictionary *params = @{kMFDispatcherEventType:kMFOnKeyLongPressEvent, kMFIndexPath:((MFCell*)self.viewCell).indexPath};
         if ([self.viewController respondsToSelector:@selector(dispatchWithTarget:params:)]) {
             [(id)self.viewController dispatchWithTarget:self params:params];
         }

@@ -127,5 +127,7 @@
  */
 - (UIViewController*)viewController;
 
+- (UITableViewCell*)viewCell;
+
 - (UIImage *)imageFromView;
 @end

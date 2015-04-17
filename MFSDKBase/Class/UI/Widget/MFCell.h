@@ -7,7 +7,7 @@
 
 @class HTMLNode;
 @interface MFCell : UITableViewCell
-@property (nonatomic, assign) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 - (void)setupNotify;
 - (void)releaseNotify;
