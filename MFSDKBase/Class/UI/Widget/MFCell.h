@@ -7,11 +7,11 @@
 
 @class HTMLNode;
 @interface MFCell : UITableViewCell
-@property (nonatomic, strong) NSIndexPath *indexPath;
 
-- (void)setupNotify;
-- (void)releaseNotify;
-- (void)setupUI;
-- (void)releaseUI;
++ (CGFloat)cellHeightWithScene:(MFScene*)scene withIndex:(NSInteger)index;
+
+- (void)setupUIWithScene:(MFScene*)scene withTemplateId:(NSString*)tId;
+- (void)layoutWithScene:(MFScene*)scene withIndex:(NSInteger)index withAlignmentType:(MFAlignmentType)alignType;
+- (void)bindDataWithScene:(MFScene*)scene withIndex:(NSInteger)index;
 
 @end
