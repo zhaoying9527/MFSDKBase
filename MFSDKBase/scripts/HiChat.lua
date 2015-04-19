@@ -2,7 +2,7 @@ function didTapCell(param)
 
     local navigationController = UIApplication:sharedApplication():keyWindow():rootViewController()
     if navigationController then
-        local viewController = MFViewController:initWithScriptName("Balance")
+        local viewController = MFViewController:initWithSceneName("Balance")
         navigationController:pushViewController_animated(viewController,toobjc(true))
     else
         wax.alert("navigationController is null", "navigationController")

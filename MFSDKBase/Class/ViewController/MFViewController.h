@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MFViewController : UIViewController
-- (id)initWithScriptName:(NSString *)scriptName;
+- (id)initWithSceneName:(NSString *)sceneName;
 - (void)setupDataSource:(NSDictionary*)params;
 @end

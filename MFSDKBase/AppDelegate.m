@@ -23,7 +23,7 @@
     //初始化环境
     [MFSDKLauncher initialize];
     
-    UIViewController *viewController = [[MFViewController alloc] initWithScriptName:@"Master"];
+    UIViewController *viewController = [[MFViewController alloc] initWithSceneName:@"Master"];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     [self.window setRootViewController:navController];
     [self.window makeKeyAndVisible];

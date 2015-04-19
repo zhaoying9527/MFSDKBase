@@ -6,7 +6,7 @@ function applicationDidFinishLaunching(self, application)
   self.window:setBackgroundColor(UIColor:orangeColor())
 
 
-  local viewController = MFViewController:initWithScriptName("Master")
+  local viewController = MFViewController:initWithSceneName("Master")
   local navController = UINavigationController:alloc():initWithRootViewController(viewController)
   self.window:setRootViewController(navController)
 

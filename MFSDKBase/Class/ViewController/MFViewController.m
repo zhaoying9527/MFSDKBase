@@ -18,7 +18,7 @@
 @property (nonatomic,strong) UITableView *tableView;
 
 @property (nonatomic, strong) MFScene *scene;
-@property (nonatomic, copy) NSString *scriptName;
+@property (nonatomic, copy) NSString *sceneName;
 
 @end
 
@@ -30,22 +30,22 @@
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
     [[MFResourceCenter sharedMFResourceCenter] removeAll];
-    [[MFSceneCenter sharedMFSceneCenter] releaseHtmlParserWithName:self.scriptName];
+    [[MFSceneCenter sharedMFSceneCenter] releaseHtmlParserWithName:self.sceneName];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [[MFSceneCenter sharedMFSceneCenter] unRegisterScene:self.scriptName];
+    [[MFSceneCenter sharedMFSceneCenter] unRegisterScene:self.sceneName];
 }
 
-- (instancetype)initWithScriptName:(NSString *)scriptName
+- (instancetype)initWithSceneName:(NSString *)sceneName
 {
     self = [super init];
     if (self) {
         //场景初始化
-        self.scene = [[MFSceneCenter sharedMFSceneCenter] loadSceneWithName:scriptName];
-        self.scriptName = scriptName;
+        self.scene = [[MFSceneCenter sharedMFSceneCenter] loadSceneWithName:sceneName];
+        self.sceneName = sceneName;
     }
     return self;
 }
@@ -61,14 +61,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[MFSceneCenter sharedMFSceneCenter] registerScene:self.scene withName:self.scriptName];
+    [[MFSceneCenter sharedMFSceneCenter] registerScene:self.scene withName:self.sceneName];
 }
 
 #pragma mark - Data
 - (void)setupDataSource:(NSDictionary*)params
 {
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-    NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.scriptName];
+    NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.sceneName];
     NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
     self.scene.dataArray = [data objectForKey:@"data"];
 
