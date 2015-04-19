@@ -89,7 +89,7 @@
         self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         self.tableView.backgroundColor = [UIColor grayColor];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.tableView.allowsSelection = YES;
+        self.tableView.allowsSelection = NO;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
     }
