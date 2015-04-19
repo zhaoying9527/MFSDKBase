@@ -64,7 +64,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     return [self.scenes objectForKey:self.currentSceneName];
 }
 
-- (void)releaseHtmlParserWithName:(NSString*)sceneName
+- (void)releaseSceneWithName:(NSString*)sceneName
 {
     [self.htmlParsers removeObjectForKey:sceneName];
 }
@@ -74,7 +74,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     if (nil == _pluginService) {
         _pluginService = [[MFCorePlugInService alloc] init];
     }
-    
+
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, sceneName];
     NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, sceneName];
@@ -85,7 +85,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     id result_databinding = nil;
     id result_events = nil;
     id result_style = nil;
-    
+
     NSError *error;
     result_h5 = [self parse:MFSDK_PLUGIN_HTML withPath:htmlPath error:&error];
     [self.htmlParsers setObject:[result_h5 parser] forKey:sceneName];

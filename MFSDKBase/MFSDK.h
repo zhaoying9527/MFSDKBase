@@ -12,7 +12,6 @@
 #import "MFDOM.h"
 #import "MFScene.h"
 #import "MFHelper.h"
-#import "MFSDKLauncher.h"
 #import "MFSceneCenter.h"
 #import "MFResourceCenter.h"
 

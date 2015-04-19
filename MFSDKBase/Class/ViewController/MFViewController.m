@@ -30,7 +30,7 @@
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
     [[MFResourceCenter sharedMFResourceCenter] removeAll];
-    [[MFSceneCenter sharedMFSceneCenter] releaseHtmlParserWithName:self.sceneName];
+    [[MFSceneCenter sharedMFSceneCenter] releaseSceneWithName:self.sceneName];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
