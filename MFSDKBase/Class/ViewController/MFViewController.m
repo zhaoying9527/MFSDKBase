@@ -67,6 +67,7 @@
 #pragma mark - Data
 - (void)setupDataSource:(NSDictionary*)data
 {
+    //TODO replace with data passed in
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.sceneName];
     NSDictionary *dataSource = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
