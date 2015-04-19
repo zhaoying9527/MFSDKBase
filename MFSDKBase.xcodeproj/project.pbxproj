@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1CB259961AD572DF002BE0B1 /* NSObject+DOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB259951AD572DF002BE0B1 /* NSObject+DOM.m */; };
-		1CE2F3771AD4D69500E27AA8 /* MFEventNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3761AD4D69500E27AA8 /* MFEventNode.m */; };
-		1CE2F37A1AD4D6A700E27AA8 /* MFDataNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3791AD4D6A700E27AA8 /* MFDataNode.m */; };
-		1CE2F37D1AD4D6BF00E27AA8 /* MFLayoutNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F37C1AD4D6BF00E27AA8 /* MFLayoutNode.m */; };
 		1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */; };
 		1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */; };
 		1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */; };
@@ -100,12 +97,6 @@
 		1CB259941AD572DF002BE0B1 /* NSObject+DOM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DOM.h"; sourceTree = "<group>"; };
 		1CB259951AD572DF002BE0B1 /* NSObject+DOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DOM.m"; sourceTree = "<group>"; };
 		1CC8EED41AD13B5C008C0286 /* MFSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFSDK.h; path = MFSDKBase/MFSDK.h; sourceTree = SOURCE_ROOT; };
-		1CE2F3751AD4D69500E27AA8 /* MFEventNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFEventNode.h; sourceTree = "<group>"; };
-		1CE2F3761AD4D69500E27AA8 /* MFEventNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFEventNode.m; sourceTree = "<group>"; };
-		1CE2F3781AD4D6A700E27AA8 /* MFDataNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDataNode.h; sourceTree = "<group>"; };
-		1CE2F3791AD4D6A700E27AA8 /* MFDataNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDataNode.m; sourceTree = "<group>"; };
-		1CE2F37B1AD4D6BF00E27AA8 /* MFLayoutNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLayoutNode.h; sourceTree = "<group>"; };
-		1CE2F37C1AD4D6BF00E27AA8 /* MFLayoutNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLayoutNode.m; sourceTree = "<group>"; };
 		1CE2F37E1AD4D89000E27AA8 /* MFSceneCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSceneCenter.h; sourceTree = "<group>"; };
 		1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSceneCenter.m; sourceTree = "<group>"; };
 		1CE2F3821AD4D8C900E27AA8 /* MFSDKLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSDKLauncher.h; sourceTree = "<group>"; };
@@ -248,12 +239,6 @@
 		1CE2F3741AD4D66C00E27AA8 /* DOM */ = {
 			isa = PBXGroup;
 			children = (
-				1CE2F3751AD4D69500E27AA8 /* MFEventNode.h */,
-				1CE2F3761AD4D69500E27AA8 /* MFEventNode.m */,
-				1CE2F3781AD4D6A700E27AA8 /* MFDataNode.h */,
-				1CE2F3791AD4D6A700E27AA8 /* MFDataNode.m */,
-				1CE2F37B1AD4D6BF00E27AA8 /* MFLayoutNode.h */,
-				1CE2F37C1AD4D6BF00E27AA8 /* MFLayoutNode.m */,
 				1CE2F3851AD4E3D600E27AA8 /* MFDOM.h */,
 				1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */,
 			);
@@ -732,7 +717,6 @@
 				23F385A71AD4C247002A8F32 /* MFResourceCenter.m in Sources */,
 				231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */,
 				23F385B71AD4C247002A8F32 /* MFButton.m in Sources */,
-				1CE2F37D1AD4D6BF00E27AA8 /* MFLayoutNode.m in Sources */,
 				23F385BC1AD4C247002A8F32 /* MFRichLabel.m in Sources */,
 				23F385BA1AD4C247002A8F32 /* MFImageView.m in Sources */,
 				23E94F661AD8BB9A006B2946 /* MFTipsWidget.m in Sources */,
@@ -750,7 +734,6 @@
 				1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */,
 				23F385B81AD4C247002A8F32 /* MFCell.m in Sources */,
 				23E94F521AD634FC006B2946 /* ESCssParser.m in Sources */,
-				1CE2F3771AD4D69500E27AA8 /* MFEventNode.m in Sources */,
 				23F385A51AD4C247002A8F32 /* MFDispatchCenter.m in Sources */,
 				23F385AE1AD4C247002A8F32 /* MFHtmlParser.m in Sources */,
 				231BE4511ACFC60000B65A58 /* main.m in Sources */,
@@ -761,7 +744,6 @@
 				23F385B61AD4C247002A8F32 /* MFAudioLabel.m in Sources */,
 				23F385A61AD4C247002A8F32 /* MFHelper.m in Sources */,
 				23F385AD1AD4C247002A8F32 /* MFCssParser.m in Sources */,
-				1CE2F37A1AD4D6A700E27AA8 /* MFDataNode.m in Sources */,
 				23F385B41AD4C247002A8F32 /* MFSceneFactory.m in Sources */,
 				23E94F551AD634FC006B2946 /* HTMLNode.m in Sources */,
 				23F385A81AD4C247002A8F32 /* MFStrategyCenter.m in Sources */,
