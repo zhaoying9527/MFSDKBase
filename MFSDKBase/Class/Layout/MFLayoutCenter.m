@@ -21,40 +21,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (instancetype)init
 {
-    if (self = [super init]) {
-        self.screenXY = [MFHelper screenXY];
-        self.factor = (self.screenXY.width / STANDARD_WIDTH - 1.0);
-    }
+    self = [super init];
     return self;
-}
-
-- (void)canvasSizeWithStyleString:(NSString*)styleString
-{
-    self.canvasSize = [MFHelper formatRectWithString:styleString].size;
-    self.compensateWidth = (int)self.canvasSize.width * self.factor;
-    
-}
-
-- (CGRect)formatRectWithStyleString:(NSString*)styleString fit:(BOOL)fit
-{
-    CGRect rect = [MFHelper formatRectWithString:styleString];
-    return fit?[self stretchRect:rect]:[self absoluteRect:rect];
-}
-
-- (CGRect)absoluteRect:(CGRect)rect
-{
-    if (self.screenXY.width > STANDARD_WIDTH) {
-        rect.origin.x += self.compensateWidth ;
-    }
-    return rect;
-}
-
-- (CGRect)stretchRect:(CGRect)rect
-{
-    if (self.screenXY.width > STANDARD_WIDTH) {
-        rect.size.width = rect.size.width + self.compensateWidth;
-    }
-    return rect;
 }
 
 - (NSInteger)round:(CGFloat)floatVal
@@ -113,7 +81,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 {
     NSString *dataKey           = dom.bindingField;
     NSString *dataString        = dataSource[dataKey];
-    CGSize maxSize              = CGSizeMake(250+self.compensateWidth, 1000);
+    CGSize maxSize              = CGSizeMake(superFrame.size.width-70, 1000);
     CGSize size                 = CGSizeZero;
     if (dataString) {
         size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:cellHeaderFontSize] size:maxSize];
@@ -139,7 +107,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 {
     NSString *dataKey           = dom.bindingField;
     NSString *dataString        = dataSource[dataKey];
-    CGSize maxSize              = CGSizeMake(250+self.compensateWidth, 1000);
+    CGSize maxSize              = CGSizeMake(superFrame.size.width-70, 1000);
     CGSize size                 = CGSizeZero;
     if (dataString) {
         size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:cellFooterFontSize] size:maxSize];
@@ -176,11 +144,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSDictionary *cssItem  = dom.cssNodes;
     NSString *dataKey      = dom.bindingField;
     NSString *clsType      = [dom.clsType lowercaseString];
-    
-    NSString *layoutKey    = cssItem[@"layout"];
-    NSInteger layoutType   = layoutKey?[MFHelper formatLayoutWithString:layoutKey]:MFLayoutTypeNone;
+
     NSString *pageFrameStr = [MFHelper getFrameStringWithCssStyle:cssItem];
-    CGRect pageFrame       = [MFHelper formatFrameWithString:pageFrameStr layoutType:layoutType superFrame:superFrame];
+    CGRect pageFrame       = [MFHelper formatFrameWithString:pageFrameStr superFrame:superFrame];
     BOOL autoWidth         = [MFHelper autoWidthTypeWithCssStyle:cssItem];
     BOOL autoHeight        = [MFHelper autoHeightTypeWithCssStyle:cssItem];
     CGSize realSize        = CGSizeZero;
@@ -211,10 +177,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSMutableDictionary *childWidgetsInfo = [NSMutableDictionary dictionary];
     NSArray *sortedDoms = [self resortDoms:dom.subDoms];
     for (MFDOM *subDom in sortedDoms) {
-        layoutKey = subDom.cssNodes[@"layout"];
-        layoutType = layoutKey?[MFHelper formatLayoutWithString:layoutKey]:MFLayoutTypeNone;
         NSString *childFrameStr = [MFHelper getFrameStringWithCssStyle:subDom.cssNodes];
-        CGRect childFrame = [MFHelper formatFrameWithString:childFrameStr layoutType:layoutType superFrame:pageFrame];
+        CGRect childFrame = [MFHelper formatFrameWithString:childFrameStr superFrame:pageFrame];
         CGRect childRealFrame = [self layoutInfoOfDom:subDom superDomFrame:pageFrame dataSource:dataSource retWidgets:widgetsInfo];
         childRealFrame.origin.y += subHeight;
         childRealFrame.origin.x += subWidth;
@@ -374,18 +338,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *fontString = [layoutInfo objectForKey:@"font"];
     UIFont *font = [MFHelper formatFontWithString:fontString];
 
-    NSString *layoutKey = [layoutInfo objectForKey:@"layout"];
-    NSInteger layoutType = (nil == layoutKey) ? MFLayoutTypeNone:[MFHelper formatLayoutWithString:layoutKey];
-
     CGRect frame = CGRectZero;
     NSString *frameString = [MFHelper getFrameStringWithCssStyle:layoutInfo];
-    if (MFLayoutTypeNone == layoutType) {
-        frame = [MFHelper formatRectWithString:frameString superFrame:superFrame];
-    }else if (MFLayoutTypeAbsolute == layoutType) {
-        frame = [MFHelper formatAbsoluteRectWithString:frameString];
-    }else if (MFLayoutTypeStretch == layoutType) {
-        frame = [MFHelper formatFitRectWithString:frameString];
-    }
+    frame = [MFHelper formatRectWithString:frameString superFrame:superFrame];
 
     return [MFHelper sizeWithFont:dataSource font:font size:frame.size];
 }

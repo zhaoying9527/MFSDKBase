@@ -310,16 +310,9 @@
     return frameString;
 }
 
-+ (CGRect)formatFrameWithString:(NSString*)rectString layoutType:(MFLayoutType)layout superFrame:(CGRect)superFrame
++ (CGRect)formatFrameWithString:(NSString*)rectString superFrame:(CGRect)superFrame
 {
-    CGRect retRect = CGRectZero;
-    if (MFLayoutTypeAbsolute == layout) {
-        retRect = [self formatAbsoluteRectWithString:rectString];        
-    } else if (MFLayoutTypeStretch == layout) {
-        retRect = [self formatFitRectWithString:rectString];
-    } else if (MFLayoutTypeNone == layout) {
-        retRect = [self formatRectWithString:rectString superFrame:superFrame];
-    }
+    CGRect retRect = [self formatRectWithString:rectString superFrame:superFrame];
     return retRect;
 }
 
@@ -341,19 +334,6 @@
         autoHeight = YES;
     }
     return NO;
-}
-
-+ (CGRect)formatAbsoluteRectWithString:(NSString*)amlString
-{
-    CGRect retRect = [MFHelper formatRectWithString:amlString];
-    retRect = [[MFLayoutCenter sharedMFLayoutCenter] absoluteRect:retRect];
-    return retRect;
-}
-
-+ (CGRect)formatFitRectWithString:(NSString*)rectString
-{
-    CGRect retRect = [MFHelper formatRectWithString:rectString];
-    return [MFHelper fitRect:retRect];
 }
 
 + (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)superFrame
@@ -658,12 +638,6 @@
     return NO;
 }
 
-+ (CGRect)fitRect:(CGRect)rect
-{
-    CGRect retRect = [[MFLayoutCenter sharedMFLayoutCenter] stretchRect:rect];
-    return retRect;
-}
-
 + (BOOL)isURLString:(NSString*)urlString
 {
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
@@ -756,15 +730,4 @@
     return [NSString stringWithFormat:@"%@_f",sourceKey];
 }
 
-+ (BOOL)isAdd:(UIView*)superView subView:(UIView*)subView
-{
-    BOOL retCode = NO;
-    for(UIView *view in superView.subviews) {
-        if([view isKindOfClass:[subView class]]) {
-            retCode = YES;
-            break;
-        }
-    }
-    return retCode;
-}
 @end

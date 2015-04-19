@@ -39,11 +39,11 @@
 + (BOOL)isExistFile:(NSString *)strFileName;
 
 + (NSString*)getFrameStringWithCssStyle:(NSDictionary*)styleDict;
-+ (CGRect)formatFrameWithString:(NSString*)rectString layoutType:(MFLayoutType)layout superFrame:(CGRect)superFrame;
-+ (BOOL)autoWidthTypeWithCssStyle:(NSDictionary*)styleDict;
-+ (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict;
++ (CGRect)formatFrameWithString:(NSString*)rectString superFrame:(CGRect)superFrame;
 + (CGRect)formatRectWithString:(NSString*)rectString;
 + (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)frame;
++ (BOOL)autoWidthTypeWithCssStyle:(NSDictionary*)styleDict;
++ (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict;
 
 + (MFAlignmentType)formatAlignmentWithString:(NSString*)alignmentString;
 + (NSTextAlignment)formatTextAlignmentWithString:(NSString*)textAlignmentString;
@@ -53,16 +53,12 @@
 + (UIImage *)formatImageWithString:(NSString*)imageUrl;
 + (MFLayoutType)formatLayoutWithString:(NSString*)layout;
 + (NSNumber *)formatReverseWithString:(NSString*)reverse;
++ (BOOL)sameRect:(CGRect)rect withRect:(CGRect)withRect;
 
 + (NSString*)formatDate:(NSDate*)date;
 + (NSString*)formateTimeInterval:(NSTimeInterval)timecontent;
 + (int)dayAfterNumFromeDate:(NSDate *)fromeDate  toDate:(NSDate *)toDate;
 + (int)yearAfterNumFromeDate:(NSDate *)fromeDate  toDate:(NSDate *)toDate;
-
-+ (CGRect)fitRect:(CGRect)rect;
-+ (CGRect)formatFitRectWithString:(NSString*)rectString;
-+ (CGRect)formatAbsoluteRectWithString:(NSString*)amlString;
-+ (BOOL)sameRect:(CGRect)rect withRect:(CGRect)withRect;
 
 + (BOOL)isCompositeTemplate:(NSString*)templateId;
 + (BOOL)isURLString:(NSString*)urlString;
@@ -75,9 +71,7 @@
 + (NSInteger)sectionHeight;
 + (NSInteger)cellFooterHeight;
 + (NSInteger)cellHeaderHeight;
-+ (BOOL)sizeZero:(CGSize)size;
 + (NSString*)sectionHeaderKey:(NSString*)sourceKey;
 + (NSString*)sectionFooterKey:(NSString*)sourceKey;
-
-+ (BOOL)isAdd:(UIView*)superView subView:(UIView*)subView;
++ (BOOL)sizeZero:(CGSize)size;
 @end
