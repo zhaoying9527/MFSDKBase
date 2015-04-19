@@ -15,10 +15,6 @@
 
 @implementation MFLayoutCenter
 SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
-- (void)removeAll
-{
-}
-
 - (instancetype)init
 {
     self = [super init];
@@ -65,12 +61,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     
     if (size.height > maxSize.height) {
         size.height += (minWidgetTop<12)?minWidgetTop:12;
-    } else {
+    }else {
         size.height = maxSize.height;
     }
     if (size.width > maxSize.width) {
         size.width += (minWidgetLeft<12)?minWidgetLeft:12;
-    } else {
+    }else {
         size.width = maxSize.width;
     }
 
@@ -94,10 +90,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *domID = dom.uuid;
     if (domID) {
         NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
-        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height),
-                         KEY_WIDGET_HEIGHT, @(domFrame.size.width), KEY_WIDGET_WIDTH,
-                         widgetsInfo, KEY_WIDGET_SIZE, nil];
-        
+        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
+                         @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
     }
 
     return retDictionary;
@@ -120,10 +114,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *domID = dom.uuid;
     if (domID) {
         NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
-        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height),
-                         KEY_WIDGET_HEIGHT, @(domFrame.size.width), KEY_WIDGET_WIDTH,
-                         widgetsInfo, KEY_WIDGET_SIZE, nil];
-        
+        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
+                         @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
     }
     
     return retDictionary;

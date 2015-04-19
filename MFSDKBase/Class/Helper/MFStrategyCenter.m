@@ -10,10 +10,6 @@
 @implementation MFStrategyCenter
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(MFStrategyCenter)
-- (void)removeAll
-{
-}
-
 - (id)init
 {
     self = [super init];

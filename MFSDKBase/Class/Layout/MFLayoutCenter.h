@@ -9,7 +9,6 @@
 @interface MFLayoutCenter : NSObject
 
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFLayoutCenter)
-- (void)removeAll;
 - (NSInteger)round:(CGFloat)floatVal;
 - (CGRect)roundWithRect:(CGRect)rect;
 

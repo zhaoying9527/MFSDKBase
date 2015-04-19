@@ -2,5 +2,5 @@
 
 @interface MFViewController : UIViewController
 - (id)initWithSceneName:(NSString *)sceneName;
-- (void)setupDataSource:(NSDictionary*)params;
+- (void)setupDataSource:(NSDictionary*)data;
 @end

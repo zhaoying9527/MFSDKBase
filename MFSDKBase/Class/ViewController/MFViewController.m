@@ -65,12 +65,12 @@
 }
 
 #pragma mark - Data
-- (void)setupDataSource:(NSDictionary*)params
+- (void)setupDataSource:(NSDictionary*)data
 {
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.sceneName];
-    NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
-    self.scene.dataArray = [data objectForKey:@"data"];
+    NSDictionary *dataSource = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
+    self.scene.dataArray = [dataSource objectForKey:@"data"];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self.scene autoLayoutOperations:self.scene.dataArray callback:^(NSInteger prepareHeight) {
