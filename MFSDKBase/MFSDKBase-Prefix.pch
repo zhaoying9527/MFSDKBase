@@ -7,6 +7,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIkit.h>
 
-#import "UIView+Sizes.h"
-#import "MFCell.h"
+#import "MFSDK.h"
+
 #endif
