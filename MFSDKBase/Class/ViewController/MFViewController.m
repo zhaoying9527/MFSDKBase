@@ -55,7 +55,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     [self setupUI];
-    [self prepareData:nil];
+    [self setupDataSource:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -65,7 +65,7 @@
 }
 
 #pragma mark - Data
-- (void)prepareData:(NSDictionary*)params
+- (void)setupDataSource:(NSDictionary*)params
 {
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.scriptName];
