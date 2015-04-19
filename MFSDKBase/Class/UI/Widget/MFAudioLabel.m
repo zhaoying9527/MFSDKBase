@@ -170,7 +170,7 @@
 
 - (void)createPlayImageView
 {
-    self.playImageView = [[MFSceneFactory sharedMFSceneFactory] createImageView];
+    self.playImageView = [MFHelper createImageView];
     self.playImageView.opaque = YES;
     [self addSubview:self.playImageView];
 }

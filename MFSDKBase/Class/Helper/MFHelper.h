@@ -7,6 +7,7 @@
 #import <UIKit/UIKit.h>
 #import "MFDefine.h"
 
+@class MFImageView;
 @interface MFHelper : NSObject
 
 + (float)getOsVersion;
@@ -26,6 +27,7 @@
 + (UIImage*)styleRightImageWithId:(NSString*)imageId;
 + (UIImage*)scaleToSize:(UIImage*)image size:(CGSize)size;
 + (CGRect)imageFitRect:(CGRect)aInRect aImageSize:(CGSize)aImageSize;
++ (MFImageView*)createImageView;
 + (CGSize)sizeWithFont:(NSString*)text font:(UIFont*)font size:(CGSize)size;
 
 + (NSString*)getBundleName;

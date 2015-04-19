@@ -42,7 +42,7 @@
         NSString *defaultSrc = [((MFImageView*)widget).DOM.htmlNodes getAttributeNamed:@"src"];
         UIImage *defaultImage = [[MFResourceCenter sharedMFResourceCenter] imageWithId:defaultSrc];
         if (!defaultImage) defaultImage = [MFResourceCenter imageNamed:dataObj];
-        UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];        
+        //UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
         if ((nil != dataObj && [dataObj length] > 0) || (defaultSrc && defaultSrc.length>0)) {
             if ([MFHelper isURLString:dataObj]) {
                 //TODO setImageWithUrl

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MFSDK.h"
+#import "MFDefine.h"
 
 @interface MFDispatchCenter : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFDispatchCenter)

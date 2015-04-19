@@ -3,7 +3,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "MFSDK.h"
+#import "MFDefine.h"
 
 @interface MFStrategyCenter : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFStrategyCenter)

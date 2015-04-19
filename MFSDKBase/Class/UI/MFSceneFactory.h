@@ -20,7 +20,6 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneFactory)
 - (id)createUIWithDOM:(MFDOM*)domObj sizeInfo:(NSDictionary*)sizeInfo;
 
 - (BOOL)supportHtmlTag:(NSString *)htmlTag;
-- (MFImageView*)createImageView;
 - (id)getProperty:(id)objC popertyName:(NSString*)popertyName;
 - (BOOL)setProperty:(id)objC popertyName:(NSString*)popertyName withObject:(id)withObject;
 - (void)removeAll;

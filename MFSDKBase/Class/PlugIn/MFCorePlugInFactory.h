@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MFPlugIn.h"
-#import "MFSDK.h"
+#import "MFDefine.h"
 @interface MFCorePlugInFactory : NSObject
 + (MFPlugIn*)createPlugIn:(MFPlugInType)plugInType;
 @end

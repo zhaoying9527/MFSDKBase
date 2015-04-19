@@ -7,6 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 #import "MFPlugIn.h"
+#import "MFDefine.h"
 @interface MFCorePlugInService : NSObject
 - (MFPlugIn*)findPlugInWithType:(MFPlugInType)plugInType;
 @end

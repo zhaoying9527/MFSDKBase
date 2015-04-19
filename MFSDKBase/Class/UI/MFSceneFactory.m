@@ -225,13 +225,5 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     }
     return support;
 }
-
-- (MFImageView*)createImageView
-{
-    MFImageView *retImageView = [[MFImageView alloc] initWithFrame:CGRectZero];
-    retImageView.opaque = YES;
-    retImageView.corner = NO;
-    return retImageView;
-}
 @end
 

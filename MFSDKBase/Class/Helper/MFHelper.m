@@ -3,6 +3,7 @@
 
 #import "MFHelper.h"
 #import "MFDefine.h"
+#import "MFImageView.h"
 #import "MFLayoutCenter.h"
 #import "MFResourceCenter.h"
 
@@ -205,6 +206,14 @@
         [[MFResourceCenter sharedMFResourceCenter] cacheImage:retImage key:imageId];
     }
     return retImage;
+}
+
++ (MFImageView*)createImageView
+{
+    MFImageView *retImageView = [[MFImageView alloc] initWithFrame:CGRectZero];
+    retImageView.opaque = YES;
+    retImageView.corner = NO;
+    return retImageView;
 }
 
 + (CGSize)sizeWithFont:(NSString*)text font:(UIFont*)font size:(CGSize)size
