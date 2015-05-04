@@ -4,17 +4,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MFDefine.h"
 
 @class HTMLNode;
+@class MFScene;
+@class MFCell;
+
+@protocol MFCellDelegate <NSObject>
+- (void)didClickCTCell:(MFCell*)cell;
+@end
+
 @interface MFCell : UITableViewCell
+@property (nonatomic, strong)NSDictionary *dataItem;
+@property (nonatomic, weak)id<MFCellDelegate> delegate;
 
 /**
  *  计算高度
  *  @param scene         cell所在场景
- *  @param index         cell对应数据索引
+ *  @param data          cell对应数据
  *  @return              cell高度
  */
-+ (CGFloat)cellHeightWithScene:(MFScene*)scene withIndex:(NSInteger)index;
++ (CGFloat)cellHeightWithScene:(MFScene*)scene withData:(NSDictionary*)data;
 
 /**
  *  创建视图结构
@@ -26,16 +36,21 @@
 /**
  *  页面布局
  *  @param scene         cell所在场景
- *  @param index         cell对应数据索引
- *  @param alignType     cell左、中、右显示位置
+ *  @param data          cell对应数据
  */
-- (void)layoutWithScene:(MFScene*)scene withIndex:(NSInteger)index withAlignmentType:(MFAlignmentType)alignType;
+- (void)layoutWithScene:(MFScene*)scene withData:(NSDictionary*)data;
 
 /**
  *  数据绑定
  *  @param scene         cell所在场景
- *  @param index         cell对应数据索引
+ *  @param data          cell对应数据
  */
-- (void)bindDataWithScene:(MFScene*)scene withIndex:(NSInteger)index;
+- (void)bindDataWithScene:(MFScene*)scene withData:(NSDictionary*)data;
+
+/**
+ *  特殊业务逻辑处理
+ *  @param data          cell对应数据
+ */
+- (void)specialHandlingWithData:(NSDictionary*)data;
 
 @end

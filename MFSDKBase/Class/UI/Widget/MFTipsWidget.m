@@ -21,7 +21,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-
+    
     self.titleLabel = [[UILabel alloc] initWithFrame:frame];
     self.titleLabel.numberOfLines = 0;
     self.titleLabel.textColor = [UIColor whiteColor];
@@ -30,7 +30,7 @@
     self.titleLabel.opaque = YES;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.titleLabel];
-
+    
     return self;
 }
 
@@ -38,7 +38,7 @@
 {
     UIImage *image = [[MFResourceCenter sharedMFResourceCenter] cacheImageWithId:@"APTimeBackground.png"];
     if (nil == image) {
-        image = [MFHelper stretchableCellImage:[UIImage imageNamed:@"MFSDK.bundle/APTimeBackground.png"]];
+        image = [MFHelper stretchableCellImage:[MFResourceCenter imageNamed:@"APTimeBackground.png"]];
     }
     return image;
 }
@@ -48,7 +48,7 @@
     CGRect retFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     retFrame.origin.x = (kDeviceWidth - retFrame.size.width)/2;
     [super setFrame:retFrame];
-
+    
     self.titleLabel.frame = (retFrame.size.width <= 0 || retFrame.size.height <= 0) ? retFrame :
     CGRectMake(1.5*tipsWidthSpace, tipsHeightSpace, retFrame.size.width - 3.0*tipsWidthSpace, retFrame.size.height - 2*tipsHeightSpace);
 }

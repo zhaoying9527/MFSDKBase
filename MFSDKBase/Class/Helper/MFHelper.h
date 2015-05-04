@@ -44,6 +44,8 @@
 + (CGRect)formatFrameWithString:(NSString*)rectString superFrame:(CGRect)superFrame;
 + (CGRect)formatRectWithString:(NSString*)rectString;
 + (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)frame;
++ (CGFloat)maxWidthWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
++ (CGFloat)maxHeightWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
 + (BOOL)autoWidthTypeWithCssStyle:(NSDictionary*)styleDict;
 + (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict;
 
@@ -64,6 +66,7 @@
 
 + (BOOL)isCompositeTemplate:(NSString*)templateId;
 + (BOOL)isURLString:(NSString*)urlString;
++ (BOOL)isLocalResourceUrl:(NSString*)urlString;
 + (BOOL)isKindOfLabel:(NSString*)labelString;
 + (BOOL)isKindOfTips:(NSString*)string;
 + (BOOL)isKindOfImage:(NSString*)imageString;

@@ -22,5 +22,11 @@
 	<string>MFLabel</string>
 	<key>audio</key>
 	<string>MFAudioLabel</string>
+	<key>cloudimage</key>
+	<string>MFCloudImageView</string>
+	<key>chatimage</key>
+	<string>MFChatImageView</string>
+	<key>indicator</key>
+	<string>UIActivityIndicatorView</string>
 </dict>
 </plist>

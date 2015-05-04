@@ -9,19 +9,10 @@
 #import "MFButton.h"
 #import "MFDefine.h"
 #import "MFHelper.h"
+#import "MFScript.h"
 #import "NSObject+DOM.h"
 
-@interface MFButton ()
-@property (nonatomic, strong)NSTimer *longPressTimer;
-@end
-
 @implementation MFButton
-- (void)dealloc
-{
-    [self.longPressTimer invalidate];
-    self.longPressTimer = nil;
-}
-
 - (id)init
 {
     self = [super init];
@@ -42,50 +33,38 @@
 #pragma mark touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleSinglePressEvent) userInfo:nil repeats:NO];
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
+    [super touchesMoved:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesEnded:touches withEvent:event];
+        UITouch *touch = [touches anyObject];
+        NSUInteger taps = [touch tapCount];
+        if (taps == 1) {
+            [super touchesCancelled:touches withEvent:event];
+            [self handleSingleFingerEvent];
+            return;
+        }
     }
+    
+    [super touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    } else {
-        [super touchesCancelled:touches withEvent:event];
-    }
+    [super touchesCancelled:touches withEvent:event];
 }
 
-- (void)handleSinglePressEvent
+- (void)handleSingleFingerEvent
 {
-    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
-        NSLog(@"%@",result);
-    }
+    id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    NSLog(@"%@",result);
 }
 
 - (void)setImage:(UIImage *)image
@@ -106,6 +85,11 @@
 - (void)setText:(NSString *)text
 {
     [self setTitle:text forState:UIControlStateNormal];
+}
+
+- (void)setFont:(UIFont *)font
+{
+    [self.titleLabel setFont:font];
 }
 
 - (void)setAlignmentType:(NSInteger)type

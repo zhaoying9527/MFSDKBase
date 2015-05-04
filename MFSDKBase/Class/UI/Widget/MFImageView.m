@@ -7,22 +7,17 @@
 //
 
 #import "MFImageView.h"
+//#import <APWebImage/SDWebImage.h>
 #import "MFHelper.h"
 #import "MFResourceCenter.h"
 #import "NSObject+DOM.h"
+#import "MFScript.h"
 
 @interface MFImageView()
-@property (nonatomic, strong)NSTimer *longPressTimer;
 @property (nonatomic,strong)UIImageView *maskImageView;
 @end
 
 @implementation MFImageView
-- (void)dealloc
-{
-    [self.longPressTimer invalidate];
-    self.longPressTimer = nil;
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -71,59 +66,38 @@
 #pragma mark touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleLongPressEvent) userInfo:nil repeats:NO];
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
+    [super touchesMoved:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-        [self handleSingleFingerEvent];
-    }else {
-        [super touchesEnded:touches withEvent:event];
+        UITouch *touch = [touches anyObject];
+        NSUInteger taps = [touch tapCount];
+        if (taps == 1) {
+            [super touchesCancelled:touches withEvent:event];
+            [self handleSingleFingerEvent];
+            return;
+        }
     }
+    
+    [super touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    } else {
-        [super touchesCancelled:touches withEvent:event];
-    }
+    [super touchesCancelled:touches withEvent:event];
 }
 
 - (void)handleSingleFingerEvent
 {
-    if (self.DOM.eventNodes[kMFOnClickEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
-        NSLog(@"%@",result);
-    }
-}
-
-- (void)handleLongPressEvent
-{
-    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
-        NSLog(@"%@",result);
-    }
+    id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    NSLog(@"%@",result);
 }
 
 - (void)setBackgroundImage:(NSString*)backgroundImage
@@ -159,11 +133,15 @@
             image = [MFHelper styleRightImageWithId:rightImageUrl];
         }
     }else if ([backgroundImage hasPrefix:@"http://"]) {
-        //TODO setImage with URL;
+//        UIImage *bannerImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
+//        [self setImageWithURL:[NSURL URLWithString:backgroundImage]
+//             placeholderImage:bannerImage
+//                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//                    }];
     }else {
         image = [MFHelper styleLeftImageWithId:backgroundImage];
     }
-
+    
     self.image = image;
 }
 

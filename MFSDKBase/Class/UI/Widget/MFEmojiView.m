@@ -10,9 +10,12 @@
 #import "MFResourceCenter.h"
 #import "NSObject+DOM.h"
 #import "MFHelper.h"
+#import "MFScript.h"
+//#import "APChatResourceManager.h"
+//#import "APChatMediaManager.h"
+//#import "APChatEmotion+Play.h"
 
-@interface MFEmojiView ()
-@property (nonatomic, strong)NSTimer *longPressTimer;
+@interface MFEmojiView () <UIGestureRecognizerDelegate>
 //@property (nonatomic, strong) APChatEmotion * chatEmotion;
 @end
 
@@ -29,8 +32,6 @@
 
 - (void)dealloc
 {
-    [self.longPressTimer invalidate];
-    self.longPressTimer = nil;
 //    [self.chatEmotion stopPlay];
 }
 
@@ -44,70 +45,42 @@
 #pragma mark touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleLongPressEvent) userInfo:nil repeats:NO];
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
+    [super touchesMoved:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
+    UITouch *touch = [touches anyObject];
+    NSUInteger taps = [touch tapCount];
+    if (taps == 1) {
+        [super touchesCancelled:touches withEvent:event];
         [self handleSingleFingerEvent];
-    }else {
-        [super touchesEnded:touches withEvent:event];
+        return;
     }
+    
+    [super touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    } else {
-        [super touchesCancelled:touches withEvent:event];
-    }
+    [super touchesCancelled:touches withEvent:event];
 }
 
 - (void)handleSingleFingerEvent
 {
-    if (self.DOM.eventNodes[kMFOnClickEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
-        NSLog(@"%@",result);
-    }
-}
-
-- (void)handleLongPressEvent
-{
-    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
-        NSLog(@"%@",result);
-    }
-    //    if (sender.numberOfTapsRequired == 1 && self.chatEmotion) {
-    //        self.chatEmotion.hasGrayBg = NO;
-    //        [self.chatEmotion playWithinView:nil];
-    //    }
+//    if (self.chatEmotion) {
+//        self.chatEmotion.hasGrayBg = NO;
+//        [self.chatEmotion playWithinView:nil];
+//    }
 }
 
 - (void)setEmoji:(NSDictionary*)emoji
 {
-    UIImage *bannerImage = [MFResourceCenter imageNamed:@"daxiang"];
-    [self setImage:bannerImage];
-
 //    _emoji = emoji;
 //    if ([_emoji isKindOfClass:[NSDictionary class]]) {
 //        UIImage *bannerImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
@@ -157,7 +130,7 @@
 {
     CGRect rawRect = self.frame;
     UIView *superView = self.superview;
-
+    
     CGRect rect = rawRect;
     rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
     if (![MFHelper sameRect:rawRect withRect:rect]) {

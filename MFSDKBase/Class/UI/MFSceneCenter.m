@@ -1,6 +1,6 @@
 //
 //  MFSceneCenter.m
-//  MFSDKBase
+//  MFSDK
 //
 //  Created by 赵嬴 on 15/4/8.
 //  Copyright (c) 2015年 alipay. All rights reserved.
@@ -8,9 +8,9 @@
 
 #import "MFSceneCenter.h"
 #import "MFCorePlugInService.h"
+#import "MFScene+Internal.h"
 #import "MFSceneFactory.h"
 #import "MFHTMLParser.h"
-#import "MFHtmlParser.h"
 #import "MFCssParser.h"
 #import "MFLuaScript.h"
 #import "MFDefine.h"
@@ -67,6 +67,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
 - (void)releaseSceneWithName:(NSString*)sceneName
 {
     [self.htmlParsers removeObjectForKey:sceneName];
+    MFScene *scene = [self sceneWithName:sceneName];
+    [scene removeAll];
 }
 
 - (MFScene*)loadSceneWithName:(NSString*)sceneName
@@ -74,18 +76,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     if (nil == _pluginService) {
         _pluginService = [[MFCorePlugInService alloc] init];
     }
-
-    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
+    
+    NSString *bundlePath = [[NSString alloc] initWithFormat:@"%@/%@",[MFHelper getResourcePath],[MFHelper getBundleName]];
     NSString *htmlPath = [NSString stringWithFormat:@"%@/%@.html", bundlePath, sceneName];
     NSString *cssPath = [NSString stringWithFormat:@"%@/%@.css", bundlePath, sceneName];
     NSString *dataBindingPath = [NSString stringWithFormat:@"%@/%@.dataBinding", bundlePath, sceneName];
-
+    
     MFHtmlParser *result_h5 = nil;
     id result_css = nil;
     id result_databinding = nil;
     id result_events = nil;
     id result_style = nil;
-
+    
     NSError *error;
     result_h5 = [self parse:MFSDK_PLUGIN_HTML withPath:htmlPath error:&error];
     [self.htmlParsers setObject:[result_h5 parser] forKey:sceneName];
@@ -136,7 +138,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
         if ([realAttribute rangeOfString:styleRegix options:NSRegularExpressionSearch].length > 0) {
             NSArray * components = [realAttribute componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
             if (2 == components.count) {
-               styleValue = components[1];
+                styleValue = components[1];
                 break;
             }
         }
@@ -147,7 +149,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
 - (id)parseEvent:(MFHtmlParser *)htmlParser
 {
     NSArray *bodyEntity = [htmlParser bodyEntity];
-
+    
     NSMutableDictionary *allEvents = [NSMutableDictionary dictionary];
     for (HTMLNode *htmlNode in bodyEntity) {
         NSDictionary *events = [self extractEvent:htmlNode];
@@ -161,7 +163,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     if (!htmlNode) {
         return NO;
     }
-
+    
     NSMutableDictionary *events = [NSMutableDictionary dictionary];
     NSArray *attributes = [htmlNode getAttributes];
     NSString *actionRegix = @"on.*=(.*)\\((.*)\\)";
@@ -181,12 +183,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     if (ID && events.count) {
         rootNodeEvents = [NSMutableDictionary dictionaryWithDictionary:@{ID:events}];
     }
-
+    
     [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
         NSDictionary *childEvents = [self extractEvent:childNode];
         [rootNodeEvents addEntriesFromDictionary:childEvents];
     }];
-
+    
     return rootNodeEvents;
 }
 

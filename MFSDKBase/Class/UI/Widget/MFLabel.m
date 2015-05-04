@@ -9,19 +9,14 @@
 #import "MFLabel.h"
 #import "MFDefine.h"
 #import "MFHelper.h"
+#import "MFScript.h"
 #import "NSObject+DOM.h"
 
 @interface MFLabel ()
-@property (nonatomic, strong)NSTimer *longPressTimer;
 @property (nonatomic, assign)NSTextAlignment rawTextAlignmentType;
 @end
 
 @implementation MFLabel
-- (void)dealloc
-{
-    [self.longPressTimer invalidate];
-    self.longPressTimer = nil;
-}
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -34,56 +29,6 @@
 {
     _touchEnabled = touchEnabled;
     self.userInteractionEnabled = touchEnabled;
-}
-
-#pragma mark --
-#pragma mark touches
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleLongPressEvent) userInfo:nil repeats:NO];
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
-}
-
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesEnded:touches withEvent:event];
-    }
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    } else {
-        [super touchesCancelled:touches withEvent:event];
-    }
-}
-
-- (void)handleLongPressEvent
-{
-    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
-        NSLog(@"%@",result);
-    }
 }
 
 - (void)setAlignmentType:(NSInteger)type
@@ -105,13 +50,13 @@
 {
     CGRect rawRect = self.frame;
     UIView *superView = self.superview;
-
+    
     CGRect rect = rawRect;
     rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
     if (![MFHelper sameRect:rawRect withRect:rect]) {
         self.frame = rect;
     }
-
+    
     if (NSTextAlignmentLeft == self.rawTextAlignmentType) {
         self.textAlignment = NSTextAlignmentRight;
     }

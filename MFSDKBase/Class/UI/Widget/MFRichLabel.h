@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import <APCommonUI/TTTAttributedLabel.h>
 
 @interface MFRichLabel : UILabel
 @property (nonatomic, copy)NSString * rawString;

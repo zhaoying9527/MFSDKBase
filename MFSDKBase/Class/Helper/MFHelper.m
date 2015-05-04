@@ -124,9 +124,9 @@
     if (nil == image) {
         return nil;
     }
-    int capTop = (int)3 * image.size.height / 4;
+    int capTop = image.size.height-5;
     
-    UIImage * retImage = [image stretchableImageWithLeftCapWidth:12 topCapHeight:capTop];
+    UIImage * retImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:capTop];
     return retImage;
 }
 
@@ -136,9 +136,9 @@
     if (nil == image) {
         return nil;
     }
-    int capTop = (int)3 * image.size.height / 4;
+    int capTop = image.size.height-5;
     
-    UIImage * retImage = [image stretchableImageWithLeftCapWidth:10 topCapHeight:capTop];
+    UIImage * retImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:capTop];
     return retImage;
 }
 
@@ -335,6 +335,22 @@
     return autoWidth;
 }
 
++ (CGFloat)maxWidthWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
+{
+    NSString *maxWidthStr = [styleDict objectForKey:KEY_WIDGET_MAX_WIDTH];
+    BOOL relativeMaxWidth = [maxWidthStr hasSuffix:@"%"];
+    CGFloat maxWidth = relativeMaxWidth ? superFrame.size.width*maxWidthStr.intValue/100 : maxWidthStr.intValue;
+    return maxWidth > 0 ? maxWidth : INT32_MAX;
+}
+
++ (CGFloat)maxHeightWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
+{
+    NSString *maxHeightStr = [styleDict objectForKey:KEY_WIDGET_MAX_HEIGHT];
+    BOOL relativeMaxHeight = [maxHeightStr hasSuffix:@"%"];
+    CGFloat maxHeight = relativeMaxHeight ? superFrame.size.height*maxHeightStr.intValue/100 : maxHeightStr.intValue;
+    return maxHeight > 0 ? maxHeight : INT32_MAX;
+}
+
 + (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict
 {
     BOOL autoHeight = NO;
@@ -439,10 +455,10 @@
     BOOL retVisibility = NO;
     NSString * tas = [visibility lowercaseString];
     if ([tas isEqualToString:@"visible"]) {
-        retVisibility = YES;
+        retVisibility = NO;
     }
     else if ([tas isEqualToString:@"hidden"]) {
-        retVisibility = NO;
+        retVisibility = YES;
     }
     return [NSNumber numberWithBool:retVisibility];
 }
@@ -655,6 +671,14 @@
     return NO;
 }
 
++ (BOOL)isLocalResourceUrl:(NSString*)urlString
+{
+    if (urlString && [urlString hasPrefix:@"Local_Image_"]) {
+        return YES;
+    }
+    return NO;
+}
+
 + (BOOL)supportMultiLine:(NSString*)string
 {
     if ([string isEqualToString:@"0"]) {
@@ -690,7 +714,8 @@
 {
     BOOL retCode = NO;
     NSString *lowImageString = [imageString lowercaseString];
-    if ([lowImageString isEqualToString:@"img"] || [lowImageString isEqualToString:@"emoji"]) {
+    if ([lowImageString isEqualToString:@"img"] || [lowImageString isEqualToString:@"emoji"]
+        || [lowImageString isEqualToString:@"chatimage"] || [lowImageString isEqualToString:@"cloudimage"]) {
         retCode = YES;
     }
     return retCode;

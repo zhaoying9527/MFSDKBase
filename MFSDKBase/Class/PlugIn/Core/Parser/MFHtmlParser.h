@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MFParser.h"
-#import "HTMLParser.h"
+#import "HTMLParsers.h"
 @interface MFHtmlParser : MFParser
 //Returns the doc tag
 - (HTMLNode*)doc;
@@ -25,6 +25,6 @@
 //Returns nodes of body
 - (NSArray*)bodyEntity;
 
-//Returns HTMLParser
+//Returns HTMLParsers
 - (id)parser;
 @end

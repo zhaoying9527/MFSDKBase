@@ -18,6 +18,7 @@
 @property (nonatomic, strong)UIImage *image;
 @property (nonatomic, strong)UIImage *backgroundImage;
 @property (nonatomic, strong)UIColor *textColor;
+@property (nonatomic, strong)UIFont *font;
 - (void)alignHandling;
 - (void)reverseHandling;
 @end

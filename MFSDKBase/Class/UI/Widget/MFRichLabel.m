@@ -10,21 +10,15 @@
 #import "MFDefine.h"
 #import "MFHelper.h"
 #import "NSObject+DOM.h"
+#import "MFScript.h"
 
 #define LABELTEXTCOLOR [MFHelper colorWithHexString:@"0x00aaff"]
 
 @interface MFRichLabel ()
-@property (nonatomic, strong)NSTimer *longPressTimer;
 @property (nonatomic, assign)NSTextAlignment rawTextAlignmentType;
 @end
 
 @implementation MFRichLabel
-- (void)dealloc
-{
-    [self.longPressTimer invalidate];
-    self.longPressTimer = nil;
-}
-
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -38,56 +32,6 @@
 {
     _touchEnabled = touchEnabled;
     self.userInteractionEnabled = touchEnabled;
-}
-
-#pragma mark --
-#pragma mark touches
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleLongPressEvent) userInfo:nil repeats:NO];
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
-}
-
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesEnded:touches withEvent:event];
-    }
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    } else {
-        [super touchesCancelled:touches withEvent:event];
-    }
-}
-
-- (void)handleLongPressEvent
-{
-    if (self.DOM.eventNodes[kMFOnKeyLongPressEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnKeyLongPressEvent withParams:@{}];
-        NSLog(@"%@",result);
-    }
 }
 
 - (void)setFormatString:(NSString *)formatString

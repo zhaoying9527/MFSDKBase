@@ -1,8 +1,9 @@
 #import "MFViewController.h"
 #import "MFLayoutCenter.h"
 #import "MFResourceCenter.h"
+#import "MFScene+Internal.h"
 #import "MFSceneFactory.h"
-#import "HTMLParser.h"
+#import "HTMLParsers.h"
 #import "ESCssParser.h"
 #import "UIView+Sizes.h"
 #import "MFDefine.h"
@@ -14,12 +15,7 @@
 #import "UIView+UUID.h"
 #import "MFSceneCenter.h"
 
-@interface MFViewController() <UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic,strong) UITableView *tableView;
-
-@property (nonatomic, strong) MFScene *scene;
-@property (nonatomic, copy) NSString *sceneName;
-
+@interface MFViewController() <UITableViewDataSource,UITableViewDelegate, MFCellDelegate>
 @end
 
 @implementation MFViewController
@@ -33,29 +29,25 @@
     [[MFSceneCenter sharedMFSceneCenter] releaseSceneWithName:self.sceneName];
 }
 
+- (void)loadSceneWithName:(NSString *)sceneName
+{
+    //场景初始化
+    self.scene = [[MFSceneCenter sharedMFSceneCenter] loadSceneWithName:sceneName];
+    self.sceneName = sceneName;
+    self.scene.adapterBlock = [self dataAdapterBlock];
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     [[MFSceneCenter sharedMFSceneCenter] unRegisterScene:self.sceneName];
 }
 
-- (instancetype)initWithSceneName:(NSString *)sceneName
-{
-    self = [super init];
-    if (self) {
-        //场景初始化
-        self.scene = [[MFSceneCenter sharedMFSceneCenter] loadSceneWithName:sceneName];
-        self.sceneName = sceneName;
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
     [self setupUI];
-    [self setupDataSource:nil];
+    [self loadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -64,23 +56,10 @@
     [[MFSceneCenter sharedMFSceneCenter] registerScene:self.scene withName:self.sceneName];
 }
 
-#pragma mark - Data
-- (void)setupDataSource:(NSDictionary*)data
+#pragma - strategy
+- (NSString*)cellClassName
 {
-    //TODO replace with data passed in
-    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
-    NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, self.sceneName];
-    NSDictionary *dataSource = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
-    self.scene.dataArray = [dataSource objectForKey:@"data"];
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.scene autoLayoutOperations:self.scene.dataArray callback:^(NSInteger prepareHeight) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
-        }];
-    });
-    
+    return @"MFCell";
 }
 
 #pragma mark - UI
@@ -88,17 +67,29 @@
 {
     if (nil == self.tableView) {
         self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        self.tableView.backgroundColor = [UIColor grayColor];
+        self.tableView.opaque = YES;
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.tableView.backgroundView = nil;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.allowsSelection = NO;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.scrollsToTop = YES;
     }
     if (!self.tableView.superview) {
         [self.view addSubview:self.tableView];
     }
-
     self.title = @"魔方";
+}
+
+#pragma mark - Data
+- (void)loadData
+{
+}
+
+- (MFDataAdapterBlock)dataAdapterBlock
+{
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate
@@ -113,34 +104,53 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [MFCell cellHeightWithScene:self.scene withIndex:indexPath.section];
+    NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
+    __block CGFloat retHeight = [MFCell cellHeightWithScene:self.scene withData:dataDict];
+    if (retHeight <= 0) {
+        [self.scene calculateLayoutInfo:@[dataDict] callback:^(NSInteger prepareHeight) {
+            retHeight = prepareHeight;
+        }];
+    }
+    return retHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
-    MFAlignmentType alignType = [dataDict[KEY_WIDGET_ALIGNMENTTYPE] intValue];
-
-    NSString *tId = dataDict[KEYWORD_TEMPLATE_ID];
-    NSString *identifier = [NSString stringWithFormat:@"%@_%d",tId, alignType];
-
-    MFCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
+    NSString *tId = [self.scene templateIdWithData:dataDict];
+    
+    MFCell *cell = [self dequeueReusablePKCellWithIdentifier:dataDict];
     if (nil == cell) {
-        cell = [[MFCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [self allocPKCellWithIdentifier:dataDict];
         [cell setupUIWithScene:self.scene withTemplateId:tId];
     }
-
+    
     //布局设置
-    [cell layoutWithScene:self.scene withIndex:indexPath.section withAlignmentType:alignType];
+    [cell layoutWithScene:self.scene withData:dataDict];
     //数据绑定
-    [cell bindDataWithScene:self.scene withIndex:indexPath.section];
-
+    [cell bindDataWithScene:self.scene withData:dataDict];
+    //特殊逻辑处理
+    [cell specialHandlingWithData:dataDict];
+    //数据设置
+    [cell setDataItem:dataDict];
+    //代理设置
+    [cell setDelegate:self];
+    
     return cell;
 }
 
+- (void)didClickCTCell:(MFCell*)cell{;}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (MFCell*)allocPKCellWithIdentifier:(NSDictionary*)dataDict
 {
-
+    NSString *tId = [self.scene templateIdWithData:dataDict];
+    NSString *identifier = [NSString stringWithFormat:@"%@",tId];
+    return [[NSClassFromString([self cellClassName]) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+}
+- (MFCell*)dequeueReusablePKCellWithIdentifier:(NSDictionary*)dataDict
+{
+    NSString *tId = [self.scene templateIdWithData:dataDict];
+    NSString *identifier = [NSString stringWithFormat:@"%@",tId];
+    return [self.tableView dequeueReusableCellWithIdentifier:identifier];
 }
 @end

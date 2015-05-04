@@ -1,6 +1,6 @@
 //
 //  MFScene.h
-//  MFSDKBase
+//  MFSDK
 //
 //  Created by 赵嬴 on 15/4/8.
 //  Copyright (c) 2015年 alipay. All rights reserved.
@@ -19,62 +19,81 @@ typedef enum {
     MFDomTypeFoot = 2,
 } MFDomType;
 
-@class MFDOM;
+typedef NSMutableArray* (^MFDataAdapterBlock)(NSMutableArray *data);
 
+@class MFDOM;
+@class MFViewController;
 @interface MFScene : NSObject
 
 @property (nonatomic,copy)NSString              *sceneName;         /*场景名*/
 @property (nonatomic,strong)NSMutableArray      *dataArray;         /*场景数据*/
+@property (nonatomic,copy)MFDataAdapterBlock    adapterBlock;       /*数据适配*/
 @property (nonatomic,strong)NSMutableDictionary *headerLayoutDict;  /*cell头部布局信息*/
 @property (nonatomic,strong)NSMutableDictionary *bodyLayoutDict;    /*cell正文布局信息*/
 @property (nonatomic,strong)NSMutableDictionary *footerLayoutDict;  /*cell尾部布局信息*/
 
 /**
- *  创建MFScene实例
- *  @param html         场景对应Html,描述页面结构
- *  @param css          场景对应Css,描述页面样式
- *  @param dataBinding  场景数据绑定规则
- *  @param events       场景html挂载事件集合
- *  @param styles       场景style，目前cell头部和尾部通过style信息描述
- *  @param sceneName    场景名
+ *  是否支持特定的模版
+ *  @param tId               模版ID
  */
-- (id)initWithDomNodes:(id)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSDictionary*)styles withSceneName:(NSString *)sceneName;
+- (BOOL)matchingTemplate:(NSString*)tId;
 
 /**
- *  获取Dom节点
- *  @param ID           DOM对应的domId
- *  @param type         dom类型:头部、正文、尾部
+ *  取模版Id,模版前缀为“tId－”
+ *  @param data              数据源
+ *  @param return            模版Id
  */
-- (MFDOM*)domWithId:(NSString*)ID withType:(MFDomType)type;
+- (NSString*)templateIdWithData:(NSDictionary*)data;
 
 /**
- *  创建Dom节点对应View
- *  @param domId        DOM对应的domId
- *  @param type         dom类型
- *  @return             view
+ *  布局字典Key计算
+ *  @param data              数据源
+ *  @param return            布局字典的key
  */
-- (UIView*)sceneViewWithDomId:(NSString*)domId withType:(MFDomType)type;
+- (NSString*)privateKeyWithData:(NSDictionary*)data;
 
 /**
- *  数据绑定
- *  @param view         View
- *  @param index        对应数据索引
+ *  布局信息批量计算,计算后的布局信息保存在scene的layoutDict
+ *  @param dataArray         数据源
+ *  @param callback          回调处理,返回布局信息(包括头部正文和尾部)
  */
-- (void)bind:(UIView *)view withIndex:(NSInteger)index;
+- (void)calculateLayoutInfo:(NSArray*)dataArray callback:(void(^)(NSInteger prepareHeight))callback;
 
 /**
- *  页面局部
- *  @param view         View
- *  @param index        对应数据索引
- *  @param alignType    靠左、居中、靠右显示
+ *  返回View及其子view中class属性为domClass的特定view
+ *  @param domClass          class属性值
+ *  @param view              视图view
  */
-- (void)layout:(UIView*)view withIndex:(NSInteger)index withAlignmentType:(MFAlignmentType)alignType;
++ (UIView*)findViewWithDomClass:(NSString*)domClass withView:(UIView*)view;
 
 /**
- *  布局信息批量计算
- *  @param dataArray    数据源
- *  @param callback     回调处理,返回布局信息
+ *  清空数据及布局信息
  */
-- (void)autoLayoutOperations:(NSArray*)dataArray callback:(void(^)(NSInteger prepareHeight))callback;
+- (void)removeAll;
 
+/**
+ *  删除数据及布局信息
+ */
+- (void)removeData:(NSArray*)data;
+
+
+/**
+ *  加载、更新数据,回调完成后布局信息保存在scene中，并且返回创建好的view
+ *  @param data               数据源
+ *  @param dataAdapterBlock   数据适配接口
+ *  @param completionBlock    回调接口，返回创建好的view
+ */
+- (void)sceneViewReloadData:(NSDictionary*)data
+           dataAdapterBlock:(MFDataAdapterBlock)dataAdapterBlock
+            completionBlock:(void(^)(UIView*view))completionBlock;
+
+/**
+ *  加载、更新数据,回调完成后布局信息保存在scene中，并且返回创建好的viewController
+ *  @param data               数据源
+ *  @param dataAdapterBlock   数据适配接口
+ *  @param completionBlock    回调接口，返回创建好的viewController
+ */
+- (void)sceneViewControllerReloadData:(NSArray*)data
+                     dataAdapterBlock:(MFDataAdapterBlock)dataAdapterBlock
+                      completionBlock:(void(^)(MFViewController*viewControler))completionBlock;
 @end

@@ -24,11 +24,7 @@ return shared##className; \
 #define DEFAULTICONNAME                         @"headIcon.png"
 
 //模版id
-#define DIALOG_TEMPLATE_MESSAGE                 @"1"
-#define DIALOG_TEMPLATE_SHARE                   @"1001"
-#define DIALOG_TEMPLATE_BANNER                  @"1002"
-#define DIALOG_TEMPLATE_BANNERNOTITLE           @"1003"
-#define DIALOG_TEMPLATE_UNKNOW                  @"10000"
+#define DIALOG_TEMPLATE_UNKNOW                  @"tid-10000"
 
 //访问KEY PKey_UI
 #define KEY_DATASOURCE                          @"sources"
@@ -43,16 +39,19 @@ return shared##className; \
 #define KEY_WIDGET_LEFT                         @"left"
 #define KEY_WIDGET_TOP                          @"top"
 #define KEY_WIDGET_WIDTH                        @"width"
+#define KEY_WIDGET_MAX_WIDTH                    @"max-width"
 #define KEY_WIDGET_HEIGHT                       @"height"
+#define KEY_WIDGET_MAX_HEIGHT                   @"max-height"
 #define KEY_WIDGET_SIZE                         @"widgetSize"
 #define KEYWORD_FRAME                           @"frame"
 
 //关键字
 #define KEYWORD_SEED                            @"seed"
 #define KEYWORD_ID                              @"id"
-#define KEYWORD_TEMPLATE_ID                     @"templateId"
+#define KEYWORD_TEMPLATE_ID                     @"id"
 #define KEYWORD_DS_DATA                         @"data"
 #define KEYWORD_DATASOURCEKEY                   @"dsKey"
+#define KEYWORD_LINK                            @"link"
 #define KEYWORD_NUMBEROFLINES                   @"numberOfLines"
 
 //参数
@@ -64,13 +63,13 @@ return shared##className; \
 #define L_OPT_FORCEREQUEST                      @"forceRequest"
 
 #define STANDARD_WIDTH                          320
-#define IMAGEWIDTH                              160
-#define IMAGEHEIGHT                             160
+#define IMAGEWIDTH                              120
+#define IMAGEHEIGHT                             120
 #define kDeviceWidth                            [UIScreen mainScreen].bounds.size.width
 #define KDeviceHeight                           [UIScreen mainScreen].bounds.size.height
 
 #define sectionTimeHeaderHeight                 0
-#define sectionCellHeight                       25
+#define sectionCellHeight                       20
 #define sectionHeaderHeight                     15
 #define sectionFooterHeight                     15
 #define cellHeaderFontSize                      12
@@ -78,20 +77,21 @@ return shared##className; \
 #define tipsHeightSpace                         4
 #define tipsWidthSpace                          4
 
-#define kMFOnKeyLongPressEvent               @"onKeyLongPress"
-#define kMFOnClickEvent                      @"onclick"
-#define kMFOnSwipeEvent                      @"onswipe"
-#define kMFOnLoadEvent                       @"onload"
-#define kMFOnUnloadEvent                     @"onunload"
-#define kMFOnPageShowEvent                   @"onpageshow"
-#define kMFOnPageHideEvent                   @"onpagehide"
+#define kMFOnLongPressEvent                     @"longpress"
+#define kMFOnClickEvent                         @"onclick"
+#define kMFOnDbClickEvent                       @"ondbclick"
+#define kMFOnSwipeEvent                         @"onswipe"
+#define kMFOnLoadEvent                          @"onload"
+#define kMFOnUnloadEvent                        @"onunload"
+#define kMFOnPageShowEvent                      @"onpageshow"
+#define kMFOnPageHideEvent                      @"onpagehide"
 
-#define kLongPressTimeInterval               0.5
-#define kMFDispatcherKey                     @"MFDispatcherKey"
-#define kMFDispatcherEventType               @"MFDispatcherEventTypeKey"
-#define kMFDispatcherParams                  @"MFDispatcherParamsKey"
-#define kMFIndexPath                         @"MFIndexPath"
-
+#define kLongPressTimeInterval                  0.4
+#define kDoubleClickTimeInterval                0.5
+#define kMFDispatcherKey                        @"MFDispatcherKey"
+#define kMFDispatcherEventType                  @"MFDispatcherEventTypeKey"
+#define kMFDispatcherParams                     @"MFDispatcherParamsKey"
+#define kMFIndexPath                            @"MFIndexPath"
 typedef enum {
     MFSDK_PLUGIN_LUA = 0,
     MFSDK_PLUGIN_HTML,

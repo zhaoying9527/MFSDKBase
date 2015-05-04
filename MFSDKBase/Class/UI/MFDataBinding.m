@@ -10,6 +10,8 @@
 #import "MFLabel.h"
 #import "MFRichLabel.h"
 #import "MFImageView.h"
+#import "MFChatImageView.h"
+#import "MFCloudImageView.h"
 #import "MFButton.h"
 #import "MFAudioLabel.h"
 #import "MFEmojiView.h"
@@ -30,75 +32,76 @@
 
 + (void)bindDataToWidget:(id)widget dataSource:(NSDictionary*)dataSource bindingField:(NSString*)bindingField
 {
-    NSString *dataObj = dataSource[bindingField];
+    NSDictionary *dataDict = dataSource;
+    NSString *dataObj = dataDict[bindingField];
 
     if ([widget isKindOfClass:[MFLabel class]]) {
         NSString *defaultText = [((MFLabel*)widget).DOM.htmlNodes getAttributeNamed:@"value"];
         ((MFLabel*)widget).text = dataObj ? dataObj : defaultText;
     }else if ([widget isKindOfClass:[MFRichLabel class]]) {
-            NSString *defaultText = [((MFRichLabel*)widget).DOM.htmlNodes getAttributeNamed:@"value"];
-            ((MFRichLabel*)widget).text = dataObj ? dataObj : defaultText;
-    }else if ([widget isKindOfClass:[MFImageView class]]) {
+        NSString *defaultText = [((MFRichLabel*)widget).DOM.htmlNodes getAttributeNamed:@"value"];
+        ((MFRichLabel*)widget).text = dataObj ? dataObj : defaultText;
+    }else if ([widget isKindOfClass:[MFImageView class]] || [widget isKindOfClass:[MFCloudImageView class]]) {
+        MFImageView *imageView = (MFImageView*)widget;
         NSString *defaultSrc = [((MFImageView*)widget).DOM.htmlNodes getAttributeNamed:@"src"];
+        if (nil != dataObj && [dataObj length] > 0) {
+            UIImage *image = [[MFResourceCenter sharedMFResourceCenter] imageWithId:dataObj];
+            if (!image) image = [MFResourceCenter imageNamed:dataObj];
+            if(image) {
+                [imageView setImage:image];
+            }else {
+                UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
+                imageView.image = bannderImage;
+//                [imageView setImageWithURL:[NSURL URLWithString:dataObj] placeholderImage:bannderImage
+//                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//                                 }];
+            }
+        }else if (defaultSrc && defaultSrc.length>0) {
+            UIImage *defaultImage = [[MFResourceCenter sharedMFResourceCenter] imageWithId:defaultSrc];
+            if (!defaultImage) defaultImage = [MFResourceCenter imageNamed:dataObj];
+            if(defaultImage) {
+                [imageView setImage:defaultImage];
+            }else {
+                UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
+                imageView.image = bannderImage;
+//                [imageView setImageWithURL:[NSURL URLWithString:defaultSrc] placeholderImage:bannderImage
+//                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//                                 }];
+            }
+        }
+    }else if ([widget isKindOfClass:[MFChatImageView class]]) {
+        MFChatImageView *imageView = (MFChatImageView*)widget;
+        NSString *defaultSrc = [((MFChatImageView*)widget).DOM.htmlNodes getAttributeNamed:@"src"];
         UIImage *defaultImage = [[MFResourceCenter sharedMFResourceCenter] imageWithId:defaultSrc];
         if (!defaultImage) defaultImage = [MFResourceCenter imageNamed:dataObj];
-        //UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
+        UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
         if ((nil != dataObj && [dataObj length] > 0) || (defaultSrc && defaultSrc.length>0)) {
             if ([MFHelper isURLString:dataObj]) {
-                //TODO setImageWithUrl
+                  imageView.image = bannderImage;
+//                [(MFChatImageView*)widget setImageWithURL:[NSURL URLWithString:dataObj] placeholderImage:bannderImage
+//                                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//                                                }];
             } else {
                 UIImage *image = [[MFResourceCenter sharedMFResourceCenter] imageWithId:dataObj];
                 if (!image) image = [MFResourceCenter imageNamed:dataObj];
-                ((MFImageView*)widget).image = image ? image : defaultImage;
+                ((MFChatImageView*)widget).image = image ? image : defaultImage;
             }
         }
     }else if ([widget isKindOfClass:[MFButton class]]) {
         ((MFButton*)widget).text = dataObj;
     }else if ([widget isKindOfClass:[MFTipsWidget class]]) {
-        ((MFTipsWidget*)widget).text = dataObj;
+        ((MFTipsWidget*)widget).text = dataSource[bindingField];
     }else if ([widget isKindOfClass:[MFAudioLabel class]]) {
         MFAudioLabel * voice = (MFAudioLabel*)widget;
         voice.timeLine = dataSource[@"l"];
         voice.voiceUrl = @"xxx";
         voice.hidden = NO;
-        
-//        PKVoiceWidget * voice = (PKVoiceWidget*)widget;
-//        NSDictionary * mediaState =  [dataSource dictionaryForKey:@"mediaState"];
-        
-//        voice.clientMsgID = [dataSource stringForKey:@"clientMsgID"];
-//        if (mediaState) {
-//            voice.mediaState = [[NSMutableDictionary alloc] initWithDictionary:mediaState];;
-//        }
-//        NSString *voiceUrl = nil;
-//        id voiceObj = [dataSource objectForKey:[plistSource objectForKey:KEYWORD_DATASOURCEKEY]];
-//        if ([voiceObj isKindOfClass:[NSDictionary class]]) {
-//            voiceUrl = [voiceObj objectForKey:@"v"];
-//            voice.timeLine = [NSString stringWithFormat:@"%d",[[voiceObj objectForKey:@"l"] intValue]];
-//        }else {
-//            voiceUrl = voiceObj;
-//            voice.timeLine = [NSString stringWithFormat:@"%d",[[dataSource objectForKey:@"l"] intValue]];
-//        }
-//        
-//        //强行以系统时长为准
-//        CGFloat tl = [APChatMediaManager timeLineForUrl:voiceUrl];
-//        if ((nil == voice.timeLine || [voice.timeLine length] <= 0 || [voice.timeLine intValue] <= 0) && tl > 0.0f) {
-//            voice.timeLine = [NSString stringWithFormat:@"%d",(int)tl];
-//        }
-//        
-//        
-//        if (nil != voiceUrl && [voiceUrl length] > 0) {
-//            voice.voiceUrl = voiceUrl;
-//            voice.hidden = NO;
-//        }else {
-//            voice.hidden = YES;
-//        }
     }else if([widget isKindOfClass:[MFEmojiView class]]) {
         MFEmojiView * emojiView = (MFEmojiView*)widget;
-        [emojiView setEmoji:nil];
-//        NSDictionary *emoji = [dataSource objectForKey:[plistSource objectForKey:KEYWORD_DATASOURCEKEY]];
-//        if (nil != emoji) {
-//            [emojiView setEmoji:emoji];
-//        }
+        NSDictionary *emoji = [dataDict objectForKey:bindingField];
+        if (nil != emoji) {
+            [emojiView setEmoji:emoji];
+        }
     }
 }
 @end

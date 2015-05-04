@@ -1,0 +1,3268 @@
+HeadFootStyle
+{
+    head:#header;
+    foot:#footer;
+}
+header
+{
+    width:100%;
+    height:20;
+    color:white;
+    text-align:center;
+    font:normal 12;
+    numberOfLines:0;
+    alignmentType:center;
+    background-color:RGB();
+}
+footer
+{
+    width:100%;
+    height:20;
+    color:white;
+    text-align:center;
+    font:normal 13;
+    numberOfLines:0;
+    alignmentType:center;
+    background-color:RGB();
+}
+
+
+tid-10000
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-10000-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-10000-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:75;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogWhite.right);
+}
+tid-10000-body-title
+{
+    order:4;
+    left:20;
+    top:11;
+    width:200;
+    height:32;
+    font:bold 13;
+    numberOfLines:2;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-10000-body-icon
+{
+    order:5;
+    left:76;
+    top:50;
+    width:12;
+    height:12;
+    alignmentType:none;
+}
+tid-10000-body-description
+{
+    order:6;
+    left:94;
+    top:49;
+    width:120;
+    height:14;
+    font:normal 12;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:right;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+
+
+tid-8001
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-8001-body-canvas
+{
+    order:2;
+    left:75;
+    top:2;
+    width:auto;
+    height:22;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:center;
+    background-image:url(MFLayout://left:Local_Image_grayBG#center:Local_Image_grayBG#right:Local_Image_grayBG);
+}
+tid-8001-body-description
+{
+    order:3;
+    left:8;
+    top:5;
+    width:auto;
+    height:10;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+
+
+tid-8002
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-8002-body-canvas
+{
+    order:2;
+    left:75;
+    top:2;
+    width:auto;
+    height:22;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_grayBG#center:Local_Image_grayBG#right:Local_Image_grayBG);
+}
+tid-8002-body-description
+{
+    order:3;
+    left:8;
+    top:2;
+    width:auto;
+    height:10;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:right;
+    background-color:RGB();
+    alignmentType:left;
+    format:setting;
+}
+
+tid-8003
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-8003-body-canvas
+{
+    order:2;
+    left:75;
+    top:2;
+    width:auto;
+    max-width:72%;
+    height:22;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_grayBG#center:Local_Image_grayBG#right:Local_Image_grayBG);
+}
+tid-8003-body-description
+{
+    order:3;
+    left:8;
+    top:2;
+    width:auto;
+    max-width:100%;
+    height:10;
+    font:normal 13;
+    numberOfLines:0;
+    color:#ffffff;
+    highlightedTextColor:#ffffff;
+    text-align:right;
+    background-color:RGB();
+    alignmentType:left;
+    format:setting;
+}
+
+tid-1
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:auto;
+    max-width:60%;    
+    height:40;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogGreen.right);
+}
+tid-1-body-description
+{
+    order:4;
+    left:20;
+    top:10;
+    width:auto;
+    max-width:100%;
+    height:16;
+    font:normal 16;
+    numberOfLines:0;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:left;
+    reverse:YES;
+    format:text;
+}
+tid-1-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-1-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+tid-2
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-2-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-2-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:auto;
+    height:40;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogGreen.right);
+}
+tid-2-body-voice
+{
+    order:4;
+    left:20;
+    top:10;
+    width:auto;
+    height:16;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f95;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:left;
+    format:text;
+}
+tid-2-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-2-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-3
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-3-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-3-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:auto;
+    height:auto;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-3-body-emoji
+{
+    order:4;
+    left:12;
+    top:10;
+    width:80;
+    height:80;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-3-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-3-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-4
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-4-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-4-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:auto;
+    height:auto;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-4-body-img
+{
+    order:4;
+    left:0;
+    top:0;
+    width:auto;
+    height:auto;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-4-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:left;
+    visibility:hidden;
+}
+tid-4-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-11
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-11-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-11-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:auto;
+    max-width:60%;
+    height:40;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogGreen.right);
+}
+tid-11-body-description
+{
+    order:4;
+    left:20;
+    top:10;
+    width:auto;
+    max-width:100%;
+    height:16;
+    font:normal 16;
+    text-align:left;
+    numberOfLines:0;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    touchEnabled:YES;    
+    alignmentType:left;
+    reverse:YES;
+    format:text;
+}
+tid-11-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;    
+}
+tid-11-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-12
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-12-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-12-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:auto;
+    height:40;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogGreen.right);
+}
+tid-12-body-voice
+{
+    order:4;
+    left:15;
+    top:10;
+    width:auto;
+    height:20;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f95;
+    highlightedTextColor:#ffffff;
+    background-color:RGB();
+    alignmentType:left;
+    format:text;
+}
+tid-12-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-12-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-13
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-13-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-13-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:auto;
+    height:auto;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-13-body-emoji
+{
+    order:4;
+    left:12;
+    top:10;
+    width:80;
+    height:80;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-13-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-13-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-14
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-14-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-14-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:120;
+    height:90;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-14-body-img
+{
+    order:4;
+    left:0;
+    top:0;
+    width:120;
+    height:80;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-14-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-14-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+tid-1001
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1001-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1001-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:114;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogWhite.right);
+}
+tid-1001-body-title
+{
+    order:4;
+    left:19;
+    top:11;
+    width:194;
+    height:18;
+    font:bold 17;
+    numberOfLines:0;
+    text-align:left;
+    color:#333333;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-1001-body-image
+{
+    order:5;
+    left:20;
+    top:38;
+    width:60;
+    height:60;
+    alignmentType:none;
+}
+tid-1001-body-description
+{
+    order:6;
+    left:85;
+    top:32;
+    width:135;
+    height:70;
+    font:normal 13;
+    numberOfLines:4;
+    color:#8f8f8f;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-1001-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-1001-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-1002
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1002-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1002-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:180;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogWhite.right);
+}
+tid-1002-body-title
+{
+    order:4;
+    left:19;
+    top:11;
+    width:194;
+    height:18;
+    font:bold 17;
+    numberOfLines:0;
+    text-align:left;
+    color:#333333;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-1002-body-image
+{
+    order:5;
+    left:19;
+    top:38;
+    width:198;
+    height:105;
+    alignmentType:none;
+}
+tid-1002-body-description
+{
+    order:6;
+    left:22;
+    top:152;
+    width:198;
+    height:15;
+    font:normal 13;
+    numberOfLines:0;
+    color:#8f8f8f;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-1002-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-1002-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-1003
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1003-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-1003-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:150;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogWhite.right);
+}
+tid-1003-body-image
+{
+    order:5;
+    left:19;
+    top:12;
+    width:198;
+    height:105;
+    alignmentType:none;
+}
+tid-1003-body-description
+{
+    order:6;
+    left:19;
+    top:123;
+    width:198;
+    height:15;
+    font:normal 13;
+    numberOfLines:0;
+    color:#8f8f95;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-1003-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-1003-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-101
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:73;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-101-body-toptitle
+{
+    order:6;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 16;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-101-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-101-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-101-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+
+tid-101-message
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-message-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-message-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:120;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+
+tid-101-message-body-toptitle
+{
+    order:4;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 16;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+
+tid-101-message-body-image
+{
+    order:5;
+    left:16;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:none;
+}
+tid-101-message-body-message
+{
+    order:6;
+    left:20;
+    top:74;
+    width:195;
+    height:40;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-101-message-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-101-message-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-101-message-emoji
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-message-emoji-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-message-emoji-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:120;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-101-message-emoji-body-toptitle
+{
+    order:4;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 16;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-101-message-emoji-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-101-message-emoji-body-message
+{
+    order:6;
+    left:20;
+    top:74;
+    width:150;
+    height:40;
+    font:normal 13;
+    numberOfLines:2;
+    color:#333333;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-101-message-emoji-body-emoji
+{
+    order:7;
+    left:175;
+    top:74;
+    width:40;
+    height:40;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-101-message-emoji-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-101-message-emoji-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+
+tid-101-voice-emoji
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-voice-emoji-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-voice-emoji-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:123;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-101-voice-emoji-body-toptitle
+{
+    order:4;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 16;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-101-voice-emoji-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-101-voice-emoji-body-voice
+{
+    order:6;
+    left:20;
+    top:74;
+    width:150;
+    height:40;
+    font:normal 17;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-101-voice-emoji-body-emoji
+{
+    order:7;
+    left:175;
+    top:74;
+    width:40;
+    height:40;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-101-voice-emoji-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-101-voice-emoji-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-101-voice
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-voice-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-101-voice-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:112;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-101-voice-body-toptitle
+{
+    order:4;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 16;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-101-voice-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-101-voice-body-voice
+{
+    order:6;
+    left:20;
+    top:74;
+    width:195;
+    height:40;
+    font:normal 17;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-101-voice-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-101-voice-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+
+tid-102
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:73;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-102-body-toptitle
+{
+    order:6;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-102-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-102-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-102-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-102-message
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-message-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-message-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:110;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+
+tid-102-message-body-toptitle
+{
+    order:4;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+
+tid-102-message-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-102-message-body-message
+{
+    order:6;
+    left:20;
+    top:80;
+    width:195;
+    height:15;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-102-message-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-102-message-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-102-message-emoji
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-message-emoji-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-message-emoji-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:120;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-102-message-emoji-body-toptitle
+{
+    order:4;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-102-message-emoji-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-102-message-emoji-body-message
+{
+    order:6;
+    left:20;
+    top:74;
+    width:150;
+    height:40;
+    font:normal 13;
+    numberOfLines:3;
+    color:#333333;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-102-message-emoji-body-emoji
+{
+    order:7;
+    left:175;
+    top:74;
+    width:40;
+    height:40;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-102-message-emoji-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-102-message-emoji-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-102-voice-emoji
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-voice-emoji-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-voice-emoji-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:120;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-102-voice-emoji-body-toptitle
+{
+    order:4;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-102-voice-emoji-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-102-voice-emoji-body-voice
+{
+    order:6;
+    left:20;
+    top:74;
+    width:150;
+    height:40;
+    font:normal 17;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-102-voice-emoji-body-emoji
+{
+    order:7;
+    left:175;
+    top:74;
+    width:40;
+    height:40;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-102-voice-emoji-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-102-voice-emoji-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-102-voice
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-voice-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-102-voice-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:112;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-102-voice-body-toptitle
+{
+    order:4;
+    left:20;
+    top:20;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-102-voice-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-102-voice-body-voice
+{
+    order:6;
+    left:20;
+    top:74;
+    width:195;
+    height:40;
+    font:normal 17;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-102-voice-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-102-voice-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+
+
+tid-103
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:73;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-103-body-toptitle
+{
+    order:6;
+    left:20;
+    top:11;
+    width:150;
+    height:32;
+    font:normal 22;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-103-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-103-body-midtitle
+{
+    order:7;
+    left:20;
+    top:44;
+    width:150;
+    height:15;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-103-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-103-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-103-message
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-message-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-message-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:110;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-103-message-body-toptitle
+{
+    order:4;
+    left:20;
+    top:11;
+    width:150;
+    height:32;
+    font:normal 22;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-103-message-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-103-message-body-midtitle
+{
+    order:4;
+    left:20;
+    top:44;
+    width:150;
+    height:15;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-103-message-body-message
+{
+    order:6;
+    left:20;
+    top:80;
+    width:195;
+    height:15;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-103-message-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-103-message-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-103-message-emoji
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-message-emoji-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-message-emoji-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:120;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-103-message-emoji-body-toptitle
+{
+    order:4;
+    left:20;
+    top:11;
+    width:150;
+    height:32;
+    font:normal 22;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-103-message-emoji-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-103-message-emoji-body-midtitle
+{
+    order:6;
+    left:20;
+    top:44;
+    width:150;
+    height:15;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-103-message-emoji-body-message
+{
+    order:7;
+    left:20;
+    top:74;
+    width:150;
+    height:40;
+    font:normal 13;
+    numberOfLines:4;
+    color:#333333;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-103-message-emoji-body-emoji
+{
+    order:8;
+    left:175;
+    top:74;
+    width:40;
+    height:40;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-103-message-emoji-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-103-message-emoji-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-103-voice-emoji
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-voice-emoji-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-voice-emoji-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:112;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-103-voice-emoji-body-toptitle
+{
+    order:4;
+    left:20;
+    top:11;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-103-voice-emoji-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-103-voice-emoji-body-midtitle
+{
+    order:4;
+    left:20;
+    top:44;
+    width:150;
+    height:15;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-103-voice-emoji-body-voice
+{
+    order:6;
+    left:20;
+    top:74;
+    width:150;
+    height:40;
+    font:normal 17;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-103-voice-emoji-body-emoji
+{
+    order:7;
+    left:175;
+    top:74;
+    width:40;
+    height:40;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-103-voice-emoji-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-103-voice-emoji-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-103-voice
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-voice-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-103-voice-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:112;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-103-voice-body-toptitle
+{
+    order:4;
+    left:20;
+    top:11;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-103-voice-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-103-voice-body-midtitle
+{
+    order:4;
+    left:20;
+    top:44;
+    width:150;
+    height:15;
+    font:normal 15;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-103-voice-body-voice
+{
+    order:6;
+    left:20;
+    top:70;
+    width:195;
+    height:40;
+    font:normal 17;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-103-voice-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-103-voice-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+
+tid-104
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:73;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-104-body-toptitle
+{
+    order:6;
+    left:20;
+    top:13;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-104-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-104-body-midtitle
+{
+    order:7;
+    left:20;
+    top:45;
+    width:150;
+    height:15;
+    font:normal 13;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-104-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-104-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-104-message
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-message-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-message-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:110;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-104-message-body-toptitle
+{
+    order:4;
+    left:20;
+    top:13;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-104-message-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-104-message-body-midtitle
+{
+    order:4;
+    left:20;
+    top:45;
+    width:150;
+    height:15;
+    font:normal 13;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-104-message-body-message
+{
+    order:6;
+    left:20;
+    top:80;
+    width:195;
+    height:15;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-104-message-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-104-message-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-104-message-emoji
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-message-emoji-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-message-emoji-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:120;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-104-message-emoji-body-toptitle
+{
+    order:4;
+    left:20;
+    top:13;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-104-message-emoji-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-104-message-emoji-body-midtitle
+{
+    order:6;
+    left:20;
+    top:45;
+    width:150;
+    height:15;
+    font:normal 13;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-104-message-emoji-body-message
+{
+    order:7;
+    left:20;
+    top:74;
+    width:150;
+    height:40;
+    font:normal 13;
+    numberOfLines:0;
+    color:#333333;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-104-message-emoji-body-emoji
+{
+    order:8;
+    left:175;
+    top:74;
+    width:40;
+    height:40;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-104-message-emoji-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-104-message-emoji-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-104-voice-emoji
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-voice-emoji-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-voice-emoji-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:123;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-104-voice-emoji-body-toptitle
+{
+    order:4;
+    left:20;
+    top:13;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-104-voice-emoji-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-104-voice-emoji-body-midtitle
+{
+    order:4;
+    left:20;
+    top:45;
+    width:150;
+    height:15;
+    font:normal 13;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-104-voice-emoji-body-voice
+{
+    order:6;
+    left:20;
+    top:74;
+    width:150;
+    height:40;
+    font:normal 17;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-104-voice-emoji-body-emoji
+{
+    order:7;
+    left:175;
+    top:74;
+    width:40;
+    height:40;
+    touchEnabled:YES;
+    alignmentType:none;
+}
+tid-104-voice-emoji-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-104-voice-emoji-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-104-voice
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-voice-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-104-voice-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:112;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+}
+tid-104-voice-body-toptitle
+{
+    order:4;
+    left:20;
+    top:13;
+    width:150;
+    height:32;
+    font:normal 25;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:money;
+}
+tid-104-voice-body-image
+{
+    order:5;
+    left:175;
+    top:16;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-104-voice-body-midtitle
+{
+    order:4;
+    left:20;
+    top:45;
+    width:150;
+    height:15;
+    font:normal 13;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-104-voice-body-voice
+{
+    order:6;
+    left:20;
+    top:70;
+    width:195;
+    height:40;
+    font:normal 17;
+    numberOfLines:1;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-104-voice-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-104-voice-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}
+
+
+tid-105
+{
+    order:1;
+    width:100%;
+    height:44;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-105-head-view
+{
+    order:2;
+    top:0;
+    left:10;
+    width:35;
+    height:35;
+    touchEnabled:YES;
+    alignmentType:left;
+}
+tid-105-body-canvas
+{
+    order:3;
+    left:50;
+    top:-1;
+    width:72%;
+    height:110;
+    background-color:RGB();
+    touchEnabled:YES;
+    alignmentType:left;
+    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogWhite.right);
+}
+tid-105-body-toptitle
+{
+    order:4;
+    left:20;
+    top:11;
+    width:80%;
+    height:32;
+    font:normal 22;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-105-body-image
+{
+    order:5;
+    left:20;
+    top:45;
+    width:40;
+    height:40;
+    alignmentType:left;
+}
+tid-105-body-midtitle
+{
+    order:4;
+    left:65;
+    top:45;
+    width:60%;
+    height:15;
+    font:normal 15;
+    numberOfLines:1;
+    color:#333333;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    reverse:YES;
+    format:text;
+}
+tid-105-body-message
+{
+    order:6;
+    left:65;
+    top:65;
+    width:60%;
+    height:15;
+    font:normal 13;
+    numberOfLines:0;
+    color:#8f8f8f;
+    highlightedTextColor:#ffffff;
+    text-align:left;
+    background-color:RGB();
+    alignmentType:none;
+    format:text;
+}
+tid-105-retry-button
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    color:#00aaff;
+    font:normal 18;
+    image:url(sendFail.png);
+    touchEnabled:YES;
+    alignmentType:none;
+    visibility:hidden;
+}
+tid-105-indicator
+{
+    order:5;
+    left:0;
+    top:0;
+    width:24;
+    height:24;
+    alignmentType:none;
+}

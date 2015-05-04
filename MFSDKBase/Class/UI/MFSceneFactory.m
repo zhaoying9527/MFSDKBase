@@ -49,15 +49,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
 - (id)createWidgetWithDOM:(MFDOM*)domObj
 {
     id widget = nil;
-  
+    
     if ([self supportHtmlTag:domObj.clsType]) {
         widget = [self allocObject:domObj.clsType];
         NSString *uuid = [domObj.htmlNodes getAttributeNamed:KEYWORD_ID];
-
+        
         if([self bindObject:widget]) {
             [self batchExecution:domObj.cssNodes];
         }
-
+        
         if ([widget respondsToSelector:@selector(setOpaque:)]) {
             [widget setOpaque:YES];
         }
@@ -67,7 +67,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         
         [widget setUUID:uuid];
     }
-
+    
     return widget;
 }
 
@@ -87,7 +87,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
             [widget addSubview:subWidget];
         }
     }
-
+    
     return widget;
 }
 
@@ -108,7 +108,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         self.object = object;
         ret = YES;
     }
-
+    
     return ret;
 }
 
@@ -117,13 +117,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     NSString *propertyName = nil;
     NSString *propertyValue = nil;
     id dataObject = nil;
-
+    
     for (NSString *metaProperty in [scriptDict allKeys]) {
         propertyName = [self.propertyMapDict objectForKey:metaProperty];
         propertyValue = [scriptDict objectForKey:metaProperty];
         dataObject = [self valueFormat:propertyValue withPropertyName:metaProperty];
         if (nil == propertyName || nil == dataObject) {
-            NSLog(@"warning: propertyName or dataObject is nil");
             continue;
         }
         [self setProperty:self.object popertyName:propertyName withObject:dataObject];
@@ -139,7 +138,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     if([objC respondsToSelector:sel]) {
         [objC setValue:withObject forKey:popertyName];
         ret = YES;
+    }else if ([popertyName isEqualToString:@"hidden"]) {
+        [objC setValue:withObject forKey:@"hidden"];
     }
+
     return ret;
 }
 
@@ -213,7 +215,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     }else if ([propertyName isEqualToString:@"reverse"]) {
         retObj = [MFHelper formatReverseWithString:propertyValue];
     }
-
+    
     return retObj;
 }
 
@@ -226,4 +228,3 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     return support;
 }
 @end
-
