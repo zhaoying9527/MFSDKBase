@@ -15,17 +15,17 @@
 #import "UIView+Sizes.h"
 #import "NSObject+DOM.h"
 
-#define CTVW_dot_image   @"MFSDK.bundle/HC_dot.png"
+#define CTVW_dot_image          @"MFSDK.bundle/HC_dot.png"
 #define CTVM_dot_image_frame    CGRectMake(0,0,)
-#define SPACE 10
-#define BADGEWH 13
-#define TIMELBW 30
+#define SPACE                   6
+#define BADGEWH                 10
+#define TIMELBW                 30
 
 @interface MFAudioLabel ()
-@property (nonatomic, strong)NSTimer *longPressTimer;
 @property (nonatomic,strong)NSMutableArray *voiceImageArray;
 @property (nonatomic,strong)NSMutableArray *voiceRImageArray;
 @property (nonatomic,strong)MFImageView *playImageView;
+//TODO
 //@property (nonatomic,strong)APChatMedia * voiceObj;
 @property (nonatomic,strong)UIImageView * badgeView;
 @property (nonatomic,strong)UILabel *timeLineLabel;
@@ -40,11 +40,6 @@
 @end
 
 @implementation MFAudioLabel
-- (void)dealloc{
-    [self.longPressTimer invalidate];
-    self.longPressTimer = nil;
-}
-
 - (id)init
 {
     self = [super init];
@@ -235,7 +230,6 @@
             self.timeLineLabel.textColor = self.highlightedTextColor;
             self.timeLineLabel.textAlignment = NSTextAlignmentRight;
             //self.playImageView.transform = CGAffineTransformMakeScale(-1, 1);
-            
         }
 
         [self stopAnimating];
@@ -276,86 +270,59 @@
 #pragma mark touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(handleLongPressEvent) userInfo:nil repeats:NO];
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesBegan:touches withEvent:event];
-    }
+    [super touchesMoved:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    }else {
-        [super touchesEnded:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    NSUInteger taps = [touch tapCount];
+    if (taps == 1) {
+        [super touchesCancelled:touches withEvent:event];
+        [self handleSingleFingerEvent];
+        return;
     }
+    
+    [super touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
-        [self.longPressTimer invalidate];
-        self.longPressTimer = nil;
-    } else {
-        [super touchesCancelled:touches withEvent:event];
-    }
-}
-
-- (void)handleLongPressEvent
-{
-    
+    [super touchesCancelled:touches withEvent:event];
 }
 
 - (void)handleSingleFingerEvent
 {
-    if (self.DOM.eventNodes[kMFOnClickEvent]) {
-        id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{}];
-        NSLog(@"%@",result);
+    if (self.isPlaying) {
+        [self pauseAudio];
+    }else {
+        [self playAudio];
     }
-//    if (sender.numberOfTapsRequired == 1) {
-//        if (self.isPlaying) {
-//            [self pauseAudio];
-//        }else {
-//            [self playAudio];
-//        }
-//    }
 }
+
 
 - (void)setVoiceUrl:(NSString *)voiceUrl
 {
+//TODO
 //    _voiceUrl = voiceUrl;
 //    __weak MFAudioLabel * weakSelf = self;
-//    [APChatMediaManager voiceForUrl:voiceUrl callback:^(APChatMedia * media) {
+//    [APChatMediaManager voiceForUrl:voiceUrl media:self.voiceObj callback:^(APChatMedia * media) {
 //        [weakSelf setVoiceObj:media];
 //        [weakSelf reloadMediaState];
-//        if (self.timeLine == nil || [self.timeLine length] <= 0 || [self.timeLine intValue] <= 0) {
-//            CGFloat tl = [APChatMediaManager timeLineForUrl:voiceUrl];
-//            if (tl > 0.0f) {
-//                self.timeLine = [NSString stringWithFormat:@"%d",(int)tl];
-//            }
-//        }
-//        
 //    }];
     [self reloadMediaState];
 }
 
 - (void)reloadMediaState
 {
+//TODO
 //    BOOL isRead = ![APUserPreferences boolForKey:[_voiceUrl MD5String] business:@"HiChat_Voice_unread" defaultValue:YES];
-//    if (!isRead) {
+//    if (!isRead && MFAlignmentTypeLeft == self.alignmentType) {
 //        if (!self.badgeView) {
 //            self.badgeView = [[UIImageView alloc] initWithFrame:CGRectZero];
 //            UIImage * image = [UIImage imageNamed:CTVW_dot_image];
@@ -377,7 +344,7 @@
 //            }
 //        }
 //    }
-//    
+    
     if (self.isPlaying) {
         [self playAnimating];
     }else {
@@ -387,26 +354,76 @@
 
 -(void)playAudio
 {
+//TODO
 //    if (nil != self.voiceUrl) {
-//        __weak MFAudioLabel * weakSelf = self;
-//        [APChatMediaManager play:self.voiceObj finishCallback:^(BOOL finish, CGFloat duration) {
-//            if(finish){
-//                self.isPlaying = NO;
-//                weakSelf.voiceObj.duration = MAX(1, floor(duration));
-//                [weakSelf reloadMediaState];
-//            }
-//            [weakSelf stopAnimating];
-//        }];
-//        self.isPlaying = YES;
-//        [self playAnimating];
+//        __weak MFAudioLabel * wSelf = self;
+//        [APChatMediaManager play:self.voiceObj
+//                  finishCallback:^(APMMAudioPlayStatus status) {
+//                      switch (status) {
+//                          case APMMAudioStartDownLoad:{
+//                              [wSelf loadBegin];
+//                          }
+//                              break;
+//                          case APMMAudioFinishDownLoad:{
+//                              [wSelf loadEnd];
+//                          }
+//                              break;
+//                          case APMMAudioDownLoadFail:{
+//                              [wSelf loadEnd];
+//                          }
+//                              break;
+//                          case APMMAudioPlayBegin:{
+//                              [wSelf beginPlay];
+//                          }
+//                              break;
+//                          case APMMAudioPlayFinish:{
+//                              [wSelf stopPlay];
+//                          }
+//                              break;
+//                          case APMMAudioPlayFail:{
+//                              [wSelf stopPlay];
+//                          }
+//                              break;
+//                          case APMMAudioPlayUndefined:{
+//                              [wSelf stopPlay];
+//                          }
+//                              break;
+//                          default:{
+//                              [wSelf stopPlay];
+//                          }
+//                              break;
+//                      }
+//                  }];
 //    }
 //    [self.mediaState setInteger:1 forKey:@"audioState"];
 //    [self postMediaStateChangeNotification];
+//    [self reloadMediaState];
+}
+
+- (void)loadBegin{
+    NSLog(@"++++++Voice URL LoadBegin:%@",self.voiceUrl);
+}
+
+- (void)loadEnd{
+    NSLog(@"++++++Voice URL LoadEnd:%@",self.voiceUrl);
+}
+
+- (void)beginPlay{
+    NSLog(@"++++++Voice URL beginPlay:%@",self.voiceUrl);
+    self.isPlaying = YES;
+    [self playAnimating];
+}
+
+- (void)stopPlay{
+    NSLog(@"++++++Voice URL endPlay:%@",self.voiceUrl);
+    self.isPlaying = NO;
     [self reloadMediaState];
+    [self stopAnimating];
 }
 
 - (void)postMediaStateChangeNotification
 {
+//TODO
 //    NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
 //    [dict setObjectOrNil:self.clientMsgID forKey:@"clientMsgID"];
 //    [dict setObjectOrNil:self.mediaState forKey:@"mediaState"];
@@ -415,6 +432,7 @@
 
 -(void)pauseAudio
 {
+//TODO
 //    self.isPlaying = NO;
 //    [APChatMediaManager stop:self.voiceObj];
 //    [self stopAnimating];
