@@ -20,8 +20,9 @@ return shared##className; \
 }
 
 #define kNotificationDidChangeMediaState        @"kNotificationDidChangeMediaState"
-#define DEFAULTICON                             [MFResourceCenter imageNamed:@"headIcon.png"]
 #define DEFAULTICONNAME                         @"headIcon.png"
+#define DEFAULTICON                             [MFResourceCenter imageNamed:DEFAULTICONNAME]
+
 
 //模版id
 #define DIALOG_TEMPLATE_UNKNOW                  @"tid-10000"
@@ -48,19 +49,11 @@ return shared##className; \
 //关键字
 #define KEYWORD_SEED                            @"seed"
 #define KEYWORD_ID                              @"id"
-#define KEYWORD_TEMPLATE_ID                     @"id"
 #define KEYWORD_DS_DATA                         @"data"
 #define KEYWORD_DATASOURCEKEY                   @"dsKey"
 #define KEYWORD_LINK                            @"link"
 #define KEYWORD_NUMBEROFLINES                   @"numberOfLines"
 
-//参数
-#define L_OPT_USERID                            @"tUserId"
-#define L_OPT_USERNAME                          @"tUserName"
-#define L_OPT_RETURNID                          @"returnAppId"
-#define L_OPT_USERTYPE                          @"tUserType"
-#define L_OPT_HIDEMENU                          @"hideMenu"
-#define L_OPT_FORCEREQUEST                      @"forceRequest"
 
 #define STANDARD_WIDTH                          320
 #define IMAGEWIDTH                              120
@@ -111,6 +104,25 @@ typedef enum {
     MFBGImageTypeBlueWhite = 4,
     
 } MFBGImageType;
+
+
+
+
+//以下为Chat相关，到时候移到HiChat上层CTDefine.h
+
+#define kNotificationHiChatBackgroundImageDidUpdate \
+                                                @"kNotificationHiChatBackgroundImageDidUpdate"
+#define MFSDKImage(imageName)   \
+                                                [UIImage imageNamed:[NSString stringWithFormat:@"MFSDK.bundle/%@", imageName]]
+
+//参数
+#define L_OPT_USERID                            @"tUserId"
+#define L_OPT_USERNAME                          @"tUserName"
+#define L_OPT_RETURNID                          @"returnAppId"
+#define L_OPT_USERTYPE                          @"tUserType"
+#define L_OPT_HIDEMENU                          @"hideMenu"
+#define L_OPT_FORCEREQUEST                      @"forceRequest"
+
 
 typedef enum {
     MFAlignmentTypeLeft = 0,

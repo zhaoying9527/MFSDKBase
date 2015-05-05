@@ -740,6 +740,7 @@ tid-14-body-img
     top:0;
     width:120;
     height:80;
+    background-color:white;
     touchEnabled:YES;
     alignmentType:none;
 }
@@ -1574,7 +1575,7 @@ tid-102-body-toptitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-102-body-image
 {
@@ -1753,7 +1754,7 @@ tid-102-message-emoji-body-toptitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-102-message-emoji-body-image
 {
@@ -1966,7 +1967,7 @@ tid-102-voice-body-toptitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-102-voice-body-image
 {
@@ -2090,7 +2091,7 @@ tid-103-body-midtitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-103-retry-button
 {
@@ -2187,7 +2188,7 @@ tid-103-message-body-midtitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-103-message-body-message
 {
@@ -2299,7 +2300,7 @@ tid-103-message-emoji-body-midtitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-103-message-emoji-body-message
 {
@@ -2421,7 +2422,7 @@ tid-103-voice-emoji-body-midtitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-103-voice-emoji-body-voice
 {
@@ -2544,7 +2545,7 @@ tid-103-voice-body-midtitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-103-voice-body-voice
 {
@@ -2633,7 +2634,7 @@ tid-104-body-toptitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-104-body-image
 {
@@ -2730,7 +2731,7 @@ tid-104-message-body-toptitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-104-message-body-image
 {
@@ -2867,7 +2868,7 @@ tid-104-message-emoji-body-midtitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-104-message-emoji-body-message
 {
@@ -2964,7 +2965,7 @@ tid-104-voice-emoji-body-toptitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-104-voice-emoji-body-image
 {
@@ -3087,7 +3088,7 @@ tid-104-voice-body-toptitle
     text-align:left;
     background-color:RGB();
     reverse:YES;
-    format:money;
+    format:text;
 }
 tid-104-voice-body-image
 {

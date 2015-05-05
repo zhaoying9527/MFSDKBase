@@ -48,6 +48,7 @@
     if ([formatString isKindOfClass:[NSString class]]) {
         _formatString = formatString;
         if ([self.format isEqualToString:@"money"]) {
+//TODO
 //            __weak __typeof(self)weakSelf = self;
             NSString *outString = [NSString stringWithFormat:@"¥ %@",_formatString];
 //            CGFloat size = weakSelf.font.pointSize;

@@ -38,8 +38,6 @@
 	<string>hidden</string>
 	<key>numberOfLines</key>
 	<string>numberOfLines</string>
-	<key>layout</key>
-	<string>layout</string>
 	<key>format</key>
 	<string>format</string>
 	<key>touchEnabled</key>

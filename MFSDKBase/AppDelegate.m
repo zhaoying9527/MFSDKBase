@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     CGRect frame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:frame];
-    [self.window setBackgroundColor:[UIColor orangeColor]];
+    [self.window setBackgroundColor:[UIColor blackColor]];
 
     
     NSString *bundlePath = [[NSString alloc] initWithFormat:@"%@/%@",[MFHelper getResourcePath],[MFHelper getBundleName]];

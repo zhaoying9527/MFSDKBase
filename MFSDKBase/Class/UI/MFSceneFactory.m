@@ -203,9 +203,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
         retObj = [NSNumber numberWithInt:alignment];
     }else if ([propertyName isEqualToString:@"visibility"]) {
         retObj = [MFHelper formatVisibilityWithString:propertyValue];
-    }else if ([propertyName isEqualToString:@"layout"]) {
-        MFLayoutType layoutType = [MFHelper formatLayoutWithString:propertyValue];
-        retObj = [NSNumber numberWithInt:layoutType];
     }else if ([propertyName isEqualToString:@"format"]) {
         retObj = propertyValue;
     }else if ([propertyName isEqualToString:@"touchEnabled"]) {

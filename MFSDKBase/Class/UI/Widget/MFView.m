@@ -12,6 +12,7 @@
 #import "MFHelper.h"
 #import "MFScript.h"
 #import "MFResourceCenter.h"
+//TODO
 //#import <APWebImage/SDWebImage.h>
 
 @interface MFView ()
@@ -163,6 +164,7 @@
         }
     }
     else if ([backgroundImage hasPrefix:@"http://"]) {
+//TODO
 //        UIImage *bannerImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
 //        [_backgroundImageView setImageWithURL:[NSURL URLWithString:backgroundImage]
 //                             placeholderImage:bannerImage

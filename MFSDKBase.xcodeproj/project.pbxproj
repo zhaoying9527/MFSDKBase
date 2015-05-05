@@ -32,11 +32,34 @@
 		2399428D1AF7E88F0020EDB6 /* MFChatImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399428A1AF7E88F0020EDB6 /* MFChatImageView.m */; };
 		2399428E1AF7E88F0020EDB6 /* MFCloudImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399428C1AF7E88F0020EDB6 /* MFCloudImageView.m */; };
 		239942911AF7ED2F0020EDB6 /* HTMLParsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942901AF7ED2F0020EDB6 /* HTMLParsers.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		239942941AF8AC6D0020EDB6 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942931AF8AC6D0020EDB6 /* MFTableView.m */; };
+		239942971AF8ACC20020EDB6 /* MFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942961AF8ACC20020EDB6 /* MFActivityIndicatorView.m */; };
+		2399429A1AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942991AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m */; };
+		2399429D1AF8AE1F0020EDB6 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399429C1AF8AE1F0020EDB6 /* UIImage+Scale.m */; };
+		239942A01AF8AE680020EDB6 /* MFImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399429F1AF8AE680020EDB6 /* MFImageBrowser.m */; };
+		239942A31AF8B1000020EDB6 /* MFGIFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942A21AF8B1000020EDB6 /* MFGIFView.m */; };
+		239942E41AF8B3C80020EDB6 /* MFBackgroundCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942CC1AF8B3C80020EDB6 /* MFBackgroundCollectionViewCell.m */; };
+		239942E51AF8B3C80020EDB6 /* MFImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942CE1AF8B3C80020EDB6 /* MFImageCollectionViewCell.m */; };
+		239942E61AF8B3C80020EDB6 /* MFImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942D01AF8B3C80020EDB6 /* MFImagePickerController.m */; };
+		239942E71AF8B3C80020EDB6 /* MFSelectBackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942D21AF8B3C80020EDB6 /* MFSelectBackgroundViewController.m */; };
+		239942E81AF8B3C80020EDB6 /* MFBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942D51AF8B3C80020EDB6 /* MFBadgeButton.m */; };
+		239942E91AF8B3C80020EDB6 /* MFCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942D71AF8B3C80020EDB6 /* MFCheckbox.m */; };
+		239942EA1AF8B3C80020EDB6 /* MFPhotoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942DA1AF8B3C80020EDB6 /* MFPhotoAPI.m */; };
+		239942EB1AF8B3C80020EDB6 /* MFPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942DC1AF8B3C80020EDB6 /* MFPhotoCell.m */; };
+		239942EC1AF8B3C80020EDB6 /* MFPhotoPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 239942DD1AF8B3C80020EDB6 /* MFPhotoPicker.bundle */; };
+		239942ED1AF8B3C80020EDB6 /* MFPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942DF1AF8B3C80020EDB6 /* MFPhotoPickerController.m */; };
+		239942EE1AF8B3C80020EDB6 /* MFPhotoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942E11AF8B3C80020EDB6 /* MFPhotoPreviewViewController.m */; };
+		239942EF1AF8B3C80020EDB6 /* MFRadiobox.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942E31AF8B3C80020EDB6 /* MFRadiobox.m */; };
 		23E94F521AD634FC006B2946 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F491AD634FC006B2946 /* ESCssParser.m */; };
 		23E94F531AD634FC006B2946 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F4A1AD634FC006B2946 /* ESCssTokenizer.m */; };
 		23E94F541AD634FC006B2946 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F4C1AD634FC006B2946 /* ESCssTokens.m */; };
 		23E94F551AD634FC006B2946 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F4F1AD634FC006B2946 /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23E94F661AD8BB9A006B2946 /* MFTipsWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F651AD8BB9A006B2946 /* MFTipsWidget.m */; };
+		23F0D4F41AF8E20000D764B9 /* CTAttributedLabelAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F0D4E81AF8E20000D764B9 /* CTAttributedLabelAttachment.m */; };
+		23F0D4F51AF8E20000D764B9 /* CTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F0D4EA1AF8E20000D764B9 /* CTLabel.m */; };
+		23F0D4F61AF8E20000D764B9 /* NSMutableAttributedString+CT.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F0D4EC1AF8E20000D764B9 /* NSMutableAttributedString+CT.m */; };
+		23F0D4F81AF8E20000D764B9 /* CTLabelURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F0D4F01AF8E20000D764B9 /* CTLabelURL.m */; };
+		23F0D4F91AF8E20000D764B9 /* MFEmojiLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F0D4F31AF8E20000D764B9 /* MFEmojiLabel.m */; };
 		23F385A41AD4C247002A8F32 /* MFBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385521AD4C247002A8F32 /* MFBridge.m */; };
 		23F385A51AD4C247002A8F32 /* MFDispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385541AD4C247002A8F32 /* MFDispatchCenter.m */; };
 		23F385A61AD4C247002A8F32 /* MFHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385581AD4C247002A8F32 /* MFHelper.m */; };
@@ -118,6 +141,42 @@
 		2399428C1AF7E88F0020EDB6 /* MFCloudImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCloudImageView.m; sourceTree = "<group>"; };
 		2399428F1AF7ED2F0020EDB6 /* HTMLParsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParsers.h; sourceTree = "<group>"; };
 		239942901AF7ED2F0020EDB6 /* HTMLParsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParsers.m; sourceTree = "<group>"; };
+		239942921AF8AC6D0020EDB6 /* MFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFTableView.h; sourceTree = "<group>"; };
+		239942931AF8AC6D0020EDB6 /* MFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFTableView.m; sourceTree = "<group>"; };
+		239942951AF8ACC20020EDB6 /* MFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFActivityIndicatorView.h; sourceTree = "<group>"; };
+		239942961AF8ACC20020EDB6 /* MFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFActivityIndicatorView.m; sourceTree = "<group>"; };
+		239942981AF8ADDB0020EDB6 /* UIImageView+MD5Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MD5Manager.h"; sourceTree = "<group>"; };
+		239942991AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MD5Manager.m"; sourceTree = "<group>"; };
+		2399429B1AF8AE1F0020EDB6 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		2399429C1AF8AE1F0020EDB6 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		2399429E1AF8AE680020EDB6 /* MFImageBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFImageBrowser.h; sourceTree = "<group>"; };
+		2399429F1AF8AE680020EDB6 /* MFImageBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFImageBrowser.m; sourceTree = "<group>"; };
+		239942A11AF8B1000020EDB6 /* MFGIFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGIFView.h; sourceTree = "<group>"; };
+		239942A21AF8B1000020EDB6 /* MFGIFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFGIFView.m; sourceTree = "<group>"; };
+		239942CB1AF8B3C80020EDB6 /* MFBackgroundCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBackgroundCollectionViewCell.h; sourceTree = "<group>"; };
+		239942CC1AF8B3C80020EDB6 /* MFBackgroundCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBackgroundCollectionViewCell.m; sourceTree = "<group>"; };
+		239942CD1AF8B3C80020EDB6 /* MFImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFImageCollectionViewCell.h; sourceTree = "<group>"; };
+		239942CE1AF8B3C80020EDB6 /* MFImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFImageCollectionViewCell.m; sourceTree = "<group>"; };
+		239942CF1AF8B3C80020EDB6 /* MFImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFImagePickerController.h; sourceTree = "<group>"; };
+		239942D01AF8B3C80020EDB6 /* MFImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFImagePickerController.m; sourceTree = "<group>"; };
+		239942D11AF8B3C80020EDB6 /* MFSelectBackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSelectBackgroundViewController.h; sourceTree = "<group>"; };
+		239942D21AF8B3C80020EDB6 /* MFSelectBackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSelectBackgroundViewController.m; sourceTree = "<group>"; };
+		239942D41AF8B3C80020EDB6 /* MFBadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBadgeButton.h; sourceTree = "<group>"; };
+		239942D51AF8B3C80020EDB6 /* MFBadgeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBadgeButton.m; sourceTree = "<group>"; };
+		239942D61AF8B3C80020EDB6 /* MFCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCheckbox.h; sourceTree = "<group>"; };
+		239942D71AF8B3C80020EDB6 /* MFCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCheckbox.m; sourceTree = "<group>"; };
+		239942D81AF8B3C80020EDB6 /* MFPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPhoto.h; sourceTree = "<group>"; };
+		239942D91AF8B3C80020EDB6 /* MFPhotoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPhotoAPI.h; sourceTree = "<group>"; };
+		239942DA1AF8B3C80020EDB6 /* MFPhotoAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPhotoAPI.m; sourceTree = "<group>"; };
+		239942DB1AF8B3C80020EDB6 /* MFPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPhotoCell.h; sourceTree = "<group>"; };
+		239942DC1AF8B3C80020EDB6 /* MFPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPhotoCell.m; sourceTree = "<group>"; };
+		239942DD1AF8B3C80020EDB6 /* MFPhotoPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MFPhotoPicker.bundle; sourceTree = "<group>"; };
+		239942DE1AF8B3C80020EDB6 /* MFPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPhotoPickerController.h; sourceTree = "<group>"; };
+		239942DF1AF8B3C80020EDB6 /* MFPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPhotoPickerController.m; sourceTree = "<group>"; };
+		239942E01AF8B3C80020EDB6 /* MFPhotoPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPhotoPreviewViewController.h; sourceTree = "<group>"; };
+		239942E11AF8B3C80020EDB6 /* MFPhotoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFPhotoPreviewViewController.m; sourceTree = "<group>"; };
+		239942E21AF8B3C80020EDB6 /* MFRadiobox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFRadiobox.h; sourceTree = "<group>"; };
+		239942E31AF8B3C80020EDB6 /* MFRadiobox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFRadiobox.m; sourceTree = "<group>"; };
 		23DC8A371AE0B6DE00CED56A /* MFSDKBase-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MFSDKBase-Prefix.pch"; sourceTree = "<group>"; };
 		23E94F481AD634FC006B2946 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
 		23E94F491AD634FC006B2946 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
@@ -128,6 +187,17 @@
 		23E94F4F1AD634FC006B2946 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		23E94F641AD8BB9A006B2946 /* MFTipsWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFTipsWidget.h; sourceTree = "<group>"; };
 		23E94F651AD8BB9A006B2946 /* MFTipsWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFTipsWidget.m; sourceTree = "<group>"; };
+		23F0D4E71AF8E20000D764B9 /* CTAttributedLabelAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAttributedLabelAttachment.h; sourceTree = "<group>"; };
+		23F0D4E81AF8E20000D764B9 /* CTAttributedLabelAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAttributedLabelAttachment.m; sourceTree = "<group>"; };
+		23F0D4E91AF8E20000D764B9 /* CTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLabel.h; sourceTree = "<group>"; };
+		23F0D4EA1AF8E20000D764B9 /* CTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLabel.m; sourceTree = "<group>"; };
+		23F0D4EB1AF8E20000D764B9 /* NSMutableAttributedString+CT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+CT.h"; sourceTree = "<group>"; };
+		23F0D4EC1AF8E20000D764B9 /* NSMutableAttributedString+CT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+CT.m"; sourceTree = "<group>"; };
+		23F0D4EF1AF8E20000D764B9 /* CTLabelURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTLabelURL.h; path = ../CTLabelURL.h; sourceTree = "<group>"; };
+		23F0D4F01AF8E20000D764B9 /* CTLabelURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTLabelURL.m; path = ../CTLabelURL.m; sourceTree = "<group>"; };
+		23F0D4F11AF8E20000D764B9 /* CTLableDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTLableDefine.h; path = ../CTLableDefine.h; sourceTree = "<group>"; };
+		23F0D4F21AF8E20000D764B9 /* MFEmojiLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFEmojiLabel.h; sourceTree = "<group>"; };
+		23F0D4F31AF8E20000D764B9 /* MFEmojiLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFEmojiLabel.m; sourceTree = "<group>"; };
 		23F385511AD4C247002A8F32 /* MFBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFBridge.h; sourceTree = "<group>"; };
 		23F385521AD4C247002A8F32 /* MFBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBridge.m; sourceTree = "<group>"; };
 		23F385531AD4C247002A8F32 /* MFDispatchCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDispatchCenter.h; sourceTree = "<group>"; };
@@ -326,6 +396,44 @@
 			path = MFSDKBase/scripts;
 			sourceTree = "<group>";
 		};
+		239942CA1AF8B3C80020EDB6 /* MFBackgroundPickerController */ = {
+			isa = PBXGroup;
+			children = (
+				239942CB1AF8B3C80020EDB6 /* MFBackgroundCollectionViewCell.h */,
+				239942CC1AF8B3C80020EDB6 /* MFBackgroundCollectionViewCell.m */,
+				239942CD1AF8B3C80020EDB6 /* MFImageCollectionViewCell.h */,
+				239942CE1AF8B3C80020EDB6 /* MFImageCollectionViewCell.m */,
+				239942CF1AF8B3C80020EDB6 /* MFImagePickerController.h */,
+				239942D01AF8B3C80020EDB6 /* MFImagePickerController.m */,
+				239942D11AF8B3C80020EDB6 /* MFSelectBackgroundViewController.h */,
+				239942D21AF8B3C80020EDB6 /* MFSelectBackgroundViewController.m */,
+			);
+			path = MFBackgroundPickerController;
+			sourceTree = "<group>";
+		};
+		239942D31AF8B3C80020EDB6 /* MFPhotoPickerController */ = {
+			isa = PBXGroup;
+			children = (
+				239942D41AF8B3C80020EDB6 /* MFBadgeButton.h */,
+				239942D51AF8B3C80020EDB6 /* MFBadgeButton.m */,
+				239942D61AF8B3C80020EDB6 /* MFCheckbox.h */,
+				239942D71AF8B3C80020EDB6 /* MFCheckbox.m */,
+				239942D81AF8B3C80020EDB6 /* MFPhoto.h */,
+				239942D91AF8B3C80020EDB6 /* MFPhotoAPI.h */,
+				239942DA1AF8B3C80020EDB6 /* MFPhotoAPI.m */,
+				239942DB1AF8B3C80020EDB6 /* MFPhotoCell.h */,
+				239942DC1AF8B3C80020EDB6 /* MFPhotoCell.m */,
+				239942DD1AF8B3C80020EDB6 /* MFPhotoPicker.bundle */,
+				239942DE1AF8B3C80020EDB6 /* MFPhotoPickerController.h */,
+				239942DF1AF8B3C80020EDB6 /* MFPhotoPickerController.m */,
+				239942E01AF8B3C80020EDB6 /* MFPhotoPreviewViewController.h */,
+				239942E11AF8B3C80020EDB6 /* MFPhotoPreviewViewController.m */,
+				239942E21AF8B3C80020EDB6 /* MFRadiobox.h */,
+				239942E31AF8B3C80020EDB6 /* MFRadiobox.m */,
+			);
+			path = MFPhotoPickerController;
+			sourceTree = "<group>";
+		};
 		23E94F451AD634FC006B2946 /* Third-party */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +474,33 @@
 			path = HTMLParser;
 			sourceTree = "<group>";
 		};
+		23F0D4E51AF8E20000D764B9 /* MFLable */ = {
+			isa = PBXGroup;
+			children = (
+				23F0D4E61AF8E20000D764B9 /* BaseLabel */,
+				23F0D4F21AF8E20000D764B9 /* MFEmojiLabel.h */,
+				23F0D4F31AF8E20000D764B9 /* MFEmojiLabel.m */,
+			);
+			name = MFLable;
+			path = CTLable;
+			sourceTree = "<group>";
+		};
+		23F0D4E61AF8E20000D764B9 /* BaseLabel */ = {
+			isa = PBXGroup;
+			children = (
+				23F0D4EF1AF8E20000D764B9 /* CTLabelURL.h */,
+				23F0D4F01AF8E20000D764B9 /* CTLabelURL.m */,
+				23F0D4F11AF8E20000D764B9 /* CTLableDefine.h */,
+				23F0D4E71AF8E20000D764B9 /* CTAttributedLabelAttachment.h */,
+				23F0D4E81AF8E20000D764B9 /* CTAttributedLabelAttachment.m */,
+				23F0D4E91AF8E20000D764B9 /* CTLabel.h */,
+				23F0D4EA1AF8E20000D764B9 /* CTLabel.m */,
+				23F0D4EB1AF8E20000D764B9 /* NSMutableAttributedString+CT.h */,
+				23F0D4EC1AF8E20000D764B9 /* NSMutableAttributedString+CT.m */,
+			);
+			path = BaseLabel;
+			sourceTree = "<group>";
+		};
 		23F3852C1AD42C68002A8F32 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +525,12 @@
 		23F385551AD4C247002A8F32 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				2399429E1AF8AE680020EDB6 /* MFImageBrowser.h */,
+				2399429F1AF8AE680020EDB6 /* MFImageBrowser.m */,
+				2399429B1AF8AE1F0020EDB6 /* UIImage+Scale.h */,
+				2399429C1AF8AE1F0020EDB6 /* UIImage+Scale.m */,
+				239942981AF8ADDB0020EDB6 /* UIImageView+MD5Manager.h */,
+				239942991AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m */,
 				23F385561AD4C247002A8F32 /* MFDefine.h */,
 				23F385571AD4C247002A8F32 /* MFHelper.h */,
 				23F385581AD4C247002A8F32 /* MFHelper.m */,
@@ -485,6 +626,13 @@
 		23F3857D1AD4C247002A8F32 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				23F0D4E51AF8E20000D764B9 /* MFLable */,
+				239942A11AF8B1000020EDB6 /* MFGIFView.h */,
+				239942A21AF8B1000020EDB6 /* MFGIFView.m */,
+				239942951AF8ACC20020EDB6 /* MFActivityIndicatorView.h */,
+				239942961AF8ACC20020EDB6 /* MFActivityIndicatorView.m */,
+				239942921AF8AC6D0020EDB6 /* MFTableView.h */,
+				239942931AF8AC6D0020EDB6 /* MFTableView.m */,
 				239942891AF7E88F0020EDB6 /* MFChatImageView.h */,
 				2399428A1AF7E88F0020EDB6 /* MFChatImageView.m */,
 				2399428B1AF7E88F0020EDB6 /* MFCloudImageView.h */,
@@ -525,6 +673,8 @@
 		23F385A01AD4C247002A8F32 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				239942CA1AF8B3C80020EDB6 /* MFBackgroundPickerController */,
+				239942D31AF8B3C80020EDB6 /* MFPhotoPickerController */,
 				23F385A11AD4C247002A8F32 /* MFViewController.h */,
 				23F385A21AD4C247002A8F32 /* MFViewController.m */,
 			);
@@ -616,6 +766,7 @@
 				2386EB8F1AD9DB17006FE937 /* Balance.plist in Resources */,
 				2386EBA21ADA20E6006FE937 /* HiChat.bundle in Resources */,
 				2386EB8E1AD9DB17006FE937 /* Balance.lua in Resources */,
+				239942EC1AF8B3C80020EDB6 /* MFPhotoPicker.bundle in Resources */,
 				2386EB8C1AD9DB17006FE937 /* Balance.dataBinding in Resources */,
 				2386EBA01AD9E239006FE937 /* MFSDK.bundle in Resources */,
 				2386EB8A1AD9DB17006FE937 /* AppDelegate.lua in Resources */,
@@ -643,43 +794,65 @@
 				23F385B91AD4C247002A8F32 /* MFEmojiView.m in Sources */,
 				1CE933201AD656B9001BE962 /* MFDataBinding.m in Sources */,
 				231BE4571ACFC60000B65A58 /* ViewController.m in Sources */,
+				23F0D4F81AF8E20000D764B9 /* CTLabelURL.m in Sources */,
+				239942A31AF8B1000020EDB6 /* MFGIFView.m in Sources */,
+				23F0D4F61AF8E20000D764B9 /* NSMutableAttributedString+CT.m in Sources */,
+				239942E41AF8B3C80020EDB6 /* MFBackgroundCollectionViewCell.m in Sources */,
 				23F385AB1AD4C247002A8F32 /* MFLayoutCenter.m in Sources */,
 				1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */,
 				23F385A71AD4C247002A8F32 /* MFResourceCenter.m in Sources */,
 				2399428E1AF7E88F0020EDB6 /* MFCloudImageView.m in Sources */,
 				231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */,
+				239942EF1AF8B3C80020EDB6 /* MFRadiobox.m in Sources */,
 				23F385B71AD4C247002A8F32 /* MFButton.m in Sources */,
 				23F385BC1AD4C247002A8F32 /* MFRichLabel.m in Sources */,
 				23F385BA1AD4C247002A8F32 /* MFImageView.m in Sources */,
 				23E94F661AD8BB9A006B2946 /* MFTipsWidget.m in Sources */,
+				239942EA1AF8B3C80020EDB6 /* MFPhotoAPI.m in Sources */,
+				23F0D4F41AF8E20000D764B9 /* CTAttributedLabelAttachment.m in Sources */,
 				23F385B21AD4C247002A8F32 /* MFCorePlugInFactory.m in Sources */,
 				23F385AC1AD4C247002A8F32 /* MFPlugIn.m in Sources */,
+				23F0D4F51AF8E20000D764B9 /* CTLabel.m in Sources */,
 				23F385AF1AD4C247002A8F32 /* MFParser.m in Sources */,
+				2399429A1AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m in Sources */,
+				2399429D1AF8AE1F0020EDB6 /* UIImage+Scale.m in Sources */,
 				23F385A91AD4C247002A8F32 /* UIView+Sizes.m in Sources */,
 				1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */,
+				23F0D4F91AF8E20000D764B9 /* MFEmojiLabel.m in Sources */,
 				1CB259961AD572DF002BE0B1 /* NSObject+DOM.m in Sources */,
 				23F385B31AD4C247002A8F32 /* MFCorePlugInService.m in Sources */,
 				23F385B01AD4C247002A8F32 /* MFLuaScript.m in Sources */,
 				23E94F531AD634FC006B2946 /* ESCssTokenizer.m in Sources */,
 				23F385AA1AD4C247002A8F32 /* UIView+UUID.m in Sources */,
+				239942941AF8AC6D0020EDB6 /* MFTableView.m in Sources */,
+				239942A01AF8AE680020EDB6 /* MFImageBrowser.m in Sources */,
+				239942E81AF8B3C80020EDB6 /* MFBadgeButton.m in Sources */,
 				23E94F541AD634FC006B2946 /* ESCssTokens.m in Sources */,
 				1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */,
+				239942E51AF8B3C80020EDB6 /* MFImageCollectionViewCell.m in Sources */,
 				23F385B81AD4C247002A8F32 /* MFCell.m in Sources */,
 				23E94F521AD634FC006B2946 /* ESCssParser.m in Sources */,
 				23F385A51AD4C247002A8F32 /* MFDispatchCenter.m in Sources */,
 				23F385AE1AD4C247002A8F32 /* MFHtmlParser.m in Sources */,
+				239942971AF8ACC20020EDB6 /* MFActivityIndicatorView.m in Sources */,
 				239942911AF7ED2F0020EDB6 /* HTMLParsers.m in Sources */,
 				231BE4511ACFC60000B65A58 /* main.m in Sources */,
+				239942E91AF8B3C80020EDB6 /* MFCheckbox.m in Sources */,
 				23F385BB1AD4C247002A8F32 /* MFLabel.m in Sources */,
 				1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */,
+				239942ED1AF8B3C80020EDB6 /* MFPhotoPickerController.m in Sources */,
+				239942EE1AF8B3C80020EDB6 /* MFPhotoPreviewViewController.m in Sources */,
 				23F385C51AD4C247002A8F32 /* MFViewController.m in Sources */,
 				23F385B11AD4C247002A8F32 /* MFScript.m in Sources */,
 				23F385B61AD4C247002A8F32 /* MFAudioLabel.m in Sources */,
 				23F385A61AD4C247002A8F32 /* MFHelper.m in Sources */,
+				239942E61AF8B3C80020EDB6 /* MFImagePickerController.m in Sources */,
 				23F385AD1AD4C247002A8F32 /* MFCssParser.m in Sources */,
+				239942EB1AF8B3C80020EDB6 /* MFPhotoCell.m in Sources */,
 				23F385B41AD4C247002A8F32 /* MFSceneFactory.m in Sources */,
 				23E94F551AD634FC006B2946 /* HTMLNode.m in Sources */,
 				23F385A81AD4C247002A8F32 /* MFStrategyCenter.m in Sources */,
+				239942E71AF8B3C80020EDB6 /* MFSelectBackgroundViewController.m in Sources */,
 				23F385A41AD4C247002A8F32 /* MFBridge.m in Sources */,
 				23F385BD1AD4C247002A8F32 /* MFView.m in Sources */,
 				2399428D1AF7E88F0020EDB6 /* MFChatImageView.m in Sources */,

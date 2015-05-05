@@ -55,7 +55,6 @@
 + (NSNumber*)formatVisibilityWithString:(NSString*)visibility;
 + (UIFont*)formatFontWithString:(NSString*)font;
 + (UIImage *)formatImageWithString:(NSString*)imageUrl;
-+ (MFLayoutType)formatLayoutWithString:(NSString*)layout;
 + (NSNumber *)formatReverseWithString:(NSString*)reverse;
 + (BOOL)sameRect:(CGRect)rect withRect:(CGRect)withRect;
 

@@ -7,6 +7,7 @@
 //
 
 #import "MFImageView.h"
+//TODO
 //#import <APWebImage/SDWebImage.h>
 #import "MFHelper.h"
 #import "MFResourceCenter.h"
@@ -133,6 +134,7 @@
             image = [MFHelper styleRightImageWithId:rightImageUrl];
         }
     }else if ([backgroundImage hasPrefix:@"http://"]) {
+//TODO
 //        UIImage *bannerImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
 //        [self setImageWithURL:[NSURL URLWithString:backgroundImage]
 //             placeholderImage:bannerImage

@@ -15,6 +15,8 @@
 #import "MFButton.h"
 #import "MFAudioLabel.h"
 #import "MFEmojiView.h"
+#import "MFGIFView.h"
+#import "MFEmojiLabel.h"
 #import "MFTipsWidget.h"
 #import "MFHelper.h"
 #import "MFResourceCenter.h"

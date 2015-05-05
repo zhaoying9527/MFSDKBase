@@ -483,20 +483,6 @@
     return [MFResourceCenter imageNamed:trimUrl];
 }
 
-+ (MFLayoutType)formatLayoutWithString:(NSString*)layout
-{
-    MFLayoutType retLayoutType = MFLayoutTypeStretch;
-    NSString * tas = [layout lowercaseString];
-    if ([tas isEqualToString:@"stretch"]) {
-        retLayoutType = MFLayoutTypeStretch;
-    }else if ([tas isEqualToString:@"absolute"]) {
-        retLayoutType = MFLayoutTypeAbsolute;
-    }else if ([tas isEqualToString:@"none"]) {
-        retLayoutType = MFLayoutTypeNone;
-    }
-    return retLayoutType;
-}
-
 + (NSNumber *)formatReverseWithString:(NSString*)reverse
 {
     BOOL reverseType = NO;
@@ -692,7 +678,7 @@
     BOOL retCode = NO;
     NSString *lowLabelString = [labelString lowercaseString];
     if ([lowLabelString isEqualToString:@"label"]
-        || [lowLabelString isEqualToString:@"slidelabel"]
+        || [lowLabelString isEqualToString:@"label"]
         || [lowLabelString isEqualToString:@"richlabel"]) {
         retCode = YES;
     }

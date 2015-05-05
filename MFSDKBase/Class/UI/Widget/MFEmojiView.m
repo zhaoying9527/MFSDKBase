@@ -11,11 +11,13 @@
 #import "NSObject+DOM.h"
 #import "MFHelper.h"
 #import "MFScript.h"
+//TODO
 //#import "APChatResourceManager.h"
 //#import "APChatMediaManager.h"
 //#import "APChatEmotion+Play.h"
 
 @interface MFEmojiView () <UIGestureRecognizerDelegate>
+//TODO
 //@property (nonatomic, strong) APChatEmotion * chatEmotion;
 @end
 
@@ -32,6 +34,7 @@
 
 - (void)dealloc
 {
+//TODO
 //    [self.chatEmotion stopPlay];
 }
 
@@ -73,6 +76,7 @@
 
 - (void)handleSingleFingerEvent
 {
+//TODO
 //    if (self.chatEmotion) {
 //        self.chatEmotion.hasGrayBg = NO;
 //        [self.chatEmotion playWithinView:nil];
@@ -81,9 +85,10 @@
 
 - (void)setEmoji:(NSDictionary*)emoji
 {
-//    _emoji = emoji;
+    _emoji = emoji;
+//TODO
 //    if ([_emoji isKindOfClass:[NSDictionary class]]) {
-//        UIImage *bannerImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
+//        UIImage *bannerImage = [[PKResourceCenter sharedPKResourceCenter] bannerImage];
 //        NSString *emojiKey = [_emoji objectForKey:@"emoji"];
 //        if(emojiKey.length != 0){
 //            NSString *orderNo = [_emoji objectForKey:@"orderNo"];

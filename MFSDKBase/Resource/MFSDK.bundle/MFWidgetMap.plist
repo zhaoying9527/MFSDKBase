@@ -10,23 +10,25 @@
 	<string>MFView</string>
 	<key>button</key>
 	<string>MFButton</string>
-	<key>emoji</key>
-	<string>MFEmojiView</string>
-	<key>img</key>
-	<string>MFImageView</string>
 	<key>label</key>
 	<string>MFLabel</string>
 	<key>richlabel</key>
 	<string>MFRichLabel</string>
-	<key>slidelabel</key>
-	<string>MFLabel</string>
+	<key>emoji</key>
+	<string>MFEmojiView</string>
+	<key>emojilabel</key>
+	<string>MFEmojiLabel</string>
+	<key>gifemoji</key>
+	<string>MFGIFView</string>
 	<key>audio</key>
 	<string>MFAudioLabel</string>
+	<key>img</key>
+	<string>MFImageView</string>
 	<key>cloudimage</key>
 	<string>MFCloudImageView</string>
 	<key>chatimage</key>
 	<string>MFChatImageView</string>
 	<key>indicator</key>
-	<string>UIActivityIndicatorView</string>
+	<string>MFActivityIndicatorView</string>
 </dict>
 </plist>

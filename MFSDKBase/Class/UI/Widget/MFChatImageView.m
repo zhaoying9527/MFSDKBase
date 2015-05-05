@@ -32,7 +32,7 @@ inline static CGRect CGRectCenterRectForResizableImage(UIImage *image)
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        //self.backgroundColor = [UIColor clearColor];
         self.chatType = MFChatImageViewReceiver;
         [self setupMaskInfo];
     }
@@ -67,16 +67,16 @@ inline static CGRect CGRectCenterRectForResizableImage(UIImage *image)
 - (void)setupMaskInfo
 {
     self.receiverMaskImage = [self loadImageWithId:@"ReceiverImageNodeMask"
-                                          withPath:[[NSBundle mainBundle] pathForResource:@"SocialSDK.bundle/HiChatSDK/ReceiverImageNodeMask@2x" ofType:@"png"]];
+                                          withPath:[[NSBundle mainBundle] pathForResource:@"MFSDK.bundle/ReceiverImageNodeMask@2x" ofType:@"png"]];
     
-    self.self.senderMaskImage = [self loadImageWithId:@"SenderImageNodeMask"
-                                             withPath:[[NSBundle mainBundle] pathForResource:@"SocialSDK.bundle/HiChatSDK/SenderImageNodeMask@2x" ofType:@"png"]];
+    self.senderMaskImage = [self loadImageWithId:@"SenderImageNodeMask"
+                                             withPath:[[NSBundle mainBundle] pathForResource:@"MFSDK.bundle/SenderImageNodeMask@2x" ofType:@"png"]];
     
-    self.self.receiverBorderImage = [self loadImageWithId:@"ReceiverImageNodeBorder"
-                                                 withPath:[[NSBundle mainBundle] pathForResource:@"SocialSDK.bundle/HiChatSDK/ReceiverImageNodeBorder@2x" ofType:@"png"]];
+    self.receiverBorderImage = [self loadImageWithId:@"ReceiverImageNodeBorder"
+                                                 withPath:[[NSBundle mainBundle] pathForResource:@"MFSDK.bundle/ReceiverImageNodeBorder@2x" ofType:@"png"]];
     
-    self.self.senderBorderImage = [self loadImageWithId:@"SenderImageNodeBorder"
-                                               withPath:[[NSBundle mainBundle] pathForResource:@"SocialSDK.bundle/HiChatSDK/SenderImageNodeBorder@2x" ofType:@"png"]];
+    self.senderBorderImage = [self loadImageWithId:@"SenderImageNodeBorder"
+                                               withPath:[[NSBundle mainBundle] pathForResource:@"MFSDK.bundle/SenderImageNodeBorder@2x" ofType:@"png"]];
     
     if (nil == self.borderView) {
         UIImageView *borderView = [[UIImageView alloc] initWithFrame:self.bounds];
@@ -85,24 +85,6 @@ inline static CGRect CGRectCenterRectForResizableImage(UIImage *image)
         [self addSubview:borderView];
         self.borderView = borderView;
     }
-    
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.borderView.frame = self.frame;
-    [self refreshMask];
-}
-
-- (void)setChatType:(MFChatImageViewType)chatType
-{
-    _chatType = chatType;
-}
-
-- (void)setImage:(UIImage *)image
-{
-    [super setImage:image];
     
 }
 
@@ -124,6 +106,34 @@ inline static CGRect CGRectCenterRectForResizableImage(UIImage *image)
     self.borderView.image = self.chatType == MFChatImageViewReceiver ? self.receiverBorderImage : self.senderBorderImage;
 }
 
+
+- (void)setChatType:(MFChatImageViewType)chatType
+{
+    _chatType = chatType;
+}
+
+
+//TODO
+//- (void)setImage:(UIImage*)image
+//{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        UIImage* fitImage = image;
+//        fitImage = [PKHelper resizeImageWithSize:image size:self.frame.size];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [super setImage:fitImage];
+//        });
+//    });
+////    dispatch_async(dispatch_get_main_queue(), ^{
+////        CGFloat scale = [UIScreen mainScreen].scale;
+////        UIImage* fitImage = image;
+////        if (image.size.width > self.frame.size.width * scale) {
+////            fitImage = [PKHelper resizeImageWithSize:image size:self.frame.size];
+////        }
+////
+////        [super setImage:fitImage];
+////    });
+//}
+
 - (void)alignHandling
 {
     if (MFAlignmentTypeLeft == self.alignmentType) {
@@ -135,4 +145,5 @@ inline static CGRect CGRectCenterRectForResizableImage(UIImage *image)
     [self refreshMask];
     [self refreshBorder];
 }
+
 @end
