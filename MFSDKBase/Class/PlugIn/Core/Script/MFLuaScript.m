@@ -78,7 +78,8 @@ LUALIB_API int (luaL_loadstring) (lua_State *L, const char *s);
 - (BOOL)loadFile:(NSString*)file
 {
     if (nil != file) {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:file ofType:@"lua"];
+        NSString *bundlePath = [[NSString alloc] initWithFormat:@"%@/%@",[MFHelper getResourcePath],[MFHelper getBundleName]];
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@.lua", bundlePath, file];
         NSString *content = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
         self.scriptFiles[file] = file;
         [self loadText:content];

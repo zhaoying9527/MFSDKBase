@@ -54,6 +54,7 @@
             }else {
                 UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
                 imageView.image = bannderImage;
+//TODO
 //                [imageView setImageWithURL:[NSURL URLWithString:dataObj] placeholderImage:bannderImage
 //                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
 //                                 }];
@@ -66,6 +67,7 @@
             }else {
                 UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];
                 imageView.image = bannderImage;
+//TODO
 //                [imageView setImageWithURL:[NSURL URLWithString:defaultSrc] placeholderImage:bannderImage
 //                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
 //                                 }];
@@ -80,6 +82,7 @@
         if ((nil != dataObj && [dataObj length] > 0) || (defaultSrc && defaultSrc.length>0)) {
             if ([MFHelper isURLString:dataObj]) {
                   imageView.image = bannderImage;
+//TODO
 //                [(MFChatImageView*)widget setImageWithURL:[NSURL URLWithString:dataObj] placeholderImage:bannderImage
 //                                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
 //                                                }];
@@ -103,6 +106,18 @@
         NSDictionary *emoji = [dataDict objectForKey:bindingField];
         if (nil != emoji) {
             [emojiView setEmoji:emoji];
+        }
+    }else if ([widget isKindOfClass:[MFEmojiLabel class]]){
+        MFEmojiLabel *emojiLabel = (MFEmojiLabel*)widget;
+//TODO
+//        if (dataObj.length > 0) {
+//            dataObj = [dataObj containsEmoji] ? [dataObj ubb2unified]: dataObj;
+//        }
+        [emojiLabel setCTText:dataObj emojiMap:nil];
+    }else if ([widget isKindOfClass:[MFGIFView class]]) {
+        MFGIFView *gifView = (MFGIFView*)widget;
+        if (nil != dataSource) {
+            gifView.gif = dataSource;
         }
     }
 }
