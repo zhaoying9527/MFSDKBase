@@ -9,10 +9,11 @@
 #import "MFSDKLauncher.h"
 #import "MFSceneCenter.h"
 #import "MFDispatchCenter.h"
-
+#import "MFWindowsStyleManager.h"
 @implementation MFSDKLauncher
 + (void)initialize
 {
+    [[MFWindowsStyleManager sharedMFWindowsStyleManager] loadWStyleWithName:@"MFChat"];
     [MFSceneCenter sharedMFSceneCenter];
     [MFDispatchCenter sharedMFDispatchCenter];
 }

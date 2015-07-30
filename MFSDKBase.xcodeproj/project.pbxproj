@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C775C151B6A6A5400D5DCFB /* MFWindowsStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C775C141B6A6A5400D5DCFB /* MFWindowsStyleManager.m */; };
 		1CB259961AD572DF002BE0B1 /* NSObject+DOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB259951AD572DF002BE0B1 /* NSObject+DOM.m */; };
 		1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */; };
 		1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */; };
@@ -100,6 +101,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C775C131B6A6A5400D5DCFB /* MFWindowsStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFWindowsStyleManager.h; sourceTree = "<group>"; };
+		1C775C141B6A6A5400D5DCFB /* MFWindowsStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFWindowsStyleManager.m; sourceTree = "<group>"; };
 		1CB259941AD572DF002BE0B1 /* NSObject+DOM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DOM.h"; sourceTree = "<group>"; };
 		1CB259951AD572DF002BE0B1 /* NSObject+DOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DOM.m"; sourceTree = "<group>"; };
 		1CC8EED41AD13B5C008C0286 /* MFSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFSDK.h; path = MFSDKBase/MFSDK.h; sourceTree = SOURCE_ROOT; };
@@ -632,6 +635,8 @@
 				1CE9331E1AD656B9001BE962 /* MFDataBinding.h */,
 				1CE9331F1AD656B9001BE962 /* MFDataBinding.m */,
 				23F3857D1AD4C247002A8F32 /* Widget */,
+				1C775C131B6A6A5400D5DCFB /* MFWindowsStyleManager.h */,
+				1C775C141B6A6A5400D5DCFB /* MFWindowsStyleManager.m */,
 			);
 			name = UI;
 			path = Class/UI;
@@ -841,6 +846,7 @@
 				23F385AA1AD4C247002A8F32 /* UIView+UUID.m in Sources */,
 				239942941AF8AC6D0020EDB6 /* MFTableView.m in Sources */,
 				239942A01AF8AE680020EDB6 /* MFImageBrowser.m in Sources */,
+				1C775C151B6A6A5400D5DCFB /* MFWindowsStyleManager.m in Sources */,
 				239942E81AF8B3C80020EDB6 /* MFBadgeButton.m in Sources */,
 				23E94F541AD634FC006B2946 /* ESCssTokens.m in Sources */,
 				1CE2F38A1AD518CD00E27AA8 /* MFScene.m in Sources */,

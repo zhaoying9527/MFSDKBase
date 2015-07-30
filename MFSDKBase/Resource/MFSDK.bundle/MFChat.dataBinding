@@ -489,8 +489,6 @@ tid-104-message-body-message
 {
     dsKey:message;
 }
-
-
 tid-104-message-emoji-head-view
 {
     dsKey:HeadIcon;

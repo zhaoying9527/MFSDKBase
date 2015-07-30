@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MFViewController.h"
 #import "MFSDKLauncher.h"
+#import "MFWindowsStyleManager.h"
 @interface AppDelegate ()
 @property (nonatomic, strong) MFScene *scene;
 @end
@@ -29,6 +30,7 @@
     
     //初始化环境
     [MFSDKLauncher initialize];
+    
     self.scene = [[MFSceneCenter sharedMFSceneCenter] loadSceneWithName:@"MFChat"];
     [self.scene sceneViewControllerReloadData:dataArray dataAdapterBlock:nil completionBlock:^(MFViewController *viewControler) {
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewControler];
@@ -36,6 +38,7 @@
         [self.window makeKeyAndVisible];
         [viewControler.tableView reloadData];
     }];
+    
 
     return YES;
 }
