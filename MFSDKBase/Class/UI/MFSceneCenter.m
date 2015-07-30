@@ -23,8 +23,6 @@
 @property (nonatomic, strong)NSMutableDictionary *htmlParsers;
 
 @property (nonatomic, strong) NSOperationQueue *layoutCalculateQueue;
-
-- (id)parse:(MFPlugInType)plugInType withPath:(NSString*)path error:(NSError**)error;
 @end
 
 @implementation MFSceneCenter
@@ -86,7 +84,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
 {
     MFWindowsStyleManager *styleMgr = [MFWindowsStyleManager sharedMFWindowsStyleManager];
     MFScene *resultScene = [[MFScene alloc] initWithDomNodes:styleMgr.bodyEntity withCss:styleMgr.css withDataBinding:styleMgr.databinding withEvents:styleMgr.events withStyles:styleMgr.style withSceneName:sceneName];
-        return resultScene;
+    return resultScene;
 }
 
 - (void)addLayoutOperations:(NSArray*)operations waitUntilFinished:(BOOL)wait
