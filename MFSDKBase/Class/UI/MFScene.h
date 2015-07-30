@@ -27,6 +27,7 @@ typedef NSMutableArray* (^MFDataAdapterBlock)(NSMutableArray *data);
 
 @property (nonatomic,copy)NSString              *sceneName;         /*场景名*/
 @property (nonatomic,strong)NSMutableArray      *dataArray;         /*场景数据*/
+@property (nonatomic,strong)NSMutableArray      *virtualNodes;      /*虚拟Node*/
 @property (nonatomic,copy)MFDataAdapterBlock    adapterBlock;       /*数据适配*/
 @property (nonatomic,strong)NSMutableDictionary *headerLayoutDict;  /*cell头部布局信息*/
 @property (nonatomic,strong)NSMutableDictionary *bodyLayoutDict;    /*cell正文布局信息*/

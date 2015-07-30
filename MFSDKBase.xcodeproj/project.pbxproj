@@ -21,6 +21,7 @@
 		231BE46B1ACFC60000B65A58 /* MFSDKBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */; };
 		231BE4D81AD0377100B65A58 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4D71AD0377100B65A58 /* libxml2.2.dylib */; };
 		231BE4ED1AD39AEB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4EC1AD39AEB00B65A58 /* wax.framework */; };
+		234D2E741B69C90100A57548 /* MFVirtualNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 234D2E731B69C90100A57548 /* MFVirtualNode.m */; };
 		2386EB8A1AD9DB17006FE937 /* AppDelegate.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB751AD9DB17006FE937 /* AppDelegate.lua */; };
 		2386EB8B1AD9DB17006FE937 /* Balance.css in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB761AD9DB17006FE937 /* Balance.css */; };
 		2386EB8C1AD9DB17006FE937 /* Balance.dataBinding in Resources */ = {isa = PBXBuildFile; fileRef = 2386EB771AD9DB17006FE937 /* Balance.dataBinding */; };
@@ -126,6 +127,8 @@
 		231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFSDKBaseTests.m; sourceTree = "<group>"; };
 		231BE4D71AD0377100B65A58 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		231BE4EC1AD39AEB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
+		234D2E721B69C90100A57548 /* MFVirtualNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFVirtualNode.h; sourceTree = "<group>"; };
+		234D2E731B69C90100A57548 /* MFVirtualNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFVirtualNode.m; sourceTree = "<group>"; };
 		2386EB751AD9DB17006FE937 /* AppDelegate.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDelegate.lua; sourceTree = "<group>"; };
 		2386EB761AD9DB17006FE937 /* Balance.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Balance.css; sourceTree = "<group>"; };
 		2386EB771AD9DB17006FE937 /* Balance.dataBinding */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Balance.dataBinding; sourceTree = "<group>"; };
@@ -315,6 +318,7 @@
 		231BE44D1ACFC60000B65A58 /* MFSDKBase */ = {
 			isa = PBXGroup;
 			children = (
+				234D2E711B69C8DB00A57548 /* VirtualNode */,
 				1CE2F3811AD4D8BA00E27AA8 /* App */,
 				1CE2F3741AD4D66C00E27AA8 /* DOM */,
 				23F385501AD4C247002A8F32 /* Event */,
@@ -372,6 +376,16 @@
 				231BE4EC1AD39AEB00B65A58 /* wax.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		234D2E711B69C8DB00A57548 /* VirtualNode */ = {
+			isa = PBXGroup;
+			children = (
+				234D2E721B69C90100A57548 /* MFVirtualNode.h */,
+				234D2E731B69C90100A57548 /* MFVirtualNode.m */,
+			);
+			name = VirtualNode;
+			path = Class/VirtualNode;
 			sourceTree = "<group>";
 		};
 		2386EB731AD9DB04006FE937 /* demo */ = {
@@ -805,6 +819,7 @@
 				231BE4541ACFC60000B65A58 /* AppDelegate.m in Sources */,
 				239942EF1AF8B3C80020EDB6 /* MFRadiobox.m in Sources */,
 				23F385B71AD4C247002A8F32 /* MFButton.m in Sources */,
+				234D2E741B69C90100A57548 /* MFVirtualNode.m in Sources */,
 				23F385BC1AD4C247002A8F32 /* MFRichLabel.m in Sources */,
 				23F385BA1AD4C247002A8F32 /* MFImageView.m in Sources */,
 				23E94F661AD8BB9A006B2946 /* MFTipsWidget.m in Sources */,
@@ -972,8 +987,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Chunrong (W2W9GPAEGE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -991,7 +1006,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a4899e12-abee-40c6-9565-b9ecf24a78e1";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1001,8 +1016,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Chunrong (W2W9GPAEGE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Chunrong (W2W9GPAEGE)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1020,7 +1035,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a4899e12-abee-40c6-9565-b9ecf24a78e1";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

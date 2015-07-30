@@ -8,6 +8,7 @@
 
 #import "HTMLParsers.h"
 
+static const NSInteger MaxEncodingStringLength = 256;
 
 @implementation HTMLParsers
 
@@ -53,7 +54,15 @@
 		{
 			CFStringEncoding cfenc = CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding);
 			CFStringRef cfencstr = CFStringConvertEncodingToIANACharSetName(cfenc);
-			const char *enc = CFStringGetCStringPtr(cfencstr, 0);
+
+            char buffer[MaxEncodingStringLength];
+            const char *enc = CFStringGetCStringPtr(cfencstr, 0);
+            if (enc == NULL && [[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+                if (CFStringGetCString(cfencstr, buffer, MaxEncodingStringLength, 0)) {
+                    enc = buffer;
+                }
+            }
+
 			// _doc = htmlParseDoc((xmlChar*)[string UTF8String], enc);
 			int optionsHtml = HTML_PARSE_RECOVER;
 			optionsHtml = optionsHtml | HTML_PARSE_NOERROR; //Uncomment this to see HTML errors
@@ -81,7 +90,15 @@
 		{
 			CFStringEncoding cfenc = CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding);
 			CFStringRef cfencstr = CFStringConvertEncodingToIANACharSetName(cfenc);
-			const char *enc = CFStringGetCStringPtr(cfencstr, 0);
+
+            char buffer[MaxEncodingStringLength];
+            const char *enc = CFStringGetCStringPtr(cfencstr, 0);
+            if (enc == NULL && [[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+                if (CFStringGetCString(cfencstr, buffer, MaxEncodingStringLength, 0)) {
+                    enc = buffer;
+                }
+            }
+
 			//_doc = htmlParseDoc((xmlChar*)[data bytes], enc);
 			
 			_doc = htmlReadDoc((xmlChar*)[data bytes],

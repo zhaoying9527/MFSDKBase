@@ -33,6 +33,7 @@
 {
     if (self = [super init]) {
         self.sceneName = sceneName;
+        self.virtualNodes = [[NSMutableArray alloc] init];
         self.headerLayoutDict = [[NSMutableDictionary alloc] init];
         self.bodyLayoutDict = [[NSMutableDictionary alloc] init];
         self.footerLayoutDict = [[NSMutableDictionary alloc] init];
