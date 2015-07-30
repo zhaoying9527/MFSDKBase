@@ -20,12 +20,12 @@
 #import "MFTipsWidget.h"
 #import "MFHelper.h"
 #import "MFResourceCenter.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 #import "HTMLNode.h"
 @implementation MFDataBinding
 + (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource
 {
-    [self bindDataToWidget:view dataSource:dataSource bindingField:view.DOM.bindingField];
+    [self bindDataToWidget:view dataSource:dataSource bindingField:view.virtualNode.dom.bindingField];
 
     for (UIView *subView in view.subviews) {
         [self bind:subView withDataSource:dataSource];
@@ -38,14 +38,14 @@
     NSString *dataObj = dataDict[bindingField];
 
     if ([widget isKindOfClass:[MFLabel class]]) {
-        NSString *defaultText = [((MFLabel*)widget).DOM.htmlNodes getAttributeNamed:@"value"];
+        NSString *defaultText = [((MFLabel*)widget).virtualNode.dom.htmlNodes getAttributeNamed:@"value"];
         ((MFLabel*)widget).text = dataObj ? dataObj : defaultText;
     }else if ([widget isKindOfClass:[MFRichLabel class]]) {
-        NSString *defaultText = [((MFRichLabel*)widget).DOM.htmlNodes getAttributeNamed:@"value"];
+        NSString *defaultText = [((MFRichLabel*)widget).virtualNode.dom.htmlNodes getAttributeNamed:@"value"];
         ((MFRichLabel*)widget).text = dataObj ? dataObj : defaultText;
     }else if ([widget isKindOfClass:[MFImageView class]] || [widget isKindOfClass:[MFCloudImageView class]]) {
         MFImageView *imageView = (MFImageView*)widget;
-        NSString *defaultSrc = [((MFImageView*)widget).DOM.htmlNodes getAttributeNamed:@"src"];
+        NSString *defaultSrc = [((MFImageView*)widget).virtualNode.dom.htmlNodes getAttributeNamed:@"src"];
         if (nil != dataObj && [dataObj length] > 0) {
             UIImage *image = [[MFResourceCenter sharedMFResourceCenter] imageWithId:dataObj];
             if (!image) image = [MFResourceCenter imageNamed:dataObj];
@@ -75,7 +75,7 @@
         }
     }else if ([widget isKindOfClass:[MFChatImageView class]]) {
         MFChatImageView *imageView = (MFChatImageView*)widget;
-        NSString *defaultSrc = [((MFChatImageView*)widget).DOM.htmlNodes getAttributeNamed:@"src"];
+        NSString *defaultSrc = [((MFChatImageView*)widget).virtualNode.dom.htmlNodes getAttributeNamed:@"src"];
         UIImage *defaultImage = [[MFResourceCenter sharedMFResourceCenter] imageWithId:defaultSrc];
         if (!defaultImage) defaultImage = [MFResourceCenter imageNamed:dataObj];
         UIImage *bannderImage = [[MFResourceCenter sharedMFResourceCenter] bannerImage];

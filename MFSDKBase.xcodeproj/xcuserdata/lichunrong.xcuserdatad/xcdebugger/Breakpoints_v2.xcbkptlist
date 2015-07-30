@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFSDKBase/Class/UI/MFSceneFactory.m"
-            timestampString = "452502437.04698"
+            timestampString = "459961155.070846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-createUIWithDOM:sizeInfo:"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "-createUIWithNode:sizeInfo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFSDKBase/Class/Layout/MFLayoutCenter.m"
-            timestampString = "452504052.89904"
+            timestampString = "459964960.062811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "-imageSizeWithDataInfo:dataItems:"
             landmarkType = "5">
          </BreakpointContent>
@@ -70,32 +70,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MFSDKBase/Class/PlugIn/Core/Script/MFLuaScript.m"
-            timestampString = "452523494.885147"
+            filePath = "MFSDKBase/Class/UI/Widget/MFCell.m"
+            timestampString = "459963159.77818"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-executeScript:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MFSDKBase/Class/PlugIn/Core/Script/MFLuaScript.m"
-            timestampString = "452523722.137198"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "-loadFile:"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-layoutWithScene:withData:withIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

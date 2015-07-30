@@ -13,7 +13,7 @@
 #import "MFHelper.h"
 #import "MFSceneFactory.h"
 #import "UIView+Sizes.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 
 #define CTVW_dot_image          @"MFSDK.bundle/HC_dot.png"
 #define CTVM_dot_image_frame    CGRectMake(0,0,)

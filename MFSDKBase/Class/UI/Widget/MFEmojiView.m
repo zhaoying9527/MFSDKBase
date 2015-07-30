@@ -8,7 +8,7 @@
 
 #import "MFEmojiView.h"
 #import "MFResourceCenter.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 #import "MFHelper.h"
 #import "MFScript.h"
 //TODO

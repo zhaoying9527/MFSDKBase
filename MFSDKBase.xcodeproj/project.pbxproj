@@ -103,8 +103,8 @@
 /* Begin PBXFileReference section */
 		1C775C131B6A6A5400D5DCFB /* MFWindowsStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFWindowsStyleManager.h; sourceTree = "<group>"; };
 		1C775C141B6A6A5400D5DCFB /* MFWindowsStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFWindowsStyleManager.m; sourceTree = "<group>"; };
-		1CB259941AD572DF002BE0B1 /* NSObject+DOM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DOM.h"; sourceTree = "<group>"; };
-		1CB259951AD572DF002BE0B1 /* NSObject+DOM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DOM.m"; sourceTree = "<group>"; };
+		1CB259941AD572DF002BE0B1 /* NSObject+VirtualNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+VirtualNode.h"; sourceTree = "<group>"; };
+		1CB259951AD572DF002BE0B1 /* NSObject+VirtualNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+VirtualNode.m"; sourceTree = "<group>"; };
 		1CC8EED41AD13B5C008C0286 /* MFSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFSDK.h; path = MFSDKBase/MFSDK.h; sourceTree = SOURCE_ROOT; };
 		1CE2F37E1AD4D89000E27AA8 /* MFSceneCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSceneCenter.h; sourceTree = "<group>"; };
 		1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSceneCenter.m; sourceTree = "<group>"; };
@@ -682,8 +682,8 @@
 			isa = PBXGroup;
 			children = (
 				23E94F451AD634FC006B2946 /* Third-party */,
-				1CB259941AD572DF002BE0B1 /* NSObject+DOM.h */,
-				1CB259951AD572DF002BE0B1 /* NSObject+DOM.m */,
+				1CB259941AD572DF002BE0B1 /* NSObject+VirtualNode.h */,
+				1CB259951AD572DF002BE0B1 /* NSObject+VirtualNode.m */,
 			);
 			name = Utils;
 			path = Class/Utils;
@@ -839,7 +839,7 @@
 				23F385A91AD4C247002A8F32 /* UIView+Sizes.m in Sources */,
 				1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */,
 				23F0D4F91AF8E20000D764B9 /* MFEmojiLabel.m in Sources */,
-				1CB259961AD572DF002BE0B1 /* NSObject+DOM.m in Sources */,
+				1CB259961AD572DF002BE0B1 /* NSObject+VirtualNode.m in Sources */,
 				23F385B31AD4C247002A8F32 /* MFCorePlugInService.m in Sources */,
 				23F385B01AD4C247002A8F32 /* MFLuaScript.m in Sources */,
 				23E94F531AD634FC006B2946 /* ESCssTokenizer.m in Sources */,

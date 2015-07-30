@@ -1,5 +1,6 @@
 #import "MFViewController.h"
 #import "MFLayoutCenter.h"
+#import "MFDispatchCenter.h"
 #import "MFResourceCenter.h"
 #import "MFScene+Internal.h"
 #import "MFSceneFactory.h"
@@ -15,7 +16,7 @@
 #import "UIView+UUID.h"
 #import "MFSceneCenter.h"
 
-@interface MFViewController() <UITableViewDataSource,UITableViewDelegate, MFCellDelegate>
+@interface MFViewController() <UITableViewDataSource,UITableViewDelegate, MFCellDelegate, MFEventProtcol>
 @end
 
 @implementation MFViewController
@@ -23,6 +24,7 @@
 #pragma - lifeCycle
 - (void)dealloc
 {
+    [self removeNotify];
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
     [[MFResourceCenter sharedMFResourceCenter] removeAll];
@@ -48,12 +50,25 @@
     [super viewDidLoad];
     [self setupUI];
     [self loadData];
+    
+    [self setupNotify];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [[MFSceneCenter sharedMFSceneCenter] registerScene:self.scene withName:self.sceneName];
+}
+
+- (void)setupNotify
+{
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(sceneLayoutChanged:)
+//                                                 name:kMFNotificationSceneLayoutChanged
+//                                               object:nil];
+}
+- (void)removeNotify{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMFNotificationSceneLayoutChanged object:nil];
 }
 
 #pragma - strategy
@@ -85,6 +100,22 @@
 #pragma mark - Data
 - (void)loadData
 {
+    NSString *bundlePath = [[NSString alloc] initWithFormat:@"%@/%@",[MFHelper getResourcePath],[MFHelper getBundleName]];
+    NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, @"MFChat"];
+    NSDictionary *dataSource = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
+    NSArray *dataArray = [dataSource objectForKey:@"data"];
+
+    __weak typeof(self) wSelf= self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [wSelf.scene calculateLayoutInfo:dataArray callback:^(NSArray *virtualNodes) {
+            wSelf.scene.dataArray = [NSMutableArray arrayWithArray:dataArray];
+            wSelf.scene.virtualNodes = [NSMutableArray arrayWithArray:virtualNodes];
+        }];
+
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [wSelf.tableView reloadData];
+         });
+    });
 }
 
 - (MFDataAdapterBlock)dataAdapterBlock
@@ -105,11 +136,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
-    __block CGFloat retHeight = [MFCell cellHeightWithScene:self.scene withData:dataDict];
+    CGFloat retHeight = [MFCell cellHeightWithScene:self.scene withData:dataDict withIndex:indexPath.section];
     if (retHeight <= 0) {
-        [self.scene calculateLayoutInfo:@[dataDict] callback:^(NSInteger prepareHeight) {
-            retHeight = prepareHeight;
-        }];
+        [self.scene calculateLayoutInfo:@[dataDict] callback:^(NSArray *virtualNodes) {}];
+        retHeight = [MFCell cellHeightWithScene:self.scene withData:dataDict withIndex:indexPath.section];
     }
     return retHeight;
 }
@@ -122,13 +152,13 @@
     MFCell *cell = [self dequeueReusablePKCellWithIdentifier:dataDict];
     if (nil == cell) {
         cell = [self allocPKCellWithIdentifier:dataDict];
-        [cell setupUIWithScene:self.scene withTemplateId:tId];
+        [cell setupUIWithScene:self.scene withTemplateId:tId withIndex:indexPath.section];
     }
-    
+
     //布局设置
-    [cell layoutWithScene:self.scene withData:dataDict];
+    [cell layoutWithScene:self.scene withData:dataDict withIndex:indexPath.section];
     //数据绑定
-    [cell bindDataWithScene:self.scene withData:dataDict];
+    [cell bindDataWithScene:self.scene withData:dataDict withIndex:indexPath.section];
     //特殊逻辑处理
     [cell specialHandlingWithData:dataDict];
     //数据设置
@@ -139,7 +169,9 @@
     return cell;
 }
 
-- (void)didClickCTCell:(MFCell*)cell{;}
+- (void)didClickCTCell:(MFCell*)cell
+{
+}
 
 - (MFCell*)allocPKCellWithIdentifier:(NSDictionary*)dataDict
 {
@@ -153,4 +185,11 @@
     NSString *identifier = [NSString stringWithFormat:@"%@",tId];
     return [self.tableView dequeueReusableCellWithIdentifier:identifier];
 }
+
+//Native拦截优先处理事件，处理了返回YES，否则返回NO
+- (BOOL)handleNativeEvent:(NSDictionary *)eventInfo target:(id)sender
+{
+    return NO;
+}
+
 @end

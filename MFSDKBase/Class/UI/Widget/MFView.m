@@ -8,7 +8,7 @@
 
 #import "MFView.h"
 #import "MFDefine.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 #import "MFHelper.h"
 #import "MFScript.h"
 #import "MFResourceCenter.h"
@@ -42,9 +42,9 @@
 #pragma mark touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.DOM.eventNodes[kMFOnClickEvent] || self.DOM.eventNodes[kMFOnDbClickEvent]
-        || self.DOM.eventNodes[kMFOnLongPressEvent]) {
-        if ((self.DOM.eventNodes[kMFOnLongPressEvent])) {
+    if (self.virtualNode.dom.eventNodes[kMFOnClickEvent] || self.virtualNode.dom.eventNodes[kMFOnDbClickEvent]
+        || self.virtualNode.dom.eventNodes[kMFOnLongPressEvent]) {
+        if ((self.virtualNode.dom.eventNodes[kMFOnLongPressEvent])) {
             [self performSelector:@selector(handleLongPressEvent) withObject:nil afterDelay:kLongPressTimeInterval];
         }
     }else {
@@ -54,8 +54,8 @@
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.DOM.eventNodes[kMFOnClickEvent] || self.DOM.eventNodes[kMFOnDbClickEvent]
-        || self.DOM.eventNodes[kMFOnLongPressEvent]) {
+    if (self.virtualNode.dom.eventNodes[kMFOnClickEvent] || self.virtualNode.dom.eventNodes[kMFOnDbClickEvent]
+        || self.virtualNode.dom.eventNodes[kMFOnLongPressEvent]) {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
     }else {
         [super touchesMoved:touches withEvent:event];
@@ -64,13 +64,13 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.DOM.eventNodes[kMFOnClickEvent] || self.DOM.eventNodes[kMFOnDbClickEvent]
-        || self.DOM.eventNodes[kMFOnLongPressEvent]) {
+    if (self.virtualNode.dom.eventNodes[kMFOnClickEvent] || self.virtualNode.dom.eventNodes[kMFOnDbClickEvent]
+        || self.virtualNode.dom.eventNodes[kMFOnLongPressEvent]) {
         UITouch *touch = [touches anyObject];
         NSUInteger taps = [touch tapCount];
-        if(taps == 1 && self.DOM.eventNodes[kMFOnClickEvent]) {
+        if(taps == 1 && self.virtualNode.dom.eventNodes[kMFOnClickEvent]) {
             [self performSelector:@selector(handleSingleFingerEvent) withObject:nil afterDelay:kDoubleClickTimeInterval];
-        }else if(taps == 2 && self.DOM.eventNodes[kMFOnClickEvent]) {
+        }else if(taps == 2 && self.virtualNode.dom.eventNodes[kMFOnClickEvent]) {
             [self handleDoubleClickEvent];
         }
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(handleLongPressEvent) object:nil];
@@ -81,8 +81,8 @@
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.DOM.eventNodes[kMFOnClickEvent] || self.DOM.eventNodes[kMFOnDbClickEvent]
-        || self.DOM.eventNodes[kMFOnLongPressEvent]) {
+    if (self.virtualNode.dom.eventNodes[kMFOnClickEvent] || self.virtualNode.dom.eventNodes[kMFOnDbClickEvent]
+        || self.virtualNode.dom.eventNodes[kMFOnLongPressEvent]) {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
     }else {
         [super touchesCancelled:touches withEvent:event];
@@ -92,21 +92,21 @@
 - (void)handleSingleFingerEvent
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    id result = [self.virtualNode triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
     NSLog(@"%@",result);
 }
 
 - (void)handleDoubleClickEvent
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    id result = [self.DOM triggerEvent:kMFOnDbClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    id result = [self.virtualNode triggerEvent:kMFOnDbClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
     NSLog(@"%@",result);
 }
 
 - (void)handleLongPressEvent
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    id result = [self.DOM triggerEvent:kMFOnLongPressEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    id result = [self.virtualNode triggerEvent:kMFOnLongPressEvent withParams:@{kMFParamsKey:@{@"target":self}}];
     NSLog(@"%@",result);
 }
 

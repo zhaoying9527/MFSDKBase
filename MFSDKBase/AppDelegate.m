@@ -21,24 +21,15 @@
     CGRect frame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:frame];
     [self.window setBackgroundColor:[UIColor blackColor]];
-
-    
-    NSString *bundlePath = [[NSString alloc] initWithFormat:@"%@/%@",[MFHelper getResourcePath],[MFHelper getBundleName]];
-    NSString *dataSourcePath = [NSString stringWithFormat:@"%@/%@.plist", bundlePath, @"MFChat"];
-    NSDictionary *dataSource = [[NSDictionary alloc] initWithContentsOfFile:dataSourcePath];
-    NSArray *dataArray = [dataSource objectForKey:@"data"];    
     
     //初始化环境
     [MFSDKLauncher initialize];
     
     self.scene = [[MFSceneCenter sharedMFSceneCenter] loadSceneWithName:@"MFChat"];
-    [self.scene sceneViewControllerReloadData:dataArray dataAdapterBlock:nil completionBlock:^(MFViewController *viewControler) {
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewControler];
-        [self.window setRootViewController:navController];
-        [self.window makeKeyAndVisible];
-        [viewControler.tableView reloadData];
-    }];
-    
+    MFViewController *vc = [self.scene sceneViewControllerWithData:nil dataAdapterBlock:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.window setRootViewController:navController];
+    [self.window makeKeyAndVisible];
 
     return YES;
 }

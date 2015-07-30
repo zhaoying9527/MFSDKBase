@@ -19,7 +19,7 @@ shared##className = [[self alloc] init]; \
 return shared##className; \
 }
 
-#define kNotificationDidChangeMediaState        @"kNotificationDidChangeMediaState"
+#define kMFNotificationSceneLayoutChanged       @"kMFNotificationSceneLayoutChanged"
 #define DEFAULTICONNAME                         @"headIcon.png"
 #define DEFAULTICON                             [MFResourceCenter imageNamed:DEFAULTICONNAME]
 
@@ -85,6 +85,11 @@ return shared##className; \
 #define kMFDispatcherEventType                  @"MFDispatcherEventTypeKey"
 #define kMFDispatcherParams                     @"MFDispatcherParamsKey"
 #define kMFIndexPath                            @"MFIndexPath"
+
+#define kMFVirtualHeadNode                      @"MFVirtualHeadNode"
+#define kMFVirtualBodyNode                      @"MFVirtualBodyNode"
+#define kMFVirtualFootNode                      @"MFVirtualFootNode"
+
 typedef enum {
     MFSDK_PLUGIN_LUA = 0,
     MFSDK_PLUGIN_HTML,

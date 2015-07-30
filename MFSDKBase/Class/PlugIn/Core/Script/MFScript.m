@@ -10,6 +10,7 @@
 
 const NSString *kMFMethodKey = @"MFMethod";
 const NSString *kMFParamsKey = @"MFParams";
+const NSString *kMFTargetKey = @"MFTarget";
 const NSString *kMFScriptFileNameKey = @"MFScriptFileName";
 const NSString *kMFScriptFileContentKey = @"MFScriptFileContent";
 

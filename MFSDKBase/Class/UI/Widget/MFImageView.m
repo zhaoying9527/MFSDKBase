@@ -11,7 +11,7 @@
 //#import <APWebImage/SDWebImage.h>
 #import "MFHelper.h"
 #import "MFResourceCenter.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 #import "MFScript.h"
 
 @interface MFImageView()
@@ -77,7 +77,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if ((self.DOM.eventNodes[kMFOnClickEvent])) {
+    if ((self.virtualNode.dom.eventNodes[kMFOnClickEvent])) {
         UITouch *touch = [touches anyObject];
         NSUInteger taps = [touch tapCount];
         if (taps == 1) {
@@ -97,7 +97,7 @@
 
 - (void)handleSingleFingerEvent
 {
-    id result = [self.DOM triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    id result = [self.virtualNode triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
     NSLog(@"%@",result);
 }
 

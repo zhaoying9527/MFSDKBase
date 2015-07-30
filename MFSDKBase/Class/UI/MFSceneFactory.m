@@ -18,7 +18,8 @@
 #import "MFStrategyCenter.h"
 #import "MFResourceCenter.h"
 #import "MFDOM.h"
-#import "NSObject+DOM.h"
+#import "MFVirtualNode.h"
+#import "NSObject+VirtualNode.h"
 @interface MFSceneFactory()
 @property (nonatomic,weak)id object;
 @property (nonatomic,copy)NSString *pageID;
@@ -46,10 +47,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     return self;
 }
 
-- (id)createWidgetWithDOM:(MFDOM*)domObj
+- (id)createWidgetWithNode:(MFVirtualNode*)node
 {
     id widget = nil;
-    
+
+    MFDOM *domObj = node.dom;
     if ([self supportHtmlTag:domObj.clsType]) {
         widget = [self allocObject:domObj.clsType];
         NSString *uuid = [domObj.htmlNodes getAttributeNamed:KEYWORD_ID];
@@ -72,17 +74,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
 }
 
 
-- (id)createUIWithDOM:(MFDOM*)domObj sizeInfo:(NSDictionary*)sizeInfo
+- (id)createUIWithNode:(MFVirtualNode*)node sizeInfo:(NSDictionary*)sizeInfo
 {
-    if (![self supportHtmlTag:domObj.clsType]) {
+    if (![self supportHtmlTag:node.dom.clsType]) {
         return nil;
     }
     
     UIView * widget = nil;
-    widget = [self createWidgetWithDOM:domObj];
-    [widget attachDOM:domObj];
-    for (MFDOM *subDomObj in domObj.subDoms) {
-        UIView *subWidget = [self createUIWithDOM:subDomObj sizeInfo:sizeInfo];
+    widget = [self createWidgetWithNode:node];
+    [widget attachVirtualNode:node];
+    for (MFVirtualNode *subNode in node.subNodes) {
+        UIView *subWidget = [self createUIWithNode:subNode sizeInfo:sizeInfo];
         if (subWidget) {
             [widget addSubview:subWidget];
         }

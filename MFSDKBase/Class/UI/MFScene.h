@@ -12,12 +12,12 @@
 /*
  *  虚拟场景
  */
-
+@class MFView;
 typedef enum {
-    MFDomTypeBody = 0,
-    MFDomTypeHead = 1,
-    MFDomTypeFoot = 2,
-} MFDomType;
+    MFNodeTypeBody = 0,
+    MFNodeTypeHead = 1,
+    MFNodeTypeFoot = 2,
+} MFNodeType;
 
 typedef NSMutableArray* (^MFDataAdapterBlock)(NSMutableArray *data);
 
@@ -58,7 +58,7 @@ typedef NSMutableArray* (^MFDataAdapterBlock)(NSMutableArray *data);
  *  @param dataArray         数据源
  *  @param callback          回调处理,返回布局信息(包括头部正文和尾部)
  */
-- (void)calculateLayoutInfo:(NSArray*)dataArray callback:(void(^)(NSInteger prepareHeight))callback;
+- (void)calculateLayoutInfo:(NSArray*)dataArray callback:(void(^)(NSArray *virtualNodes))callback;
 
 /**
  *  返回View及其子view中class属性为domClass的特定view
@@ -77,24 +77,17 @@ typedef NSMutableArray* (^MFDataAdapterBlock)(NSMutableArray *data);
  */
 - (void)removeData:(NSArray*)data;
 
-
 /**
- *  加载、更新数据,回调完成后布局信息保存在scene中，并且返回创建好的view
+ *  加载数据,回调完成后布局信息保存在scene中，并且返回创建好的viewController
  *  @param data               数据源
  *  @param dataAdapterBlock   数据适配接口
- *  @param completionBlock    回调接口，返回创建好的view
  */
-- (void)sceneViewReloadData:(NSDictionary*)data
-           dataAdapterBlock:(MFDataAdapterBlock)dataAdapterBlock
-            completionBlock:(void(^)(UIView*view))completionBlock;
-
+- (MFViewController*)sceneViewControllerWithData:(NSArray*)data
+                                dataAdapterBlock:(MFDataAdapterBlock)dataAdapterBlock;
 /**
- *  加载、更新数据,回调完成后布局信息保存在scene中，并且返回创建好的viewController
+ *  更新数据,回调完成后布局信息保存在scene中
+ *  @param viewController     viewController
  *  @param data               数据源
- *  @param dataAdapterBlock   数据适配接口
- *  @param completionBlock    回调接口，返回创建好的viewController
  */
-- (void)sceneViewControllerReloadData:(NSArray*)data
-                     dataAdapterBlock:(MFDataAdapterBlock)dataAdapterBlock
-                      completionBlock:(void(^)(MFViewController*viewControler))completionBlock;
+- (void)sceneViewController:(MFViewController*)viewcontroller ReloadData:(NSArray*)data;
 @end

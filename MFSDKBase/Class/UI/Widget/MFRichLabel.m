@@ -9,7 +9,7 @@
 #import "MFRichLabel.h"
 #import "MFDefine.h"
 #import "MFHelper.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 #import "MFScript.h"
 
 #define LABELTEXTCOLOR [MFHelper colorWithHexString:@"0x00aaff"]

@@ -38,4 +38,5 @@
  */
 - (MFDataAdapterBlock)dataAdapterBlock;
 
+- (BOOL)handleNativeEvent:(NSDictionary *)eventInfo target:(id)sender;
 @end

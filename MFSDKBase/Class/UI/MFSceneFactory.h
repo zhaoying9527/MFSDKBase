@@ -16,8 +16,8 @@
 @interface MFSceneFactory : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneFactory)
 
-- (id)createWidgetWithDOM:(MFDOM*)domObj;
-- (id)createUIWithDOM:(MFDOM*)domObj sizeInfo:(NSDictionary*)sizeInfo;
+- (id)createWidgetWithNode:(MFVirtualNode*)node;
+- (id)createUIWithNode:(MFVirtualNode*)node sizeInfo:(NSDictionary*)sizeInfo;
 
 - (BOOL)supportHtmlTag:(NSString *)htmlTag;
 - (id)getProperty:(id)objC popertyName:(NSString*)popertyName;

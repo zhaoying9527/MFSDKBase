@@ -16,7 +16,7 @@
 #import "MFDispatchCenter.h"
 #import "MFResourceCenter.h"
 #import "UIView+UUID.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 #import "MFScene.h"
 #import "MFSceneCenter.h"
 
@@ -50,12 +50,6 @@
         [self.subDoms addObject:subDom];
         subDom.superDom = self;
     }
-}
-
-- (void)attachObjReference:(NSObject*)objReference
-{
-    self.objReference = objReference;
-    [objReference attachDOM:self];
 }
 
 - (MFDOM*)findSubDomWithID:(NSString*)ID

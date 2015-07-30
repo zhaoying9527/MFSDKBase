@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "MFDefine.h"
 
+@protocol MFEventProtcol <NSObject>
+- (BOOL)handleNativeEvent:(NSDictionary *)eventInfo target:(id)sender;
+@end
+
 @interface MFDispatchCenter : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFDispatchCenter)
-- (void)executeAction:(NSDictionary*)actionNode;
+- (BOOL)executeNativeAction:(NSDictionary*)actionNode;
 - (id)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType;
 @end

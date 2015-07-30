@@ -12,6 +12,7 @@
  *  虚拟对象
 */
 @class HTMLNode;
+@class MFVirtualNode;
 @interface MFDOM : NSObject
 @property (nonatomic,strong)HTMLNode *htmlNodes;
 //布局信息节点
@@ -20,8 +21,6 @@
 @property (nonatomic,strong)NSDictionary *eventNodes;
 //绑定字段节点
 @property (nonatomic,copy)NSString *bindingField;
-//绑定对象
-@property (nonatomic,strong)id objReference;
 //绑定类别
 @property (nonatomic,copy)NSString *clsType;
 //唯一标示
@@ -29,7 +28,7 @@
 //扩展信息节点
 @property (nonatomic,strong)NSDictionary *params;
 //父对象
-@property (nonatomic,strong)MFDOM *superDom;
+@property (nonatomic,weak)MFDOM *superDom;
 //子对象
 @property (nonatomic,strong)NSMutableArray *subDoms;
 
@@ -37,8 +36,6 @@
 - (id)initWithDomNode:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events;
 - (void)addSubDom:(MFDOM *)subDom;
 
-//双向关联
-- (void)attachObjReference:(NSObject*)objReference;
 //查询接口
 - (MFDOM*)findSubDomWithID:(NSString*)ID;
 - (BOOL)isBindingToWidget;

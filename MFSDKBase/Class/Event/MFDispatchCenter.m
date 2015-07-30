@@ -8,7 +8,9 @@
 
 #import "MFDispatchCenter.h"
 #import "MFCorePlugInService.h"
+#import "MFViewController.h"
 #import "MFBridge.h"
+#import "MFScript.h"
 
 @interface MFDispatchCenter ()
 @property (nonatomic, strong) MFBridge *bridge;
@@ -24,14 +26,21 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFDispatchCenter)
     return self;
 }
 
-- (void)executeAction:(NSDictionary*)actionNode
+- (BOOL)executeNativeAction:(NSDictionary*)actionNode
 {
-
+    BOOL handledByNative = NO;
+    id objectRef = actionNode[kMFTargetKey];
+    UIViewController *delegateVC = ((UIView*)objectRef).viewController;
+    if ([delegateVC isKindOfClass:[MFViewController class]]
+        && [delegateVC respondsToSelector:@selector(handleNativeEvent:target:)]) {
+        handledByNative = [(MFViewController*)delegateVC handleNativeEvent:actionNode target:objectRef];
+    }
+    return handledByNative;
 }
 
 - (id)executeScript:(NSDictionary*)scriptNode scriptType:(NSInteger)scriptType
 {
-    //bridge
     return [self.bridge executeScript:scriptNode scriptType:scriptType];
 }
 @end
+

@@ -11,6 +11,7 @@
 
 extern const NSString *kMFMethodKey;
 extern const NSString *kMFParamsKey;
+extern const NSString *kMFTargetKey;
 extern const NSString *kMFScriptFileNameKey;
 extern const NSString *kMFScriptFileContentKey;
 

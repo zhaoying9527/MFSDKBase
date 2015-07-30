@@ -8,7 +8,7 @@
 
 #import "MFTipsWidget.h"
 #import "MFResourceCenter.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 #import "MFHelper.h"
 #import "MFDefine.h"
 

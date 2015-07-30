@@ -11,7 +11,7 @@
 //#import "UIImageView+MD5Manager.h"
 //#import "CTImageBrowser.h"
 #import "MFDefine.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 
 @interface MFCloudImageView()<UIScrollViewDelegate>
 

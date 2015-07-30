@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MFScene.h"
 
+@class MFVirtualNode;
 @interface MFScene ()
 /**
  *  创建MFScene实例
@@ -26,16 +27,15 @@
  *  @param ID           DOM对应的domId
  *  @param type         dom类型:头部、正文、尾部
  */
-- (MFDOM*)domWithId:(NSString*)ID withType:(MFDomType)type;
-
+- (MFDOM*)domWithId:(NSString*)ID withType:(MFNodeType)type;
+- (MFVirtualNode*)virtualNodeWithId:(NSString*)ID withType:(MFNodeType)type;
 /**
- *  创建Dom节点对应View
- *  @param domId        DOM对应的domId
- *  @param type         dom类型
+ *  创建虚拟View节点对应View
+ *  @param node         虚拟node
+ *  @param type         node类型
  *  @return             创建的view
  */
-- (UIView*)sceneViewWithDomId:(NSString*)domId withType:(MFDomType)type;
-
+- (UIView*)sceneViewWithVirtualNode:(MFVirtualNode*)node withType:(MFNodeType)type;
 /**
  *  数据绑定
  *  @param view         View

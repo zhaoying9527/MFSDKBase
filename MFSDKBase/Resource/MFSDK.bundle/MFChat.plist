@@ -17,18 +17,20 @@
 视频质量：1080P 60FPS 1分钟。
 
 由于优酷视频只有15FPS会更晕，且超清分辨率只有480P（会员720P），还要等审核，因此今次就不传优酷了，直接让大家下载源文件。</string>
+			<key>data</key>
+			<dict/>
 			<key>id</key>
 			<string>tid-10000</string>
 			<key>headerText</key>
 			<string>2015.4.11 9:30</string>
 			<key>alignmentType</key>
 			<string>0</string>
-			<key>msgId</key>
-			<integer>150420135758000001</integer>
 			<key>seed</key>
 			<string>20881020122477511429509830.6205</string>
 			<key>userID</key>
 			<string>2088102146448309</string>
+			<key>msgId</key>
+			<integer>150420135758000001</integer>
 			<key>userType</key>
 			<string>1</string>
 			<key>clientMsgID</key>
@@ -53,6 +55,8 @@
 由于优酷视频只有15FPS会更晕，且超清分辨率只有480P（会员720P），还要等审核，因此今次就不传优酷了，直接让大家下载源文件。</string>
 			<key>id</key>
 			<string>tid-8003</string>
+			<key>seed</key>
+			<string>20881020122477998429509830.6205</string>
 			<key>headerText</key>
 			<string>2015.4.11 9:40</string>
 			<key>alignmentType</key>

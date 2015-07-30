@@ -10,7 +10,7 @@
 #import "MFDefine.h"
 #import "MFHelper.h"
 #import "MFScript.h"
-#import "NSObject+DOM.h"
+#import "NSObject+VirtualNode.h"
 
 @interface MFLabel ()
 @property (nonatomic, assign)NSTextAlignment rawTextAlignmentType;

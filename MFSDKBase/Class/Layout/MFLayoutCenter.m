@@ -7,7 +7,8 @@
 #import "MFSceneCenter.h"
 #import "MFHelper.h"
 #import "MFDOM.h"
-#import "NSObject+DOM.h"
+#import "MFVirtualNode.h"
+#import "NSObject+VirtualNode.h"
 #import "UIView+UUID.h"
 #import "MFLabel.h"
 #import "MFRichLabel.h"
@@ -77,9 +78,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     return CGSizeMake(size.width, size.height);
 }
 
-- (NSDictionary*)sizeOfHeadDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
+- (NSDictionary*)sizeOfHeadNode:(MFVirtualNode*)node superFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
-    NSString *dataKey           = dom.bindingField;
+    NSString *dataKey           = node.dom.bindingField;
     NSString *dataString        = dataSource[dataKey];
     CGSize maxSize              = CGSizeMake(superFrame.size.width-70, 1000);
     CGSize size                 = CGSizeZero;
@@ -91,19 +92,21 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGRect domFrame = CGRectMake(0, 0, size.width, size.height);
 
     NSDictionary *retDictionary = nil;
-    NSString *domID = dom.uuid;
+    NSString *domID = node.dom.uuid;
     if (domID) {
         NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
         retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
                          @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
     }
-
+    node.widgetSize = size;
+    node.frame = domFrame;
+    
     return retDictionary;
 }
 
-- (NSDictionary*)sizeOfFootDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
+- (NSDictionary*)sizeOfFootNode:(MFVirtualNode*)node superFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
-    NSString *dataKey           = dom.bindingField;
+    NSString *dataKey           = node.dom.bindingField;
     NSString *dataString        = dataSource[dataKey];
     CGSize maxSize              = CGSizeMake(superFrame.size.width-70, 1000);
     CGSize size                 = CGSizeZero;
@@ -115,27 +118,33 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGRect domFrame = CGRectMake(0, 0, size.width, size.height);
     
     NSDictionary * retDictionary = nil;
-    NSString *domID = dom.uuid;
+    NSString *domID = node.dom.uuid;
     if (domID) {
         NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
         retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
                          @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
     }
-    
+    node.widgetSize = size;
+    node.frame = domFrame;
+
     return retDictionary;
 }
 
-- (NSDictionary*)sizeOfBodyDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
+- (NSDictionary*)sizeOfBodyNode:(MFVirtualNode*)node superFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource
 {
     NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
-    CGRect domFrame = [self layoutInfoOfDom:dom superDomFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo];
-    NSDictionary * retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
+    CGRect domFrame = [self layoutInfoOfNode:node superFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo];
+    NSDictionary *retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
                                     @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
+    node.widgetSize = domFrame.size;
+    node.frame = domFrame;
+
     return retDictionary;
 }
 
-- (CGRect)layoutInfoOfDom:(MFDOM*)dom superDomFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo
+- (CGRect)layoutInfoOfNode:(MFVirtualNode*)node superFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo
 {
+    MFDOM *dom = node.dom;
     NSString *domID        = dom.uuid;
     NSDictionary *cssItem  = dom.cssNodes;
     NSString *dataKey      = dom.bindingField;
@@ -174,14 +183,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSInteger subHeight    = 0;
     
     NSMutableDictionary *childWidgetsInfo = [NSMutableDictionary dictionary];
-    NSArray *sortedDoms = [self resortDoms:dom.subDoms];
-    for (MFDOM *subDom in sortedDoms) {
-        NSString *childFrameStr = [MFHelper getFrameStringWithCssStyle:subDom.cssNodes];
+    NSArray *sortedNodes = [self resortNodes:node.subNodes];
+    for (MFVirtualNode *subNode in sortedNodes) {
+        NSString *childFrameStr = [MFHelper getFrameStringWithCssStyle:subNode.dom.cssNodes];
         CGRect childFrame = [MFHelper formatFrameWithString:childFrameStr superFrame:pageFrame];
         CGRect maxSuperFrame = CGRectMake(pageFrame.origin.x, pageFrame.origin.y,
                                           realSize.width>0?realSize.width:maxWidth,
                                           realSize.height>0?realSize.height:maxHeight);
-        CGRect childRealFrame = [self layoutInfoOfDom:subDom superDomFrame:maxSuperFrame dataSource:dataSource retWidgets:widgetsInfo];
+        CGRect childRealFrame = [self layoutInfoOfNode:subNode superFrame:maxSuperFrame dataSource:dataSource retWidgets:widgetsInfo];
         childRealFrame.origin.y += subHeight;
         childRealFrame.origin.x += subWidth;
         
@@ -190,8 +199,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         NSInteger deltaWidth = childRealFrame.size.width - childFrame.size.width;
         subWidth += autoWidth ? deltaWidth : MAX(0, deltaWidth);
         
-        NSString *subDomID = [subDom.htmlNodes getAttributeNamed:KEYWORD_ID];
+        NSString *subDomID = [subNode.dom.htmlNodes getAttributeNamed:KEYWORD_ID];
         [childWidgetsInfo setObject:[NSValue valueWithCGRect:childRealFrame] forKey:subDomID];
+        
+        subNode.widgetSize = childRealFrame.size;
+        subNode.frame = childRealFrame;
     }
     
     CGSize fitSize = [self fitPageSize:childWidgetsInfo maxSize:pageSize];
@@ -200,15 +212,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         pageFrame.size = fitSize;
     }
     [widgetsInfo setObject:[NSValue valueWithCGRect:pageFrame] forKey:domID];
+    node.widgetSize = pageFrame.size;
+    node.frame = pageFrame;
     
     return pageFrame;
 }
 
-- (NSArray*)resortDoms:(NSArray*)doms
+- (NSArray*)resortNodes:(NSArray*)nodes
 {
-    NSArray *sortedArray = [doms sortedArrayUsingComparator:^NSComparisonResult(MFDOM *dom1, MFDOM *dom2) {
-        NSInteger order1 = dom1.cssNodes[@"order"] ? [dom1.cssNodes[@"order"] intValue] : INT32_MAX;
-        NSInteger order2 = dom2.cssNodes[@"order"] ? [dom2.cssNodes[@"order"] intValue] : INT32_MAX;
+    NSArray *sortedArray = [nodes sortedArrayUsingComparator:^NSComparisonResult(MFVirtualNode *node1, MFVirtualNode *node2) {
+        NSInteger order1 = node1.dom.cssNodes[@"order"] ? [node1.dom.cssNodes[@"order"] intValue] : INT32_MAX;
+        NSInteger order2 = node2.dom.cssNodes[@"order"] ? [node2.dom.cssNodes[@"order"] intValue] : INT32_MAX;
         if (order1 > order2) {
             return NSOrderedDescending;
         }else if (order1 == order2) {
@@ -220,36 +234,36 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     return sortedArray;
 }
 
-- (void)layout:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
+- (void)layout:(UIView*)view
 {
     if (![view UUID]) {
         return;
     }
 
-    CGRect rectValue = [sizeInfo[KEY_WIDGET_SIZE][view.UUID] CGRectValue];
+    CGRect rectValue = view.virtualNode.frame;
     view.frame = rectValue;
 
     for (UIView *subView in view.subviews) {
-        [self layout:subView withSizeInfo:sizeInfo];
+        [self layout:subView];
     }
 }
 
-- (void)sideSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo  withAlignmentType:(MFAlignmentType)alignType
+- (void)sideSubViews:(UIView*)view withAlignmentType:(MFAlignmentType)alignType
 {
     if (![view UUID]) {
         return;
     }
-
-   [[MFSceneFactory sharedMFSceneFactory] setProperty:view popertyName:@"alignmentType" withObject:@(alignType)];
+    
+    [[MFSceneFactory sharedMFSceneFactory] setProperty:view popertyName:@"alignmentType" withObject:@(alignType)];
     BOOL side = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"side"] boolValue];
     BOOL reverse = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
     NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"alignmentType"] integerValue];
-
+    
     CGRect rawRect = view.frame;
     UIView *superView = view.superview;
-
+    
     if (MFAlignmentTypeLeft == alignmentType || MFAlignmentTypeNone == alignmentType) {
-
+        
     }else if (MFAlignmentTypeCenter == alignmentType) {
         CGRect rect = rawRect;
         rect.origin.x = (superView.frame.size.width - rect.size.width)/2;
@@ -267,7 +281,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
                 rect.origin.x -= 7;
             }
         }
-
+        
         if (![MFHelper sameRect:view.frame withRect:rect]) {
             view.frame = rect;
         }
@@ -275,18 +289,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     if ([view respondsToSelector:@selector(alignHandling)]) {
         [(id)view alignHandling];
     }
-
+    
     for (UIView *subView in view.subviews) {
-        [self sideSubViews:subView withSizeInfo:sizeInfo withAlignmentType:alignType];
+        [self sideSubViews:subView withAlignmentType:alignType];
     }
 }
 
-- (void)reverseSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
+- (void)reverseSubViews:(UIView*)view
 {
     if (![view UUID]) {
         return;
     }
-
+    
     BOOL side = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"side"] boolValue];
     BOOL reverseType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
     NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"alignmentType"] integerValue];
@@ -295,11 +309,78 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
             [(id)view reverseHandling];
         }
     }
-
+    
     for (UIView *subView in view.subviews) {
-        [self reverseSubViews:subView withSizeInfo:sizeInfo];
+        [self reverseSubViews:subView];
     }
 }
+
+//- (void)sideSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo  withAlignmentType:(MFAlignmentType)alignType
+//{
+//    if (![view UUID]) {
+//        return;
+//    }
+//
+//   [[MFSceneFactory sharedMFSceneFactory] setProperty:view popertyName:@"alignmentType" withObject:@(alignType)];
+//    BOOL side = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"side"] boolValue];
+//    BOOL reverse = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
+//    NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"alignmentType"] integerValue];
+//
+//    CGRect rawRect = view.frame;
+//    UIView *superView = view.superview;
+//
+//    if (MFAlignmentTypeLeft == alignmentType || MFAlignmentTypeNone == alignmentType) {
+//
+//    }else if (MFAlignmentTypeCenter == alignmentType) {
+//        CGRect rect = rawRect;
+//        rect.origin.x = (superView.frame.size.width - rect.size.width)/2;
+//        if (![MFHelper sameRect:view.frame withRect:rect]) {
+//            view.frame = rect;
+//        }
+//    }else if (MFAlignmentTypeRight == alignmentType) {
+//        CGRect rect = rawRect;
+//        if (side) {
+//            if (!reverse) {
+//                rect.origin.x = superView.frame.size.width - rect.origin.x - rect.size.width;
+//            }
+//        }else {
+//            if (rect.origin.x>=7) {
+//                rect.origin.x -= 7;
+//            }
+//        }
+//
+//        if (![MFHelper sameRect:view.frame withRect:rect]) {
+//            view.frame = rect;
+//        }
+//    }
+//    if ([view respondsToSelector:@selector(alignHandling)]) {
+//        [(id)view alignHandling];
+//    }
+//
+//    for (UIView *subView in view.subviews) {
+//        [self sideSubViews:subView withSizeInfo:sizeInfo withAlignmentType:alignType];
+//    }
+//}
+//
+//- (void)reverseSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo
+//{
+//    if (![view UUID]) {
+//        return;
+//    }
+//
+//    BOOL side = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"side"] boolValue];
+//    BOOL reverseType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"reverse"] boolValue];
+//    NSInteger alignmentType = [[[MFSceneFactory sharedMFSceneFactory] getProperty:view popertyName:@"alignmentType"] integerValue];
+//    if (reverseType && side && MFAlignmentTypeRight == alignmentType) {
+//        if ([view respondsToSelector:@selector(reverseHandling)]) {
+//            [(id)view reverseHandling];
+//        }
+//    }
+//
+//    for (UIView *subView in view.subviews) {
+//        [self reverseSubViews:subView withSizeInfo:sizeInfo];
+//    }
+//}
 
 - (CGSize)audioSizeWithDataInfo:(NSDictionary*)dataInfo dataItems:(NSString*)dataItems superFrame:(CGRect)superFrame
 {
