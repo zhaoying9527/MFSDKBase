@@ -78,6 +78,43 @@
 
 由于优酷视频只有15FPS会更晕，且超清分辨率只有480P（会员720P），还要等审核，因此今次就不传优酷了，直接让大家下载源文件。</string>
 			<key>id</key>
+			<string>tid-104-message</string>
+			<key>headerText</key>
+			<string>2015.4.11 10:50</string>
+			<key>alignmentType</key>
+			<string>2</string>
+			<key>HeadIcon</key>
+			<string></string>
+			<key>message</key>
+			<string>亲密付</string>
+			<key>bizImage</key>
+			<string>Local_Image_FAMILYPAY.right</string>
+			<key>seed</key>
+			<string>20800020122477522429509836.6205</string>
+			<key>emoji</key>
+			<dict>
+				<key>emoji</key>
+				<string>18</string>
+				<key>orderNo</key>
+				<string>071</string>
+			</dict>
+			<key>topTitle</key>
+			<string>140.00</string>
+		</dict>
+		<dict>
+			<key>link</key>
+			<string>http://www.sohu.com
+
+因为大家都有一定水平，对抗较激，所以1分钟就把机器甩掉了（我偷偷说：其实是主角头太小了，嘻嘻。）
+
+介绍：很有现场带入感，球速增加，视觉刺激，不足在于主角摆头时会让一部分人觉得昏眩。
+
+另外由于现场比较嘈杂，加上主角带旁述比（fei）较（hua）诙（tai）谐（duo），所以杀球的音效有所折扣，还不如我上次自拍的。
+
+视频质量：1080P 60FPS 1分钟。
+
+由于优酷视频只有15FPS会更晕，且超清分辨率只有480P（会员720P），还要等审核，因此今次就不传优酷了，直接让大家下载源文件。</string>
+			<key>id</key>
 			<string>tid-11</string>
 			<key>headerText</key>
 			<string>2015.4.11 9:30</string>
@@ -94,9 +131,9 @@
 			<key>userType</key>
 			<string>1</string>
 			<key>m</key>
-			<string>勇往直前，干干干，感动世界,勇往直前，干干干，感动世界</string>
+			<string>新世纪21</string>
 			<key>clientMsgID</key>
-			<string>20881020122477511429509831.6205</string>
+			<string>2088102012247777779509831.6205</string>
 			<key>timeLine</key>
 			<string>2015-04-20 06:03:50 +0000</string>
 		</dict>
@@ -266,7 +303,7 @@
 			<key>userType</key>
 			<string>1</string>
 			<key>m</key>
-			<string>勇往直前，干干干，感动世界,勇往直前，干干干，感动世界</string>
+			<string>勇往直前，感动世界,勇往直前</string>
 			<key>clientMsgID</key>
 			<string>20881020122477511429509831.6205</string>
 			<key>timeLine</key>
@@ -543,7 +580,7 @@
 			<key>userType</key>
 			<string>1</string>
 			<key>m</key>
-			<string>勇往直前，干干干，感动世界,勇往直前，干干干，感动世界</string>
+			<string>勇往直前</string>
 			<key>clientMsgID</key>
 			<string>20881020122477511429509831.6205</string>
 			<key>timeLine</key>
@@ -673,11 +710,48 @@
 			<key>userType</key>
 			<string>1</string>
 			<key>m</key>
-			<string>勇往直前，干干干，感动世界,勇往直前，干干干，感动世界</string>
+			<string>天天运动</string>
 			<key>clientMsgID</key>
 			<string>20881020122477511429509831.6205</string>
 			<key>timeLine</key>
 			<string>2015-04-20 06:03:50 +0000</string>
+		</dict>
+		<dict>
+			<key>link</key>
+			<string>http://www.sohu.com
+
+因为大家都有一定水平，对抗较激，所以1分钟就把机器甩掉了（我偷偷说：其实是主角头太小了，嘻嘻。）
+
+介绍：很有现场带入感，球速增加，视觉刺激，不足在于主角摆头时会让一部分人觉得昏眩。
+
+另外由于现场比较嘈杂，加上主角带旁述比（fei）较（hua）诙（tai）谐（duo），所以杀球的音效有所折扣，还不如我上次自拍的。
+
+视频质量：1080P 60FPS 1分钟。
+
+由于优酷视频只有15FPS会更晕，且超清分辨率只有480P（会员720P），还要等审核，因此今次就不传优酷了，直接让大家下载源文件。</string>
+			<key>id</key>
+			<string>tid-104-message</string>
+			<key>headerText</key>
+			<string>2015.4.11 10:50</string>
+			<key>alignmentType</key>
+			<string>0</string>
+			<key>HeadIcon</key>
+			<string></string>
+			<key>message</key>
+			<string>亲密付</string>
+			<key>bizImage</key>
+			<string>Local_Image_FAMILYPAY.left</string>
+			<key>seed</key>
+			<string>20811120122477522429509836.6205</string>
+			<key>emoji</key>
+			<dict>
+				<key>emoji</key>
+				<string>18</string>
+				<key>orderNo</key>
+				<string>071</string>
+			</dict>
+			<key>topTitle</key>
+			<string>140.00</string>
 		</dict>
 		<dict>
 			<key>link</key>
@@ -948,6 +1022,117 @@
 			<string>Local_Image_COLLET.left</string>
 			<key>seed</key>
 			<string>20881020122477511429509836.6205</string>
+			<key>emoji</key>
+			<dict>
+				<key>emoji</key>
+				<string>18</string>
+				<key>orderNo</key>
+				<string>071</string>
+			</dict>
+			<key>topTitle</key>
+			<string>140.00</string>
+		</dict>
+		<dict>
+			<key>link</key>
+			<string>http://www.sohu.com
+
+因为大家都有一定水平，对抗较激，所以1分钟就把机器甩掉了（我偷偷说：其实是主角头太小了，嘻嘻。）
+
+介绍：很有现场带入感，球速增加，视觉刺激，不足在于主角摆头时会让一部分人觉得昏眩。
+
+另外由于现场比较嘈杂，加上主角带旁述比（fei）较（hua）诙（tai）谐（duo），所以杀球的音效有所折扣，还不如我上次自拍的。
+
+视频质量：1080P 60FPS 1分钟。
+
+由于优酷视频只有15FPS会更晕，且超清分辨率只有480P（会员720P），还要等审核，因此今次就不传优酷了，直接让大家下载源文件。</string>
+			<key>id</key>
+			<string>tid-103-message</string>
+			<key>headerText</key>
+			<string>2015.4.11 10:50</string>
+			<key>alignmentType</key>
+			<string>0</string>
+			<key>HeadIcon</key>
+			<string></string>
+			<key>message</key>
+			<string>AA付款</string>
+			<key>bizImage</key>
+			<string>Local_Image_AA.left</string>
+			<key>seed</key>
+			<string>20881009022477511429509836.6205</string>
+			<key>emoji</key>
+			<dict>
+				<key>emoji</key>
+				<string>18</string>
+				<key>orderNo</key>
+				<string>071</string>
+			</dict>
+			<key>topTitle</key>
+			<string>140.00</string>
+		</dict>
+		<dict>
+			<key>link</key>
+			<string>http://www.sohu.com
+
+因为大家都有一定水平，对抗较激，所以1分钟就把机器甩掉了（我偷偷说：其实是主角头太小了，嘻嘻。）
+
+介绍：很有现场带入感，球速增加，视觉刺激，不足在于主角摆头时会让一部分人觉得昏眩。
+
+另外由于现场比较嘈杂，加上主角带旁述比（fei）较（hua）诙（tai）谐（duo），所以杀球的音效有所折扣，还不如我上次自拍的。
+
+视频质量：1080P 60FPS 1分钟。
+
+由于优酷视频只有15FPS会更晕，且超清分辨率只有480P（会员720P），还要等审核，因此今次就不传优酷了，直接让大家下载源文件。</string>
+			<key>id</key>
+			<string>tid-103-message</string>
+			<key>headerText</key>
+			<string>2015.4.11 10:50</string>
+			<key>alignmentType</key>
+			<string>2</string>
+			<key>HeadIcon</key>
+			<string></string>
+			<key>message</key>
+			<string>AA付款</string>
+			<key>bizImage</key>
+			<string>Local_Image_AA.right</string>
+			<key>seed</key>
+			<string>20881020122477522429509836.6205</string>
+			<key>emoji</key>
+			<dict>
+				<key>emoji</key>
+				<string>18</string>
+				<key>orderNo</key>
+				<string>071</string>
+			</dict>
+			<key>topTitle</key>
+			<string>140.00</string>
+		</dict>
+		<dict>
+			<key>link</key>
+			<string>http://www.sohu.com
+
+因为大家都有一定水平，对抗较激，所以1分钟就把机器甩掉了（我偷偷说：其实是主角头太小了，嘻嘻。）
+
+介绍：很有现场带入感，球速增加，视觉刺激，不足在于主角摆头时会让一部分人觉得昏眩。
+
+另外由于现场比较嘈杂，加上主角带旁述比（fei）较（hua）诙（tai）谐（duo），所以杀球的音效有所折扣，还不如我上次自拍的。
+
+视频质量：1080P 60FPS 1分钟。
+
+由于优酷视频只有15FPS会更晕，且超清分辨率只有480P（会员720P），还要等审核，因此今次就不传优酷了，直接让大家下载源文件。</string>
+			<key>id</key>
+			<string>tid-104-message</string>
+			<key>headerText</key>
+			<string>2015.4.11 10:50</string>
+			<key>alignmentType</key>
+			<string>2</string>
+			<key>HeadIcon</key>
+			<string></string>
+			<key>message</key>
+			<string>亲密付</string>
+			<key>bizImage</key>
+			<string>Local_Image_FAMILYPAY.right</string>
+			<key>seed</key>
+			<string>20812020122477522429509836.6205</string>
 			<key>emoji</key>
 			<dict>
 				<key>emoji</key>

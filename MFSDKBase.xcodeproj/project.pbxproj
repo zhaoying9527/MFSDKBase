@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C775C151B6A6A5400D5DCFB /* MFWindowsStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C775C141B6A6A5400D5DCFB /* MFWindowsStyleManager.m */; };
-		1CB259961AD572DF002BE0B1 /* NSObject+DOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB259951AD572DF002BE0B1 /* NSObject+DOM.m */; };
+		1CB259961AD572DF002BE0B1 /* NSObject+VirtualNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB259951AD572DF002BE0B1 /* NSObject+VirtualNode.m */; };
 		1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F37F1AD4D89000E27AA8 /* MFSceneCenter.m */; };
 		1CE2F3841AD4D8C900E27AA8 /* MFSDKLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3831AD4D8C900E27AA8 /* MFSDKLauncher.m */; };
 		1CE2F3871AD4E3D600E27AA8 /* MFDOM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F3861AD4E3D600E27AA8 /* MFDOM.m */; };
@@ -19,7 +19,6 @@
 		231BE4571ACFC60000B65A58 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE4561ACFC60000B65A58 /* ViewController.m */; };
 		231BE45C1ACFC60000B65A58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231BE45B1ACFC60000B65A58 /* Images.xcassets */; };
 		231BE45F1ACFC60000B65A58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BE45D1ACFC60000B65A58 /* LaunchScreen.xib */; };
-		231BE46B1ACFC60000B65A58 /* MFSDKBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */; };
 		231BE4D81AD0377100B65A58 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4D71AD0377100B65A58 /* libxml2.2.dylib */; };
 		231BE4ED1AD39AEB00B65A58 /* wax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231BE4EC1AD39AEB00B65A58 /* wax.framework */; };
 		234D2E741B69C90100A57548 /* MFVirtualNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 234D2E731B69C90100A57548 /* MFVirtualNode.m */; };
@@ -90,16 +89,6 @@
 		23F385C51AD4C247002A8F32 /* MFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385A21AD4C247002A8F32 /* MFViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		231BE4651ACFC60000B65A58 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 231BE4431ACFC60000B65A58 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 231BE44A1ACFC60000B65A58;
-			remoteInfo = MFSDKBase;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		1C775C131B6A6A5400D5DCFB /* MFWindowsStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFWindowsStyleManager.h; sourceTree = "<group>"; };
 		1C775C141B6A6A5400D5DCFB /* MFWindowsStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFWindowsStyleManager.m; sourceTree = "<group>"; };
@@ -125,9 +114,6 @@
 		231BE4561ACFC60000B65A58 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		231BE45B1ACFC60000B65A58 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		231BE45E1ACFC60000B65A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		231BE4641ACFC60000B65A58 /* MFSDKBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MFSDKBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		231BE4691ACFC60000B65A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFSDKBaseTests.m; sourceTree = "<group>"; };
 		231BE4D71AD0377100B65A58 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		231BE4EC1AD39AEB00B65A58 /* wax.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wax.framework; sourceTree = "<group>"; };
 		234D2E721B69C90100A57548 /* MFVirtualNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFVirtualNode.h; sourceTree = "<group>"; };
@@ -269,13 +255,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		231BE4611ACFC60000B65A58 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -304,7 +283,6 @@
 			children = (
 				2386EB731AD9DB04006FE937 /* demo */,
 				231BE44D1ACFC60000B65A58 /* MFSDKBase */,
-				231BE4671ACFC60000B65A58 /* MFSDKBaseTests */,
 				231BE44C1ACFC60000B65A58 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -313,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				231BE44B1ACFC60000B65A58 /* MFSDKBase.app */,
-				231BE4641ACFC60000B65A58 /* MFSDKBaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -351,23 +328,6 @@
 			children = (
 				231BE44F1ACFC60000B65A58 /* Info.plist */,
 				231BE4501ACFC60000B65A58 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		231BE4671ACFC60000B65A58 /* MFSDKBaseTests */ = {
-			isa = PBXGroup;
-			children = (
-				231BE46A1ACFC60000B65A58 /* MFSDKBaseTests.m */,
-				231BE4681ACFC60000B65A58 /* Supporting Files */,
-			);
-			path = MFSDKBaseTests;
-			sourceTree = "<group>";
-		};
-		231BE4681ACFC60000B65A58 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				231BE4691ACFC60000B65A58 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -721,24 +681,6 @@
 			productReference = 231BE44B1ACFC60000B65A58 /* MFSDKBase.app */;
 			productType = "com.apple.product-type.application";
 		};
-		231BE4631ACFC60000B65A58 /* MFSDKBaseTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 231BE4711ACFC60000B65A58 /* Build configuration list for PBXNativeTarget "MFSDKBaseTests" */;
-			buildPhases = (
-				231BE4601ACFC60000B65A58 /* Sources */,
-				231BE4611ACFC60000B65A58 /* Frameworks */,
-				231BE4621ACFC60000B65A58 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				231BE4661ACFC60000B65A58 /* PBXTargetDependency */,
-			);
-			name = MFSDKBaseTests;
-			productName = MFSDKBaseTests;
-			productReference = 231BE4641ACFC60000B65A58 /* MFSDKBaseTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -750,11 +692,7 @@
 				TargetAttributes = {
 					231BE44A1ACFC60000B65A58 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = UECH3VPJ68;
-					};
-					231BE4631ACFC60000B65A58 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 231BE44A1ACFC60000B65A58;
+						DevelopmentTeam = HKFKNR89KJ;
 					};
 				};
 			};
@@ -772,7 +710,6 @@
 			projectRoot = "";
 			targets = (
 				231BE44A1ACFC60000B65A58 /* MFSDKBase */,
-				231BE4631ACFC60000B65A58 /* MFSDKBaseTests */,
 			);
 		};
 /* End PBXProject section */
@@ -793,13 +730,6 @@
 				2386EB8D1AD9DB17006FE937 /* Balance.html in Resources */,
 				2386EB8B1AD9DB17006FE937 /* Balance.css in Resources */,
 				231BE45C1ACFC60000B65A58 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		231BE4621ACFC60000B65A58 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,23 +810,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		231BE4601ACFC60000B65A58 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				231BE46B1ACFC60000B65A58 /* MFSDKBaseTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		231BE4661ACFC60000B65A58 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 231BE44A1ACFC60000B65A58 /* MFSDKBase */;
-			targetProxy = 231BE4651ACFC60000B65A58 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		231BE45D1ACFC60000B65A58 /* LaunchScreen.xib */ = {
@@ -994,7 +908,7 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Li Chunrong (W2W9GPAEGE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Chunrong (W2W9GPAEGE)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1012,7 +926,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a4899e12-abee-40c6-9565-b9ecf24a78e1";
+				PROVISIONING_PROFILE = "2b2eee0f-aaa1-4197-bd94-faa1b7ba43c5";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1041,42 +955,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a4899e12-abee-40c6-9565-b9ecf24a78e1";
+				PROVISIONING_PROFILE = "2b2eee0f-aaa1-4197-bd94-faa1b7ba43c5";
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		231BE4721ACFC60000B65A58 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MFSDKBaseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MFSDKBase.app/MFSDKBase";
-			};
-			name = Debug;
-		};
-		231BE4731ACFC60000B65A58 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MFSDKBaseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MFSDKBase.app/MFSDKBase";
 			};
 			name = Release;
 		};
@@ -1097,15 +977,6 @@
 			buildConfigurations = (
 				231BE46F1ACFC60000B65A58 /* Debug */,
 				231BE4701ACFC60000B65A58 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		231BE4711ACFC60000B65A58 /* Build configuration list for PBXNativeTarget "MFSDKBaseTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				231BE4721ACFC60000B65A58 /* Debug */,
-				231BE4731ACFC60000B65A58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

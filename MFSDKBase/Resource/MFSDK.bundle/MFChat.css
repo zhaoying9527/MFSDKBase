@@ -2715,7 +2715,7 @@ tid-104-message-body-canvas
     background-color:RGB();
     touchEnabled:YES;
     alignmentType:left;
-    background-image:url(MFLayout://left:Local_Image_DialogBlue.left#center:Local_Image_DialogBlue.left#right:Local_Image_DialogBlue.right);
+    background-image:url(MFLayout://left:Local_Image_DialogOrange.left#center:Local_Image_DialogOrange.left#right:Local_Image_DialogOrange.right);
 }
 tid-104-message-body-toptitle
 {
@@ -3185,7 +3185,7 @@ tid-105-body-canvas
     background-color:RGB();
     touchEnabled:YES;
     alignmentType:left;
-    background-image:url(MFLayout://left:Local_Image_DialogWhite.left#center:Local_Image_DialogWhite.left#right:Local_Image_DialogWhite.right);
+    background-image:url(MFLayout://left:Local_Image_Dialog_orange.left#center:Local_Image_Dialog_orange.left#right:Local_Image_Dialog_orange.right);
 }
 tid-105-body-toptitle
 {
