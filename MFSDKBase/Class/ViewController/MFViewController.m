@@ -62,13 +62,8 @@
 
 - (void)setupNotify
 {
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(sceneLayoutChanged:)
-//                                                 name:kMFNotificationSceneLayoutChanged
-//                                               object:nil];
 }
 - (void)removeNotify{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMFNotificationSceneLayoutChanged object:nil];
 }
 
 #pragma - strategy
@@ -136,33 +131,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
-    CGFloat retHeight = [MFCell cellHeightWithScene:self.scene withData:dataDict withIndex:indexPath.section];
+    CGFloat retHeight = [self.scene cellHeightWithIndex:indexPath.section];
     if (retHeight <= 0) {
         [self.scene calculateLayoutInfo:@[dataDict] callback:^(NSArray *virtualNodes) {}];
-        retHeight = [MFCell cellHeightWithScene:self.scene withData:dataDict withIndex:indexPath.section];
+        retHeight = [self.scene cellHeightWithIndex:indexPath.section];
     }
     return retHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dataDict = self.scene.dataArray[indexPath.section];
-    NSString *tId = [self.scene templateIdWithData:dataDict];
-    
-    MFCell *cell = [self dequeueReusablePKCellWithIdentifier:dataDict];
-    if (nil == cell) {
-        cell = [self allocPKCellWithIdentifier:dataDict];
-        [cell setupUIWithScene:self.scene withTemplateId:tId withIndex:indexPath.section];
-    }
+    MFCell *cell = [self.scene buildUIWithTableView:tableView className:[self cellClassName] index:indexPath.section];
+    [self.scene layout:cell];
+    [self.scene bindData:cell];
 
-    //布局设置
-    [cell layoutWithScene:self.scene withData:dataDict withIndex:indexPath.section];
-    //数据绑定
-    [cell bindDataWithScene:self.scene withData:dataDict withIndex:indexPath.section];
     //特殊逻辑处理
-    [cell specialHandlingWithData:dataDict];
-    //数据设置
-    [cell setDataItem:dataDict];
+    [cell specialHandling];
     //代理设置
     [cell setDelegate:self];
     
@@ -173,23 +157,9 @@
 {
 }
 
-- (MFCell*)allocPKCellWithIdentifier:(NSDictionary*)dataDict
-{
-    NSString *tId = [self.scene templateIdWithData:dataDict];
-    NSString *identifier = [NSString stringWithFormat:@"%@",tId];
-    return [[NSClassFromString([self cellClassName]) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-}
-- (MFCell*)dequeueReusablePKCellWithIdentifier:(NSDictionary*)dataDict
-{
-    NSString *tId = [self.scene templateIdWithData:dataDict];
-    NSString *identifier = [NSString stringWithFormat:@"%@",tId];
-    return [self.tableView dequeueReusableCellWithIdentifier:identifier];
-}
-
 //Native拦截优先处理事件，处理了返回YES，否则返回NO
 - (BOOL)handleNativeEvent:(NSDictionary *)eventInfo target:(id)sender
 {
     return NO;
 }
-
 @end

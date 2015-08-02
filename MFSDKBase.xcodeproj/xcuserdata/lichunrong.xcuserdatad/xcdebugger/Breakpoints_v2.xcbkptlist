@@ -73,13 +73,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MFSDKBase/Class/UI/Widget/MFCell.m"
-            timestampString = "459963159.77818"
+            filePath = "MFSDKBase/Class/UI/MFScene.m"
+            timestampString = "460182582.779161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-layoutWithScene:withData:withIndex:"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "-buildUIWithTableView:className:index:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -19,7 +19,6 @@ shared##className = [[self alloc] init]; \
 return shared##className; \
 }
 
-#define kMFNotificationSceneLayoutChanged       @"kMFNotificationSceneLayoutChanged"
 #define DEFAULTICONNAME                         @"headIcon.png"
 #define DEFAULTICON                             [MFResourceCenter imageNamed:DEFAULTICONNAME]
 

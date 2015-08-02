@@ -19,6 +19,7 @@
 #import "MFSceneFactory.h"
 #import "MFDataBinding.h"
 #import "MFHelper.h"
+#import "MFCell.h"
 #import "MFLayoutCenter.h"
 #import "UIView+Sizes.h"
 @interface MFScene ()
@@ -159,6 +160,81 @@
     return virtualNode;
 }
 
+- (CGFloat)cellHeightWithIndex:(NSInteger)index
+{
+    CGFloat totalHeight = 0.0f;
+ 
+    NSDictionary *virtualNodes = self.virtualNodes[index];
+    MFVirtualNode *headVirtualNode = virtualNodes[kMFVirtualHeadNode];
+    MFVirtualNode *bodyVirtualNode = virtualNodes[kMFVirtualBodyNode];
+    MFVirtualNode *footVirtualNode = virtualNodes[kMFVirtualFootNode];
+    
+    CGFloat height = headVirtualNode.widgetSize.height;
+    totalHeight += height > 0 ? height+[MFHelper cellHeaderHeight] : 0;
+    height = bodyVirtualNode.widgetSize.height;
+    totalHeight += height + [MFHelper sectionHeight];
+    height = footVirtualNode.widgetSize.height;
+    totalHeight += height > 0 ? height+[MFHelper cellFooterHeight] : 0;
+    return totalHeight;
+}
+
+- (MFCell*)buildUIWithTableView:(UITableView*)tableView className:(NSString*)name index:(NSInteger)index
+{
+    NSDictionary *dataDict = self.dataArray[index];
+    NSString *tId = [self templateIdWithData:dataDict];
+    NSString *identifier = [NSString stringWithFormat:@"%@",tId];
+    
+    MFCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[NSClassFromString(name) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    if (![cell.tId isEqualToString:tId]) {
+        cell.tId = tId;
+        if (index < self.virtualNodes.count) {
+            [cell.contentView removeAllSubviews];
+            
+//            UIView *sceneHeadCanvas = [self sceneViewWithVirtualNode:self.virtualNodes[index][kMFVirtualHeadNode]
+//                                                            withType:MFNodeTypeHead];
+//            UIView *sceneBodyCanvas = [self sceneViewWithVirtualNode:self.virtualNodes[index][kMFVirtualBodyNode]
+//                                                            withType:MFNodeTypeBody];
+//            UIView *sceneFootCanvas = [self sceneViewWithVirtualNode:self.virtualNodes[index][kMFVirtualFootNode]
+//                                                            withType:MFNodeTypeFoot];
+            
+            
+            UIView *sceneHeadCanvas = ((MFVirtualNode*)(self.virtualNodes[index][kMFVirtualHeadNode])).objRef;
+            UIView *sceneBodyCanvas = ((MFVirtualNode*)(self.virtualNodes[index][kMFVirtualBodyNode])).objRef;
+            UIView *sceneFootCanvas = ((MFVirtualNode*)(self.virtualNodes[index][kMFVirtualFootNode])).objRef;
+            sceneHeadCanvas.tag = 1000;
+            sceneBodyCanvas.tag = 1001;
+            sceneFootCanvas.tag = 1002;
+
+            if (nil != sceneHeadCanvas) {
+                [cell.contentView addSubview:sceneHeadCanvas];
+            }
+            if (nil != sceneBodyCanvas) {
+                [cell.contentView addSubview:sceneBodyCanvas];
+            }
+            if (nil != sceneFootCanvas) {
+                [cell.contentView addSubview:sceneFootCanvas];
+            }
+        }
+    }
+    cell.dataItem = dataDict;
+
+    return cell;
+}
+
+- (void)layout:(MFCell*)cell
+{
+    [self layout:cell.contentView withData:cell.dataItem];
+}
+
+- (void)bindData:(MFCell*)cell
+{
+    [self bind:cell.contentView withData:cell.dataItem];
+}
+
 - (void)bind:(UIView *)view withData:(NSDictionary*)data
 {
     if (view.subviews.count <= 0) {
@@ -206,7 +282,7 @@
 {
     NSMutableArray *virtualNodes = [NSMutableArray arrayWithCapacity:dataArray.count];
     NSInteger retHeight = 0;
-
+                       
     for (int accessIndex=0; accessIndex < dataArray.count; accessIndex++) {
         NSDictionary *dataDict = [dataArray objectAtIndex:accessIndex];
         NSString *templateId = [self templateIdWithData:dataDict];

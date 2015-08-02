@@ -68,12 +68,6 @@
     return matchDom;
 }
 
-- (BOOL)isBindingToWidget
-{
-    
-    return YES;
-}
-
 - (id)triggerEvent:(NSString*)event withParams:(NSDictionary*)params
 {
     NSString *sceneName = [[[MFSceneCenter sharedMFSceneCenter] currentScene] sceneName];

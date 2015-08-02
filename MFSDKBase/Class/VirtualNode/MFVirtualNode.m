@@ -8,6 +8,8 @@
 
 #import "MFVirtualNode.h"
 #import "MFLayoutCenter.h"
+#import "MFSceneFactory.h"
+#import "NSObject+VirtualNode.h"
 
 @implementation MFVirtualNode
 
@@ -26,12 +28,20 @@
     self.dom = dom;
     self.fullData = dataSource;
     self.subNodes = [NSMutableArray array];    
+
+    UIView *widget = [[MFSceneFactory sharedMFSceneFactory] createWidgetWithNode:self];
+    [widget attachVirtualNode:self];
+    self.objRef = widget;
     
     for (MFDOM *subDom in dom.subDoms) {
         MFVirtualNode *subNode = [[MFVirtualNode alloc] initWithDom:subDom dataSource:dataSource];
         if (subNode) {
             subNode.superNode = self;
             [self.subNodes addObject:subNode];
+
+            if (widget && subNode.objRef) {
+                [widget addSubview:(UIView*)subNode.objRef];
+            }
         }
     }
 
@@ -54,6 +64,11 @@
 {
     NSDictionary *indexPathDict = [[MFLayoutCenter sharedMFLayoutCenter] sizeOfFootNode:self superFrame:superFrame dataSource:self.fullData];
     return indexPathDict;
+}
+
+-(void)update
+{
+    
 }
 
 - (id)triggerEvent:(NSString*)event withParams:(NSDictionary*)params

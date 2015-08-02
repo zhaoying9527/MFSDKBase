@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MFScene.h"
 
+@class MFCell;
 @class MFVirtualNode;
 @interface MFScene ()
 /**
@@ -36,18 +37,21 @@
  *  @return             创建的view
  */
 - (UIView*)sceneViewWithVirtualNode:(MFVirtualNode*)node withType:(MFNodeType)type;
+
+- (CGFloat)cellHeightWithIndex:(NSInteger)index;
 /**
  *  数据绑定
  *  @param view         View
  *  @param data         数据源
  */
-- (void)bind:(UIView *)view withData:(NSDictionary*)data;
+- (MFCell*)buildUIWithTableView:(UITableView*)tableView className:(NSString*)name index:(NSInteger)index;
 
 /**
  *  页面布局
  *  @param view         View
  *  @param data         数据源
  */
-- (void)layout:(UIView*)view withData:(NSDictionary*)data;
+- (void)layout:(MFCell*)cell;
+- (void)bindData:(MFCell*)cell;
 
 @end

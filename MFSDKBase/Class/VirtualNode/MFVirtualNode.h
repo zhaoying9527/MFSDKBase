@@ -12,8 +12,9 @@
 
 @interface MFVirtualNode : NSObject
 
-@property (nonatomic, weak) NSDictionary *fullData;
-@property (nonatomic, weak) id data;
+@property (nonatomic, weak)NSDictionary *fullData;
+@property (nonatomic, weak)id data;
+@property (nonatomic, strong)id objRef;
 @property (nonatomic, weak)MFDOM *dom;
 @property (nonatomic, weak)MFVirtualNode *superNode;
 @property (nonatomic, strong)NSMutableArray *subNodes;
@@ -27,6 +28,7 @@
 - (NSDictionary*)sizeOfBodyWithSuperFrame:(CGRect)superFrame;
 - (NSDictionary*)sizeOfFootWithSuperFrame:(CGRect)superFrame;
 
+-(void)update;
 - (id)triggerEvent:(NSString*)event withParams:(NSDictionary*)params;
 
 @end
