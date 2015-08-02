@@ -40,25 +40,22 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFLayoutCenter)
 
 /**
  *  视图页面布局
- *  @param view          视图
+ *  @param node          虚拟view Node节点
  *  @param sizeInfo      对应布局信息
  */
-- (void)layout:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo;
-- (void)layout:(UIView*)view;
+- (void)layout:(MFVirtualNode*)node;
 /**
  *  视图左、中、右位置处理
- *  @param view          视图
+ *  @param node          虚拟view Node节点
  *  @param sizeInfo      对应布局信息
  *  @param alignType     对齐类型
  */
-- (void)sideSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo withAlignmentType:(MFAlignmentType)alignType;
-- (void)sideSubViews:(UIView*)view withAlignmentType:(MFAlignmentType)alignType;
+- (void)sideSubViews:(MFVirtualNode*)node withAlignmentType:(MFAlignmentType)alignType;
 
 /**
  *  视图镜像翻转处理
- *  @param view          视图
+ *  @param node          虚拟view Node节点
  *  @param sizeInfo      对应布局信息
  */
-- (void)reverseSubViews:(UIView*)view withSizeInfo:(NSDictionary *)sizeInfo;
-- (void)reverseSubViews:(UIView*)view;
+- (void)reverseSubViews:(MFVirtualNode*)node;
 @end

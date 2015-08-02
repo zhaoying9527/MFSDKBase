@@ -14,7 +14,7 @@
 
 @property (nonatomic, weak)NSDictionary *fullData;
 @property (nonatomic, weak)id data;
-@property (nonatomic, strong)id objRef;
+@property (nonatomic, strong)UIView *objRef;
 @property (nonatomic, weak)MFDOM *dom;
 @property (nonatomic, weak)MFVirtualNode *superNode;
 @property (nonatomic, strong)NSMutableArray *subNodes;
@@ -28,7 +28,12 @@
 - (NSDictionary*)sizeOfBodyWithSuperFrame:(CGRect)superFrame;
 - (NSDictionary*)sizeOfFootWithSuperFrame:(CGRect)superFrame;
 
--(void)update;
+
+- (UIView*)create;
+- (void)layout;
+- (void)bindData;
+
+- (void)update;
 - (id)triggerEvent:(NSString*)event withParams:(NSDictionary*)params;
 
 @end

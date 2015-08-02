@@ -12,6 +12,7 @@
 /*
  *  虚拟场景
  */
+@class MFCell;
 @class MFView;
 typedef enum {
     MFNodeTypeBody = 0,
@@ -76,6 +77,31 @@ typedef NSMutableArray* (^MFDataAdapterBlock)(NSMutableArray *data);
  *  删除数据及布局信息
  */
 - (void)removeData:(NSArray*)data;
+
+/*
+ * 计算index对应cell的高度
+ */
+- (CGFloat)cellHeightWithIndex:(NSInteger)index;
+
+/**
+ *  创建index 对应数据的cell视图
+ *  @param tableView    列表
+ *  @param name         cell类名
+ *  @param index        数据index
+ */
+- (MFCell*)buildUIWithTableView:(UITableView*)tableView className:(NSString*)name index:(NSInteger)index;
+
+/**
+ *  页面布局
+ *  @param cell         cell视图
+ */
+- (void)layout:(MFCell*)cell;
+
+/**
+ *  数据绑定
+ *  @param cell         cell视图
+ */
+- (void)bindData:(MFCell*)cell;
 
 /**
  *  加载数据,回调完成后布局信息保存在scene中，并且返回创建好的viewController

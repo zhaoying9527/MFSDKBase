@@ -73,26 +73,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     return widget;
 }
 
-
-- (id)createUIWithNode:(MFVirtualNode*)node sizeInfo:(NSDictionary*)sizeInfo
-{
-    if (![self supportHtmlTag:node.dom.clsType]) {
-        return nil;
-    }
-    
-    UIView * widget = nil;
-    widget = [self createWidgetWithNode:node];
-    [widget attachVirtualNode:node];
-    for (MFVirtualNode *subNode in node.subNodes) {
-        UIView *subWidget = [self createUIWithNode:subNode sizeInfo:sizeInfo];
-        if (subWidget) {
-            [widget addSubview:subWidget];
-        }
-    }
-    
-    return widget;
-}
-
 - (id)allocObject:(NSString*)classKey
 {
     id result = nil;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class MFVirtualNode;
 @interface MFDataBinding : NSObject
-+ (void)bind:(UIView*)view withDataSource:(NSDictionary*)dataSource;
++ (void)bind:(MFVirtualNode*)node;
 @end

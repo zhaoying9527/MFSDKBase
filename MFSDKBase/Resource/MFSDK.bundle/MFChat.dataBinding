@@ -84,7 +84,7 @@ tid-12-head-view
 }
 tid-12-body-voice
 {
-    dsKey:v;
+    dsKey:voice;
 }
 
 tid-13-head-view

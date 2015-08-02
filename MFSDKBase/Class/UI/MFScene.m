@@ -194,27 +194,20 @@
         if (index < self.virtualNodes.count) {
             [cell.contentView removeAllSubviews];
             
-//            UIView *sceneHeadCanvas = [self sceneViewWithVirtualNode:self.virtualNodes[index][kMFVirtualHeadNode]
-//                                                            withType:MFNodeTypeHead];
-//            UIView *sceneBodyCanvas = [self sceneViewWithVirtualNode:self.virtualNodes[index][kMFVirtualBodyNode]
-//                                                            withType:MFNodeTypeBody];
-//            UIView *sceneFootCanvas = [self sceneViewWithVirtualNode:self.virtualNodes[index][kMFVirtualFootNode]
-//                                                            withType:MFNodeTypeFoot];
-            
-            
-            UIView *sceneHeadCanvas = ((MFVirtualNode*)(self.virtualNodes[index][kMFVirtualHeadNode])).objRef;
-            UIView *sceneBodyCanvas = ((MFVirtualNode*)(self.virtualNodes[index][kMFVirtualBodyNode])).objRef;
-            UIView *sceneFootCanvas = ((MFVirtualNode*)(self.virtualNodes[index][kMFVirtualFootNode])).objRef;
+            UIView *sceneHeadCanvas = [(MFVirtualNode*)(self.virtualNodes[index][kMFVirtualHeadNode]) create];
             sceneHeadCanvas.tag = 1000;
-            sceneBodyCanvas.tag = 1001;
-            sceneFootCanvas.tag = 1002;
-
             if (nil != sceneHeadCanvas) {
                 [cell.contentView addSubview:sceneHeadCanvas];
             }
+
+            UIView *sceneBodyCanvas = [(MFVirtualNode*)(self.virtualNodes[index][kMFVirtualBodyNode]) create];
+            sceneBodyCanvas.tag = 1001;
             if (nil != sceneBodyCanvas) {
                 [cell.contentView addSubview:sceneBodyCanvas];
             }
+
+            UIView *sceneFootCanvas = [(MFVirtualNode*)(self.virtualNodes[index][kMFVirtualFootNode]) create];
+            sceneFootCanvas.tag = 1002;
             if (nil != sceneFootCanvas) {
                 [cell.contentView addSubview:sceneFootCanvas];
             }
@@ -227,55 +220,28 @@
 
 - (void)layout:(MFCell*)cell
 {
-    [self layout:cell.contentView withData:cell.dataItem];
+    UIView *headView = [cell.contentView viewWithTag:1000];
+    [headView.virtualNode layout];
+
+    UIView *bodyView = [cell.contentView viewWithTag:1001];
+    [bodyView.virtualNode layout];
+    bodyView.top += headView.height > 0 ? headView.height+[MFHelper cellHeaderHeight] : 0;
+
+    UIView *footView = [cell.contentView viewWithTag:1003];
+    [footView.virtualNode layout];
+    footView.top += headView.height > 0 ? headView.height+[MFHelper cellHeaderHeight] : 0;
+    footView.top += bodyView.height + [MFHelper sectionHeight];
+
+    MFAlignmentType alignType = (MFAlignmentType)[cell.dataItem[KEY_WIDGET_ALIGNMENTTYPE] integerValue];
+    [[MFLayoutCenter sharedMFLayoutCenter] sideSubViews:bodyView.virtualNode withAlignmentType:alignType];
+    [[MFLayoutCenter sharedMFLayoutCenter] reverseSubViews:bodyView.virtualNode];
 }
 
 - (void)bindData:(MFCell*)cell
 {
-    [self bind:cell.contentView withData:cell.dataItem];
-}
-
-- (void)bind:(UIView *)view withData:(NSDictionary*)data
-{
-    if (view.subviews.count <= 0) {
-        return;
+    for (UIView *subView in cell.contentView.subviews) {
+        [subView.virtualNode bindData];
     }
-    
-    for (UIView *subView in view.subviews) {
-        [MFDataBinding bind:subView withDataSource:data];
-    }
-}
-
-- (void)layout:(UIView*)view withData:(NSDictionary*)data
-{
-    if (view.subviews.count <= 0) {
-        return;
-    }
-    
-    UIView *headView = nil; UIView *bodyView = nil; UIView *footView = nil;
-    for (UIView *subView in view.subviews) {
-        if (1000 == subView.tag) {
-            headView = subView;
-        }
-        else if (1001 == subView.tag) {
-            bodyView = subView;
-        }
-        else if (1002 == subView.tag) {
-            footView = subView;
-        }
-    }
-
-    [[MFLayoutCenter sharedMFLayoutCenter] layout:headView];
-    [[MFLayoutCenter sharedMFLayoutCenter] layout:bodyView];
-    bodyView.top += headView.height > 0 ? headView.height+[MFHelper cellHeaderHeight] : 0;
-    
-    [[MFLayoutCenter sharedMFLayoutCenter] layout:footView];
-    footView.top += headView.height > 0 ? headView.height+[MFHelper cellHeaderHeight] : 0;
-    footView.top += bodyView.height + [MFHelper sectionHeight];
-    
-    MFAlignmentType alignType = (MFAlignmentType)[[data objectForKey:KEY_WIDGET_ALIGNMENTTYPE] integerValue];
-    [[MFLayoutCenter sharedMFLayoutCenter] sideSubViews:bodyView withAlignmentType:alignType];
-    [[MFLayoutCenter sharedMFLayoutCenter] reverseSubViews:bodyView];
 }
 
 - (void)calculateLayoutInfo:(NSArray*)dataArray callback:(void(^)(NSArray *virtualNodes))callback
@@ -375,13 +341,6 @@
 {
     [self.dataArray removeAllObjects];
     [self.virtualNodes removeAllObjects];
-}
-
-- (UIView*)sceneViewWithVirtualNode:(MFVirtualNode*)node withType:(MFNodeType)type
-{
-    UIView *view = [[MFSceneFactory sharedMFSceneFactory] createUIWithNode:node sizeInfo:nil];
-    view.tag = (MFNodeTypeHead == type) ? 1000 : (MFNodeTypeBody == type ? 1001 : 1002);
-    return view;
 }
 
 - (MFViewController*)sceneViewControllerWithData:(NSArray*)data

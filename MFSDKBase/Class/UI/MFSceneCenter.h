@@ -54,6 +54,4 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneCenter)
  */
 - (MFScene*)loadSceneWithName:(NSString*)name;
 
-/*添加layout计算任务*/
-- (void)addLayoutOperations:(NSArray*)operations waitUntilFinished:(BOOL)wait;
 @end

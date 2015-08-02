@@ -21,8 +21,6 @@
 @property (nonatomic, copy) NSString *currentSceneName;
 @property (nonatomic, strong)MFCorePlugInService *pluginService;
 @property (nonatomic, strong)NSMutableDictionary *htmlParsers;
-
-@property (nonatomic, strong) NSOperationQueue *layoutCalculateQueue;
 @end
 
 @implementation MFSceneCenter
@@ -35,14 +33,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
         self.htmlParsers = [NSMutableDictionary dictionary];
     }
     return self;
-}
-
-- (NSOperationQueue *)layoutCalculateQueue{
-    if(!_layoutCalculateQueue){
-        _layoutCalculateQueue = [[NSOperationQueue alloc] init];
-        _layoutCalculateQueue.maxConcurrentOperationCount = 1;
-    }
-    return _layoutCalculateQueue;
 }
 
 - (void)registerScene:(MFScene*)scene withName:(NSString*)sceneName
@@ -85,10 +75,5 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     MFWindowsStyleManager *styleMgr = [MFWindowsStyleManager sharedMFWindowsStyleManager];
     MFScene *resultScene = [[MFScene alloc] initWithDomNodes:styleMgr.bodyEntity withCss:styleMgr.css withDataBinding:styleMgr.databinding withEvents:styleMgr.events withStyles:styleMgr.style withSceneName:sceneName];
     return resultScene;
-}
-
-- (void)addLayoutOperations:(NSArray*)operations waitUntilFinished:(BOOL)wait
-{
-    [self.layoutCalculateQueue addOperations:operations waitUntilFinished:wait];
 }
 @end

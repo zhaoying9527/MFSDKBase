@@ -8,6 +8,7 @@
 
 #import "MFVirtualNode.h"
 #import "MFLayoutCenter.h"
+#import "MFDataBinding.h"
 #import "MFSceneFactory.h"
 #import "NSObject+VirtualNode.h"
 
@@ -27,21 +28,13 @@
     self.data = data;
     self.dom = dom;
     self.fullData = dataSource;
-    self.subNodes = [NSMutableArray array];    
+    self.subNodes = [NSMutableArray array];
 
-    UIView *widget = [[MFSceneFactory sharedMFSceneFactory] createWidgetWithNode:self];
-    [widget attachVirtualNode:self];
-    self.objRef = widget;
-    
     for (MFDOM *subDom in dom.subDoms) {
         MFVirtualNode *subNode = [[MFVirtualNode alloc] initWithDom:subDom dataSource:dataSource];
         if (subNode) {
             subNode.superNode = self;
             [self.subNodes addObject:subNode];
-
-            if (widget && subNode.objRef) {
-                [widget addSubview:(UIView*)subNode.objRef];
-            }
         }
     }
 
@@ -66,9 +59,36 @@
     return indexPathDict;
 }
 
--(void)update
+- (UIView*)create
 {
+    UIView *widget = [[MFSceneFactory sharedMFSceneFactory] createWidgetWithNode:self];
+    [widget attachVirtualNode:self];
+    self.objRef = widget;
     
+    for (MFVirtualNode *subNode in self.subNodes) {
+        UIView *subWidget = [subNode create];
+        if (subWidget) {
+            [widget addSubview:subWidget];
+        }
+    }
+    
+    return widget;
+}
+
+- (void)layout
+{
+    [[MFLayoutCenter sharedMFLayoutCenter] layout:self];
+}
+
+- (void)bindData
+{
+    [MFDataBinding bind:self];
+}
+
+- (void)update
+{
+    [[MFLayoutCenter sharedMFLayoutCenter] layout:self];
+    [MFDataBinding bind:self];    
 }
 
 - (id)triggerEvent:(NSString*)event withParams:(NSDictionary*)params

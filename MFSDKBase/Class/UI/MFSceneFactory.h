@@ -16,8 +16,11 @@
 @interface MFSceneFactory : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneFactory)
 
+/**
+ * 创建虚拟view节点对应的实际view
+ * @param node     虚拟view节点
+ */
 - (id)createWidgetWithNode:(MFVirtualNode*)node;
-- (id)createUIWithNode:(MFVirtualNode*)node sizeInfo:(NSDictionary*)sizeInfo;
 
 - (BOOL)supportHtmlTag:(NSString *)htmlTag;
 - (id)getProperty:(id)objC popertyName:(NSString*)popertyName;

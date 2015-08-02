@@ -29,29 +29,12 @@
  *  @param type         dom类型:头部、正文、尾部
  */
 - (MFDOM*)domWithId:(NSString*)ID withType:(MFNodeType)type;
+
+/**
+ *  创建虚拟View节点
+ *  @param ID           node对应的id
+ *  @param type         node类型:头部、正文、尾部
+ */
 - (MFVirtualNode*)virtualNodeWithId:(NSString*)ID withType:(MFNodeType)type;
-/**
- *  创建虚拟View节点对应View
- *  @param node         虚拟node
- *  @param type         node类型
- *  @return             创建的view
- */
-- (UIView*)sceneViewWithVirtualNode:(MFVirtualNode*)node withType:(MFNodeType)type;
-
-- (CGFloat)cellHeightWithIndex:(NSInteger)index;
-/**
- *  数据绑定
- *  @param view         View
- *  @param data         数据源
- */
-- (MFCell*)buildUIWithTableView:(UITableView*)tableView className:(NSString*)name index:(NSInteger)index;
-
-/**
- *  页面布局
- *  @param view         View
- *  @param data         数据源
- */
-- (void)layout:(MFCell*)cell;
-- (void)bindData:(MFCell*)cell;
 
 @end
