@@ -1,5 +1,5 @@
 function didClickHeadIcon(params)
-    local target = params["target"]
+    local target = params["MFTarget"]
     local cell = target:MFViewCell()
 
     if cell:respondsToSelector("didClickHeadIcon:") then
@@ -10,7 +10,7 @@ function didClickHeadIcon(params)
 end
 
 function didDoubleClickCell(params)
-    local target = params["target"]
+    local target = params["MFTarget"]
     local cell = target:MFViewCell()
 
     if cell:respondsToSelector("didDoubleClickCell:") then
@@ -21,7 +21,7 @@ function didDoubleClickCell(params)
 end
 
 function didClickCTCell(params)
-    local target = params["target"]
+    local target = params["MFTarget"]
     local cell = target:MFViewCell()
 
     if cell:respondsToSelector("didClickCTCell:") then
@@ -32,7 +32,7 @@ function didClickCTCell(params)
 end
 
 function didLongPressCell(params)
-    local target = params["target"]
+    local target = params["MFTarget"]
     local cell = target:MFViewCell()
 
     if cell:respondsToSelector("didLongPressCell:") then
@@ -43,7 +43,7 @@ function didLongPressCell(params)
 end
 
 function retryTapedWithCell(params)
-    local target = params["target"]
+    local target = params["MFTarget"]
     local cell = target:MFViewCell()
 
     if cell:respondsToSelector("retryTapedWithCell:") then
@@ -54,7 +54,7 @@ function retryTapedWithCell(params)
 end
 
 function didClickPhoto(params)
-    local target = params["target"]
+    local target = params["MFTarget"]
     local cell = target:MFViewCell()
 
     if cell:respondsToSelector("didClickPhoto:") then

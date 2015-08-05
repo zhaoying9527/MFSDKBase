@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFSDKBase/Class/UI/Widget/MFImageView.m"
-            timestampString = "460194557.638007"
+            timestampString = "460447247.584883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFSDKBase/Class/UI/Widget/MFImageView.m"
-            timestampString = "460194560.513352"
+            timestampString = "460447247.584883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFSDKBase/Class/UI/Widget/MFImageView.m"
-            timestampString = "460194564.858726"
+            timestampString = "460447247.584883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MFSDKBase/Class/UI/Widget/MFImageView.m"
-            timestampString = "460194591.214213"
+            timestampString = "460447247.584883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "144"
@@ -144,6 +144,38 @@
             startingLineNumber = "178"
             endingLineNumber = "178"
             landmarkName = "-setBackgroundImage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFSDKBase/Class/DOM/MFDOM.m"
+            timestampString = "460447752.357854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-triggerEvent:withParams:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MFSDKBase/Class/Event/MFDispatchCenter.m"
+            timestampString = "460448000.800496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-executeNativeAction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
