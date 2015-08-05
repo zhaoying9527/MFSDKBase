@@ -46,6 +46,8 @@
 + (CGRect)formatRectWithString:(NSString*)rectString superFrame:(CGRect)frame;
 + (CGFloat)maxWidthWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
 + (CGFloat)maxHeightWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
++ (CGFloat)minWidthWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
++ (CGFloat)minHeightWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
 + (BOOL)autoWidthTypeWithCssStyle:(NSDictionary*)styleDict;
 + (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict;
 

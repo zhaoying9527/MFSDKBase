@@ -144,20 +144,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (CGRect)layoutInfoOfNode:(MFVirtualNode*)node superFrame:(CGRect)superFrame dataSource:(NSDictionary*)dataSource retWidgets:(NSMutableDictionary*)widgetsInfo
 {
-    MFDOM *dom = node.dom;
+    MFDOM *dom             = node.dom;
     NSString *domID        = dom.uuid;
     NSDictionary *cssItem  = dom.cssNodes;
     NSString *dataKey      = dom.bindingField;
     NSString *clsType      = [dom.clsType lowercaseString];
     
-    BOOL autoWidth         = [MFHelper autoWidthTypeWithCssStyle:cssItem];
-    BOOL autoHeight        = [MFHelper autoHeightTypeWithCssStyle:cssItem];
     NSString *pageFrameStr = [MFHelper getFrameStringWithCssStyle:cssItem];
     CGRect pageFrame       = [MFHelper formatFrameWithString:pageFrameStr superFrame:superFrame];
+
+    BOOL autoWidth         = [MFHelper autoWidthTypeWithCssStyle:cssItem];
+    BOOL autoHeight        = [MFHelper autoHeightTypeWithCssStyle:cssItem];
     CGFloat maxWidth       = [MFHelper maxWidthWithCssStyle:cssItem superFrame:(CGRect)superFrame];
     CGFloat maxHeight      = [MFHelper maxHeightWithCssStyle:cssItem superFrame:(CGRect)superFrame];
+    CGFloat minWidth       = [MFHelper minWidthWithCssStyle:cssItem superFrame:(CGRect)superFrame];
+    CGFloat minHeight      = [MFHelper minHeightWithCssStyle:cssItem superFrame:(CGRect)superFrame];
+
     CGSize realSize        = CGSizeZero;
-    
     NSDictionary *dataDict = dataSource;
     NSString *multiLineStr = cssItem[MF_KEYWORD_NUMBEROFLINES];
     if ([MFHelper isKindOfLabel:clsType] && [MFHelper supportMultiLine:multiLineStr]) {
@@ -173,8 +176,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         realSize = [self audioSizeWithDataInfo:dataDict dataItems:dataDict[dataKey] superFrame:superFrame];
     }
     
-    realSize.width         = autoWidth? MIN(realSize.width, maxWidth) : MAX(realSize.width, pageFrame.size.width);
-    realSize.height        = autoHeight ? MIN(realSize.height, maxHeight) : MAX(realSize.height, pageFrame.size.height);
+    
+    CGFloat realWidth = 0;
+    CGFloat realHeight = 0;
+    if (autoWidth) {
+        realWidth = MAX(MIN(realSize.width, maxWidth), minHeight);
+    } else {
+//        realWidth = MAX(realSize.width, pageFrame.size.width);
+        realWidth = pageFrame.size.width;
+    }
+    if (autoHeight) {
+        realHeight = MAX(MIN(realSize.height, maxHeight),minHeight);
+    }else {
+//        realHeight = MAX(realSize.height, pageFrame.size.height);
+        realHeight = pageFrame.size.height;
+    }
+    
+    realSize = CGSizeMake(realWidth, realHeight);
     
     pageFrame.size.width   = realSize.width;
     pageFrame.size.height  = realSize.height;
@@ -206,6 +224,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         subNode.frame = childRealFrame;
     }
     
+    CGFloat pageMaxWidth = autoWidth ? 0 : pageSize.width;
+    CGFloat pageMaxHeight = canvasAutoHeight ? (pageMinHeight>0?pageMinHeight:0) : pageSize.height;
+    CGSize pageMaxSize = CGSizeMake(maxWidth, maxHeight);
+
     CGSize fitSize = [self fitPageSize:childWidgetsInfo maxSize:pageSize];
     [widgetsInfo addEntriesFromDictionary:childWidgetsInfo];
     if (!((fitSize.width == pageSize.width) && (fitSize.height == pageSize.height))) {

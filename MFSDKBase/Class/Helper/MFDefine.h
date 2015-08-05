@@ -40,8 +40,10 @@ return shared##className; \
 #define MF_KEY_WIDGET_TOP                          @"top"
 #define MF_KEY_WIDGET_WIDTH                        @"width"
 #define MF_KEY_WIDGET_MAX_WIDTH                    @"max-width"
+#define MF_KEY_WIDGET_MIN_WIDTH                    @"min-width"
 #define MF_KEY_WIDGET_HEIGHT                       @"height"
 #define MF_KEY_WIDGET_MAX_HEIGHT                   @"max-height"
+#define MF_KEY_WIDGET_MIN_HEIGHT                   @"min-height"
 #define MF_KEY_WIDGET_SIZE                         @"widgetSize"
 #define MF_KEYWORD_FRAME                           @"frame"
 

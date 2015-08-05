@@ -335,7 +335,7 @@
     return autoWidth;
 }
 
-+ (CGFloat)maxWidthWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
++ (CGFloat)maxWidthWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame
 {
     NSString *maxWidthStr = [styleDict objectForKey:MF_KEY_WIDGET_MAX_WIDTH];
     BOOL relativeMaxWidth = [maxWidthStr hasSuffix:@"%"];
@@ -343,12 +343,28 @@
     return maxWidth > 0 ? maxWidth : INT32_MAX;
 }
 
-+ (CGFloat)maxHeightWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
++ (CGFloat)maxHeightWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame
 {
     NSString *maxHeightStr = [styleDict objectForKey:MF_KEY_WIDGET_MAX_HEIGHT];
     BOOL relativeMaxHeight = [maxHeightStr hasSuffix:@"%"];
     CGFloat maxHeight = relativeMaxHeight ? superFrame.size.height*maxHeightStr.intValue/100 : maxHeightStr.intValue;
     return maxHeight > 0 ? maxHeight : INT32_MAX;
+}
+
++ (CGFloat)minWidthWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame
+{
+    NSString *minWidthStr = [styleDict objectForKey:MF_KEY_WIDGET_MIN_WIDTH];
+    BOOL relativeMinWidth = [minWidthStr hasSuffix:@"%"];
+    CGFloat minWidth = relativeMinWidth ? superFrame.size.width*minWidthStr.intValue/100 : minWidthStr.intValue;
+    return minWidth > 0 ? minWidth : 0;
+}
+
++ (CGFloat)minHeightWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame
+{
+    NSString *minHeightStr = [styleDict objectForKey:MF_KEY_WIDGET_MIN_HEIGHT];
+    BOOL relativeMinHeight = [minHeightStr hasSuffix:@"%"];
+    CGFloat minHeight = relativeMinHeight ? superFrame.size.height*minHeightStr.intValue/100 : minHeightStr.intValue;
+    return minHeight > 0 ? minHeight : 0;
 }
 
 + (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict
