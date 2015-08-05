@@ -54,7 +54,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
     MFDOM *domObj = node.dom;
     if ([self supportHtmlTag:domObj.clsType]) {
         widget = [self allocObject:domObj.clsType];
-        NSString *uuid = [domObj.htmlNodes getAttributeNamed:KEYWORD_ID];
+        NSString *uuid = [domObj.htmlNodes getAttributeNamed:MF_KEYWORD_ID];
         
         if([self bindObject:widget]) {
             [self batchExecution:domObj.cssNodes];

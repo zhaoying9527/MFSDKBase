@@ -83,11 +83,11 @@
 - (MFDOM*)loadDom:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events
 {
     HTMLNode *htmlNode = (HTMLNode*)html;
-    NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
+    NSString *uid = [htmlNode getAttributeNamed:MF_KEYWORD_ID];
     MFDOM *dom = [[MFDOM alloc] initWithDomNode:htmlNode withCss:css[uid] withDataBinding:dataBinding[uid] withEvents:events[uid]];
     
     [[htmlNode children] enumerateObjectsUsingBlock:^(HTMLNode *childNode, NSUInteger idx, BOOL *stop) {
-        if (nil != [childNode getAttributeNamed:KEYWORD_ID]) {
+        if (nil != [childNode getAttributeNamed:MF_KEYWORD_ID]) {
             MFDOM *childDom = [self loadDom:childNode withCss:css withDataBinding:dataBinding withEvents:events];
             [dom addSubDom:childDom];
             childDom.superDom = dom;
@@ -100,7 +100,7 @@
 - (MFDOM*)loadHeader:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSMutableDictionary*)styles
 {
     HTMLNode *htmlNode = (HTMLNode*)html;
-    NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
+    NSString *uid = [htmlNode getAttributeNamed:MF_KEYWORD_ID];
     if (!styles[uid]) {
         return nil;
     }
@@ -120,7 +120,7 @@
 - (MFDOM*)loadFooter:(HTMLNode*)html withCss:(NSDictionary*)css withDataBinding:(NSDictionary*)dataBinding withEvents:(NSDictionary*)events withStyles:(NSMutableDictionary*)styles
 {
     HTMLNode *htmlNode = (HTMLNode*)html;
-    NSString *uid = [htmlNode getAttributeNamed:KEYWORD_ID];
+    NSString *uid = [htmlNode getAttributeNamed:MF_KEYWORD_ID];
     if (!styles[uid]) {
         return nil;
     }
@@ -232,7 +232,7 @@
     footView.top += headView.height > 0 ? headView.height+[MFHelper cellHeaderHeight] : 0;
     footView.top += bodyView.height + [MFHelper sectionHeight];
 
-    MFAlignmentType alignType = (MFAlignmentType)[cell.dataItem[KEY_WIDGET_ALIGNMENTTYPE] integerValue];
+    MFAlignmentType alignType = (MFAlignmentType)[cell.dataItem[MF_KEY_WIDGET_ALIGNMENTTYPE] integerValue];
     [[MFLayoutCenter sharedMFLayoutCenter] sideSubViews:bodyView.virtualNode withAlignmentType:alignType];
     [[MFLayoutCenter sharedMFLayoutCenter] reverseSubViews:bodyView.virtualNode];
 }
@@ -253,7 +253,7 @@
         NSDictionary *dataDict = [dataArray objectAtIndex:accessIndex];
         NSString *templateId = [self templateIdWithData:dataDict];
         if (![self matchingTemplate:templateId]) {
-            templateId = DIALOG_TEMPLATE_UNKNOW;
+            templateId = MF_DIALOG_TEMPLATE_UNKNOW;
         }
         
         MFVirtualNode *virtualHeadNode = [self virtualNodeWithId:templateId dataSource:dataDict withType:MFNodeTypeHead];
@@ -278,9 +278,9 @@
             indexPathFootDict = [virtualFootNode sizeOfFootWithSuperFrame:superFrame];
         }
         
-        retHeight += [[indexPathHeadDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
-        retHeight += [[indexPathDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
-        retHeight += [[indexPathFootDict objectForKey:KEY_WIDGET_HEIGHT] intValue];
+        retHeight += [[indexPathHeadDict objectForKey:MF_KEY_WIDGET_HEIGHT] intValue];
+        retHeight += [[indexPathDict objectForKey:MF_KEY_WIDGET_HEIGHT] intValue];
+        retHeight += [[indexPathFootDict objectForKey:MF_KEY_WIDGET_HEIGHT] intValue];
     }
 
     callback(virtualNodes);
@@ -288,7 +288,7 @@
 
 - (NSString*)templateIdWithData:(NSDictionary*)data
 {
-    NSString *Id = data[KEYWORD_ID];
+    NSString *Id = data[MF_KEYWORD_ID];
     if (![Id hasPrefix:@"tid-"]) {
         Id = [@"tid-" stringByAppendingString:Id];
     }
@@ -298,8 +298,8 @@
 - (NSString*)privateKeyWithData:(NSDictionary*)data
 {
     //TODO
-    NSString *seed = [data[KEYWORD_DS_DATA] objectForKey:KEYWORD_SEED];
-    return seed ? seed : data[KEYWORD_SEED];
+    NSString *seed = [data[MF_KEYWORD_DS_DATA] objectForKey:MF_KEYWORD_SEED];
+    return seed ? seed : data[MF_KEYWORD_SEED];
 }
 
 - (BOOL)matchingTemplate:(NSString*)tId

@@ -20,7 +20,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.exclusiveTouch = YES;
-        self.contentView.width = kDeviceWidth;
+        self.contentView.width = kMFDeviceWidth;
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
     }

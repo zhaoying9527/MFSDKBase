@@ -29,7 +29,7 @@
 {
     if (self = [super init]) {
         
-        self.uuid = [html getAttributeNamed:KEYWORD_ID];
+        self.uuid = [html getAttributeNamed:MF_KEYWORD_ID];
         self.clsType = html.tagName;
         self.htmlNodes = html;
         self.cssNodes = css;
@@ -54,7 +54,7 @@
 
 - (MFDOM*)findSubDomWithID:(NSString*)ID
 {
-    if ([[self.htmlNodes getAttributeNamed:KEYWORD_ID] isEqualToString:ID]) {
+    if ([[self.htmlNodes getAttributeNamed:MF_KEYWORD_ID] isEqualToString:ID]) {
         return self;
     }
     

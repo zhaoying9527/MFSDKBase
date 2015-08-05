@@ -85,9 +85,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGSize maxSize              = CGSizeMake(superFrame.size.width-70, 1000);
     CGSize size                 = CGSizeZero;
     if (dataString) {
-        size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:cellHeaderFontSize] size:maxSize];
-        size.width += 3*tipsWidthSpace;
-        size.height += tipsHeightSpace;
+        size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:MFCellHeaderFontSize] size:maxSize];
+        size.width += 3*MFTipsWidthSpace;
+        size.height += MFTipsHeightSpace;
     }
     CGRect domFrame = CGRectMake(0, 0, size.width, size.height);
 
@@ -95,8 +95,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *domID = node.dom.uuid;
     if (domID) {
         NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
-        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
-                         @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
+        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), MF_KEY_WIDGET_HEIGHT,
+                         @(domFrame.size.width), MF_KEY_WIDGET_WIDTH, widgetsInfo, MF_KEY_WIDGET_SIZE, nil];
     }
     node.widgetSize = size;
     node.frame = domFrame;
@@ -111,9 +111,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGSize maxSize              = CGSizeMake(superFrame.size.width-70, 1000);
     CGSize size                 = CGSizeZero;
     if (dataString) {
-        size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:cellFooterFontSize] size:maxSize];
-        size.width += 3*tipsWidthSpace;
-        size.height += tipsHeightSpace;
+        size = [MFHelper sizeWithFont:dataString font:[UIFont systemFontOfSize:MFCellFooterFontSize] size:maxSize];
+        size.width += 3*MFTipsWidthSpace;
+        size.height += MFTipsHeightSpace;
     }
     CGRect domFrame = CGRectMake(0, 0, size.width, size.height);
     
@@ -121,8 +121,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     NSString *domID = node.dom.uuid;
     if (domID) {
         NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionaryWithObject:[NSValue valueWithCGRect:domFrame] forKey:domID];
-        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
-                         @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
+        retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), MF_KEY_WIDGET_HEIGHT,
+                         @(domFrame.size.width), MF_KEY_WIDGET_WIDTH, widgetsInfo, MF_KEY_WIDGET_SIZE, nil];
     }
     node.widgetSize = size;
     node.frame = domFrame;
@@ -134,8 +134,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 {
     NSMutableDictionary *widgetsInfo = [NSMutableDictionary dictionary];
     CGRect domFrame = [self layoutInfoOfNode:node superFrame:superFrame dataSource:dataSource retWidgets:widgetsInfo];
-    NSDictionary *retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), KEY_WIDGET_HEIGHT,
-                                    @(domFrame.size.width), KEY_WIDGET_WIDTH, widgetsInfo, KEY_WIDGET_SIZE, nil];
+    NSDictionary *retDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@(domFrame.size.height), MF_KEY_WIDGET_HEIGHT,
+                                    @(domFrame.size.width), MF_KEY_WIDGET_WIDTH, widgetsInfo, MF_KEY_WIDGET_SIZE, nil];
     node.widgetSize = domFrame.size;
     node.frame = domFrame;
 
@@ -159,7 +159,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
     CGSize realSize        = CGSizeZero;
     
     NSDictionary *dataDict = dataSource;
-    NSString *multiLineStr = cssItem[KEYWORD_NUMBEROFLINES];
+    NSString *multiLineStr = cssItem[MF_KEYWORD_NUMBEROFLINES];
     if ([MFHelper isKindOfLabel:clsType] && [MFHelper supportMultiLine:multiLineStr]) {
         //emoji格式化
         //NSString *labelText = [dataDict[dataKey] ubb2unified];
@@ -199,7 +199,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
         NSInteger deltaWidth = childRealFrame.size.width - childFrame.size.width;
         subWidth += autoWidth ? deltaWidth : MAX(0, deltaWidth);
         
-        NSString *subDomID = [subNode.dom.htmlNodes getAttributeNamed:KEYWORD_ID];
+        NSString *subDomID = [subNode.dom.htmlNodes getAttributeNamed:MF_KEYWORD_ID];
         [childWidgetsInfo setObject:[NSValue valueWithCGRect:childRealFrame] forKey:subDomID];
         
         subNode.widgetSize = childRealFrame.size;
@@ -345,10 +345,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (CGSize)fitImageSize:(CGSize)imageSize
 {
-    if (imageSize.width < IMAGEWIDTH && imageSize.height < IMAGEHEIGHT) {
+    if (imageSize.width < MF_IMAGEWIDTH && imageSize.height < MF_IMAGEHEIGHT) {
         return  imageSize;
     }
-    CGRect rect = CGRectMake(0, 0, IMAGEWIDTH, IMAGEHEIGHT);
+    CGRect rect = CGRectMake(0, 0, MF_IMAGEWIDTH, MF_IMAGEHEIGHT);
     CGRect retRect = [MFHelper imageFitRect:rect aImageSize:imageSize];
     return retRect.size;
 }

@@ -150,19 +150,19 @@
     double dHeight = aInRect.size.height;
     double dAspectRatio = dWidth/dHeight;
     
-    double dImageWidth = aImageSize.width;
-    double dImageHeight = aImageSize.height;
-    double dImageAspectRatio = dImageWidth/dImageHeight;
+    double dMF_IMAGEWIDTH = aImageSize.width;
+    double dMF_IMAGEHEIGHT = aImageSize.height;
+    double dImageAspectRatio = dMF_IMAGEWIDTH/dMF_IMAGEHEIGHT;
     
     if (dImageAspectRatio >= dAspectRatio){
         
-        int nNewHeight = (int)(dWidth/dImageWidth*dImageHeight);
+        int nNewHeight = (int)(dWidth/dMF_IMAGEWIDTH*dMF_IMAGEHEIGHT);
         int nCenteringFactor = (aInRect.size.height - nNewHeight) / 2;
         newRect = CGRectMake(0, nCenteringFactor, (int)dWidth, nNewHeight);
         
     }else if (dImageAspectRatio < dAspectRatio){
         
-        int nNewWidth = (int)(dHeight/dImageHeight*dImageWidth);
+        int nNewWidth = (int)(dHeight/dMF_IMAGEHEIGHT*dMF_IMAGEWIDTH);
         int nCenteringFactor = (aInRect.size.width - nNewWidth) / 2;
         newRect = CGRectMake(nCenteringFactor, 0, nNewWidth,(int)(dHeight));
         
@@ -310,10 +310,10 @@
 
 + (NSString*)getFrameStringWithCssStyle:(NSDictionary*)styleDict
 {
-    NSString *left = [styleDict objectForKey:KEY_WIDGET_LEFT] ? [styleDict objectForKey:KEY_WIDGET_LEFT] : @"0";
-    NSString *top = [styleDict objectForKey:KEY_WIDGET_TOP] ? [styleDict objectForKey:KEY_WIDGET_TOP] : @"0";
-    NSString *width = [styleDict objectForKey:KEY_WIDGET_WIDTH] ? [styleDict objectForKey:KEY_WIDGET_WIDTH] : @"0";
-    NSString *height = [styleDict objectForKey:KEY_WIDGET_HEIGHT] ? [styleDict objectForKey:KEY_WIDGET_HEIGHT] : @"0";
+    NSString *left = [styleDict objectForKey:MF_KEY_WIDGET_LEFT] ? [styleDict objectForKey:MF_KEY_WIDGET_LEFT] : @"0";
+    NSString *top = [styleDict objectForKey:MF_KEY_WIDGET_TOP] ? [styleDict objectForKey:MF_KEY_WIDGET_TOP] : @"0";
+    NSString *width = [styleDict objectForKey:MF_KEY_WIDGET_WIDTH] ? [styleDict objectForKey:MF_KEY_WIDGET_WIDTH] : @"0";
+    NSString *height = [styleDict objectForKey:MF_KEY_WIDGET_HEIGHT] ? [styleDict objectForKey:MF_KEY_WIDGET_HEIGHT] : @"0";
     
     NSString *frameString = [NSString stringWithFormat:@"%@,%@,%@,%@",left,top,width,height];
     return frameString;
@@ -328,7 +328,7 @@
 + (BOOL)autoWidthTypeWithCssStyle:(NSDictionary*)styleDict
 {
     BOOL autoWidth = NO;
-    NSString *width = [styleDict objectForKey:KEY_WIDGET_WIDTH] ? [styleDict objectForKey:KEY_WIDGET_WIDTH] : @"0";
+    NSString *width = [styleDict objectForKey:MF_KEY_WIDGET_WIDTH] ? [styleDict objectForKey:MF_KEY_WIDGET_WIDTH] : @"0";
     if (width && [[width lowercaseString] isEqualToString:@"auto"]) {
         autoWidth = YES;
     }
@@ -337,7 +337,7 @@
 
 + (CGFloat)maxWidthWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
 {
-    NSString *maxWidthStr = [styleDict objectForKey:KEY_WIDGET_MAX_WIDTH];
+    NSString *maxWidthStr = [styleDict objectForKey:MF_KEY_WIDGET_MAX_WIDTH];
     BOOL relativeMaxWidth = [maxWidthStr hasSuffix:@"%"];
     CGFloat maxWidth = relativeMaxWidth ? superFrame.size.width*maxWidthStr.intValue/100 : maxWidthStr.intValue;
     return maxWidth > 0 ? maxWidth : INT32_MAX;
@@ -345,7 +345,7 @@
 
 + (CGFloat)maxHeightWithCssStyle:(NSDictionary*)styleDict superFrame:(CGRect)superFrame;
 {
-    NSString *maxHeightStr = [styleDict objectForKey:KEY_WIDGET_MAX_HEIGHT];
+    NSString *maxHeightStr = [styleDict objectForKey:MF_KEY_WIDGET_MAX_HEIGHT];
     BOOL relativeMaxHeight = [maxHeightStr hasSuffix:@"%"];
     CGFloat maxHeight = relativeMaxHeight ? superFrame.size.height*maxHeightStr.intValue/100 : maxHeightStr.intValue;
     return maxHeight > 0 ? maxHeight : INT32_MAX;
@@ -354,7 +354,7 @@
 + (BOOL)autoHeightTypeWithCssStyle:(NSDictionary*)styleDict
 {
     BOOL autoHeight = NO;
-    NSString *height = [styleDict objectForKey:KEY_WIDGET_HEIGHT] ? [styleDict objectForKey:KEY_WIDGET_HEIGHT] : @"0";
+    NSString *height = [styleDict objectForKey:MF_KEY_WIDGET_HEIGHT] ? [styleDict objectForKey:MF_KEY_WIDGET_HEIGHT] : @"0";
     if (height && [[height lowercaseString] isEqualToString:@"auto"]) {
         autoHeight = YES;
     }
@@ -719,17 +719,17 @@
 
 + (NSInteger)sectionHeight
 {
-    return sectionCellHeight;
+    return MFSectionCellHeight;
 }
 
 + (NSInteger)cellFooterHeight
 {
-    return sectionFooterHeight;
+    return MFSectionFooterHeight;
 }
 
 + (NSInteger)cellHeaderHeight
 {
-    return sectionHeaderHeight;
+    return MFSectionHeaderHeight;
 }
 
 + (BOOL)sizeZero:(CGSize)size

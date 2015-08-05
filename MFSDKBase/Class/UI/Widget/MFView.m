@@ -45,7 +45,7 @@
     if (self.virtualNode.dom.eventNodes[kMFOnClickEvent] || self.virtualNode.dom.eventNodes[kMFOnDbClickEvent]
         || self.virtualNode.dom.eventNodes[kMFOnLongPressEvent]) {
         if ((self.virtualNode.dom.eventNodes[kMFOnLongPressEvent])) {
-            [self performSelector:@selector(handleLongPressEvent) withObject:nil afterDelay:kLongPressTimeInterval];
+            [self performSelector:@selector(handleLongPressEvent) withObject:nil afterDelay:kMFLongPressTimeInterval];
         }
     }else {
         [super touchesBegan:touches withEvent:event];
@@ -69,7 +69,7 @@
         UITouch *touch = [touches anyObject];
         NSUInteger taps = [touch tapCount];
         if(taps == 1 && self.virtualNode.dom.eventNodes[kMFOnClickEvent]) {
-            [self performSelector:@selector(handleSingleFingerEvent) withObject:nil afterDelay:kDoubleClickTimeInterval];
+            [self performSelector:@selector(handleSingleFingerEvent) withObject:nil afterDelay:kMFDoubleClickTimeInterval];
         }else if(taps == 2 && self.virtualNode.dom.eventNodes[kMFOnClickEvent]) {
             [self handleDoubleClickEvent];
         }

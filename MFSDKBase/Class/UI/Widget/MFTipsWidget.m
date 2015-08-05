@@ -26,7 +26,7 @@
     self.titleLabel.numberOfLines = 0;
     self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.backgroundColor = [UIColor clearColor];
-    self.titleLabel.font = [UIFont systemFontOfSize:cellHeaderFontSize];
+    self.titleLabel.font = [UIFont systemFontOfSize:MFCellHeaderFontSize];
     self.titleLabel.opaque = YES;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.titleLabel];
@@ -46,11 +46,11 @@
 - (void)setFrame:(CGRect)frame
 {
     CGRect retFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-    retFrame.origin.x = (kDeviceWidth - retFrame.size.width)/2;
+    retFrame.origin.x = (kMFDeviceWidth - retFrame.size.width)/2;
     [super setFrame:retFrame];
     
     self.titleLabel.frame = (retFrame.size.width <= 0 || retFrame.size.height <= 0) ? retFrame :
-    CGRectMake(1.5*tipsWidthSpace, tipsHeightSpace, retFrame.size.width - 3.0*tipsWidthSpace, retFrame.size.height - 2*tipsHeightSpace);
+    CGRectMake(1.5*MFTipsWidthSpace, MFTipsHeightSpace, retFrame.size.width - 3.0*MFTipsWidthSpace, retFrame.size.height - 2*MFTipsHeightSpace);
 }
 
 - (void)setText:(NSString *)text

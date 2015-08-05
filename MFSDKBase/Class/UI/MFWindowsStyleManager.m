@@ -68,7 +68,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFWindowsStyleManager)
     NSMutableDictionary *allStyles = [NSMutableDictionary dictionary];
     for (HTMLNode *htmlNode in bodyEntity) {
         NSString *style = [self extractStyle:htmlNode];
-        NSString *key = [htmlNode getAttributeNamed:KEYWORD_ID];
+        NSString *key = [htmlNode getAttributeNamed:MF_KEYWORD_ID];
         if (key && style) {
             [allStyles setObject:style forKey:key];
         }
@@ -120,7 +120,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFWindowsStyleManager)
     NSArray *attributes = [htmlNode getAttributes];
     NSString *actionRegix = @"on.*=(.*)\\((.*)\\)";
     NSString *realAttribute = @"";
-    NSString *ID = [htmlNode getAttributeNamed:KEYWORD_ID];
+    NSString *ID = [htmlNode getAttributeNamed:MF_KEYWORD_ID];
     for (realAttribute in attributes) {
         if ([realAttribute rangeOfString:actionRegix options:NSRegularExpressionSearch].length > 0) {
             NSArray * components = [realAttribute componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
