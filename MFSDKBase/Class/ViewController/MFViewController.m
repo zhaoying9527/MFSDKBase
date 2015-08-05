@@ -13,7 +13,7 @@
 #import "MFHelper.h"
 #import "MFDOM.h"
 #import "MFScene.h"
-#import "UIView+UUID.h"
+#import "UIView+MFHelper.h"
 #import "MFSceneCenter.h"
 
 @interface MFViewController() <UITableViewDataSource,UITableViewDelegate, MFCellDelegate, MFEventProtcol>

@@ -15,7 +15,7 @@
 #import "MFScript.h"
 #import "MFDispatchCenter.h"
 #import "MFResourceCenter.h"
-#import "UIView+UUID.h"
+#import "UIView+MFHelper.h"
 #import "NSObject+VirtualNode.h"
 #import "MFScene.h"
 #import "MFSceneCenter.h"
@@ -70,17 +70,24 @@
 
 - (id)triggerEvent:(NSString*)event withParams:(NSDictionary*)params
 {
-    NSString *sceneName = [[[MFSceneCenter sharedMFSceneCenter] currentScene] sceneName];
-    
-    NSString *function = self.eventNodes[event];
-    NSRange range = [function rangeOfString:@"("];
-    NSString *method = [function substringToIndex:range.location];
-    if (method) {
-        NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:params];
-        [allParams setObject:method forKey:kMFMethodKey];
-        [allParams setObject:sceneName forKey:kMFScriptFileNameKey];
-        return [[MFDispatchCenter sharedMFDispatchCenter] executeScript:allParams scriptType:MFSDK_SCRIPT_LUA];
+    BOOL filterByNative = NO;
+
+    filterByNative = [[MFDispatchCenter sharedMFDispatchCenter] executeNativeAction:params];
+
+    if (!filterByNative) {
+        NSString *sceneName = [[[MFSceneCenter sharedMFSceneCenter] currentScene] sceneName];
+        
+        NSString *function = self.eventNodes[event];
+        NSRange range = [function rangeOfString:@"("];
+        NSString *method = [function substringToIndex:range.location];
+        if (method) {
+            NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:params];
+            [allParams setObject:method forKey:kMFMethodKey];
+            [allParams setObject:sceneName forKey:kMFScriptFileNameKey];
+            return [[MFDispatchCenter sharedMFDispatchCenter] executeScript:allParams scriptType:MFSDK_SCRIPT_LUA];
+        }
     }
+
     return nil;
 }
 @end

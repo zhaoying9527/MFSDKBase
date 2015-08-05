@@ -9,6 +9,7 @@
 #import "MFDispatchCenter.h"
 #import "MFCorePlugInService.h"
 #import "MFViewController.h"
+#import "UIView+MFHelper.h"
 #import "MFBridge.h"
 #import "MFScript.h"
 
@@ -29,8 +30,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFDispatchCenter)
 - (BOOL)executeNativeAction:(NSDictionary*)actionNode
 {
     BOOL handledByNative = NO;
-    id objectRef = actionNode[kMFTargetKey];
-    UIViewController *delegateVC = ((UIView*)objectRef).viewController;
+    id objectRef = actionNode[kMFParamsKey][kMFTargetKey];
+    UIViewController *delegateVC = ((UIView*)objectRef).MFViewController;
     if ([delegateVC isKindOfClass:[MFViewController class]]
         && [delegateVC respondsToSelector:@selector(handleNativeEvent:target:)]) {
         handledByNative = [(MFViewController*)delegateVC handleNativeEvent:actionNode target:objectRef];

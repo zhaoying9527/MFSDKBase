@@ -10,7 +10,7 @@
 #define MFSDKBase_MFSDK_h
 
 #import "UIView+Sizes.h"
-#import "UIView+UUID.h"
+#import "UIView+MFHelper.h"
 
 #import "MFDOM.h"
 #import "MFScene.h"

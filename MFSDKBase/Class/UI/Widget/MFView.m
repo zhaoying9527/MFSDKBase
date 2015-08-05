@@ -92,21 +92,21 @@
 - (void)handleSingleFingerEvent
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    id result = [self.virtualNode triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    id result = [self.virtualNode triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{kMFTargetKey:self}}];
     NSLog(@"%@",result);
 }
 
 - (void)handleDoubleClickEvent
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    id result = [self.virtualNode triggerEvent:kMFOnDbClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    id result = [self.virtualNode triggerEvent:kMFOnDbClickEvent withParams:@{kMFParamsKey:@{kMFTargetKey:self}}];
     NSLog(@"%@",result);
 }
 
 - (void)handleLongPressEvent
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    id result = [self.virtualNode triggerEvent:kMFOnLongPressEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    id result = [self.virtualNode triggerEvent:kMFOnLongPressEvent withParams:@{kMFParamsKey:@{kMFTargetKey:self}}];
     NSLog(@"%@",result);
 }
 

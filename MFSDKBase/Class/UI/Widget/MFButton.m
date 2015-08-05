@@ -63,7 +63,7 @@
 
 - (void)handleSingleFingerEvent
 {
-    id result = [self.virtualNode triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{@"target":self}}];
+    id result = [self.virtualNode triggerEvent:kMFOnClickEvent withParams:@{kMFParamsKey:@{kMFTargetKey:self}}];
     NSLog(@"%@",result);
 }
 

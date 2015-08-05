@@ -17,4 +17,5 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFWindowsStyleManager)
 - (id)databinding;
 - (id)events;
 - (NSArray*)bodyEntity;
+- (MFCorePlugInService*)pluginService;
 @end

@@ -12,7 +12,7 @@
 #import "HTMLParsers.h"
 #import "MFSceneFactory.h"
 #import "NSObject+VirtualNode.h"
-#import "UIView+UUID.h"
+#import "UIView+MFHelper.h"
 #import "MFDefine.h"
 #import "MFDOM.h"
 #import "MFVirtualNode.h"

@@ -19,7 +19,6 @@
 
 @interface MFSceneCenter ()
 @property (nonatomic, copy) NSString *currentSceneName;
-@property (nonatomic, strong)MFCorePlugInService *pluginService;
 @property (nonatomic, strong)NSMutableDictionary *htmlParsers;
 @end
 
@@ -76,4 +75,5 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneCenter)
     MFScene *resultScene = [[MFScene alloc] initWithDomNodes:styleMgr.bodyEntity withCss:styleMgr.css withDataBinding:styleMgr.databinding withEvents:styleMgr.events withStyles:styleMgr.style withSceneName:sceneName];
     return resultScene;
 }
+
 @end

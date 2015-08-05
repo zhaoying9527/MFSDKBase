@@ -9,7 +9,7 @@
 #import "MFDOM.h"
 #import "MFVirtualNode.h"
 #import "NSObject+VirtualNode.h"
-#import "UIView+UUID.h"
+#import "UIView+MFHelper.h"
 #import "MFLabel.h"
 #import "MFRichLabel.h"
 #import "MFImageView.h"
@@ -236,7 +236,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (void)layout:(MFVirtualNode*)node
 {
-    if (![node.objRef UUID]) {
+    if (![node.objRef MFUUID]) {
         return;
     }
 
@@ -250,7 +250,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (void)sideSubViews:(MFVirtualNode*)node withAlignmentType:(MFAlignmentType)alignType
 {
-    if (![node.objRef UUID]) {
+    if (![node.objRef MFUUID]) {
         return;
     }
     
@@ -299,7 +299,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFLayoutCenter)
 
 - (void)reverseSubViews:(MFVirtualNode*)node
 {
-    if (![node.objRef UUID]) {
+    if (![node.objRef MFUUID]) {
         return;
     }
     

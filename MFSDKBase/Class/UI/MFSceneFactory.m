@@ -8,7 +8,7 @@
 
 #import "MFSceneFactory.h"
 #import "HTMLNode.h"
-#import "UIView+UUID.h"
+#import "UIView+MFHelper.h"
 #import "UIView+Sizes.h"
 #import "MFHelper.h"
 #import "MFLabel.h"
@@ -67,7 +67,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(MFSceneFactory)
             [widget setAlpha:1.0];
         }
         
-        [widget setUUID:uuid];
+        [widget setMFUUID:uuid];
     }
     
     return widget;

@@ -9,7 +9,7 @@
 #import "MFSceneFactory.h"
 #import "MFScene+Internal.h"
 #import "MFVirtualNode.h"
-#import "UIView+UUID.h"
+#import "UIView+MFHelper.h"
 #import "UIView+Sizes.h"
 
 @implementation MFCell

@@ -45,11 +45,6 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(MFSceneCenter)
 - (BOOL)unRegisterScene:(NSString*)sceneName;
 
 /**
- *  返回插件服务
- */
-- (MFCorePlugInService*)pluginService;
-
-/**
  *  场景初始化
  */
 - (MFScene*)loadSceneWithName:(NSString*)name;

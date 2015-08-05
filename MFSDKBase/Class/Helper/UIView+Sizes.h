@@ -122,12 +122,5 @@
  */
 - (void)removeAllSubviews;
 
-/**
- * The view controller whose view contains this view.
- */
-- (UIViewController*)viewController;
-
-- (UITableViewCell*)viewCell;
-
 - (UIImage *)imageFromView;
 @end

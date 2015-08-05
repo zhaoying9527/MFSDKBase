@@ -36,7 +36,6 @@
 		239942941AF8AC6D0020EDB6 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942931AF8AC6D0020EDB6 /* MFTableView.m */; };
 		239942971AF8ACC20020EDB6 /* MFActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942961AF8ACC20020EDB6 /* MFActivityIndicatorView.m */; };
 		2399429A1AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942991AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m */; };
-		2399429D1AF8AE1F0020EDB6 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399429C1AF8AE1F0020EDB6 /* UIImage+Scale.m */; };
 		239942A01AF8AE680020EDB6 /* MFImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2399429F1AF8AE680020EDB6 /* MFImageBrowser.m */; };
 		239942A31AF8B1000020EDB6 /* MFGIFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 239942A21AF8B1000020EDB6 /* MFGIFView.m */; };
 		23E94F521AD634FC006B2946 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E94F491AD634FC006B2946 /* ESCssParser.m */; };
@@ -55,7 +54,7 @@
 		23F385A71AD4C247002A8F32 /* MFResourceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3855A1AD4C247002A8F32 /* MFResourceCenter.m */; };
 		23F385A81AD4C247002A8F32 /* MFStrategyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3855C1AD4C247002A8F32 /* MFStrategyCenter.m */; };
 		23F385A91AD4C247002A8F32 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3855E1AD4C247002A8F32 /* UIView+Sizes.m */; };
-		23F385AA1AD4C247002A8F32 /* UIView+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385601AD4C247002A8F32 /* UIView+UUID.m */; };
+		23F385AA1AD4C247002A8F32 /* UIView+MFHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385601AD4C247002A8F32 /* UIView+MFHelper.m */; };
 		23F385AB1AD4C247002A8F32 /* MFLayoutCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385631AD4C247002A8F32 /* MFLayoutCenter.m */; };
 		23F385AC1AD4C247002A8F32 /* MFPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F385671AD4C247002A8F32 /* MFPlugIn.m */; };
 		23F385AD1AD4C247002A8F32 /* MFCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3856A1AD4C247002A8F32 /* MFCssParser.m */; };
@@ -127,8 +126,6 @@
 		239942961AF8ACC20020EDB6 /* MFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFActivityIndicatorView.m; sourceTree = "<group>"; };
 		239942981AF8ADDB0020EDB6 /* UIImageView+MD5Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MD5Manager.h"; sourceTree = "<group>"; };
 		239942991AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MD5Manager.m"; sourceTree = "<group>"; };
-		2399429B1AF8AE1F0020EDB6 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
-		2399429C1AF8AE1F0020EDB6 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		2399429E1AF8AE680020EDB6 /* MFImageBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFImageBrowser.h; sourceTree = "<group>"; };
 		2399429F1AF8AE680020EDB6 /* MFImageBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFImageBrowser.m; sourceTree = "<group>"; };
 		239942A11AF8B1000020EDB6 /* MFGIFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGIFView.h; sourceTree = "<group>"; };
@@ -167,8 +164,8 @@
 		23F3855C1AD4C247002A8F32 /* MFStrategyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFStrategyCenter.m; sourceTree = "<group>"; };
 		23F3855D1AD4C247002A8F32 /* UIView+Sizes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sizes.h"; sourceTree = "<group>"; };
 		23F3855E1AD4C247002A8F32 /* UIView+Sizes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sizes.m"; sourceTree = "<group>"; };
-		23F3855F1AD4C247002A8F32 /* UIView+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UUID.h"; sourceTree = "<group>"; };
-		23F385601AD4C247002A8F32 /* UIView+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UUID.m"; sourceTree = "<group>"; };
+		23F3855F1AD4C247002A8F32 /* UIView+MFHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MFHelper.h"; sourceTree = "<group>"; };
+		23F385601AD4C247002A8F32 /* UIView+MFHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MFHelper.m"; sourceTree = "<group>"; };
 		23F385621AD4C247002A8F32 /* MFLayoutCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLayoutCenter.h; sourceTree = "<group>"; };
 		23F385631AD4C247002A8F32 /* MFLayoutCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLayoutCenter.m; sourceTree = "<group>"; };
 		23F385661AD4C247002A8F32 /* MFPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFPlugIn.h; sourceTree = "<group>"; };
@@ -430,8 +427,6 @@
 			children = (
 				2399429E1AF8AE680020EDB6 /* MFImageBrowser.h */,
 				2399429F1AF8AE680020EDB6 /* MFImageBrowser.m */,
-				2399429B1AF8AE1F0020EDB6 /* UIImage+Scale.h */,
-				2399429C1AF8AE1F0020EDB6 /* UIImage+Scale.m */,
 				239942981AF8ADDB0020EDB6 /* UIImageView+MD5Manager.h */,
 				239942991AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m */,
 				23F385561AD4C247002A8F32 /* MFDefine.h */,
@@ -443,8 +438,8 @@
 				23F3855C1AD4C247002A8F32 /* MFStrategyCenter.m */,
 				23F3855D1AD4C247002A8F32 /* UIView+Sizes.h */,
 				23F3855E1AD4C247002A8F32 /* UIView+Sizes.m */,
-				23F3855F1AD4C247002A8F32 /* UIView+UUID.h */,
-				23F385601AD4C247002A8F32 /* UIView+UUID.m */,
+				23F3855F1AD4C247002A8F32 /* UIView+MFHelper.h */,
+				23F385601AD4C247002A8F32 /* UIView+MFHelper.m */,
 			);
 			name = Helper;
 			path = Class/Helper;
@@ -685,7 +680,6 @@
 				23F0D4F51AF8E20000D764B9 /* CTLabel.m in Sources */,
 				23F385AF1AD4C247002A8F32 /* MFParser.m in Sources */,
 				2399429A1AF8ADDB0020EDB6 /* UIImageView+MD5Manager.m in Sources */,
-				2399429D1AF8AE1F0020EDB6 /* UIImage+Scale.m in Sources */,
 				23F385A91AD4C247002A8F32 /* UIView+Sizes.m in Sources */,
 				1CE2F3801AD4D89000E27AA8 /* MFSceneCenter.m in Sources */,
 				23F0D4F91AF8E20000D764B9 /* MFEmojiLabel.m in Sources */,
@@ -693,7 +687,7 @@
 				23F385B31AD4C247002A8F32 /* MFCorePlugInService.m in Sources */,
 				23F385B01AD4C247002A8F32 /* MFLuaScript.m in Sources */,
 				23E94F531AD634FC006B2946 /* ESCssTokenizer.m in Sources */,
-				23F385AA1AD4C247002A8F32 /* UIView+UUID.m in Sources */,
+				23F385AA1AD4C247002A8F32 /* UIView+MFHelper.m in Sources */,
 				239942941AF8AC6D0020EDB6 /* MFTableView.m in Sources */,
 				239942A01AF8AE680020EDB6 /* MFImageBrowser.m in Sources */,
 				1C775C151B6A6A5400D5DCFB /* MFWindowsStyleManager.m in Sources */,
